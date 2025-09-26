@@ -346,21 +346,19 @@ import '../styles/global.css';
                 </h2>
                 <p class="text-xl text-gray-700">We'll get back to you within 1 business day</p>
 
-                <!-- TEST MODE INDICATOR -->
-                <div class="mt-4 p-3 bg-yellow-100 border border-yellow-300 rounded-lg max-w-2xl mx-auto">
-                    <p class="text-sm text-yellow-800">
-                        <strong>🧪 TEST MODE:</strong> Form submissions will not use Basin credits.
-                        Open browser console (F12) to see detailed validation logs.
+                <!-- PRODUCTION MODE INDICATOR -->
+                <div class="mt-4 p-3 bg-green-100 border border-green-300 rounded-lg max-w-2xl mx-auto">
+                    <p class="text-sm text-green-800">
+                        <strong>✅ LIVE:</strong> Form submissions will be sent via Basin and we'll receive your message.
                     </p>
                 </div>
             </div>
 
             <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white border-opacity-50">
-                <!-- TEST MODE: Using local endpoint to avoid Basin credits -->
-                <!-- Production: action="https://usebasin.com/f/9639ff2bf14f" -->
-                <form id="contact-form" action="/api/test-form" method="POST" class="space-y-6">
+                <!-- PRODUCTION: Using Basin endpoint for GitHub Pages deployment -->
+                <form id="contact-form" action="https://usebasin.com/f/9639ff2bf14f" method="POST" class="space-y-6">
                     <input type="hidden" name="_subject" value="New Contact Form Submission">
-                    <input type="hidden" name="_redirect" value="/success">
+                    <input type="hidden" name="_redirect" value="https://mark-65-arch.github.io/Marketing-v3.2/success">
                     <input type="hidden" name="_gotcha" style="display:none !important">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>

@@ -1,0 +1,793 @@
+---
+import '../styles/global.css';
+---
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get in Touch — Marketing AI Houston</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <style>
+        /* Define CSS custom properties for colors */
+        :root {
+            --color-ocean-deep: #0A2540;
+            --color-ocean-deeper: #020617;
+            --color-ocean-blue: #3B82F6;
+            --color-ocean-light: #60A5FA;
+            --color-ocean-teal: #198072;
+            --color-ocean-teal-dark: #14B8A6;
+            --color-ocean-sky: #BFDBFE;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        p, a, span, li {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Force maximum boldness for headers */
+        h1, h1 *, h1 span {
+            font-weight: 900 !important;
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        h2, h2 *, h2 span {
+            font-weight: 900 !important;
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        /* Target specific classes that might have conflicting styles */
+        .text-transparent, .bg-clip-text {
+            font-weight: 900 !important;
+        }
+
+        /* Make sure font-black class works */
+        .font-black {
+            font-weight: 900 !important;
+        }
+
+        /* Override ALL possible font weight classes from Tailwind */
+        .text-5xl, .text-7xl, .text-4xl, .md\\:text-7xl, .md\\:text-5xl {
+            font-weight: 900 !important;
+        }
+
+        /* Force boldness on gradient text specifically */
+        span[class*="gradient"], span[class*="text-transparent"] {
+            font-weight: 900 !important;
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        /* Custom styles */
+        .organic-blob {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+
+        .organic-droplet {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+
+        .organic-leaf {
+            border-radius: 20% 80% 20% 80% / 80% 20% 80% 20%;
+        }
+
+        .gradient-ocean {
+            background: linear-gradient(135deg, var(--color-ocean-deep), var(--color-ocean-blue));
+        }
+
+        .gradient-ocean-teal {
+            background: linear-gradient(135deg, var(--color-ocean-blue), var(--color-ocean-teal));
+        }
+
+        .gradient-ocean-light {
+            background: linear-gradient(135deg, var(--color-ocean-sky), #F0F9FF);
+        }
+
+        /* Sticky header */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+
+        /* Form styles */
+        .form-input {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 12px 16px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-ocean-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-input.error {
+            border-color: #ef4444;
+            background-color: #fef2f2;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+
+        .form-input.error:focus {
+            border-color: #ef4444;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+    </style>
+
+    <!-- Load this CSS after everything else to ensure it takes precedence -->
+    <style>
+        /* Final override - loaded after everything else */
+        h1, h1 span, h2, h2 span {
+            font-weight: 900 !important;
+            font-family: 'Poppins', sans-serif !important;
+        }
+    </style>
+</head>
+<body class="font-inter text-gray-800 bg-gradient-to-br from-blue-100 to-white">
+    <!-- Navigation -->
+    <header class="sticky-header">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-900 to-blue-600 rounded-full flex items-center justify-center mr-2">
+                        <i class="fas fa-robot text-white"></i>
+                    </div>
+                    <span class="font-bold text-blue-900 hidden md:block">Marketing AI Houston</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="/" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Services</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Pricing</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    <a href="/contact" class="text-blue-600 font-medium">Contact</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="flex items-center">
+                    <a href="/contact#contact-options" class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 hidden md:block">
+                        Contact
+                    </a>
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-button" class="ml-4 md:hidden text-blue-900">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu mt-4 pb-4">
+                <nav class="flex flex-col space-y-3">
+                    <a href="/" class="text-gray-700 hover:text-blue-600 font-medium py-2">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium py-2">Services</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium py-2">Pricing</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium py-2">About</a>
+                    <a href="/contact" class="text-blue-600 font-medium py-2">Contact</a>
+                    <a href="/contact#contact-options" class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 text-center mt-2">
+                        Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+        <!-- Background elements -->
+        <div class="absolute inset-0">
+            <div class="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-blue-600 to-teal-600 organic-blob opacity-20 animate-blob"></div>
+            <div class="absolute top-40 right-20 w-72 h-72 bg-gradient-to-br from-teal-600 to-blue-300 organic-leaf opacity-20 animate-float"></div>
+            <div class="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-br from-blue-900 to-blue-600 organic-droplet opacity-20 animate-float"></div>
+        </div>
+
+        <div class="relative z-10 px-4 max-w-4xl mx-auto">
+            <div class="text-center">
+                <!-- Stars and tagline -->
+                <div class="text-yellow-400 text-3xl mb-2">⭐⭐⭐⭐⭐</div>
+                <p class="text-gray-700 mb-8">Built for small businesses that want to grow</p>
+
+                <!-- Headline -->
+                <h1 class="text-5xl md:text-6xl font-black text-gray-900 leading-tight mb-6">
+                    Let's Talk About Your Business
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-xl text-gray-700 mb-12 max-w-2xl mx-auto leading-relaxed">
+                    Whether you're ready to launch or just exploring options, we'd love to hear from you.
+                </p>
+
+                <!-- CTA Button -->
+                <a href="#contact-options" class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg mb-6">
+                    👉 Schedule a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
+                </a>
+
+                <!-- Supporting one-liner -->
+                <p class="text-gray-700 mb-12">No pressure, no jargon — just a quick chat to see if we're a fit.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Options Section -->
+    <section id="contact-options" class="py-20 md:py-24 relative overflow-hidden">
+        <!-- Background elements -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-5">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-teal-600 rounded-full filter blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-600 rounded-full filter blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto max-w-6xl px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-600">Choose How You'd Like to Connect</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Schedule a Discovery Call -->
+                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white border-opacity-50 text-center">
+                    <div class="text-6xl mb-6">📅</div>
+                    <h3 class="text-2xl font-bold mb-4 text-blue-900 font-poppins">Schedule a Discovery Call</h3>
+                    <p class="text-gray-700 mb-6">Use our calendar to pick a time that works for you.</p>
+                    <a href="https://calendly.com/marketingaihouston/free-discovery-call" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                        Book Now
+                    </a>
+                </div>
+
+                <!-- Send a Message -->
+                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white border-opacity-50 text-center">
+                    <div class="text-6xl mb-6">📝</div>
+                    <h3 class="text-2xl font-bold mb-4 text-blue-900 font-poppins">Send a Message</h3>
+                    <p class="text-gray-700 mb-6">Fill out our quick form and we'll reply within 1 business day.</p>
+                    <a href="#contact-form" class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                        Send Message
+                    </a>
+                </div>
+
+                <!-- Call or Email Directly -->
+                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white border-opacity-50 text-center">
+                    <div class="text-6xl mb-6">📞</div>
+                    <h3 class="text-2xl font-bold mb-4 text-blue-900 font-poppins">Call or Email Us Directly</h3>
+                    <div class="space-y-3 mb-6">
+                        <p class="text-gray-700">
+                            <i class="fas fa-phone text-blue-600 mr-2"></i>
+                            <a href="tel:+1234567890" class="text-blue-600 hover:text-blue-800 font-medium">(123) 456-7890</a>
+                        </p>
+                        <p class="text-gray-700">
+                            <i class="fas fa-envelope text-blue-600 mr-2"></i>
+                            <a href="mailto:info@marketingaihouston.com" class="text-blue-600 hover:text-blue-800 font-medium">info@marketingaihouston.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact-form" class="py-20 md:py-24 relative overflow-hidden">
+        <!-- Background elements -->
+        <div class="absolute inset-0">
+            <div class="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-teal-600 to-blue-300 organic-blob opacity-10 animate-float"></div>
+            <div class="absolute bottom-20 left-20 w-72 h-72 bg-gradient-to-br from-blue-600 to-blue-900 organic-leaf opacity-10 animate-float"></div>
+        </div>
+
+        <div class="container mx-auto max-w-4xl px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">Send Us a Message</span>
+                </h2>
+                <p class="text-xl text-gray-700">We'll get back to you within 1 business day</p>
+
+                <!-- TEST MODE INDICATOR -->
+                <div class="mt-4 p-3 bg-yellow-100 border border-yellow-300 rounded-lg max-w-2xl mx-auto">
+                    <p class="text-sm text-yellow-800">
+                        <strong>🧪 TEST MODE:</strong> Form submissions will not use Basin credits.
+                        Open browser console (F12) to see detailed validation logs.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white border-opacity-50">
+                <!-- TEST MODE: Using local endpoint to avoid Basin credits -->
+                <!-- Production: action="https://usebasin.com/f/9639ff2bf14f" -->
+                <form id="contact-form" action="/api/test-form" method="POST" class="space-y-6">
+                    <input type="hidden" name="_subject" value="New Contact Form Submission">
+                    <input type="hidden" name="_redirect" value="/success">
+                    <input type="hidden" name="_gotcha" style="display:none !important">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                            <input type="text" id="name" name="name" required class="form-input" placeholder="Your full name" maxlength="100" title="Please enter a valid name">
+                            <div id="name-error" class="error-message"></div>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" required class="form-input" placeholder="your@email.com" maxlength="100">
+                            <div id="email-error" class="error-message"></div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required class="form-input" placeholder="(123) 456-7890" maxlength="20" title="Please enter a valid phone number">
+                            <div id="phone-error" class="error-message"></div>
+                        </div>
+                        <div>
+                            <label for="business" class="block text-sm font-medium text-gray-700 mb-2">Business Name (Optional)</label>
+                            <input type="text" id="business" name="business" class="form-input" placeholder="Your business name" maxlength="100">
+                            <div id="business-error" class="error-message"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                        <textarea id="message" name="message" required class="form-input form-textarea" placeholder="Tell us about your business and what you're looking for..." maxlength="1000"></textarea>
+                        <div id="message-error" class="error-message"></div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            📩 Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reassurance Section -->
+    <section class="py-20 md:py-24 relative overflow-hidden">
+        <!-- Background elements -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-5">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-blue-900 rounded-full filter blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto max-w-6xl px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-teal-600">We Keep It Simple, Friendly, and Transparent</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white border-opacity-50">
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span class="text-gray-700">No pushy sales calls</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span class="text-gray-700">Clear pricing and timelines</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white border-opacity-50">
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span class="text-gray-700">Real answers from real people</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span class="text-gray-700">Built for small business owners — not tech experts</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-20 md:py-24 relative overflow-hidden bg-gradient-to-br from-blue-900 to-blue-600">
+        <div class="container mx-auto max-w-4xl px-4 relative z-10 text-center">
+            <h2 class="text-4xl md:text-5xl font-black mb-6 text-white">
+                Let's Start with a Quick Conversation
+            </h2>
+            <p class="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
+                Pick a time, send a message, or just give us a call — we're here to help.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="#contact-options" class="bg-white text-blue-900 font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    👉 Schedule a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
+                </a>
+
+                <a href="#contact-form" class="border-2 border-white text-white hover:bg-white hover:text-blue-900 font-semibold py-4 px-12 rounded-full transition-all duration-300">
+                    📩 Send a Message
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Branding -->
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center mr-2">
+                            <i class="fas fa-robot text-white"></i>
+                        </div>
+                        <span class="font-bold">Marketing AI Houston</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">AI-powered web design & SEO for small businesses across the U.S.</p>
+                    <a href="/contact#contact-options" class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300">
+                        👉 Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
+                    </a>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="/contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Info</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-blue-600 mt-1 mr-3"></i>
+                            <span class="text-gray-400">📍 Houston, TX</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-blue-600 mt-1 mr-3"></i>
+                            <a href="tel:+1234567890" class="text-gray-400 hover:text-white transition-colors">📞 (123) 456-7890</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-blue-600 mt-1 mr-3"></i>
+                            <a href="mailto:info@marketingaihouston.com" class="text-gray-400 hover:text-white transition-colors">✉️ info@marketingaihouston.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Our Commitments -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Our Commitments</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <i class="fab fa-google text-blue-600 mr-2"></i>
+                            <span class="text-gray-400">Google Business Profile</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-search text-blue-600 mr-2"></i>
+                            <span class="text-gray-400">SEO-Friendly</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-mobile-alt text-blue-600 mr-2"></i>
+                            <span class="text-gray-400">Mobile-First</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-robot text-blue-600 mr-2"></i>
+                            <span class="text-gray-400">AI-Ready</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mt-4">Proudly serving small businesses nationwide.</p>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">© Marketing AI Houston. All rights reserved.</p>
+                <div class="mt-2">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors mx-2">Privacy Policy</a>
+                    <span class="text-gray-600">|</span>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors mx-2">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const element = e.target as HTMLAnchorElement;
+                const href = element.getAttribute('href');
+                if (href) {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Enhanced form validation with visual error feedback
+        const contactForm = document.getElementById('contact-form') as HTMLFormElement;
+        if (contactForm) {
+            // Clear errors function
+            function clearErrors() {
+                const errorElements = document.querySelectorAll('.error-message');
+                const inputElements = document.querySelectorAll('.form-input');
+
+                errorElements.forEach(el => {
+                    el.classList.remove('show');
+                    (el as HTMLElement).textContent = '';
+                });
+
+                inputElements.forEach(el => {
+                    el.classList.remove('error');
+                });
+            }
+
+            // Show error function
+            function showError(fieldId: string, message: string) {
+                const input = document.getElementById(fieldId);
+                const errorElement = document.getElementById(`${fieldId}-error`);
+
+                if (input && errorElement) {
+                    input.classList.add('error');
+                    errorElement.textContent = message;
+                    errorElement.classList.add('show');
+                }
+            }
+
+            contactForm.addEventListener('submit', function(e) {
+                console.log('\n🚀 FORM SUBMISSION STARTED');
+                console.log('===========================');
+                console.log('Mode: TEST (using local endpoint)');
+                console.log('Time:', new Date().toLocaleTimeString());
+
+                // Clear previous errors
+                clearErrors();
+
+                // Get form values for validation
+                const nameInput = document.getElementById('name') as HTMLInputElement;
+                const emailInput = document.getElementById('email') as HTMLInputElement;
+                const messageInput = document.getElementById('message') as HTMLTextAreaElement;
+                const phoneInput = document.getElementById('phone') as HTMLInputElement;
+                const businessInput = document.getElementById('business') as HTMLInputElement;
+                const gotchaInput = document.querySelector('input[name="_gotcha"]') as HTMLInputElement;
+
+                if (nameInput && emailInput && messageInput && phoneInput) {
+                    const name = nameInput.value.trim();
+                    const email = emailInput.value.trim();
+                    const message = messageInput.value.trim();
+                    const phone = phoneInput.value.trim();
+                    const business = businessInput ? businessInput.value.trim() : '';
+                    const gotcha = gotchaInput ? gotchaInput.value : '';
+
+                    console.log('\n📝 FORM DATA');
+                    console.log('=============');
+                    console.log('Name:', name || '(empty)');
+                    console.log('Email:', email || '(empty)');
+                    console.log('Phone:', phone || '(empty)');
+                    console.log('Business:', business || '(not provided)');
+                    console.log('Message:', message || '(empty)');
+                    console.log('Honeypot:', gotcha || '(empty - good!)');
+
+                    let isValid = true;
+
+                    // Required fields validation
+                    console.log('\n🔍 CLIENT-SIDE VALIDATION');
+                    console.log('=========================');
+
+                    if (!name) {
+                        showError('name', 'Full name is required');
+                        console.log('❌ Name field is empty');
+                        isValid = false;
+                    } else if (name.length > 100) {
+                        showError('name', 'Name must be less than 100 characters');
+                        console.log('❌ Name field too long');
+                        isValid = false;
+                    } else {
+                        console.log('✅ Name validation passed');
+                    }
+
+                    if (!email) {
+                        showError('email', 'Email address is required');
+                        console.log('❌ Email field is empty');
+                        isValid = false;
+                    } else {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(email)) {
+                            showError('email', 'Please enter a valid email address');
+                            console.log('❌ Email format invalid:', email);
+                            isValid = false;
+                        } else if (email.length > 100) {
+                            showError('email', 'Email must be less than 100 characters');
+                            console.log('❌ Email field too long');
+                            isValid = false;
+                        } else {
+                            console.log('✅ Email validation passed');
+                        }
+                    }
+
+                    if (!phone) {
+                        showError('phone', 'Phone number is required');
+                        console.log('❌ Phone field is empty');
+                        isValid = false;
+                    } else {
+                        const phoneRegex = /^[\+]?[(]?[\d\s\-\(\)]{10,}$/;
+                        const digitsOnly = phone.replace(/\D/g, '');
+
+                        if (digitsOnly.length < 10) {
+                            showError('phone', 'Phone number must have at least 10 digits');
+                            console.log('❌ Phone too short. Digits found:', digitsOnly.length);
+                            isValid = false;
+                        } else if (!phoneRegex.test(phone)) {
+                            showError('phone', 'Please enter a valid phone number (e.g., (123) 456-7890)');
+                            console.log('❌ Phone format invalid:', phone);
+                            isValid = false;
+                        } else if (phone.length > 20) {
+                            showError('phone', 'Phone number is too long');
+                            console.log('❌ Phone field too long');
+                            isValid = false;
+                        } else {
+                            console.log('✅ Phone validation passed. Digits:', digitsOnly.length);
+                        }
+                    }
+
+                    if (!message) {
+                        showError('message', 'Message is required');
+                        console.log('❌ Message field is empty');
+                        isValid = false;
+                    } else if (message.length > 1000) {
+                        showError('message', 'Message must be less than 1000 characters');
+                        console.log('❌ Message field too long');
+                        isValid = false;
+                    } else {
+                        console.log('✅ Message validation passed');
+                    }
+
+                    // Business field validation (optional)
+                    if (business && business.length > 100) {
+                        showError('business', 'Business name must be less than 100 characters');
+                        console.log('❌ Business field too long');
+                        isValid = false;
+                    }
+
+                    // Security checks
+                    console.log('\n🛡️ SECURITY PREVIEW');
+                    console.log('===================');
+
+                    if (gotcha && gotcha.trim() !== '') {
+                        console.log('⚠️ WARNING: Honeypot field has value (potential bot)');
+                        console.log('   Server will likely block this submission');
+                    } else {
+                        console.log('✅ Honeypot field empty (good)');
+                    }
+
+                    const spamKeywords = ['casino', 'viagra', 'cialis', 'lottery', 'winner'];
+                    const allText = (name + ' ' + email + ' ' + message).toLowerCase();
+                    const foundKeywords = spamKeywords.filter(keyword => allText.includes(keyword));
+
+                    if (foundKeywords.length > 0) {
+                        console.log('⚠️ WARNING: Potential spam keywords detected');
+                        console.log('   Keywords found:', foundKeywords);
+                        console.log('   Server will likely block this submission');
+                    } else {
+                        console.log('✅ No obvious spam keywords detected');
+                    }
+
+                    // Prevent submission if validation failed
+                    if (!isValid) {
+                        e.preventDefault();
+                        console.log('\n❌ FORM SUBMISSION BLOCKED');
+                        console.log('Please fix the errors highlighted in red');
+                        return;
+                    }
+
+                    console.log('\n✅ CLIENT-SIDE VALIDATION PASSED');
+                    console.log('Form will now submit to test endpoint');
+                    console.log('Check server console for detailed security analysis');
+
+                    // Show loading state
+                    const submitButton = contactForm.querySelector('button[type="submit"]') as HTMLButtonElement;
+                    if (submitButton) {
+                        submitButton.disabled = true;
+                        submitButton.textContent = 'Processing...';
+                        console.log('🔄 Button state changed to loading');
+                    }
+                }
+
+                // Let the form submit to our test endpoint
+            });
+
+            // Clear errors when user starts typing
+            const formInputs = contactForm.querySelectorAll('.form-input');
+            formInputs.forEach(input => {
+                input.addEventListener('input', function(event) {
+                    const target = event.target as HTMLElement;
+                    const fieldId = target.id;
+                    const errorElement = document.getElementById(`${fieldId}-error`);
+
+                    if (errorElement && errorElement.classList.contains('show')) {
+                        target.classList.remove('error');
+                        errorElement.classList.remove('show');
+                        errorElement.textContent = '';
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>

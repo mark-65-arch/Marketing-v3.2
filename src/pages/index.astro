@@ -213,16 +213,16 @@ import '../styles/global.css';
 
                 <!-- Desktop Navigation -->
                 <nav class="hidden md:flex space-x-8">
-                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                    <a href={import.meta.env.BASE_URL} class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
                     <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Services</a>
                     <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Pricing</a>
                     <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
-                    <a href="./contact" class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+                    <a href={`${import.meta.env.BASE_URL}contact`} class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
                 </nav>
 
                 <!-- CTA Button -->
                 <div class="flex items-center">
-                    <a href="./contact#contact-options" class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 hidden md:block">
+                    <a href={`${import.meta.env.BASE_URL}contact#contact-options`} class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 hidden md:block">
                         Contact
                     </a>
                     <!-- Mobile Menu Button -->
@@ -235,12 +235,12 @@ import '../styles/global.css';
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="mobile-menu mt-4 pb-4">
                 <nav class="flex flex-col space-y-3">
-                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium py-2">Home</a>
+                    <a href={import.meta.env.BASE_URL} class="text-gray-700 hover:text-blue-600 font-medium py-2">Home</a>
                     <a href="#" class="text-gray-700 hover:text-blue-600 font-medium py-2">Services</a>
                     <a href="#" class="text-gray-700 hover:text-blue-600 font-medium py-2">Pricing</a>
                     <a href="#" class="text-gray-700 hover:text-blue-600 font-medium py-2">About</a>
-                    <a href="./contact" class="text-gray-700 hover:text-blue-600 font-medium py-2">Contact</a>
-                    <a href="./contact#contact-options" class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 text-center mt-2">
+                    <a href={`${import.meta.env.BASE_URL}contact`} class="text-gray-700 hover:text-blue-600 font-medium py-2">Contact</a>
+                    <a href={`${import.meta.env.BASE_URL}contact#contact-options`} class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 text-center mt-2">
                         Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
                     </a>
                 </nav>
@@ -283,7 +283,7 @@ import '../styles/global.css';
                 </p>
 
                 <!-- CTA Button -->
-                <a href="./contact#contact-options" class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg mb-6">
+                <a href={`${import.meta.env.BASE_URL}contact#contact-options`} class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg mb-6">
                     👉 Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
                 </a>
 
@@ -704,7 +704,7 @@ import '../styles/global.css';
 
                         <p class="text-gray-700 mb-6">Perfect for businesses who need to show up on Google and start getting calls.</p>
 
-                        <a href="./contact#contact-options" class="block text-center gradient-ocean-teal text-white font-poppins font-semibold px-6 py-3 rounded-full hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                        <a href={`${import.meta.env.BASE_URL}contact#contact-options`} class="block text-center gradient-ocean-teal text-white font-poppins font-semibold px-6 py-3 rounded-full hover:shadow-lg transform hover:scale-105 transition-all duration-300">
                             Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
                         </a>
                     </div>
@@ -754,7 +754,7 @@ import '../styles/global.css';
 
                         <p class="text-blue-100 mb-6">Best for owners ready to turn their website into a steady source of customers.</p>
 
-                        <a href="./contact#contact-options" class="block text-center bg-white text-blue-900 font-poppins font-semibold px-6 py-3 rounded-full hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                        <a href={`${import.meta.env.BASE_URL}contact#contact-options`} class="block text-center bg-white text-blue-900 font-poppins font-semibold px-6 py-3 rounded-full hover:shadow-lg transform hover:scale-105 transition-all duration-300">
                             Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
                         </a>
                     </div>
@@ -805,7 +805,7 @@ import '../styles/global.css';
 
                         <p class="text-gray-700 mb-6">Ideal for businesses ready to dominate their market and scale growth.</p>
 
-                        <a href="./contact#contact-options" class="block text-center gradient-ocean-teal text-white font-poppins font-semibold px-6 py-3 rounded-full hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                        <a href={`${import.meta.env.BASE_URL}contact#contact-options`} class="block text-center gradient-ocean-teal text-white font-poppins font-semibold px-6 py-3 rounded-full hover:shadow-lg transform hover:scale-105 transition-all duration-300">
                             Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
                         </a>
                     </div>
@@ -843,7 +843,7 @@ import '../styles/global.css';
                 <p class="text-2xl md:text-3xl font-bold text-blue-900 mb-6 max-w-3xl mx-auto">"Helping Houston businesses get found online is what we do best."</p>
                 <p class="text-gray-700 mb-10">Real results. Real growth. That's our promise to every client.</p>
 
-                <a href="./contact#contact-options" class="inline-block gradient-ocean-teal text-white font-poppins font-semibold px-8 py-4 rounded-full hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                <a href={`${import.meta.env.BASE_URL}contact#contact-options`} class="inline-block gradient-ocean-teal text-white font-poppins font-semibold px-8 py-4 rounded-full hover:shadow-lg transform hover:scale-105 transition-all duration-300">
                     👉 Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
                 </a>
             </div>
@@ -962,11 +962,11 @@ import '../styles/global.css';
             </p>
 
             <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <a href="./contact#contact-options" class="bg-white text-blue-900 font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                <a href={`${import.meta.env.BASE_URL}contact#contact-options`} class="bg-white text-blue-900 font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
                     👉 Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
                 </a>
 
-                <a href="./contact#contact-form" class="border-2 border-white text-white hover:bg-white hover:text-blue-900 font-semibold py-4 px-12 rounded-full transition-all duration-300">
+                <a href={`${import.meta.env.BASE_URL}contact#contact-form`} class="border-2 border-white text-white hover:bg-white hover:text-blue-900 font-semibold py-4 px-12 rounded-full transition-all duration-300">
                     📩 Request a Free Quote
                 </a>
             </div>
@@ -990,7 +990,7 @@ import '../styles/global.css';
                         <span class="font-bold">Marketing AI Houston</span>
                     </div>
                     <p class="text-gray-400 mb-4">AI-powered web design & SEO for Houston small businesses.</p>
-                    <a href="./contact#contact-options" class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300">
+                    <a href={`${import.meta.env.BASE_URL}contact#contact-options`} class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300">
                         Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
                     </a>
                 </div>
@@ -1003,7 +1003,7 @@ import '../styles/global.css';
                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Solutions</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
-                        <li><a href="./contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href={`${import.meta.env.BASE_URL}contact`} class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
 

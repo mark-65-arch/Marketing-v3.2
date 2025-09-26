@@ -205,16 +205,16 @@ import '../styles/global.css';
 
                 <!-- Desktop Navigation -->
                 <nav class="hidden md:flex space-x-8">
-                    <a href="./" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                    <a href={import.meta.env.BASE_URL} class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
                     <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Services</a>
                     <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Pricing</a>
                     <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
-                    <a href="./contact" class="text-blue-600 font-medium">Contact</a>
+                    <a href={`${import.meta.env.BASE_URL}contact`} class="text-blue-600 font-medium">Contact</a>
                 </nav>
 
                 <!-- CTA Button -->
                 <div class="flex items-center">
-                    <a href="./contact#contact-options" class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 hidden md:block">
+                    <a href={`${import.meta.env.BASE_URL}contact#contact-options`} class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 hidden md:block">
                         Contact
                     </a>
                     <!-- Mobile Menu Button -->
@@ -227,12 +227,12 @@ import '../styles/global.css';
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="mobile-menu mt-4 pb-4">
                 <nav class="flex flex-col space-y-3">
-                    <a href="./" class="text-gray-700 hover:text-blue-600 font-medium py-2">Home</a>
+                    <a href={import.meta.env.BASE_URL} class="text-gray-700 hover:text-blue-600 font-medium py-2">Home</a>
                     <a href="#" class="text-gray-700 hover:text-blue-600 font-medium py-2">Services</a>
                     <a href="#" class="text-gray-700 hover:text-blue-600 font-medium py-2">Pricing</a>
                     <a href="#" class="text-gray-700 hover:text-blue-600 font-medium py-2">About</a>
-                    <a href="./contact" class="text-blue-600 font-medium py-2">Contact</a>
-                    <a href="./contact#contact-options" class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 text-center mt-2">
+                    <a href={`${import.meta.env.BASE_URL}contact`} class="text-blue-600 font-medium py-2">Contact</a>
+                    <a href={`${import.meta.env.BASE_URL}contact#contact-options`} class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 text-center mt-2">
                         Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
                     </a>
                 </nav>
@@ -477,7 +477,7 @@ import '../styles/global.css';
                         <span class="font-bold">Marketing AI Houston</span>
                     </div>
                     <p class="text-gray-400 mb-4">AI-powered web design & SEO for small businesses across the U.S.</p>
-                    <a href="./contact#contact-options" class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300">
+                    <a href={`${import.meta.env.BASE_URL}contact#contact-options`} class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300">
                         👉 Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
                     </a>
                 </div>
@@ -486,11 +486,11 @@ import '../styles/global.css';
                 <div>
                     <h3 class="text-lg font-bold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="./" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href={import.meta.env.BASE_URL} class="text-gray-400 hover:text-white transition-colors">Home</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
-                        <li><a href="./contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href={`${import.meta.env.BASE_URL}contact`} class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
 

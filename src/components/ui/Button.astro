@@ -1,0 +1,111 @@
+---
+// 🔘 Button Component
+// Purpose: Consistent, accessible button styling across the site
+// Features: Multiple variants, sizes, proper ARIA attributes
+
+interface Props {
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  fullWidth?: boolean;
+  loading?: boolean;
+  ariaLabel?: string;
+  class?: string;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  type = 'button',
+  disabled = false,
+  fullWidth = false,
+  loading = false,
+  ariaLabel,
+  class: additionalClasses = '',
+  ...restProps
+} = Astro.props;
+
+// 🎨 Style variants
+const variantClasses = {
+  primary: 'bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white shadow-md hover:shadow-lg focus:ring-4 focus:ring-blue-200',
+  secondary: 'bg-gray-200 hover:bg-gray-300 text-gray-900 shadow-sm hover:shadow-md focus:ring-4 focus:ring-gray-200',
+  outline: 'border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white focus:ring-4 focus:ring-blue-200',
+  ghost: 'text-blue-600 hover:bg-blue-50 focus:bg-blue-50 focus:ring-4 focus:ring-blue-200'
+};
+
+// 📏 Size variants
+const sizeClasses = {
+  sm: 'px-3 py-2 text-sm',
+  md: 'px-6 py-3 text-base',
+  lg: 'px-8 py-4 text-lg',
+  xl: 'px-12 py-5 text-xl'
+};
+
+// 🎯 Combined classes
+const baseClasses = 'font-semibold rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none inline-flex items-center justify-center';
+
+const buttonClasses = [
+  baseClasses,
+  variantClasses[variant],
+  sizeClasses[size],
+  fullWidth ? 'w-full' : '',
+  disabled ? 'pointer-events-none' : '',
+  additionalClasses
+].filter(Boolean).join(' ');
+
+// 🔗 Choose element type
+const Element = href ? 'a' : 'button';
+
+// ♿ Accessibility attributes
+const ariaAttributes = {
+  ...(ariaLabel && { 'aria-label': ariaLabel }),
+  ...(loading && { 'aria-busy': 'true' }),
+  ...(disabled && { 'aria-disabled': 'true' })
+};
+---
+
+<Element
+  class={buttonClasses}
+  {...(href && { href })}
+  {...(!href && { type })}
+  {...(!href && disabled && { disabled: true })}
+  {...ariaAttributes}
+  {...restProps}
+>
+  <!-- 🔄 Loading state -->
+  {loading && (
+    <svg
+      class="animate-spin -ml-1 mr-2 h-4 w-4 text-current"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="currentColor" d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+    </svg>
+  )}
+
+  <!-- 📝 Button content -->
+  <slot />
+</Element>
+
+<style>
+  /* 🎨 Enhanced button hover effects */
+  button:hover, a:hover {
+    filter: brightness(1.05);
+  }
+
+  button:active, a:active {
+    filter: brightness(0.95);
+  }
+
+  /* 🎯 Focus ring customization */
+  button:focus-visible, a:focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+</style>

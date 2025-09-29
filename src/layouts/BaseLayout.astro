@@ -1,0 +1,285 @@
+---
+// 🎯 Base Layout Component
+// Purpose: Consistent HTML structure, SEO optimization, and performance best practices
+// Used by: All pages across the site
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalURL?: string;
+  ogImage?: string;
+  noindex?: boolean;
+  structuredData?: object;
+}
+
+const {
+  title,
+  description,
+  canonicalURL,
+  ogImage = `${import.meta.env.SITE}/og-image.jpg`,
+  noindex = false,
+  structuredData
+} = Astro.props;
+
+// 🔍 SEO: Generate canonical URL if not provided
+const currentCanonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).toString();
+
+// 🎯 Performance: Preload critical resources
+const preloadResources = [
+  { href: 'https://fonts.googleapis.com', rel: 'preconnect' },
+  { href: 'https://fonts.gstatic.com', rel: 'preconnect', crossorigin: true },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
+
+  <!-- 🔍 SEO: Basic meta tags -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={currentCanonical} />
+
+  <!-- 🚫 SEO: Robots directive -->
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+  <!-- 📱 Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={currentCanonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:site_name" content="Marketing AI Houston" />
+
+  <!-- 🐦 Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- 🏠 Local Business Schema - Always present for brand consistency -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Marketing AI Houston",
+    "description": "AI-powered web design & SEO for Houston small businesses",
+    "url": import.meta.env.SITE,
+    "telephone": "+1-234-567-8890",
+    "email": "info@marketingaihouston.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Houston",
+      "addressRegion": "TX",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "29.7604",
+      "longitude": "-95.3698"
+    },
+    "areaServed": {
+      "@type": "State",
+      "name": "Texas"
+    },
+    "serviceType": ["Web Design", "SEO", "Digital Marketing"],
+    "priceRange": "$500-$5000"
+  })} />
+
+  <!-- 📊 Additional structured data from page -->
+  {structuredData && (
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  )}
+
+  <!-- ⚡ Performance: Resource hints -->
+  {preloadResources.map(resource => (
+    <link {...resource} />
+  ))}
+
+  <!-- 🎨 Critical CSS: Typography and layout -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- 🎯 Performance: Defer non-critical resources -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /></noscript>
+
+  <!-- 🛡️ Security: Content Security Policy (placeholder for future implementation) -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https:; connect-src 'self' https:;"> -->
+
+  <!-- 🍪 Future: Cookie consent preparation -->
+  <!-- Cookie consent will be implemented here when needed -->
+
+  <!-- 📈 Future: Analytics placeholder (GA4 or privacy-compliant alternative) -->
+  <!-- Analytics tracking will be added here based on client preferences -->
+
+  <style>
+    /* 🎨 Critical CSS: Design system variables */
+    :root {
+      --color-ocean-deep: #0A2540;
+      --color-ocean-deeper: #020617;
+      --color-ocean-blue: #3B82F6;
+      --color-ocean-light: #60A5FA;
+      --color-ocean-teal: #198072;
+      --color-ocean-teal-dark: #14B8A6;
+      --color-ocean-sky: #BFDBFE;
+
+      /* 🎯 Performance: Consistent spacing scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2rem;
+      --space-2xl: 3rem;
+      --space-3xl: 4rem;
+
+      /* 📱 Responsive typography scale */
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.125rem;
+      --text-xl: 1.25rem;
+      --text-2xl: 1.5rem;
+      --text-3xl: 1.875rem;
+      --text-4xl: 2.25rem;
+      --text-5xl: 3rem;
+    }
+
+    /* 🎨 Typography system */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    p, a, span, li, label, input, textarea {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* 🎯 Performance: Reduce layout shift */
+    img, video, iframe {
+      height: auto;
+      max-width: 100%;
+    }
+
+    /* ♿ Accessibility: Focus indicators */
+    *:focus {
+      outline: 2px solid var(--color-ocean-blue);
+      outline-offset: 2px;
+    }
+
+    /* 🎨 Custom organic shapes */
+    .organic-blob {
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+
+    .organic-droplet {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+
+    .organic-leaf {
+      border-radius: 20% 80% 20% 80% / 80% 20% 80% 20%;
+    }
+
+    /* 🎨 Gradient utilities */
+    .gradient-ocean {
+      background: linear-gradient(135deg, var(--color-ocean-deep), var(--color-ocean-blue));
+    }
+
+    .gradient-ocean-teal {
+      background: linear-gradient(135deg, var(--color-ocean-blue), var(--color-ocean-teal));
+    }
+
+    /* ⚡ Performance: GPU-accelerated animations */
+    @keyframes float {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(0, -20px, 0); }
+    }
+
+    @keyframes blob {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      33% { transform: translate3d(30px, -50px, 0) scale(1.1); }
+      66% { transform: translate3d(-20px, 20px, 0) scale(0.9); }
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .animate-blob {
+      animation: blob 7s infinite;
+      will-change: transform;
+    }
+
+    /* 🎯 Performance: Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* 📱 Mobile-first responsive utilities */
+    @media (max-width: 640px) {
+      :root {
+        --text-5xl: 2.25rem;
+        --text-4xl: 1.875rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="font-inter text-gray-800 bg-gradient-to-br from-blue-100 to-white antialiased">
+  <!-- 🎯 Layout: Main content area -->
+  <main id="main-content">
+    <slot />
+  </main>
+
+  <!-- ⚡ Performance: Deferred JavaScript for non-critical functionality -->
+  <script>
+    // 🎯 Performance: Lazy load images when they enter viewport
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target as HTMLImageElement;
+            if (img.dataset.src) {
+              img.src = img.dataset.src;
+              img.classList.add('loaded');
+              observer.unobserve(img);
+            }
+          }
+        });
+      });
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const lazyImages = document.querySelectorAll('img[data-src]');
+        lazyImages.forEach(img => imageObserver.observe(img));
+      });
+    }
+
+    // 🛡️ Security: Basic XSS protection for forms
+    document.addEventListener('DOMContentLoaded', () => {
+      const forms = document.querySelectorAll('form');
+      forms.forEach(form => {
+        form.addEventListener('submit', (e) => {
+          const formData = new FormData(form);
+          for (const [key, value] of formData.entries()) {
+            if (typeof value === 'string' && value.includes('<script>')) {
+              e.preventDefault();
+              console.warn('Potential XSS attempt blocked');
+              return false;
+            }
+          }
+        });
+      });
+    });
+
+    // 📈 Future: Analytics integration point
+    // window.gtag will be initialized here when analytics are configured
+
+    // 🍪 Future: Cookie consent management
+    // Cookie consent logic will be added here when required
+  </script>
+</body>
+</html>

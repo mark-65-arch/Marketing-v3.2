@@ -1,0 +1,70 @@
+---
+// 🃏 Card Component
+// Purpose: Consistent card styling with glassmorphism effect
+// Features: Hover animations, responsive design, accessibility
+
+interface Props {
+  variant?: 'default' | 'featured' | 'testimonial' | 'pricing';
+  padding?: 'sm' | 'md' | 'lg' | 'xl';
+  hoverable?: boolean;
+  class?: string;
+}
+
+const {
+  variant = 'default',
+  padding = 'lg',
+  hoverable = true,
+  class: additionalClasses = '',
+  ...restProps
+} = Astro.props;
+
+// 🎨 Card variant styles
+const variantClasses = {
+  default: 'bg-white/80 backdrop-blur-sm border border-white/50',
+  featured: 'bg-gradient-to-br from-blue-900 to-blue-600 text-white border border-blue-500/30',
+  testimonial: 'bg-white/90 backdrop-blur-sm border border-gray-200/50 shadow-lg',
+  pricing: 'bg-white/80 backdrop-blur-sm border border-white/50 shadow-xl'
+};
+
+// 📏 Padding options
+const paddingClasses = {
+  sm: 'p-4',
+  md: 'p-6',
+  lg: 'p-8',
+  xl: 'p-12'
+};
+
+// 🎯 Base classes
+const baseClasses = 'rounded-2xl shadow-lg overflow-hidden';
+const hoverClasses = hoverable
+  ? 'hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2'
+  : '';
+
+const cardClasses = [
+  baseClasses,
+  variantClasses[variant],
+  paddingClasses[padding],
+  hoverClasses,
+  additionalClasses
+].filter(Boolean).join(' ');
+---
+
+<div
+  class={cardClasses}
+  {...restProps}
+>
+  <slot />
+</div>
+
+<style>
+  /* 🌟 Enhanced glassmorphism effect */
+  div {
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+
+  /* 🎯 Smooth hover transitions */
+  div:hover {
+    filter: brightness(1.02);
+  }
+</style>

@@ -1,0 +1,312 @@
+---
+// 📝 Form Field Component
+// Purpose: Consistent, accessible form inputs with validation
+// Features: Multiple input types, inline validation, proper ARIA
+
+interface Props {
+  type?: 'text' | 'email' | 'tel' | 'textarea' | 'select';
+  name: string;
+  label: string;
+  placeholder?: string;
+  required?: boolean;
+  disabled?: boolean;
+  value?: string;
+  maxlength?: number;
+  pattern?: string;
+  autocomplete?: string;
+  options?: Array<{ value: string; label: string }>;
+  rows?: number;
+  helpText?: string;
+  class?: string;
+}
+
+const {
+  type = 'text',
+  name,
+  label,
+  placeholder,
+  required = false,
+  disabled = false,
+  value,
+  maxlength,
+  pattern,
+  autocomplete,
+  options = [],
+  rows = 4,
+  helpText,
+  class: additionalClasses = '',
+  ...restProps
+} = Astro.props;
+
+// 🆔 Generate unique IDs for accessibility
+const fieldId = `field-${name}`;
+const errorId = `${fieldId}-error`;
+const helpId = helpText ? `${fieldId}-help` : undefined;
+
+// 🎨 Input styles
+const inputClasses = [
+  'form-input w-full px-4 py-3 rounded-lg transition-all duration-200',
+  'bg-white/80 backdrop-blur-sm border border-white/30',
+  'focus:outline-none focus:ring-4 focus:ring-blue-200 focus:border-blue-500',
+  'disabled:opacity-50 disabled:cursor-not-allowed',
+  'placeholder-gray-500',
+  type === 'textarea' ? 'resize-vertical min-h-[120px]' : '',
+  additionalClasses
+].filter(Boolean).join(' ');
+
+// ♿ ARIA attributes
+const ariaAttributes = {
+  'aria-describedby': [helpId, `${errorId}`].filter(Boolean).join(' ') || undefined,
+  'aria-invalid': 'false', // Will be updated by JavaScript on validation
+  ...(required && { 'aria-required': 'true' })
+};
+---
+
+<!-- 📝 Form Field Container -->
+<div class="form-field-container">
+  <!-- 🏷️ Label -->
+  <label
+    for={fieldId}
+    class="block text-sm font-medium text-gray-700 mb-2"
+  >
+    {label}
+    {required && (
+      <span class="text-red-500 ml-1" aria-label="required">*</span>
+    )}
+  </label>
+
+  <!-- 📊 Input Element -->
+  {type === 'textarea' ? (
+    <textarea
+      id={fieldId}
+      name={name}
+      class={inputClasses}
+      placeholder={placeholder}
+      required={required}
+      disabled={disabled}
+      maxlength={maxlength}
+      rows={rows}
+      autocomplete={autocomplete}
+      {...ariaAttributes}
+      {...restProps}
+    >{value}</textarea>
+  ) : type === 'select' ? (
+    <select
+      id={fieldId}
+      name={name}
+      class={inputClasses}
+      required={required}
+      disabled={disabled}
+      autocomplete={autocomplete}
+      {...ariaAttributes}
+      {...restProps}
+    >
+      {!required && (
+        <option value="">Choose an option</option>
+      )}
+      {options.map(option => (
+        <option
+          value={option.value}
+          selected={value === option.value}
+        >
+          {option.label}
+        </option>
+      ))}
+    </select>
+  ) : (
+    <input
+      type={type}
+      id={fieldId}
+      name={name}
+      class={inputClasses}
+      placeholder={placeholder}
+      required={required}
+      disabled={disabled}
+      value={value}
+      maxlength={maxlength}
+      pattern={pattern}
+      autocomplete={autocomplete}
+      {...ariaAttributes}
+      {...restProps}
+    />
+  )}
+
+  <!-- 💡 Help Text -->
+  {helpText && (
+    <p
+      id={helpId}
+      class="mt-2 text-sm text-gray-600"
+    >
+      {helpText}
+    </p>
+  )}
+
+  <!-- ❌ Error Message -->
+  <div
+    id={errorId}
+    class="error-message text-red-600 text-sm mt-1 hidden"
+    role="alert"
+    aria-live="polite"
+  ></div>
+</div>
+
+<style>
+  /* 🎨 Enhanced input styling */
+  .form-input {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+
+  /* 🔴 Error state styling */
+  .form-input.error {
+    border-color: #ef4444;
+    background-color: #fef2f2;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  }
+
+  .form-input.error:focus {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    ring-color: #ef4444;
+  }
+
+  /* ✅ Success state styling */
+  .form-input.success {
+    border-color: #10b981;
+    background-color: #f0fdfa;
+  }
+
+  /* 📱 Mobile optimizations */
+  @media (max-width: 640px) {
+    .form-input {
+      font-size: 16px; /* Prevents zoom on iOS */
+    }
+  }
+
+  /* 🎯 Focus enhancements */
+  .form-input:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  }
+
+  /* 🔍 Show/hide error messages */
+  .error-message.show {
+    display: block;
+    animation: slideIn 0.2s ease-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  // 📝 Enhanced Form Field Functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    // Get all form inputs
+    const formInputs = document.querySelectorAll('.form-input');
+
+    formInputs.forEach(input => {
+      const container = input.closest('.form-field-container');
+      const errorElement = container?.querySelector('.error-message');
+
+      // 🧹 Clear error on input
+      const clearError = () => {
+        if (input.classList.contains('error')) {
+          input.classList.remove('error');
+          input.setAttribute('aria-invalid', 'false');
+          if (errorElement) {
+            errorElement.classList.remove('show');
+            errorElement.textContent = '';
+          }
+        }
+      };
+
+      // 🔍 Show error function
+      const showError = (message: string) => {
+        input.classList.add('error');
+        input.setAttribute('aria-invalid', 'true');
+        if (errorElement) {
+          errorElement.textContent = message;
+          errorElement.classList.add('show');
+        }
+      };
+
+      // 🎯 Real-time validation
+      const validateField = () => {
+        const value = (input as HTMLInputElement).value.trim();
+        const type = input.getAttribute('type') || input.tagName.toLowerCase();
+        const required = input.hasAttribute('required');
+        const maxlength = input.getAttribute('maxlength');
+        const pattern = input.getAttribute('pattern');
+
+        // Clear previous errors
+        clearError();
+
+        // Required field validation
+        if (required && !value) {
+          showError('This field is required');
+          return false;
+        }
+
+        // Skip further validation if field is empty and not required
+        if (!value && !required) return true;
+
+        // Email validation
+        if (type === 'email') {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(value)) {
+            showError('Please enter a valid email address');
+            return false;
+          }
+        }
+
+        // Phone validation
+        if (type === 'tel') {
+          const digitsOnly = value.replace(/\D/g, '');
+          if (digitsOnly.length < 10) {
+            showError('Phone number must have at least 10 digits');
+            return false;
+          }
+        }
+
+        // Pattern validation
+        if (pattern && !new RegExp(pattern).test(value)) {
+          showError('Please enter a valid format');
+          return false;
+        }
+
+        // Length validation
+        if (maxlength && value.length > parseInt(maxlength)) {
+          showError(`Maximum ${maxlength} characters allowed`);
+          return false;
+        }
+
+        // Success state
+        input.classList.add('success');
+        return true;
+      };
+
+      // Event listeners
+      input.addEventListener('input', clearError);
+      input.addEventListener('blur', validateField);
+
+      // Form submission validation
+      const form = input.closest('form');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          if (!validateField()) {
+            e.preventDefault();
+          }
+        });
+      }
+    });
+  });
+</script>

@@ -1,0 +1,371 @@
+---
+// 🏗️ Main Layout Component
+// Purpose: Complete page layout with header, footer, and SEO optimization
+// Features: Integrated SEO, structured data, performance optimizations
+
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+import {
+  generateLocalBusinessSchema,
+  generateBreadcrumbSchema,
+  generateOpenGraphTags,
+  generateTwitterCardTags,
+  type SEOConfig,
+  type BreadcrumbItem,
+  DEFAULT_SEO,
+  BUSINESS_INFO
+} from '../utils/seo.ts';
+
+interface Props extends SEOConfig {
+  showNewsletter?: boolean;
+  breadcrumbs?: BreadcrumbItem[];
+  structuredData?: object[];
+  currentPath?: string;
+  pageType?: 'home' | 'service' | 'contact' | 'about' | 'blog';
+}
+
+const {
+  title,
+  description,
+  canonicalURL,
+  ogImage = `${import.meta.env.SITE}/og-image.jpg`,
+  ogType = 'website',
+  noindex = false,
+  keywords = DEFAULT_SEO.keywords,
+  author = DEFAULT_SEO.author,
+  publishedTime,
+  modifiedTime,
+  showNewsletter = false,
+  breadcrumbs = [],
+  structuredData = [],
+  currentPath = Astro.url.pathname,
+  pageType = 'home'
+} = Astro.props;
+
+// 🔍 SEO: Enhanced title with brand consistency
+const fullTitle = title.includes(BUSINESS_INFO.name)
+  ? title
+  : `${title} | ${BUSINESS_INFO.name}`;
+
+// 📊 Structured Data: Always include local business + additional schemas
+const allStructuredData = [
+  generateLocalBusinessSchema(),
+  ...(breadcrumbs.length > 0 ? [generateBreadcrumbSchema(breadcrumbs)] : []),
+  ...structuredData
+];
+
+// 🏷️ Generate meta tags
+const ogTags = generateOpenGraphTags({
+  title: fullTitle,
+  description,
+  canonicalURL,
+  ogImage,
+  ogType,
+  publishedTime,
+  modifiedTime
+});
+
+const twitterTags = generateTwitterCardTags({
+  title: fullTitle,
+  description,
+  ogImage
+});
+
+// 📱 Viewport configuration based on page type
+const viewportConfig = pageType === 'contact'
+  ? 'width=device-width, initial-scale=1.0, user-scalable=yes'
+  : 'width=device-width, initial-scale=1.0';
+---
+
+<BaseLayout
+  title={fullTitle}
+  description={description}
+  canonicalURL={canonicalURL}
+  ogImage={ogImage}
+  noindex={noindex}
+>
+  <!-- 🔍 Enhanced SEO Meta Tags -->
+  <Fragment slot="head">
+    <!-- 📱 Responsive viewport -->
+    <meta name="viewport" content={viewportConfig} />
+
+    <!-- 🏷️ Keywords (limited for modern SEO) -->
+    {keywords && keywords.length > 0 && (
+      <meta name="keywords" content={keywords.join(', ')} />
+    )}
+
+    <!-- ✍️ Author information -->
+    {author && <meta name="author" content={author} />}
+
+    <!-- 🕒 Publication dates -->
+    {publishedTime && <meta name="article:published_time" content={publishedTime} />}
+    {modifiedTime && <meta name="article:modified_time" content={modifiedTime} />}
+
+    <!-- 🌐 Open Graph tags -->
+    {ogTags.map(tag => (
+      <meta property={tag.property} content={tag.content} />
+    ))}
+
+    <!-- 🐦 Twitter Card tags -->
+    {twitterTags.map(tag => (
+      <meta name={tag.name} content={tag.content} />
+    ))}
+
+    <!-- 🔗 Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://usebasin.com" />
+    <link rel="preconnect" href="https://calendly.com" />
+
+    <!-- 🎨 Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- 🎨 Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- 🎯 Page-specific structured data -->
+    {allStructuredData.map(schema => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+
+    <!-- 📈 Future: Page-specific analytics events -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "{fullTitle}",
+      "description": "{description}",
+      "url": "{canonicalURL || Astro.url.toString()}",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "{BUSINESS_INFO.name}",
+        "url": "{BUSINESS_INFO.url}"
+      },
+      "about": {
+        "@id": "{BUSINESS_INFO.url}#business"
+      }
+    }
+    </script>
+
+    <!-- 🔍 Additional page-specific optimizations -->
+    {pageType === 'home' && (
+      <>
+        <!-- Home page specific meta -->
+        <meta name="google-site-verification" content="" />
+        <meta name="msvalidate.01" content="" />
+        <link rel="alternate" type="application/rss+xml" title="Marketing AI Houston Blog" href="/rss.xml" />
+      </>
+    )}
+
+    {pageType === 'contact' && (
+      <>
+        <!-- Contact page specific meta -->
+        <meta name="telephone" content={BUSINESS_INFO.phone} />
+        <meta name="contact" content={BUSINESS_INFO.email} />
+      </>
+    )}
+  </Fragment>
+
+  <!-- 🧭 Site Header -->
+  <Header currentPath={currentPath} />
+
+  <!-- 📍 Breadcrumb Navigation (if provided) -->
+  {breadcrumbs.length > 0 && (
+    <nav aria-label="Breadcrumb" class="bg-gray-50 py-3">
+      <div class="container mx-auto px-4">
+        <ol class="flex items-center space-x-2 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+          {breadcrumbs.map((crumb, index) => (
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="flex items-center">
+              {index > 0 && (
+                <i class="fas fa-chevron-right text-gray-400 mx-2 text-xs" aria-hidden="true"></i>
+              )}
+              <a
+                href={crumb.url}
+                itemprop="item"
+                class="text-gray-600 hover:text-blue-600 transition-colors"
+                {...(index === breadcrumbs.length - 1 && { 'aria-current': 'page' })}
+              >
+                <span itemprop="name">{crumb.name}</span>
+              </a>
+              <meta itemprop="position" content={String(index + 1)} />
+            </li>
+          ))}
+        </ol>
+      </div>
+    </nav>
+  )}
+
+  <!-- 📄 Main Page Content -->
+  <main role="main" id="main-content">
+    <slot />
+  </main>
+
+  <!-- 🦶 Site Footer -->
+  <Footer showNewsletter={showNewsletter} />
+
+  <!-- 🎯 Page-specific analytics and interactions -->
+  <script define:vars={{ pageType, currentPath }} type="module">
+    // 📈 Track page view for analytics
+    document.addEventListener('DOMContentLoaded', () => {
+      // Future: Google Analytics 4 / privacy-compliant tracking
+      console.log(`Page loaded: ${pageType} - ${currentPath}`);
+
+      // 🎯 Track CTA button clicks
+      const ctaButtons = document.querySelectorAll('[data-track-cta]');
+      ctaButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+          const ctaName = e.target.getAttribute('data-track-cta');
+          console.log(`CTA clicked: ${ctaName}`);
+          // Future: Send to analytics
+        });
+      });
+
+      // 📞 Track phone number clicks
+      const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+      phoneLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          console.log('Phone number clicked');
+          // Future: Send to analytics
+        });
+      });
+
+      // ✉️ Track email clicks
+      const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+      emailLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          console.log('Email link clicked');
+          // Future: Send to analytics
+        });
+      });
+    });
+
+    // ♿ Accessibility enhancements
+    document.addEventListener('DOMContentLoaded', () => {
+      // Skip to main content functionality
+      const skipLink = document.createElement('a');
+      skipLink.href = '#main-content';
+      skipLink.textContent = 'Skip to main content';
+      skipLink.className = 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50';
+      skipLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const mainContent = document.getElementById('main-content');
+        if (mainContent) {
+          mainContent.focus();
+          mainContent.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+      document.body.insertBefore(skipLink, document.body.firstChild);
+
+      // Enhanced focus management for better keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+          document.body.classList.add('user-tabbing');
+        }
+      });
+
+      document.addEventListener('mousedown', () => {
+        document.body.classList.remove('user-tabbing');
+      });
+    });
+
+    // 🎯 Performance: Lazy load background images
+    document.addEventListener('DOMContentLoaded', () => {
+      if ('IntersectionObserver' in window) {
+        const bgImageObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const element = entry.target;
+              const bgImage = element.getAttribute('data-bg');
+              if (bgImage) {
+                element.style.backgroundImage = `url(${bgImage})`;
+                element.classList.add('bg-loaded');
+                bgImageObserver.unobserve(element);
+              }
+            }
+          });
+        });
+
+        document.querySelectorAll('[data-bg]').forEach(element => {
+          bgImageObserver.observe(element);
+        });
+      }
+    });
+  </script>
+
+  <!-- 🎨 Enhanced CSS for layout-specific styling -->
+  <style>
+    /* ♿ Accessibility: Screen reader only content */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .focus\\:not-sr-only:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: 0.5rem 1rem;
+      margin: 0;
+      overflow: visible;
+      clip: auto;
+      white-space: normal;
+    }
+
+    /* 🎯 Enhanced focus indicators when tabbing */
+    .user-tabbing *:focus {
+      outline: 2px solid #3b82f6 !important;
+      outline-offset: 2px;
+    }
+
+    /* 🎨 Smooth background image loading */
+    [data-bg] {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    [data-bg]:not(.bg-loaded) {
+      opacity: 0;
+    }
+
+    [data-bg].bg-loaded {
+      opacity: 1;
+    }
+
+    /* 📱 Mobile touch targets */
+    @media (max-width: 768px) {
+      button,
+      a[role="button"],
+      input[type="submit"],
+      input[type="button"] {
+        min-height: 44px;
+        min-width: 44px;
+      }
+    }
+
+    /* 🎯 Print styles */
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+
+      header, footer {
+        position: static !important;
+      }
+
+      * {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</BaseLayout>

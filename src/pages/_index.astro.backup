@@ -162,64 +162,6 @@ import '../styles/global.css';
             text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        /* Dropdown Menu Styles */
-        .nav-dropdown {
-            position: relative;
-        }
-
-        .nav-dropdown .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            margin-top: 0;
-            padding-top: 0.5rem;
-            width: 16rem;
-            background: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-8px);
-            transition: all 0.2s ease-out;
-            z-index: 50;
-            pointer-events: none;
-        }
-
-        /* Create invisible bridge to prevent hover gaps */
-        .nav-dropdown::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            height: 0.5rem;
-            background: transparent;
-            z-index: 49;
-        }
-
-        .nav-dropdown:hover .dropdown-menu,
-        .nav-dropdown.active .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-
-        .nav-dropdown:hover .dropdown-chevron,
-        .nav-dropdown.active .dropdown-chevron {
-            transform: rotate(180deg);
-        }
-
-        .dropdown-chevron {
-            transition: transform 0.2s ease-out;
-        }
-
-        .nav-dropdown:hover,
-        .nav-dropdown.active {
-            z-index: 51;
-        }
-
         /* Animations */
         @keyframes float {
             0% { transform: translateY(0px); }
@@ -270,42 +212,11 @@ import '../styles/global.css';
                 </div>
 
                 <!-- Desktop Navigation -->
-                <nav class="hidden md:flex space-x-8" role="navigation" aria-label="Main navigation">
+                <nav class="hidden md:flex space-x-8">
                     <a href={import.meta.env.BASE_URL} class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
-
-                    <!-- Services Dropdown -->
-                    <div class="nav-dropdown">
-                        <button
-                            class="font-medium transition-colors duration-200 hover:text-blue-600 focus:text-blue-600 focus:outline-none flex items-center cursor-pointer text-gray-700"
-                            aria-expanded="false"
-                            aria-haspopup="true"
-                            type="button"
-                        >
-                            Services
-                            <i class="fas fa-chevron-down dropdown-chevron ml-1 text-xs" aria-hidden="true"></i>
-                        </button>
-
-                        <!-- Dropdown Menu -->
-                        <div class="dropdown-menu">
-                            <div class="py-2">
-                                <a href="/business-profile-optimization" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 border-b border-gray-50">
-                                    Business Profile Optimization
-                                </a>
-                                <a href="/website-design-that-converts" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 border-b border-gray-50">
-                                    Website Design That Converts
-                                </a>
-                                <a href="/pro-website-growth-plan" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 border-b border-gray-50">
-                                    Pro Website & Growth Plan
-                                </a>
-                                <a href="/seo-growth-strategy" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">
-                                    SEO & Growth Strategy
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="#pricing" class="text-gray-700 hover:text-blue-600 font-medium">Pricing</a>
-                    <a href="#about" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Services</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Pricing</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
                     <a href={`${import.meta.env.BASE_URL}contact`} class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
                 </nav>
 
@@ -325,30 +236,9 @@ import '../styles/global.css';
             <div id="mobile-menu" class="mobile-menu mt-4 pb-4">
                 <nav class="flex flex-col space-y-3">
                     <a href={import.meta.env.BASE_URL} class="text-gray-700 hover:text-blue-600 font-medium py-2">Home</a>
-
-                    <!-- Mobile Services Section -->
-                    <div>
-                        <div class="py-2 font-medium text-gray-900 border-b border-gray-200 mb-2">
-                            Services
-                        </div>
-                        <div class="pl-4 space-y-2">
-                            <a href="/business-profile-optimization" class="block py-2 font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200">
-                                Business Profile Optimization
-                            </a>
-                            <a href="/website-design-that-converts" class="block py-2 font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200">
-                                Website Design That Converts
-                            </a>
-                            <a href="/pro-website-growth-plan" class="block py-2 font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200">
-                                Pro Website & Growth Plan
-                            </a>
-                            <a href="/seo-growth-strategy" class="block py-2 font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200">
-                                SEO & Growth Strategy
-                            </a>
-                        </div>
-                    </div>
-
-                    <a href="#pricing" class="text-gray-700 hover:text-blue-600 font-medium py-2">Pricing</a>
-                    <a href="#about" class="text-gray-700 hover:text-blue-600 font-medium py-2">About</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium py-2">Services</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium py-2">Pricing</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium py-2">About</a>
                     <a href={`${import.meta.env.BASE_URL}contact`} class="text-gray-700 hover:text-blue-600 font-medium py-2">Contact</a>
                     <a href={`${import.meta.env.BASE_URL}contact#contact-options`} class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 text-center mt-2">
                         Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
@@ -1179,78 +1069,6 @@ import '../styles/global.css';
 
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
-        });
-
-        // Desktop Dropdown Functionality
-        const dropdowns = document.querySelectorAll('.nav-dropdown');
-
-        dropdowns.forEach(dropdown => {
-            const button = dropdown.querySelector('button');
-            const menu = dropdown.querySelector('.dropdown-menu');
-
-            if (button && menu) {
-                // Click to toggle dropdown (for touch devices)
-                button.addEventListener('click', (e) => {
-                    e.preventDefault();
-
-                    // Close other dropdowns
-                    dropdowns.forEach(otherDropdown => {
-                        if (otherDropdown !== dropdown) {
-                            otherDropdown.classList.remove('active');
-                        }
-                    });
-
-                    // Toggle current dropdown
-                    dropdown.classList.toggle('active');
-                });
-
-                // Close dropdown when clicking outside
-                document.addEventListener('click', (e) => {
-                    if (!dropdown.contains(e.target)) {
-                        dropdown.classList.remove('active');
-                    }
-                });
-
-                // Close dropdown on escape key
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape') {
-                        dropdown.classList.remove('active');
-                    }
-                });
-
-                // Handle keyboard navigation
-                button.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        dropdown.classList.toggle('active');
-                    } else if (e.key === 'ArrowDown') {
-                        e.preventDefault();
-                        dropdown.classList.add('active');
-                        const firstLink = menu.querySelector('a');
-                        if (firstLink) firstLink.focus();
-                    }
-                });
-
-                // Focus management within dropdown
-                const menuLinks = menu.querySelectorAll('a');
-                menuLinks.forEach((link, index) => {
-                    link.addEventListener('keydown', (e) => {
-                        if (e.key === 'ArrowDown') {
-                            e.preventDefault();
-                            const nextLink = menuLinks[index + 1] || menuLinks[0];
-                            nextLink.focus();
-                        } else if (e.key === 'ArrowUp') {
-                            e.preventDefault();
-                            const prevLink = menuLinks[index - 1] || menuLinks[menuLinks.length - 1];
-                            prevLink.focus();
-                        } else if (e.key === 'Escape') {
-                            e.preventDefault();
-                            dropdown.classList.remove('active');
-                            button.focus();
-                        }
-                    });
-                });
-            }
         });
 
         // Accordion functionality

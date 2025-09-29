@@ -1,0 +1,715 @@
+---
+// 🎯 Pro Website & Growth Plan Service Page
+// Purpose: Premium service page for comprehensive website + growth strategy
+// Features: Full package details, benefits, pricing, FAQ
+
+import MainLayout from '../layouts/MainLayout.astro';
+import Card from '../components/ui/Card.astro';
+import Button from '../components/ui/Button.astro';
+
+import {
+  generateServiceSchema,
+  generateFAQSchema,
+  type BreadcrumbItem,
+  type FAQItem
+} from '../utils/seo.ts';
+
+// 🔍 SEO Configuration
+const pageTitle = 'Pro Website & Growth Plan — Comprehensive Solution for Market Domination';
+const pageDescription = 'A comprehensive, conversion-focused website paired with a 90-day growth strategy — designed to dominate your market. Up to 16 pages with advanced tracking.';
+const canonicalURL = `${import.meta.env.SITE}/pro-website-growth-plan`;
+
+// 🍞 Breadcrumb Navigation
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Home', url: import.meta.env.BASE_URL },
+  { name: 'Services', url: `${import.meta.env.BASE_URL}#services` },
+  { name: 'Pro Website & Growth Plan', url: canonicalURL }
+];
+
+// 📊 Service Schema Data
+const serviceSchema = generateServiceSchema({
+  name: 'Pro Website & Growth Plan',
+  description: 'Premium website design and growth strategy package. Up to 16 pages, individual service pages, local landing pages, and 90-day optimization.',
+  provider: 'Marketing AI Houston',
+  serviceType: 'Web Design & SEO',
+  areaServed: 'United States',
+  priceRange: '$3,497'
+});
+
+// ❓ FAQ Data
+const faqs: FAQItem[] = [
+  {
+    question: 'Is this a one-time or monthly plan?',
+    answer: 'One-time build with 90-day optimization included.'
+  },
+  {
+    question: 'Can I choose my service pages?',
+    answer: 'Yes — we\'ll help you prioritize based on search volume and conversion goals.'
+  },
+  {
+    question: 'What if I need more than 16 pages?',
+    answer: 'We offer scalable add-ons and custom packages.'
+  },
+  {
+    question: 'Do you work with multi-location businesses?',
+    answer: 'Yes — this plan is ideal for expanding across cities or service areas.'
+  }
+];
+
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<MainLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalURL}
+  breadcrumbs={breadcrumbs}
+  structuredData={[serviceSchema, faqSchema]}
+  pageType="service"
+  currentPath="/pro-website-growth-plan"
+>
+  <!-- 🎯 Hero Section -->
+  <section class="section-padding relative overflow-hidden">
+    <!-- 🎨 Background Elements -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-blue-600 to-teal-600 organic-blob animate-float"></div>
+      <div class="absolute bottom-20 right-20 w-72 h-72 bg-gradient-to-br from-teal-600 to-blue-300 organic-leaf animate-float animation-delay-400"></div>
+    </div>
+
+    <div class="container mx-auto container-padding relative z-10">
+      <div class="text-center max-w-4xl mx-auto">
+        <!-- ⭐ Trust Signal -->
+        <div class="text-yellow-400 text-3xl mb-4">⭐⭐⭐⭐⭐</div>
+        <p class="text-gray-700 mb-8 font-medium">Built for Businesses Ready to Scale</p>
+
+        <!-- 🎯 Main Headline -->
+        <h1 class="text-5xl md:text-7xl font-black text-gray-900 leading-tight mb-6">
+          <span class="text-gradient font-black text-6xl md:text-8xl block mb-4 leading-tight" style="padding-bottom: 0.25rem;">Pro Website & Growth Plan</span>
+        </h1>
+
+        <!-- 📝 Subheadline -->
+        <p class="text-xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
+          A comprehensive, conversion-focused website paired with a 90-day growth strategy — designed to dominate your market.
+        </p>
+
+        <!-- 🎯 Primary CTA -->
+        <Button
+          variant="primary"
+          size="lg"
+          href={`${import.meta.env.BASE_URL}contact#contact-options`}
+          class="mb-6"
+          data-track-cta="hero-cta"
+        >
+          👉 Book a Discovery Call
+        </Button>
+
+        <!-- 💬 Supporting Text -->
+        <p class="text-gray-700 mb-16">Let's build something that works harder than your competitors.</p>
+
+        <!-- 📊 Key Metrics -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <Card class="text-center" padding="lg">
+            <div class="text-4xl mb-3">📄</div>
+            <div class="text-gray-900 font-bold">Up to 16 pages</div>
+          </Card>
+
+          <Card class="text-center" padding="lg">
+            <div class="text-4xl mb-3">📅</div>
+            <div class="text-gray-900 font-bold">90-day optimization roadmap</div>
+          </Card>
+
+          <Card class="text-center" padding="lg">
+            <div class="text-4xl mb-3">📊</div>
+            <div class="text-gray-900 font-bold">Advanced tracking & strategy</div>
+          </Card>
+        </div>
+
+        <!-- 🏢 Industry Icons -->
+        <div class="mt-16 flex flex-wrap justify-center gap-8">
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <i class="fas fa-hammer text-2xl text-gray-900" aria-hidden="true"></i>
+            </div>
+            <span class="text-gray-700 font-medium">Contractors</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <i class="fas fa-balance-scale text-2xl text-gray-900" aria-hidden="true"></i>
+            </div>
+            <span class="text-gray-700 font-medium">Law Firms</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <i class="fas fa-user-md text-2xl text-gray-900" aria-hidden="true"></i>
+            </div>
+            <span class="text-gray-700 font-medium">Therapists</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <i class="fas fa-building text-2xl text-gray-900" aria-hidden="true"></i>
+            </div>
+            <span class="text-gray-700 font-medium">Multi-location</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📋 What's Included Section -->
+  <section class="section-padding relative overflow-hidden bg-gradient-to-br from-gray-50 to-white">
+    <div class="container mx-auto container-padding">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-check-circle mr-2 text-blue-600" aria-hidden="true"></i>
+          What's Included
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Everything in One Scalable Package</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-palette text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Up to 16-Page Comprehensive Website</h3>
+            <p class="text-gray-700">Built for clarity, SEO, and conversion.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-list-ul text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Individual Service Pages (up to 6)</h3>
+            <p class="text-gray-700">Tailored to each offer with keyword targeting.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-map-marker-alt text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Local Landing Pages (up to 6 Houston areas)</h3>
+            <p class="text-gray-700">Geo-optimized for visibility and trust.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-file-alt text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Custom Content Creation</h3>
+            <p class="text-gray-700">Written to convert and match search intent.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-chart-line text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Advanced Conversion Tracking</h3>
+            <p class="text-gray-700">See what's working and where leads come from.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-search text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Competition Analysis + Keyword Strategy</h3>
+            <p class="text-gray-700">Know your market and outrank competitors.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-rocket text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">90-Day Optimization with Monthly Check-ins</h3>
+            <p class="text-gray-700">Refine, test, and grow.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-gift text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Includes All Growth Services</h3>
+            <p class="text-gray-700">Everything from your base package, upgraded.</p>
+          </div>
+        </Card>
+      </div>
+
+      <p class="text-center text-lg text-gray-600 italic mt-12">
+        👉 Ideal for businesses ready to dominate their market and scale growth.
+      </p>
+    </div>
+  </section>
+
+  <!-- 💎 Benefits Section -->
+  <section class="section-padding relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-teal-600 rounded-full filter blur-3xl"></div>
+    </div>
+
+    <div class="container mx-auto container-padding relative z-10">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-trophy mr-2 text-teal-600" aria-hidden="true"></i>
+          The Benefits
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Why the Pro Plan Works</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <Card class="text-center" padding="xl">
+          <div class="text-5xl mb-4">📊</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Built to Scale</h3>
+          <p class="text-gray-700">More pages, more keywords, more visibility.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="text-5xl mb-4">✨</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Designed for Trust</h3>
+          <p class="text-gray-700">Clean layout, clear messaging, and local relevance.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="text-5xl mb-4">📞</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Conversion-Focused</h3>
+          <p class="text-gray-700">Every page built to drive calls, forms, and bookings.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="text-5xl mb-4">🔍</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Strategic</h3>
+          <p class="text-gray-700">Backed by keyword research, competitor analysis, and ongoing optimization.</p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🛤️ How It Works Section -->
+  <section class="section-padding bg-gradient-to-br from-blue-50 to-white">
+    <div class="container mx-auto container-padding">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-route mr-2 text-blue-600" aria-hidden="true"></i>
+          Simple Process
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Getting Started Is Simple</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <Card class="text-center" padding="xl">
+          <div class="w-20 h-20 rounded-full gradient-ocean-teal flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <span class="text-white text-2xl font-bold">1</span>
+          </div>
+          <div class="text-5xl mb-4">💬</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-4">Discovery Call</h3>
+          <p class="text-gray-700">Goals, offers, geography, and competitors.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="w-20 h-20 rounded-full gradient-ocean-teal flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <span class="text-white text-2xl font-bold">2</span>
+          </div>
+          <div class="text-5xl mb-4">🎨</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-4">Build Phase</h3>
+          <p class="text-gray-700">Design, content, SEO, tracking.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="w-20 h-20 rounded-full gradient-ocean-teal flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <span class="text-white text-2xl font-bold">3</span>
+          </div>
+          <div class="text-5xl mb-4">📈</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-4">Optimization Phase</h3>
+          <p class="text-gray-700">Monthly check-ins, testing, and refinement.</p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- 💰 Pricing Section -->
+  <section class="section-padding relative overflow-hidden">
+    <div class="container mx-auto container-padding">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-dollar-sign mr-2 text-teal-600" aria-hidden="true"></i>
+          Premium Package
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Pro Plan — $3,497</span>
+        </h2>
+      </div>
+
+      <div class="max-w-3xl mx-auto">
+        <Card variant="pricing" class="text-center transform hover:scale-105 transition-transform duration-300">
+          <div class="p-8">
+            <div class="text-6xl mb-6">⚡</div>
+            <h3 class="text-3xl font-bold text-blue-900 mb-4">Everything You Need to Dominate</h3>
+
+            <div class="text-5xl font-black text-blue-900 mb-8">$3,497</div>
+
+            <div class="text-left space-y-4 mb-8">
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Up to 16-page comprehensive website</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Individual service pages (up to 6)</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Local area landing pages (up to 6 Houston areas)</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Custom content creation</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Advanced conversion tracking</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Competition analysis + keyword strategy</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>90-day optimization with monthly check-ins</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Includes all Growth services</span>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4">
+              <Button
+                variant="primary"
+                size="lg"
+                href={`${import.meta.env.BASE_URL}contact#contact-options`}
+                fullWidth
+                data-track-cta="pricing-cta-primary"
+              >
+                Book a Discovery Call
+              </Button>
+
+              <Button
+                variant="outline"
+                size="lg"
+                href={`${import.meta.env.BASE_URL}contact#contact-form`}
+                fullWidth
+                data-track-cta="pricing-cta-secondary"
+              >
+                Request a Custom Proposal
+              </Button>
+            </div>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- ❓ FAQ Section -->
+  <section class="section-padding bg-gradient-to-br from-gray-50 to-white">
+    <div class="container mx-auto container-padding">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-question-circle mr-2 text-teal-600" aria-hidden="true"></i>
+          Questions
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Frequently Asked Questions</span>
+        </h2>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-4" itemscope itemtype="https://schema.org/FAQPage">
+        {faqs.map((faq, index) => (
+          <Card class="overflow-hidden" key={index}>
+            <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-50/30 focus:outline-none flex justify-between items-center">
+                <span class="font-bold text-blue-900 flex items-center">
+                  <span class="mr-3 text-2xl">
+                    {index === 0 ? '⏱️' : index === 1 ? '📋' : index === 2 ? '📄' : '🏢'}
+                  </span>
+                  <span itemprop="name">{faq.question}</span>
+                </span>
+                <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" aria-hidden="true"></i>
+              </button>
+              <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <div class="p-6 pt-0 text-gray-700" itemprop="text">
+                  {faq.answer}
+                </div>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 🎯 Final CTA Section -->
+  <section class="section-padding bg-gradient-to-br from-blue-900 to-blue-600 text-white">
+    <div class="container mx-auto container-padding text-center">
+      <h2 class="text-4xl md:text-5xl font-black mb-6">
+        Ready to Expand Your Online Presence?
+      </h2>
+      <p class="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
+        Let's build a site that earns trust, ranks locally, and drives real growth.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <Button
+          variant="secondary"
+          size="lg"
+          href={`${import.meta.env.BASE_URL}contact#contact-options`}
+          data-track-cta="final-cta-primary"
+        >
+          👉 Book a Discovery Call
+        </Button>
+
+        <Button
+          variant="outline"
+          size="lg"
+          href={`${import.meta.env.BASE_URL}contact#contact-form`}
+          class="border-white text-white hover:bg-white hover:text-blue-900"
+          data-track-cta="final-cta-secondary"
+        >
+          📩 Request a Custom Proposal
+        </Button>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  /* Define CSS custom properties for colors */
+  :root {
+    --color-ocean-deep: #0A2540;
+    --color-ocean-deeper: #020617;
+    --color-ocean-blue: #3B82F6;
+    --color-ocean-light: #60A5FA;
+    --color-ocean-teal: #198072;
+    --color-ocean-teal-dark: #14B8A6;
+    --color-ocean-sky: #BFDBFE;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  p, a, span, li {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Force maximum boldness for headers */
+  h1, h1 *, h1 span {
+    font-weight: 900 !important;
+    font-family: 'Poppins', sans-serif !important;
+  }
+
+  h2, h2 *, h2 span {
+    font-weight: 900 !important;
+    font-family: 'Poppins', sans-serif !important;
+  }
+
+  /* Layout utilities */
+  .section-padding {
+    padding: 5rem 0;
+  }
+
+  .container-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Typography utilities */
+  .heading-xl {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.1;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .heading-lg {
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1.2;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  @media (min-width: 768px) {
+    .section-padding {
+      padding: 6rem 0;
+    }
+
+    .heading-xl {
+      font-size: 4rem;
+    }
+
+    .heading-lg {
+      font-size: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-padding {
+      padding: 8rem 0;
+    }
+
+    .heading-xl {
+      font-size: 5rem;
+    }
+
+    .heading-lg {
+      font-size: 4rem;
+    }
+  }
+
+  /* Organic shapes */
+  .organic-blob {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+
+  .organic-droplet {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+
+  .organic-leaf {
+    border-radius: 20% 80% 20% 80% / 80% 20% 80% 20%;
+  }
+
+  /* Gradients */
+  .gradient-ocean-teal {
+    background: linear-gradient(135deg, var(--color-ocean-blue), var(--color-ocean-teal));
+  }
+
+  /* Animations */
+  .animation-delay-200 { animation-delay: 0.2s; }
+  .animation-delay-400 { animation-delay: 0.4s; }
+  .animation-delay-600 { animation-delay: 0.6s; }
+  .animation-delay-800 { animation-delay: 0.8s; }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+  }
+
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  /* 🎯 Service Page Specific Styles */
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .accordion-open .accordion-content {
+    max-height: 200px;
+    transition: max-height 0.5s ease-in;
+  }
+
+  /* 🎨 Enhanced hover effects */
+  .card-glass:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  /* 🎯 Gradient text animation */
+  .text-gradient {
+    background: linear-gradient(135deg, #3b82f6, #14b8a6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-weight: 900 !important;
+  }
+
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+</style>
+
+<script>
+  // 🎯 FAQ Accordion Functionality (All Devices)
+  document.addEventListener('DOMContentLoaded', () => {
+    const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+
+    accordionTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const accordionItem = trigger.parentElement?.parentElement;
+        const chevron = trigger.querySelector('i.fa-chevron-down');
+
+        if (accordionItem && chevron) {
+          accordionItem.classList.toggle('accordion-open');
+
+          if (accordionItem.classList.contains('accordion-open')) {
+            chevron.style.transform = 'rotate(180deg)';
+          } else {
+            chevron.style.transform = 'rotate(0)';
+          }
+        }
+      });
+    });
+  });
+
+  // 📊 Enhanced scroll animations for service page
+  document.addEventListener('DOMContentLoaded', () => {
+    if ('IntersectionObserver' in window) {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all cards and important elements
+      const elementsToAnimate = document.querySelectorAll('.card-glass, .heading-lg, .heading-xl');
+      elementsToAnimate.forEach(el => observer.observe(el));
+    }
+  });
+</script>

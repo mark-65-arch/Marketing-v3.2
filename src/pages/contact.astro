@@ -179,6 +179,30 @@ import '../styles/global.css';
             resize: vertical;
             min-height: 120px;
         }
+
+        /* FAQ Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-open .accordion-content {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        /* Desktop: Always show content */
+        @media (min-width: 768px) {
+            .accordion-content {
+                max-height: none !important;
+                overflow: visible !important;
+            }
+
+            .accordion-trigger {
+                pointer-events: none !important;
+            }
+        }
     </style>
 
     <!-- Load this CSS after everything else to ensure it takes precedence -->
@@ -200,7 +224,7 @@ import '../styles/global.css';
                     <div class="w-10 h-10 bg-gradient-to-br from-blue-900 to-blue-600 rounded-full flex items-center justify-center mr-2">
                         <i class="fas fa-robot text-white"></i>
                     </div>
-                    <span class="font-bold text-blue-900 hidden md:block">Marketing AI Houston</span>
+                    <span class="font-bold text-blue-900">Marketing AI Houston</span>
                 </div>
 
                 <!-- Desktop Navigation -->
@@ -214,7 +238,7 @@ import '../styles/global.css';
 
                 <!-- CTA Button -->
                 <div class="flex items-center">
-                    <a href={`${import.meta.env.BASE_URL}contact#contact-options`} class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 hidden md:block">
+                    <a href={`${import.meta.env.BASE_URL}contact#contact-options`} class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-4 md:px-6 rounded-full transition-all duration-300 text-sm md:text-base">
                         Contact
                     </a>
                     <!-- Mobile Menu Button -->
@@ -241,7 +265,7 @@ import '../styles/global.css';
     </header>
 
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+    <section class="py-20 md:py-24 relative overflow-hidden">
         <!-- Background elements -->
         <div class="absolute inset-0">
             <div class="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-blue-600 to-teal-600 organic-blob opacity-20 animate-blob"></div>
@@ -251,9 +275,11 @@ import '../styles/global.css';
 
         <div class="relative z-10 px-4 max-w-4xl mx-auto">
             <div class="text-center">
-                <!-- Stars and tagline -->
+                <!-- Visual Cue (Stars) -->
                 <div class="text-yellow-400 text-3xl mb-2">⭐⭐⭐⭐⭐</div>
-                <p class="text-gray-700 mb-8">Built for small businesses that want to grow</p>
+
+                <!-- Tagline -->
+                <p class="text-gray-700 mb-8 font-medium">Built for small businesses that want to grow</p>
 
                 <!-- Headline -->
                 <h1 class="text-5xl md:text-6xl font-black text-gray-900 leading-tight mb-6">
@@ -265,16 +291,17 @@ import '../styles/global.css';
                     Whether you're ready to launch or just exploring options, we'd love to hear from you.
                 </p>
 
-                <!-- CTA Button -->
+                <!-- Primary CTA Button -->
                 <a href="#contact-options" class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg mb-6">
                     👉 Schedule a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
                 </a>
 
-                <!-- Supporting one-liner -->
-                <p class="text-gray-700 mb-12">No pressure, no jargon — just a quick chat to see if we're a fit.</p>
+                <!-- Supporting One Liner -->
+                <p class="text-gray-700 mb-16">No pressure, no jargon — just a quick chat to see if we're a fit.</p>
             </div>
         </div>
     </section>
+
 
     <!-- Contact Options Section -->
     <section id="contact-options" class="py-20 md:py-24 relative overflow-hidden">
@@ -399,44 +426,155 @@ import '../styles/global.css';
         </div>
     </section>
 
-    <!-- Reassurance Section -->
+
+    <!-- FAQ Section -->
     <section class="py-20 md:py-24 relative overflow-hidden">
         <!-- Background elements -->
         <div class="absolute top-0 left-0 w-full h-full opacity-5">
-            <div class="absolute top-0 right-0 w-96 h-96 bg-blue-900 rounded-full filter blur-3xl"></div>
+            <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600 rounded-full filter blur-3xl"></div>
         </div>
 
-        <div class="container mx-auto max-w-6xl px-4 relative z-10">
+        <div class="container mx-auto max-w-4xl px-4 relative z-10">
             <div class="text-center mb-16">
+                <div class="inline-flex items-center bg-white bg-opacity-80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white border-opacity-50 shadow-sm">
+                    <i class="fas fa-question-circle mr-2 text-teal-600"></i>
+                    Questions
+                </div>
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-teal-600">We Keep It Simple, Friendly, and Transparent</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600 font-black">Frequently Asked Questions</span>
                 </h2>
+                <p class="text-xl text-gray-700 max-w-2xl mx-auto">Straight answers — no jargon, no hidden fine print.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white border-opacity-50">
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                            <span class="text-gray-700">No pushy sales calls</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                            <span class="text-gray-700">Clear pricing and timelines</span>
-                        </li>
-                    </ul>
+            <!-- FAQ Schema JSON-LD -->
+            <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Do you offer free consultations?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes — every discovery call is free, friendly, and focused on your goals."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How long does a typical call take?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Most calls last 15–30 minutes. Just enough time to explore your needs and next steps."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Do you only work with businesses in Houston?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Not at all. We're proudly based in Houston, but we serve small business owners nationwide. Our process is fully remote-friendly."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I just email you instead of booking a call?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Absolutely. Use our contact form or email us directly — whatever works best for you."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What happens after I book a call?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "You'll get a confirmation email with a calendar invite. We'll meet via Zoom or phone at your scheduled time."
+                        }
+                    }
+                ]
+            }
+            </script>
+
+            <div class="space-y-4" itemscope itemtype="https://schema.org/FAQPage">
+                <!-- FAQ 1 -->
+                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl overflow-hidden border border-white border-opacity-50" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-100 hover:bg-opacity-30 focus:outline-none flex justify-between items-center md:pointer-events-none">
+                        <span class="font-bold text-blue-900 flex items-center">
+                            <span class="mr-3 text-2xl">📞</span>
+                            <span itemprop="name">Do you offer free consultations?</span>
+                        </span>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                    </button>
+                    <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">
+                            Yes — every discovery call is free, friendly, and focused on your goals.
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-white border-opacity-50">
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                            <span class="text-gray-700">Real answers from real people</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                            <span class="text-gray-700">Built for small business owners — not tech experts</span>
-                        </li>
-                    </ul>
+
+                <!-- FAQ 2 -->
+                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl overflow-hidden border border-white border-opacity-50" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-100 hover:bg-opacity-30 focus:outline-none flex justify-between items-center md:pointer-events-none">
+                        <span class="font-bold text-blue-900 flex items-center">
+                            <span class="mr-3 text-2xl">🕒</span>
+                            <span itemprop="name">How long does a typical call take?</span>
+                        </span>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                    </button>
+                    <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">
+                            Most calls last 15–30 minutes. Just enough time to explore your needs and next steps.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl overflow-hidden border border-white border-opacity-50" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-100 hover:bg-opacity-30 focus:outline-none flex justify-between items-center md:pointer-events-none">
+                        <span class="font-bold text-blue-900 flex items-center">
+                            <span class="mr-3 text-2xl">🌐</span>
+                            <span itemprop="name">Do you only work with businesses in Houston?</span>
+                        </span>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                    </button>
+                    <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">
+                            Not at all. We're proudly based in Houston, but we serve small business owners nationwide. Our process is fully remote-friendly.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl overflow-hidden border border-white border-opacity-50" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-100 hover:bg-opacity-30 focus:outline-none flex justify-between items-center md:pointer-events-none">
+                        <span class="font-bold text-blue-900 flex items-center">
+                            <span class="mr-3 text-2xl">✉️</span>
+                            <span itemprop="name">Can I just email you instead of booking a call?</span>
+                        </span>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                    </button>
+                    <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">
+                            Absolutely. Use our contact form or email us directly — whatever works best for you.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl overflow-hidden border border-white border-opacity-50" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-100 hover:bg-opacity-30 focus:outline-none flex justify-between items-center md:pointer-events-none">
+                        <span class="font-bold text-blue-900 flex items-center">
+                            <span class="mr-3 text-2xl">📅</span>
+                            <span itemprop="name">What happens after I book a call?</span>
+                        </span>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                    </button>
+                    <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">
+                            You'll get a confirmation email with a calendar invite. We'll meet via Zoom or phone at your scheduled time.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -786,6 +924,26 @@ import '../styles/global.css';
                 });
             });
         }
+
+        // Accordion functionality for FAQ
+        const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+
+        accordionTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const accordionItem = trigger.parentElement;
+                const chevron = trigger.querySelector('i');
+
+                // Toggle accordion content
+                accordionItem.classList.toggle('accordion-open');
+
+                // Rotate chevron icon
+                if (accordionItem.classList.contains('accordion-open')) {
+                    chevron.style.transform = 'rotate(180deg)';
+                } else {
+                    chevron.style.transform = 'rotate(0)';
+                }
+            });
+        });
     </script>
 </body>
 </html>

@@ -1,0 +1,609 @@
+---
+// 🧭 Global Navigation Component
+// Purpose: Unified navigation across all pages with consistent layout and behavior
+// Features: Sticky positioning, mobile menu, services dropdown, analytics tracking, accessibility
+
+interface Props {
+  currentPath?: string;
+  primaryCtaLabel?: string;
+  primaryCtaHref?: string;
+  showContactCTA?: boolean;
+  stickyMobileCta?: boolean;
+}
+
+const {
+  currentPath = '',
+  primaryCtaLabel = 'Book a Discovery Call',
+  primaryCtaHref = `${import.meta.env.BASE_URL}contact#contact-options`,
+  showContactCTA = true,
+  stickyMobileCta = true
+} = Astro.props;
+
+// 🧭 Navigation items configuration
+const navItems = [
+  { href: import.meta.env.BASE_URL, label: 'Home', active: currentPath === '/' || currentPath === '' },
+  {
+    href: '#services',
+    label: 'Services',
+    active: currentPath.includes('business-profile-optimization') ||
+            currentPath.includes('website-design') ||
+            currentPath.includes('pro-website-growth') ||
+            currentPath.includes('seo-growth'),
+    dropdown: [
+      { href: `${import.meta.env.BASE_URL}business-profile-optimization`, label: 'Business Profile Optimization' },
+      { href: `${import.meta.env.BASE_URL}website-design-that-converts`, label: 'Website Design That Converts' },
+      { href: `${import.meta.env.BASE_URL}pro-website-growth-plan`, label: 'Website & Growth - Pro' },
+      { href: `${import.meta.env.BASE_URL}seo-growth-strategy`, label: 'SEO & Growth - Support' }
+    ]
+  },
+  { href: `${import.meta.env.BASE_URL}pricing`, label: 'Pricing', active: currentPath.includes('pricing') },
+  { href: `${import.meta.env.BASE_URL}about`, label: 'About', active: currentPath.includes('about') },
+  { href: `${import.meta.env.BASE_URL}contact`, label: 'Contact', active: currentPath.includes('contact') }
+];
+---
+
+<!-- ♿ Skip to Content Link (Accessibility) -->
+<a
+  href="#main-content"
+  class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 bg-blue-600 text-white px-6 py-3 rounded-md z-[60] font-semibold shadow-lg transition-all"
+  data-nav="skip-link"
+>
+  Skip to main content
+</a>
+
+<!-- 🧭 Global Navigation Header -->
+<header class="sticky top-0 z-50 backdrop-blur-lg bg-white/90 border-b border-white/20 shadow-sm" role="banner" data-nav="global">
+  <div class="container mx-auto px-4 py-4">
+    <div class="flex justify-between items-center">
+
+      <!-- 🏠 Brand Logo -->
+      <a
+        href={import.meta.env.BASE_URL}
+        class="flex items-center hover:opacity-80 transition-opacity"
+        aria-label="Marketing AI Houston - Home"
+        data-track-nav="logo"
+      >
+        <div class="w-10 h-10 bg-gradient-to-br from-blue-900 to-blue-600 rounded-full flex items-center justify-center mr-3 shadow-md">
+          <i class="fas fa-robot text-white text-lg" aria-hidden="true"></i>
+        </div>
+        <span class="font-bold text-blue-900 text-lg">Marketing AI Houston</span>
+      </a>
+
+      <!-- 🖥️ Desktop Navigation -->
+      <nav class="hidden md:flex space-x-8" role="navigation" aria-label="Main navigation">
+        {navItems.map(item => (
+          item.dropdown ? (
+            <!-- 📋 Services Dropdown -->
+            <div class="nav-dropdown">
+              <button
+                class={`font-medium transition-colors duration-200 hover:text-blue-600 focus:text-blue-600 focus:outline-none flex items-center cursor-pointer ${
+                  item.active ? 'text-blue-600' : 'text-gray-700'
+                }`}
+                aria-expanded="false"
+                aria-haspopup="true"
+                type="button"
+                data-track-nav="services-dropdown"
+              >
+                {item.label}
+                <i class="fas fa-chevron-down dropdown-chevron ml-1 text-xs" aria-hidden="true"></i>
+              </button>
+
+              <!-- 📂 Dropdown Menu -->
+              <div class="dropdown-menu">
+                <div class="py-2">
+                  {item.dropdown.map(dropdownItem => (
+                    <a
+                      href={dropdownItem.href}
+                      class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 border-b border-gray-50 last:border-b-0"
+                      data-track-nav="service-link"
+                      data-service={dropdownItem.label}
+                    >
+                      {dropdownItem.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <!-- 🔗 Regular Navigation Link -->
+            <a
+              href={item.href}
+              class={`font-medium transition-colors duration-200 hover:text-blue-600 focus:text-blue-600 ${
+                item.active ? 'text-blue-600' : 'text-gray-700'
+              }`}
+              {...(item.active && { 'aria-current': 'page' })}
+              data-track-nav="nav-link"
+              data-page={item.label.toLowerCase()}
+            >
+              {item.label}
+            </a>
+          )
+        ))}
+      </nav>
+
+      <!-- 🎯 CTA and Mobile Menu -->
+      <div class="flex items-center space-x-3">
+        {showContactCTA && (
+          <!-- 📞 Primary CTA Button -->
+          <a
+            href={primaryCtaHref}
+            class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md focus:ring-4 focus:ring-blue-200 text-sm md:text-base"
+            aria-label={primaryCtaLabel}
+            data-track-cta="nav-primary-cta"
+            data-cta-label={primaryCtaLabel}
+          >
+            <span class="hidden sm:inline">{primaryCtaLabel}</span>
+            <span class="sm:hidden">Contact</span>
+          </a>
+        )}
+
+        <!-- 📱 Mobile Menu Toggle -->
+        <button
+          id="global-nav-mobile-menu-button"
+          class="md:hidden p-2 rounded-lg text-blue-900 hover:bg-blue-50 focus:bg-blue-50 transition-colors duration-200"
+          aria-expanded="false"
+          aria-controls="global-nav-mobile-menu"
+          aria-label="Toggle main menu"
+          data-menu-toggle="hamburger"
+        >
+          <i class="fas fa-bars text-xl" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- 📱 Mobile Navigation Menu -->
+    <nav
+      id="global-nav-mobile-menu"
+      class="global-nav-mobile-menu mt-4 pb-4 border-t border-gray-200 hidden"
+      role="navigation"
+      aria-label="Mobile navigation"
+      aria-hidden="true"
+    >
+      <div class="flex flex-col space-y-3 pt-4">
+        {navItems.map(item => (
+          item.dropdown ? (
+            <!-- 📋 Mobile Services Section -->
+            <div>
+              <div class="py-2 font-medium text-gray-900 border-b border-gray-200 mb-2">
+                {item.label}
+              </div>
+              <div class="pl-4 space-y-2">
+                {item.dropdown.map(dropdownItem => (
+                  <a
+                    href={dropdownItem.href}
+                    class="block py-2 font-medium text-gray-600 hover:text-blue-600 focus:text-blue-600 transition-colors duration-200"
+                    tabindex="-1"
+                    data-track-nav="mobile-service-link"
+                    data-service={dropdownItem.label}
+                  >
+                    {dropdownItem.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <!-- 🔗 Regular Mobile Link -->
+            <a
+              href={item.href}
+              class={`py-2 font-medium transition-colors duration-200 hover:text-blue-600 focus:text-blue-600 ${
+                item.active ? 'text-blue-600' : 'text-gray-700'
+              }`}
+              {...(item.active && { 'aria-current': 'page' })}
+              tabindex="-1"
+              data-track-nav="mobile-nav-link"
+              data-page={item.label.toLowerCase()}
+            >
+              {item.label}
+            </a>
+          )
+        ))}
+
+        {showContactCTA && (
+          <!-- 📞 Mobile CTA -->
+          <a
+            href={primaryCtaHref}
+            class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 text-center mt-4 shadow-md"
+            tabindex="-1"
+            aria-label={primaryCtaLabel}
+            data-track-cta="mobile-nav-cta"
+            data-cta-label={primaryCtaLabel}
+          >
+            📞 {primaryCtaLabel.includes('Discovery') ? (
+              <>Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold ml-1">FREE</span> Discovery Call</>
+            ) : (
+              primaryCtaLabel
+            )}
+          </a>
+        )}
+      </div>
+    </nav>
+  </div>
+</header>
+
+{stickyMobileCta && (
+  <!-- 📱 Sticky Mobile "Get Started" Button -->
+  <div
+    id="global-nav-sticky-mobile-cta"
+    class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 shadow-lg px-4 py-3 transform translate-y-full transition-transform duration-300"
+  >
+    <a
+      href={primaryCtaHref}
+      class="block w-full bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-3 px-6 rounded-full text-center shadow-md transition-all duration-300"
+      aria-label="Get Started"
+      data-track-cta="sticky-mobile-cta"
+      data-cta-label="Get Started"
+    >
+      Get Started
+    </a>
+  </div>
+)}
+
+<style>
+  /* ♿ Skip to content link - Accessibility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .focus\\:not-sr-only:focus {
+    position: fixed;
+    width: auto;
+    height: auto;
+    padding: 0.75rem 1.5rem;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+
+  /* 📱 Mobile menu animation */
+  .global-nav-mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+  }
+
+  .global-nav-mobile-menu.active {
+    max-height: 500px;
+    opacity: 1;
+    display: block;
+  }
+
+  /* 🎯 Smooth header backdrop blur */
+  header {
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+
+  /* 📋 Desktop Dropdown Menu */
+  .nav-dropdown {
+    position: relative;
+  }
+
+  .nav-dropdown .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 0;
+    padding-top: 0.5rem;
+    width: 16rem;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s ease-out;
+    z-index: 50;
+    pointer-events: none;
+  }
+
+  /* Create invisible bridge to prevent hover gaps */
+  .nav-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 0.5rem;
+    background: transparent;
+    z-index: 49;
+  }
+
+  .nav-dropdown:hover .dropdown-menu,
+  .nav-dropdown.active .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .nav-dropdown:hover .dropdown-chevron,
+  .nav-dropdown.active .dropdown-chevron {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-chevron {
+    transition: transform 0.2s ease-out;
+  }
+
+  /* 🎯 Ensure dropdown stays open when hovering over menu items */
+  .nav-dropdown:hover,
+  .nav-dropdown.active {
+    z-index: 51;
+  }
+</style>
+
+<script>
+  // 📱 Mobile Menu Functionality with Accessibility
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('global-nav-mobile-menu-button');
+    const mobileMenu = document.getElementById('global-nav-mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+      // Get all focusable elements in menu for focus trap
+      const getFocusableElements = () => {
+        return mobileMenu.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
+      };
+
+      // Toggle menu function
+      const toggleMenu = () => {
+        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        const newState = !isExpanded;
+
+        // Update button state
+        mobileMenuButton.setAttribute('aria-expanded', newState.toString());
+
+        // Update menu visibility
+        mobileMenu.setAttribute('aria-hidden', (!newState).toString());
+        mobileMenu.classList.toggle('active', newState);
+
+        // Update tabindex for menu items
+        const menuLinks = mobileMenu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+          link.tabIndex = newState ? 0 : -1;
+        });
+
+        // Update icon
+        const icon = mobileMenuButton.querySelector('i');
+        if (icon) {
+          icon.className = newState ? 'fas fa-times text-xl' : 'fas fa-bars text-xl';
+        }
+
+        // Track analytics event
+        if (newState) {
+          trackEvent('nav_menu_open', {
+            page: window.location.pathname
+          });
+
+          // Focus first menu item when opened
+          const focusableElements = getFocusableElements();
+          if (focusableElements.length > 0) {
+            setTimeout(() => {
+              (focusableElements[0] as HTMLElement).focus();
+            }, 100);
+          }
+        } else {
+          trackEvent('nav_menu_close', {
+            page: window.location.pathname
+          });
+        }
+      };
+
+      // Button click handler
+      mobileMenuButton.addEventListener('click', toggleMenu);
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        const isClickInsideMenu = mobileMenu.contains(e.target as Node);
+        const isClickOnButton = mobileMenuButton.contains(e.target as Node);
+
+        if (!isClickInsideMenu && !isClickOnButton && mobileMenu.classList.contains('active')) {
+          toggleMenu();
+        }
+      });
+
+      // Focus trap for mobile menu
+      document.addEventListener('keydown', (e) => {
+        const isMenuOpen = mobileMenu.classList.contains('active');
+
+        // Close menu on escape key
+        if (e.key === 'Escape' && isMenuOpen) {
+          toggleMenu();
+          mobileMenuButton.focus();
+          return;
+        }
+
+        // Trap focus within menu when open
+        if (e.key === 'Tab' && isMenuOpen) {
+          const focusableElements = Array.from(getFocusableElements());
+          const firstElement = focusableElements[0] as HTMLElement;
+          const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+          if (e.shiftKey) {
+            // Shift+Tab: if on first element, move to last
+            if (document.activeElement === firstElement) {
+              e.preventDefault();
+              lastElement.focus();
+            }
+          } else {
+            // Tab: if on last element, move to first
+            if (document.activeElement === lastElement) {
+              e.preventDefault();
+              firstElement.focus();
+            }
+          }
+        }
+      });
+
+      // Close menu when window is resized to desktop
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768 && mobileMenu.classList.contains('active')) {
+          toggleMenu();
+        }
+      });
+    }
+
+    // 📋 Desktop Dropdown Functionality
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+
+    dropdowns.forEach(dropdown => {
+      const button = dropdown.querySelector('button');
+      const menu = dropdown.querySelector('.dropdown-menu');
+
+      if (button && menu) {
+        // Click to toggle dropdown (for touch devices)
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+
+          // Close other dropdowns
+          dropdowns.forEach(otherDropdown => {
+            if (otherDropdown !== dropdown) {
+              otherDropdown.classList.remove('active');
+            }
+          });
+
+          // Toggle current dropdown
+          dropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!dropdown.contains(e.target as Node)) {
+            dropdown.classList.remove('active');
+          }
+        });
+
+        // Close dropdown on escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            dropdown.classList.remove('active');
+          }
+        });
+
+        // Handle keyboard navigation
+        button.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+          } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            dropdown.classList.add('active');
+            const firstLink = menu.querySelector('a');
+            if (firstLink) firstLink.focus();
+          }
+        });
+
+        // Focus management within dropdown
+        const menuLinks = menu.querySelectorAll('a');
+        menuLinks.forEach((link, index) => {
+          link.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown') {
+              e.preventDefault();
+              const nextLink = menuLinks[index + 1] || menuLinks[0];
+              nextLink.focus();
+            } else if (e.key === 'ArrowUp') {
+              e.preventDefault();
+              const prevLink = menuLinks[index - 1] || menuLinks[menuLinks.length - 1];
+              prevLink.focus();
+            } else if (e.key === 'Escape') {
+              e.preventDefault();
+              dropdown.classList.remove('active');
+              button.focus();
+            }
+          });
+        });
+      }
+    });
+
+    // 📱 Sticky Mobile CTA - Show on scroll down
+    const stickyMobileCta = document.getElementById('global-nav-sticky-mobile-cta');
+    if (stickyMobileCta) {
+      let lastScrollTop = 0;
+      let scrollTimeout: ReturnType<typeof setTimeout>;
+
+      window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+
+        scrollTimeout = setTimeout(() => {
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+          // Show sticky CTA when scrolled down more than 300px and not at bottom
+          if (scrollTop > 300 && scrollTop > lastScrollTop) {
+            stickyMobileCta.style.transform = 'translateY(0)';
+          } else {
+            stickyMobileCta.style.transform = 'translateY(100%)';
+          }
+
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, 100);
+      });
+    }
+
+    // 📊 Analytics Tracking
+    /**
+     * Track event helper function
+     * @param {string} eventName - Name of the event
+     * @param {object} props - Event properties
+     */
+    function trackEvent(eventName: string, props: Record<string, any> = {}) {
+      // Console log for development/debugging
+      console.log('📊 GlobalNav Analytics Event:', eventName, props);
+
+      // Push to dataLayer for Google Analytics / Tag Manager
+      if (typeof window !== 'undefined') {
+        (window as any).dataLayer = (window as any).dataLayer || [];
+        (window as any).dataLayer.push({
+          event: eventName,
+          ...props
+        });
+      }
+
+      // Alternative: Direct gtag call if using GA4 directly
+      if (typeof (window as any).gtag === 'function') {
+        (window as any).gtag('event', eventName, props);
+      }
+    }
+
+    // Track navigation link clicks
+    const navLinks = document.querySelectorAll('[data-track-nav]');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        const trackType = link.getAttribute('data-track-nav');
+        const page = link.getAttribute('data-page');
+        const service = link.getAttribute('data-service');
+
+        trackEvent('nav_link_click', {
+          link_type: trackType,
+          page: page || 'unknown',
+          service: service || undefined,
+          location: window.location.pathname
+        });
+      });
+    });
+
+    // Track CTA button clicks
+    const ctaButtons = document.querySelectorAll('[data-track-cta]');
+    ctaButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const ctaType = button.getAttribute('data-track-cta');
+        const ctaLabel = button.getAttribute('data-cta-label');
+
+        trackEvent('nav_cta_click', {
+          cta_type: ctaType,
+          label: ctaLabel || 'unknown',
+          page: window.location.pathname
+        });
+      });
+    });
+  });
+</script>

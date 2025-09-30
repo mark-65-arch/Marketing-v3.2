@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import GlobalNav from '../components/GlobalNav.astro';
 ---
 
 <html lang="en">
@@ -95,24 +96,6 @@ import '../styles/global.css';
             background: linear-gradient(135deg, var(--color-ocean-sky), #F0F9FF);
         }
 
-        /* Sticky header */
-        .sticky-header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Mobile menu */
-        .mobile-menu {
-            display: none;
-        }
-
-        .mobile-menu.active {
-            display: block;
-        }
 
         /* Animations */
         @keyframes float {
@@ -216,53 +199,7 @@ import '../styles/global.css';
 </head>
 <body class="font-inter text-gray-800 bg-gradient-to-br from-blue-100 to-white">
     <!-- Navigation -->
-    <header class="sticky-header">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <div class="w-10 h-10 bg-gradient-to-br from-blue-900 to-blue-600 rounded-full flex items-center justify-center mr-2">
-                        <i class="fas fa-robot text-white"></i>
-                    </div>
-                    <span class="font-bold text-blue-900">Marketing AI Houston</span>
-                </div>
-
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex space-x-8">
-                    <a href={import.meta.env.BASE_URL} class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Services</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Pricing</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
-                    <a href={`${import.meta.env.BASE_URL}contact`} class="text-blue-600 font-medium">Contact</a>
-                </nav>
-
-                <!-- CTA Button -->
-                <div class="flex items-center">
-                    <a href={`${import.meta.env.BASE_URL}contact#contact-options`} class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-4 md:px-6 rounded-full transition-all duration-300 text-sm md:text-base">
-                        Contact
-                    </a>
-                    <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-button" class="ml-4 md:hidden text-blue-900">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="mobile-menu mt-4 pb-4">
-                <nav class="flex flex-col space-y-3">
-                    <a href={import.meta.env.BASE_URL} class="text-gray-700 hover:text-blue-600 font-medium py-2">Home</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium py-2">Services</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium py-2">Pricing</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium py-2">About</a>
-                    <a href={`${import.meta.env.BASE_URL}contact`} class="text-blue-600 font-medium py-2">Contact</a>
-                    <a href={`${import.meta.env.BASE_URL}contact#contact-options`} class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 text-center mt-2">
-                        Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
-                    </a>
-                </nav>
-            </div>
-        </div>
-    </header>
+    <GlobalNav currentPath="/contact" />
 
     <!-- Hero Section -->
     <section class="py-20 md:py-24 relative overflow-hidden">
@@ -496,10 +433,10 @@ import '../styles/global.css';
             }
             </script>
 
-            <div class="space-y-4" itemscope itemtype="https://schema.org/FAQPage">
+            <div class="space-y-4 max-w-3xl mx-auto" itemscope itemtype="https://schema.org/FAQPage">
                 <!-- FAQ 1 -->
                 <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl overflow-hidden border border-white border-opacity-50" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-100 hover:bg-opacity-30 focus:outline-none flex justify-between items-center md:pointer-events-none">
+                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-50/30 focus:outline-none flex justify-between items-center md:pointer-events-none">
                         <span class="font-bold text-blue-900 flex items-center">
                             <span class="mr-3 text-2xl">📞</span>
                             <span itemprop="name">Do you offer free consultations?</span>
@@ -515,7 +452,7 @@ import '../styles/global.css';
 
                 <!-- FAQ 2 -->
                 <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl overflow-hidden border border-white border-opacity-50" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-100 hover:bg-opacity-30 focus:outline-none flex justify-between items-center md:pointer-events-none">
+                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-50/30 focus:outline-none flex justify-between items-center md:pointer-events-none">
                         <span class="font-bold text-blue-900 flex items-center">
                             <span class="mr-3 text-2xl">🕒</span>
                             <span itemprop="name">How long does a typical call take?</span>
@@ -531,7 +468,7 @@ import '../styles/global.css';
 
                 <!-- FAQ 3 -->
                 <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl overflow-hidden border border-white border-opacity-50" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-100 hover:bg-opacity-30 focus:outline-none flex justify-between items-center md:pointer-events-none">
+                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-50/30 focus:outline-none flex justify-between items-center md:pointer-events-none">
                         <span class="font-bold text-blue-900 flex items-center">
                             <span class="mr-3 text-2xl">🌐</span>
                             <span itemprop="name">Do you only work with businesses in Houston?</span>
@@ -547,7 +484,7 @@ import '../styles/global.css';
 
                 <!-- FAQ 4 -->
                 <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl overflow-hidden border border-white border-opacity-50" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-100 hover:bg-opacity-30 focus:outline-none flex justify-between items-center md:pointer-events-none">
+                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-50/30 focus:outline-none flex justify-between items-center md:pointer-events-none">
                         <span class="font-bold text-blue-900 flex items-center">
                             <span class="mr-3 text-2xl">✉️</span>
                             <span itemprop="name">Can I just email you instead of booking a call?</span>
@@ -563,7 +500,7 @@ import '../styles/global.css';
 
                 <!-- FAQ 5 -->
                 <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl overflow-hidden border border-white border-opacity-50" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-100 hover:bg-opacity-30 focus:outline-none flex justify-between items-center md:pointer-events-none">
+                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-50/30 focus:outline-none flex justify-between items-center md:pointer-events-none">
                         <span class="font-bold text-blue-900 flex items-center">
                             <span class="mr-3 text-2xl">📅</span>
                             <span itemprop="name">What happens after I book a call?</span>
@@ -688,16 +625,6 @@ import '../styles/global.css';
     </footer>
 
     <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('active');
-            });
-        }
-
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
             anchor.addEventListener('click', function (e) {

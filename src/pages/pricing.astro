@@ -1,0 +1,686 @@
+---
+// 💰 Pricing Page
+// Purpose: Clear, simple pricing for small business owners
+// Features: Three pricing tiers, comparison table, what's included, commitments, FAQ, CTAs
+
+import MainLayout from '../layouts/MainLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: import.meta.env.BASE_URL },
+  { name: 'Pricing', url: `${import.meta.env.BASE_URL}pricing` }
+];
+
+// Pricing data structure
+const pricingPlans = [
+  {
+    id: 'starter',
+    name: 'Starter',
+    tagline: 'Get Found Online',
+    price: '$497',
+    icon: '💡',
+    popular: false,
+    features: [
+      'GBP makeover & optimization',
+      'Accurate business info + categories',
+      'Photo organization using your existing photos',
+      'Review request templates & training',
+      'Messaging setup with auto-replies'
+    ],
+    bestFor: 'Businesses who need to show up on Google and start getting calls.',
+    learnMoreUrl: `${import.meta.env.BASE_URL}business-profile-optimization`,
+    learnMoreLabel: 'Google Business Profile Optimization',
+    ctaUrl: `${import.meta.env.BASE_URL}contact#contact-options`,
+    ctaLabel: 'Book a FREE Discovery Call'
+  },
+  {
+    id: 'growth',
+    name: 'Growth',
+    tagline: 'Build Your Digital Foundation',
+    price: '$1,497',
+    icon: '🚀',
+    popular: true,
+    features: [
+      '4-page mobile-optimized website',
+      'Modern, responsive design',
+      'Local SEO + schema markup',
+      'Voice search optimization',
+      'Click-to-call & contact forms',
+      'Google Analytics setup',
+      'Includes all Starter services'
+    ],
+    bestFor: 'Owners ready to turn their website into a steady source of customers.',
+    learnMoreUrl: `${import.meta.env.BASE_URL}website-design-that-converts`,
+    learnMoreLabel: 'Websites That Convert — Growth',
+    ctaUrl: `${import.meta.env.BASE_URL}contact#contact-options`,
+    ctaLabel: 'Book a FREE Discovery Call'
+  },
+  {
+    id: 'pro',
+    name: 'Pro',
+    tagline: 'Expand Your Online Presence',
+    price: '$3,497',
+    icon: '🌐',
+    popular: false,
+    features: [
+      'Up to 16-page comprehensive website',
+      'Individual service pages (up to 6)',
+      'Local area landing pages (up to 6 Houston areas)',
+      'Custom content creation',
+      'Advanced conversion tracking',
+      'Competition analysis + keyword strategy',
+      '90-day optimization with monthly check-ins',
+      'Includes all Growth services'
+    ],
+    bestFor: 'Businesses ready to dominate their market and scale growth.',
+    learnMoreUrl: `${import.meta.env.BASE_URL}pro-website-growth-plan`,
+    learnMoreLabel: 'Website & Growth — Pro',
+    ctaUrl: `${import.meta.env.BASE_URL}contact#contact-options`,
+    ctaLabel: 'Book a FREE Discovery Call'
+  }
+];
+
+// Comparison table data
+const comparisonFeatures = [
+  { feature: 'Mobile-optimized website', starter: '—', growth: '4 pages', pro: 'Up to 16 pages' },
+  { feature: 'Individual service pages', starter: '—', growth: '—', pro: 'Up to 6' },
+  { feature: 'Local area landing pages', starter: '—', growth: '—', pro: 'Up to 6 (Houston areas)' },
+  { feature: 'Google Business Profile optimization', starter: 'Included', growth: 'Included', pro: 'Included' },
+  { feature: 'Local SEO + schema markup', starter: '—', growth: 'Included', pro: 'Included' },
+  { feature: 'Voice search optimization', starter: '—', growth: 'Included', pro: 'Included' },
+  { feature: 'Click-to-call & contact forms', starter: '—', growth: 'Included', pro: 'Included' },
+  { feature: 'Google Analytics setup', starter: '—', growth: 'Included', pro: 'Included' },
+  { feature: 'Custom content creation', starter: '—', growth: '—', pro: 'Included' },
+  { feature: 'Advanced conversion tracking', starter: '—', growth: '—', pro: 'Included' },
+  { feature: 'Competition analysis + keyword strategy', starter: '—', growth: '—', pro: 'Included' },
+  { feature: '90-day optimization + monthly check-ins', starter: '—', growth: '—', pro: 'Included' }
+];
+
+// FAQ data
+const faqs = [
+  {
+    id: 'need-website',
+    question: 'Do I need a website first?',
+    answer: 'Most clients benefit from having a website, but Starter focuses on Google Business Profile to help you get calls quickly.'
+  },
+  {
+    id: 'setup-time',
+    question: 'How long does setup take?',
+    answer: 'Starter typically completes within 1–2 weeks. Growth sites often launch in 2–4 weeks. Pro timelines vary based on scope and content.'
+  },
+  {
+    id: 'contracts',
+    question: 'Are there contracts?',
+    answer: 'We offer scoped projects and month-to-month support options. Terms are clear and documented before work begins.'
+  },
+  {
+    id: 'upgrade',
+    question: 'Can I upgrade later?',
+    answer: 'Yes. You can move from Starter to Growth or Pro as your needs expand. We\'ll map a practical path based on goals and budget.'
+  },
+  {
+    id: 'reporting',
+    question: 'What reporting do I get?',
+    answer: 'Growth and Pro include analytics setup and reporting. For SEO packages, you\'ll receive monthly insights and prioritized next steps.'
+  }
+];
+---
+
+<MainLayout
+  title="Clear, Simple Pricing — Marketing AI Houston"
+  description="Built for Small Business Owners. Three plans: Starter ($497), Growth ($1,497), Pro ($3,497). No hidden fees, no long contracts."
+  currentPath="/pricing"
+  breadcrumbs={breadcrumbs}
+  keywords={['pricing', 'web design pricing', 'seo pricing', 'houston web design cost', 'small business website cost', 'transparent pricing']}
+>
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+    <!-- Text background elements -->
+    <div class="absolute inset-0 opacity-5 hidden md:block">
+      <div class="text-9xl font-bold absolute top-10 left-10 text-blue-900">VALUE</div>
+      <div class="text-9xl font-bold absolute top-1/2 right-10 text-teal-600">CLEAR</div>
+      <div class="text-9xl font-bold absolute bottom-10 left-1/3 text-blue-600">FAIR</div>
+    </div>
+
+    <!-- Organic blob elements -->
+    <div class="absolute inset-0">
+      <div class="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-blue-600 to-teal-600 opacity-20 animate-pulse" style="border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;"></div>
+      <div class="absolute top-40 right-20 w-72 h-72 bg-gradient-to-br from-teal-600 to-blue-300 opacity-20 animate-pulse" style="border-radius: 20% 80% 20% 80% / 80% 20% 80% 20%; animation-delay: 0.4s;"></div>
+      <div class="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-br from-blue-900 to-blue-600 opacity-20 animate-pulse" style="border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; animation-delay: 0.8s;"></div>
+    </div>
+
+    <div class="relative z-10 px-4 max-w-6xl mx-auto">
+      <div class="text-center">
+        <!-- Stars and tagline -->
+        <div class="text-yellow-400 text-3xl mb-2">⭐⭐⭐⭐⭐</div>
+        <p class="text-gray-700 mb-8">Built for Small Business Owners</p>
+
+        <!-- Headline -->
+        <h1 class="text-5xl md:text-7xl font-black text-gray-900 leading-tight mb-6">
+          Clear, Simple Pricing
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="text-xl text-gray-700 mb-12 max-w-2xl mx-auto leading-relaxed">
+          Our plans are designed to grow with you — no hidden fees, no long contracts.
+        </p>
+
+        <!-- CTA Button -->
+        <a
+          href={`${import.meta.env.BASE_URL}contact#contact-options`}
+          class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg mb-6"
+          aria-label="Book a FREE Discovery Call"
+          data-track-cta="pricing-hero-cta"
+        >
+          👉 Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
+        </a>
+
+        <!-- Supporting one-liner -->
+        <p class="text-gray-700 mb-12">No jargon, no pressure—just a quick chat about your business.</p>
+
+        <!-- Key Metrics / Trust Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-5xl mx-auto">
+          <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+            <div class="text-4xl mb-3">💰</div>
+            <div class="text-gray-900 font-bold">Transparent Pricing</div>
+            <div class="text-gray-700 text-sm">What we quote is what you pay</div>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+            <div class="text-4xl mb-3">📅</div>
+            <div class="text-gray-900 font-bold">No Long Contracts</div>
+            <div class="text-gray-700 text-sm">Month-to-month support available</div>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+            <div class="text-4xl mb-3">⚡</div>
+            <div class="text-gray-900 font-bold">Fast Launch Process</div>
+            <div class="text-gray-700 text-sm">Get online in weeks, not months</div>
+          </div>
+        </div>
+
+        <!-- Industry Icons -->
+        <div class="flex flex-wrap justify-center gap-8">
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <i class="fas fa-hammer text-2xl text-gray-900"></i>
+            </div>
+            <span class="text-gray-700 font-medium">Contractors</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <i class="fas fa-car text-2xl text-gray-900"></i>
+            </div>
+            <span class="text-gray-700 font-medium">Auto Shops</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <i class="fas fa-broom text-2xl text-gray-900"></i>
+            </div>
+            <span class="text-gray-700 font-medium">Cleaning</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <i class="fas fa-leaf text-2xl text-gray-900"></i>
+            </div>
+            <span class="text-gray-700 font-medium">Landscaping</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <i class="fas fa-paw text-2xl text-gray-900"></i>
+            </div>
+            <span class="text-gray-700 font-medium">Pet Services</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Cards -->
+  <section class="py-20 md:py-24 relative overflow-hidden bg-gradient-to-br from-gray-50 to-white">
+    <div class="container mx-auto max-w-7xl px-4 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        {pricingPlans.map((plan) => (
+          <div class={`relative rounded-2xl shadow-xl overflow-hidden transition-all duration-300 transform hover:-translate-y-2 ${
+            plan.popular
+              ? 'bg-gradient-to-br from-blue-900 to-blue-600 text-white scale-105 md:scale-110 border-4 border-blue-300'
+              : plan.id === 'pro'
+              ? 'bg-white border-2 border-blue-200'
+              : 'bg-white border border-gray-200'
+          }`}>
+            {plan.popular && (
+              <div class="bg-gradient-to-r from-teal-400 to-blue-300 py-2 px-4 text-center">
+                <span class="text-blue-900 font-bold text-sm">MOST POPULAR</span>
+              </div>
+            )}
+
+            <div class="p-8">
+              <div class="text-5xl mb-4">{plan.icon}</div>
+
+              <h3 class={`text-2xl font-black mb-2 ${plan.popular ? 'text-white' : 'text-gray-900'}`}>
+                {plan.name}
+              </h3>
+
+              <p class={`text-lg mb-4 font-semibold ${plan.popular ? 'text-blue-100' : 'text-blue-600'}`}>
+                {plan.tagline}
+              </p>
+
+              <div class="mb-6">
+                <span class={`text-5xl font-black ${plan.popular ? 'text-white' : 'text-blue-900'}`}>
+                  {plan.price}
+                </span>
+              </div>
+
+              <div class="mb-6">
+                <p class={`font-bold mb-3 ${plan.popular ? 'text-blue-100' : 'text-gray-700'}`}>
+                  What you get:
+                </p>
+                <ul class="space-y-3">
+                  {plan.features.map((feature) => (
+                    <li class={`flex items-start gap-3 ${plan.popular ? 'text-blue-50' : 'text-gray-700'}`}>
+                      <i class={`fas fa-check-circle mt-1 flex-shrink-0 ${plan.popular ? 'text-teal-300' : 'text-green-500'}`}></i>
+                      <span class="text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <p class={`text-sm mb-4 italic ${plan.popular ? 'text-blue-100' : 'text-gray-600'}`}>
+                <strong>Best for:</strong> {plan.bestFor}
+              </p>
+
+              <a
+                href={plan.learnMoreUrl}
+                class={`block text-center text-sm mb-4 hover:underline transition-colors duration-200 ${
+                  plan.popular ? 'text-blue-200 hover:text-white' : 'text-blue-600 hover:text-blue-800'
+                }`}
+                aria-label={`Learn more about ${plan.name} plan`}
+                data-track-link="pricing-learn-more"
+                data-plan={plan.id}
+              >
+                Learn more: {plan.learnMoreLabel} ›
+              </a>
+
+              <a
+                href={plan.ctaUrl}
+                class={`block text-center px-6 py-4 rounded-lg font-bold text-base transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 ${
+                  plan.popular
+                    ? 'bg-white text-blue-900 hover:bg-blue-50'
+                    : 'bg-blue-600 text-white hover:bg-blue-700'
+                }`}
+                aria-label={`${plan.ctaLabel} for ${plan.name} plan`}
+                data-track-cta="pricing-card-cta"
+                data-plan={plan.id}
+              >
+                👉 {plan.ctaLabel}
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Custom and Monthly Options -->
+      <p class="text-center text-sm text-gray-600 max-w-3xl mx-auto">
+        <a
+          href={`${import.meta.env.BASE_URL}contact`}
+          class="text-blue-600 hover:text-blue-800 hover:underline transition-colors font-medium"
+          data-track-link="pricing-custom"
+        >Custom pricing</a>
+        {' '}and{' '}
+        <a
+          href={`${import.meta.env.BASE_URL}seo-growth-strategy`}
+          class="text-blue-600 hover:text-blue-800 hover:underline transition-colors font-medium"
+          data-track-link="pricing-monthly"
+        >monthly packages</a>
+        {' '}available upon request.
+      </p>
+    </div>
+  </section>
+
+  <!-- Plan Comparison Table -->
+  <section class="py-20 md:py-24 bg-white">
+    <div class="container mx-auto max-w-6xl px-4">
+      <h2 class="text-3xl md:text-5xl font-black text-center mb-12 text-gray-900">
+        Compare Plans at a Glance
+      </h2>
+
+      <!-- Desktop Table -->
+      <div class="hidden md:block overflow-x-auto">
+        <table class="w-full border-collapse" role="table" aria-label="Compare plans at a glance">
+          <caption class="sr-only">Comparison of Starter, Growth, and Pro plans</caption>
+          <thead>
+            <tr class="border-b-2 border-gray-300">
+              <th scope="col" class="py-4 px-6 text-left text-gray-900 font-bold text-lg">Feature</th>
+              <th scope="col" class="py-4 px-6 text-center text-gray-900 font-bold text-lg">Starter</th>
+              <th scope="col" class="py-4 px-6 text-center text-blue-900 font-bold text-lg bg-blue-50">Growth ⭐</th>
+              <th scope="col" class="py-4 px-6 text-center text-gray-900 font-bold text-lg">Pro</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonFeatures.map((row, index) => (
+              <tr class={`border-b border-gray-200 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'} hover:bg-blue-50 transition-colors`}>
+                <td class="py-4 px-6 font-medium text-gray-900 text-sm">{row.feature}</td>
+                <td class="py-4 px-6 text-center text-gray-700 text-sm">{row.starter}</td>
+                <td class="py-4 px-6 text-center text-blue-900 bg-blue-50/50 text-sm font-medium">{row.growth}</td>
+                <td class="py-4 px-6 text-center text-gray-700 text-sm">{row.pro}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile Stacked Cards -->
+      <div class="md:hidden space-y-6">
+        {pricingPlans.map((plan) => (
+          <div class={`rounded-xl overflow-hidden shadow-lg ${plan.popular ? 'border-2 border-blue-600' : 'border border-gray-200'}`}>
+            <div class={`py-3 px-4 font-bold text-center ${plan.popular ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-900'}`}>
+              {plan.name} {plan.popular ? '⭐' : ''}
+            </div>
+            <div class="p-4 bg-white space-y-3">
+              {comparisonFeatures.map((row) => (
+                <div class="flex justify-between items-start py-2 border-b border-gray-100 last:border-0">
+                  <span class="text-xs text-gray-700 font-medium pr-2">{row.feature}</span>
+                  <span class={`text-xs font-semibold ${plan.id === 'starter' ? 'text-gray-900' : plan.id === 'growth' ? 'text-blue-900' : 'text-gray-900'}`}>
+                    {plan.id === 'starter' ? row.starter : plan.id === 'growth' ? row.growth : row.pro}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included Details -->
+  <section class="py-20 md:py-24 bg-gradient-to-br from-blue-50 to-white">
+    <div class="container mx-auto max-w-6xl px-4">
+      <h2 class="text-3xl md:text-5xl font-black text-center mb-16 text-gray-900">
+        What's Included
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Starter Essentials -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-white/50">
+          <div class="text-5xl mb-4">💡</div>
+          <h3 class="text-2xl font-black text-gray-900 mb-4">Starter Essentials</h3>
+
+          <div class="space-y-4 mb-6">
+            <div>
+              <p class="font-bold text-gray-900 text-sm mb-1">Google Business Profile:</p>
+              <p class="text-sm text-gray-700">Setup, optimization, categories, photos</p>
+            </div>
+
+            <div>
+              <p class="font-bold text-gray-900 text-sm mb-1">Reviews & messaging:</p>
+              <p class="text-sm text-gray-700">Templates, training, auto-reply setup</p>
+            </div>
+
+            <div>
+              <p class="font-bold text-blue-600 text-sm">Outcome focus:</p>
+              <p class="text-sm text-gray-700 italic">Show up locally and start driving calls</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Growth Foundations -->
+        <div class="bg-gradient-to-br from-blue-900 to-blue-600 rounded-xl p-8 shadow-xl text-white transform scale-105">
+          <div class="text-5xl mb-4">🚀</div>
+          <h3 class="text-2xl font-black mb-4">Growth Foundations</h3>
+
+          <div class="space-y-4 mb-6">
+            <div>
+              <p class="font-bold text-blue-100 text-sm mb-1">Website build:</p>
+              <p class="text-sm text-blue-50">4 mobile-optimized pages, responsive design</p>
+            </div>
+
+            <div>
+              <p class="font-bold text-blue-100 text-sm mb-1">SEO readiness:</p>
+              <p class="text-sm text-blue-50">Local SEO, schema, voice search</p>
+            </div>
+
+            <div>
+              <p class="font-bold text-blue-100 text-sm mb-1">Conversion setup:</p>
+              <p class="text-sm text-blue-50">Click-to-call, forms, analytics</p>
+            </div>
+
+            <div>
+              <p class="font-bold text-teal-300 text-sm">Outcome focus:</p>
+              <p class="text-sm text-blue-100 italic">Turn visits into leads with a clear foundation</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pro Expansion -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-blue-200">
+          <div class="text-5xl mb-4">🌐</div>
+          <h3 class="text-2xl font-black text-gray-900 mb-4">Pro Expansion</h3>
+
+          <div class="space-y-4 mb-6">
+            <div>
+              <p class="font-bold text-gray-900 text-sm mb-1">Scale content:</p>
+              <p class="text-sm text-gray-700">Up to 16 pages, service pages, local landing pages</p>
+            </div>
+
+            <div>
+              <p class="font-bold text-gray-900 text-sm mb-1">Strategy & tracking:</p>
+              <p class="text-sm text-gray-700">Custom content, advanced tracking, competition + keywords</p>
+            </div>
+
+            <div>
+              <p class="font-bold text-gray-900 text-sm mb-1">Optimization:</p>
+              <p class="text-sm text-gray-700">90-day plan with monthly check-ins</p>
+            </div>
+
+            <div>
+              <p class="font-bold text-blue-600 text-sm">Outcome focus:</p>
+              <p class="text-sm text-gray-700 italic">Expand visibility, strengthen engagement, sustain growth</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Commitments -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto max-w-5xl px-4">
+      <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6">
+        <div class="w-full md:w-auto bg-green-50 rounded-lg shadow-sm px-4 py-3 flex items-center gap-3 border border-green-100 hover:shadow-md transition-shadow">
+          <i class="fas fa-check-circle text-green-600 text-xl flex-shrink-0"></i>
+          <span class="text-gray-800 text-sm font-medium"><strong>No hidden fees:</strong> What we quote is what you pay.</span>
+        </div>
+
+        <div class="w-full md:w-auto bg-green-50 rounded-lg shadow-sm px-4 py-3 flex items-center gap-3 border border-green-100 hover:shadow-md transition-shadow">
+          <i class="fas fa-check-circle text-green-600 text-xl flex-shrink-0"></i>
+          <span class="text-gray-800 text-sm font-medium"><strong>No long contracts:</strong> Month-to-month support available.</span>
+        </div>
+
+        <div class="w-full md:w-auto bg-green-50 rounded-lg shadow-sm px-4 py-3 flex items-center gap-3 border border-green-100 hover:shadow-md transition-shadow">
+          <i class="fas fa-check-circle text-green-600 text-xl flex-shrink-0"></i>
+          <span class="text-gray-800 text-sm font-medium"><strong>Transparent pricing:</strong> Plans designed to scale with your business.</span>
+        </div>
+      </div>
+
+      <p class="text-center text-xs text-gray-500 mt-6">
+        See Pricing page for full terms and available plans.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 md:py-24 bg-gradient-to-br from-gray-50 to-white">
+    <div class="container mx-auto max-w-4xl px-4">
+      <h2 class="text-3xl md:text-5xl font-black text-center mb-4 text-gray-900">
+        Frequently Asked Questions
+      </h2>
+      <p class="text-xl text-gray-700 max-w-2xl mx-auto text-center mb-12">Straight answers — no jargon, no hidden fine print.</p>
+
+      <div class="space-y-4 max-w-3xl mx-auto">
+        {faqs.map((faq) => (
+          <div class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-md">
+            <button
+              class="accordion-trigger w-full text-left p-6 hover:bg-blue-50/30 focus:outline-none focus:ring-2 focus:ring-blue-300 flex justify-between items-center transition-colors"
+              aria-expanded="false"
+              aria-controls={`faq-${faq.id}`}
+              data-track-faq={faq.id}
+            >
+              <span class="font-bold text-blue-900 pr-4 text-base md:text-lg flex items-center">
+                <span class="mr-3 text-2xl">
+                  {faq.id === 'need-website' ? '🌐' : faq.id === 'setup-time' ? '⏱️' : faq.id === 'contracts' ? '📋' : faq.id === 'upgrade' ? '🔄' : '📊'}
+                </span>
+                <span>{faq.question}</span>
+              </span>
+              <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 flex-shrink-0 accordion-icon"></i>
+            </button>
+            <div id={`faq-${faq.id}`} class="accordion-content overflow-hidden" style="max-height: 0;" aria-hidden="true">
+              <div class="p-6 pt-0 text-gray-700 text-sm md:text-base">
+                {faq.answer}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="py-20 md:py-24 bg-gradient-to-br from-blue-900 to-blue-600 text-white">
+    <div class="container mx-auto max-w-4xl px-4 text-center">
+      <h2 class="text-4xl md:text-5xl font-black mb-6">
+        Ready to Get Started?
+      </h2>
+
+      <p class="text-xl md:text-2xl text-blue-100 mb-10 max-w-2xl mx-auto">
+        Schedule a free discovery call and we'll map your first steps.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href={`${import.meta.env.BASE_URL}contact#contact-options`}
+          class="inline-block bg-white text-blue-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 w-full sm:w-auto"
+          aria-label="Book a FREE Discovery Call"
+          data-track-cta="pricing-final-cta-discovery"
+        >
+          👉 Book a FREE Discovery Call
+        </a>
+
+        <a
+          href={`${import.meta.env.BASE_URL}contact#contact-form`}
+          class="inline-block bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-800 border-2 border-white/30 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 w-full sm:w-auto"
+          aria-label="Request a Custom Proposal"
+          data-track-cta="pricing-final-cta-proposal"
+        >
+          📩 Request a Custom Proposal
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Analytics Script -->
+  <script is:inline>
+    // Track pricing page events
+    function trackEvent(eventName, props) {
+      props = props || {};
+      console.log('📊 Pricing Page Analytics:', eventName, props);
+
+      if (typeof window !== 'undefined') {
+        // Google Tag Manager dataLayer
+        window.dataLayer = window.dataLayer || [];
+        var eventData = Object.assign({ event: eventName }, props);
+        window.dataLayer.push(eventData);
+
+        // Google Analytics gtag (fallback)
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', eventName, props);
+        }
+      }
+    }
+
+    // Track CTA button clicks
+    document.addEventListener('DOMContentLoaded', function() {
+      var ctaButtons = document.querySelectorAll('[data-track-cta]');
+      ctaButtons.forEach(function(button) {
+        button.addEventListener('click', function(e) {
+          var ctaType = button.getAttribute('data-track-cta');
+          var plan = button.getAttribute('data-plan');
+
+          trackEvent('pricing_cta_click', {
+            cta_type: ctaType,
+            plan: plan || undefined,
+            page: 'pricing'
+          });
+        });
+      });
+
+      // Track Learn More link clicks
+      var learnMoreLinks = document.querySelectorAll('[data-track-link]');
+      learnMoreLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          var linkType = link.getAttribute('data-track-link');
+          var plan = link.getAttribute('data-plan');
+
+          trackEvent('pricing_link_click', {
+            link_type: linkType,
+            plan: plan || undefined,
+            page: 'pricing'
+          });
+        });
+      });
+
+      // FAQ Accordion functionality
+      var accordionTriggers = document.querySelectorAll('.accordion-trigger');
+
+      accordionTriggers.forEach(function(trigger) {
+        trigger.addEventListener('click', function() {
+          var isOpen = trigger.getAttribute('aria-expanded') === 'true';
+          var contentId = trigger.getAttribute('aria-controls');
+          var content = document.getElementById(contentId || '');
+          var icon = trigger.querySelector('.accordion-icon');
+          var faqId = trigger.getAttribute('data-track-faq');
+
+          // Track FAQ open
+          if (!isOpen && faqId) {
+            trackEvent('pricing_faq_open', {
+              faq_id: faqId,
+              page: 'pricing'
+            });
+          }
+
+          // Close all other accordions
+          accordionTriggers.forEach(function(otherTrigger) {
+            if (otherTrigger !== trigger) {
+              var otherContentId = otherTrigger.getAttribute('aria-controls');
+              var otherContent = document.getElementById(otherContentId || '');
+              var otherIcon = otherTrigger.querySelector('.accordion-icon');
+
+              otherTrigger.setAttribute('aria-expanded', 'false');
+              if (otherContent) {
+                otherContent.setAttribute('aria-hidden', 'true');
+                otherContent.style.maxHeight = '0';
+              }
+              if (otherIcon) {
+                otherIcon.classList.remove('rotate-180');
+              }
+            }
+          });
+
+          // Toggle current accordion
+          trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+          if (content) {
+            content.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
+
+            if (isOpen) {
+              content.style.maxHeight = '0';
+              if (icon) {
+                icon.classList.remove('rotate-180');
+              }
+            } else {
+              content.style.maxHeight = content.scrollHeight + 'px';
+              if (icon) {
+                icon.classList.add('rotate-180');
+              }
+            }
+          }
+        });
+      });
+    });
+  </script>
+</MainLayout>

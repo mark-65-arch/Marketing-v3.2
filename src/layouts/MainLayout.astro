@@ -30,7 +30,7 @@ const {
   title,
   description,
   canonicalURL,
-  ogImage = `${import.meta.env.SITE}/og-image.jpg`,
+  ogImage = `${import.meta.env.SITE}${import.meta.env.BASE_URL}og-image-placeholder.svg`,
   ogType = 'website',
   noindex = false,
   keywords = DEFAULT_SEO.keywords,
@@ -121,7 +121,7 @@ const viewportConfig = pageType === 'contact'
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
     <!-- 🎨 Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-iw3OoTErCYJJB9mCa8LNS2hbsQ7M3C0EpIsO/H5+EGAkPGc6rk+V8i04oW/K5xq0" crossorigin="anonymous" />
 
     <!-- 🎯 Page-specific structured data -->
     {allStructuredData.map(schema => (

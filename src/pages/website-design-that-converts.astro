@@ -23,7 +23,7 @@ const canonicalURL = `${import.meta.env.SITE}/website-design-that-converts`;
 const breadcrumbs: BreadcrumbItem[] = [
   { name: 'Home', url: import.meta.env.BASE_URL },
   { name: 'Services', url: `${import.meta.env.BASE_URL}#services` },
-  { name: 'Website Design That Converts', url: canonicalURL }
+  { name: 'Website Design That Converts', url: `${import.meta.env.BASE_URL}website-design-that-converts` }
 ];
 
 // 📊 Service Schema Data
@@ -104,7 +104,6 @@ const faqSchema = generateFAQSchema(faqs);
           size="lg"
           href={`${import.meta.env.BASE_URL}contact#contact-options`}
           class="mb-6"
-          data-track-cta="hero-cta"
         >
           👉 Book a Discovery Call
         </Button>
@@ -431,7 +430,6 @@ const faqSchema = generateFAQSchema(faqs);
               size="lg"
               href={`${import.meta.env.BASE_URL}contact#contact-options`}
               fullWidth
-              data-track-cta="pricing-cta-growth"
             >
               Book a Discovery Call
             </Button>
@@ -489,7 +487,6 @@ const faqSchema = generateFAQSchema(faqs);
               size="lg"
               href={`${import.meta.env.BASE_URL}contact#contact-options`}
               fullWidth
-              data-track-cta="pricing-cta-pro"
             >
               Book a Discovery Call
             </Button>
@@ -553,7 +550,6 @@ const faqSchema = generateFAQSchema(faqs);
           variant="secondary"
           size="lg"
           href={`${import.meta.env.BASE_URL}contact#contact-options`}
-          data-track-cta="final-cta-primary"
         >
           👉 Book a Discovery Call
         </Button>
@@ -563,7 +559,6 @@ const faqSchema = generateFAQSchema(faqs);
           size="lg"
           href={`${import.meta.env.BASE_URL}contact#contact-form`}
           class="border-white text-white hover:bg-white hover:text-blue-900"
-          data-track-cta="final-cta-secondary"
         >
           📩 Request a Free Quote
         </Button>

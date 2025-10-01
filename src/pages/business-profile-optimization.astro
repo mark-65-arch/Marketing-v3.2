@@ -23,7 +23,7 @@ const canonicalURL = `${import.meta.env.SITE}/business-profile-optimization`;
 const breadcrumbs: BreadcrumbItem[] = [
   { name: 'Home', url: import.meta.env.BASE_URL },
   { name: 'Services', url: `${import.meta.env.BASE_URL}#services` },
-  { name: 'Business Profile Optimization', url: canonicalURL }
+  { name: 'Business Profile Optimization', url: `${import.meta.env.BASE_URL}business-profile-optimization` }
 ];
 
 // 📊 Service Schema Data
@@ -102,7 +102,6 @@ const faqSchema = generateFAQSchema(faqs);
           size="lg"
           href={`${import.meta.env.BASE_URL}contact#contact-options`}
           class="mb-6"
-          data-track-cta="hero-cta"
         >
           👉 Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
         </Button>
@@ -391,7 +390,6 @@ const faqSchema = generateFAQSchema(faqs);
               size="lg"
               href={`${import.meta.env.BASE_URL}contact#contact-options`}
               fullWidth
-              data-track-cta="pricing-cta"
             >
               Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold ml-1">FREE</span> Discovery Call
             </Button>
@@ -455,7 +453,6 @@ const faqSchema = generateFAQSchema(faqs);
           variant="secondary"
           size="lg"
           href={`${import.meta.env.BASE_URL}contact#contact-options`}
-          data-track-cta="final-cta-primary"
         >
           👉 Schedule a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold ml-1">FREE</span> Discovery Call
         </Button>
@@ -465,7 +462,6 @@ const faqSchema = generateFAQSchema(faqs);
           size="lg"
           href={`${import.meta.env.BASE_URL}contact#contact-form`}
           class="border-white text-white hover:bg-white hover:text-blue-900"
-          data-track-cta="final-cta-secondary"
         >
           📩 Request a Quote
         </Button>

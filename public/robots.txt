@@ -1,0 +1,10 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://mark-65-arch.github.io/Marketing-v3.2/sitemap-index.xml
+
+# Disallow admin/temp paths (if any exist in future)
+# User-agent: *
+# Disallow: /admin/

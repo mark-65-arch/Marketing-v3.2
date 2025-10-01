@@ -128,31 +128,29 @@ const viewportConfig = pageType === 'contact'
       <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     ))}
 
-    <!-- 📈 Future: Page-specific analytics events -->
-    <script type="application/ld+json">
-    {
+    <!-- 📈 WebPage structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "{fullTitle}",
-      "description": "{description}",
-      "url": "{canonicalURL || Astro.url.toString()}",
+      "name": fullTitle,
+      "description": description,
+      "url": canonicalURL || Astro.url.toString(),
       "isPartOf": {
         "@type": "WebSite",
-        "name": "{BUSINESS_INFO.name}",
-        "url": "{BUSINESS_INFO.url}"
+        "name": BUSINESS_INFO.name,
+        "url": BUSINESS_INFO.url
       },
       "about": {
-        "@id": "{BUSINESS_INFO.url}#business"
+        "@id": `${BUSINESS_INFO.url}#business`
       }
-    }
+    })} />
     </script>
 
     <!-- 🔍 Additional page-specific optimizations -->
     {pageType === 'home' && (
       <>
         <!-- Home page specific meta -->
-        <meta name="google-site-verification" content="" />
-        <meta name="msvalidate.01" content="" />
+        <!-- Add Google/Bing verification tokens when ready -->
         <link rel="alternate" type="application/rss+xml" title="Marketing AI Houston Blog" href="/rss.xml" />
       </>
     )}
@@ -203,38 +201,15 @@ const viewportConfig = pageType === 'contact'
   <!-- 🦶 Site Footer -->
   <Footer showNewsletter={showNewsletter} />
 
-  <!-- 🎯 Page-specific analytics and interactions -->
+  <!-- Page-specific interactions -->
   <script define:vars={{ pageType, currentPath }} type="module">
-    // 📈 Track page view for analytics
     document.addEventListener('DOMContentLoaded', () => {
-      // Future: Google Analytics 4 / privacy-compliant tracking
-      console.log(`Page loaded: ${pageType} - ${currentPath}`);
-
-      // 🎯 Track CTA button clicks
-      const ctaButtons = document.querySelectorAll('[data-track-cta]');
-      ctaButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-          const ctaName = e.target.getAttribute('data-track-cta');
-          console.log(`CTA clicked: ${ctaName}`);
-          // Future: Send to analytics
-        });
-      });
-
-      // 📞 Track phone number clicks
-      const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
-      phoneLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          console.log('Phone number clicked');
-          // Future: Send to analytics
-        });
-      });
-
       // ✉️ Track email clicks
       const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
       emailLinks.forEach(link => {
         link.addEventListener('click', () => {
-          console.log('Email link clicked');
           // Future: Send to analytics
+          // e.g., gtag('event', 'email_click', { page: currentPath });
         });
       });
     });

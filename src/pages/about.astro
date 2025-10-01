@@ -53,7 +53,6 @@ const breadcrumbs = [
       <a
         href={`${import.meta.env.BASE_URL}contact#contact-options`}
         class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg mb-6"
-        data-track-cta="about-hero-cta"
       >
         👉 Book a Discovery Call
       </a>
@@ -391,7 +390,6 @@ const breadcrumbs = [
         <a
           href={`${import.meta.env.BASE_URL}contact#contact-options`}
           class="bg-white text-blue-900 font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
-          data-track-cta="about-final-cta-discovery"
         >
           👉 Book a Discovery Call
         </a>
@@ -399,7 +397,6 @@ const breadcrumbs = [
         <a
           href={`${import.meta.env.BASE_URL}contact#contact-form`}
           class="border-2 border-white text-white hover:bg-white hover:text-blue-900 font-semibold py-4 px-12 rounded-full transition-all duration-300"
-          data-track-cta="about-final-cta-quote"
         >
           📩 Request a Free Quote
         </a>
@@ -411,36 +408,3 @@ const breadcrumbs = [
     </div>
   </section>
 </MainLayout>
-
-<script>
-  // Analytics tracking for About page CTAs
-  document.addEventListener('DOMContentLoaded', () => {
-    function trackEvent(eventName: string, props: Record<string, any> = {}) {
-      console.log('📊 About Page Analytics:', eventName, props);
-
-      if (typeof window !== 'undefined') {
-        (window as any).dataLayer = (window as any).dataLayer || [];
-        (window as any).dataLayer.push({
-          event: eventName,
-          ...props
-        });
-      }
-
-      if (typeof (window as any).gtag === 'function') {
-        (window as any).gtag('event', eventName, props);
-      }
-    }
-
-    // Track CTA clicks
-    const ctaButtons = document.querySelectorAll('[data-track-cta]');
-    ctaButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const ctaType = button.getAttribute('data-track-cta');
-        trackEvent('about_cta_click', {
-          cta_type: ctaType,
-          page: 'about'
-        });
-      });
-    });
-  });
-</script>

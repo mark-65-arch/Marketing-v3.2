@@ -44,6 +44,14 @@ const preloadResources = [
   <meta name="description" content={description} />
   <link rel="canonical" href={currentCanonical} />
 
+  <!-- 🎨 Favicons -->
+  <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}favicon-96x96.png`} sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+  <link rel="shortcut icon" href={`${import.meta.env.BASE_URL}favicon.ico`} />
+  <link rel="apple-touch-icon" sizes="180x180" href={`${import.meta.env.BASE_URL}apple-touch-icon.png`} />
+  <meta name="apple-mobile-web-app-title" content="Marketing AI Houston" />
+  <link rel="manifest" href={`${import.meta.env.BASE_URL}site.webmanifest`} />
+
   <!-- 🚫 SEO: Robots directive -->
   {noindex && <meta name="robots" content="noindex, nofollow" />}
 

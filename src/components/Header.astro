@@ -35,10 +35,17 @@ const navItems = [
     <div class="flex justify-between items-center">
 
       <!-- 🏠 Brand Logo -->
+      <!-- Original icon (if you want to revert):
+      <div class="w-10 h-10 bg-gradient-to-br from-blue-900 to-blue-600 rounded-full flex items-center justify-center mr-3 shadow-md">
+        <i class="fas fa-robot text-white text-lg" aria-hidden="true"></i>
+      </div>
+      -->
       <div class="flex items-center" role="img" aria-label="Marketing AI Houston Logo">
-        <div class="w-10 h-10 bg-gradient-to-br from-blue-900 to-blue-600 rounded-full flex items-center justify-center mr-3 shadow-md">
-          <i class="fas fa-robot text-white text-lg" aria-hidden="true"></i>
-        </div>
+        <img
+          src={`${import.meta.env.BASE_URL}logo.png`}
+          alt="Marketing AI Houston - Houston skyline with AI tech elements"
+          class="w-20 h-20 mr-3"
+        />
         <span class="font-bold text-blue-900 text-lg">Marketing AI Houston</span>
       </div>
 

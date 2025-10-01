@@ -30,10 +30,10 @@ const navItems = [
             currentPath.includes('pro-website-growth') ||
             currentPath.includes('seo-growth'),
     dropdown: [
-      { href: `${import.meta.env.BASE_URL}business-profile-optimization`, label: 'Business Profile Optimization' },
-      { href: `${import.meta.env.BASE_URL}website-design-that-converts`, label: 'Website Design That Converts' },
-      { href: `${import.meta.env.BASE_URL}pro-website-growth-plan`, label: 'Website & Growth - Pro' },
-      { href: `${import.meta.env.BASE_URL}seo-growth-strategy`, label: 'SEO & Growth - Support' }
+      { href: `${import.meta.env.BASE_URL}business-profile-optimization`, label: 'Get Found on Google (Starter Plan)' },
+      { href: `${import.meta.env.BASE_URL}website-design-that-converts`, label: 'Build Your Website Foundation (Growth Plan)' },
+      { href: `${import.meta.env.BASE_URL}pro-website-growth-plan`, label: 'Expand Your Online Presence (Pro Plan)' },
+      { href: `${import.meta.env.BASE_URL}seo-growth-strategy`, label: 'Ongoing SEO & Optimization (Support Plan)' }
     ]
   },
   { href: `${import.meta.env.BASE_URL}pricing`, label: 'Pricing', active: currentPath.includes('pricing') },
@@ -61,7 +61,6 @@ const navItems = [
         href={import.meta.env.BASE_URL}
         class="flex items-center hover:opacity-80 transition-opacity"
         aria-label="Marketing AI Houston - Home"
-        data-track-nav="logo"
       >
         <div class="w-10 h-10 bg-gradient-to-br from-blue-900 to-blue-600 rounded-full flex items-center justify-center mr-3 shadow-md">
           <i class="fas fa-robot text-white text-lg" aria-hidden="true"></i>
@@ -82,7 +81,6 @@ const navItems = [
                 aria-expanded="false"
                 aria-haspopup="true"
                 type="button"
-                data-track-nav="services-dropdown"
               >
                 {item.label}
                 <i class="fas fa-chevron-down dropdown-chevron ml-1 text-xs" aria-hidden="true"></i>
@@ -95,8 +93,6 @@ const navItems = [
                     <a
                       href={dropdownItem.href}
                       class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 border-b border-gray-50 last:border-b-0"
-                      data-track-nav="service-link"
-                      data-service={dropdownItem.label}
                     >
                       {dropdownItem.label}
                     </a>
@@ -112,8 +108,6 @@ const navItems = [
                 item.active ? 'text-blue-600' : 'text-gray-700'
               }`}
               {...(item.active && { 'aria-current': 'page' })}
-              data-track-nav="nav-link"
-              data-page={item.label.toLowerCase()}
             >
               {item.label}
             </a>
@@ -129,8 +123,6 @@ const navItems = [
             href={primaryCtaHref}
             class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md focus:ring-4 focus:ring-blue-200 text-sm md:text-base"
             aria-label={primaryCtaLabel}
-            data-track-cta="nav-primary-cta"
-            data-cta-label={primaryCtaLabel}
           >
             <span class="hidden sm:inline">{primaryCtaLabel}</span>
             <span class="sm:hidden">Contact</span>
@@ -144,7 +136,6 @@ const navItems = [
           aria-expanded="false"
           aria-controls="global-nav-mobile-menu"
           aria-label="Toggle main menu"
-          data-menu-toggle="hamburger"
         >
           <i class="fas fa-bars text-xl" aria-hidden="true"></i>
         </button>
@@ -173,8 +164,6 @@ const navItems = [
                     href={dropdownItem.href}
                     class="block py-2 font-medium text-gray-600 hover:text-blue-600 focus:text-blue-600 transition-colors duration-200"
                     tabindex="-1"
-                    data-track-nav="mobile-service-link"
-                    data-service={dropdownItem.label}
                   >
                     {dropdownItem.label}
                   </a>
@@ -190,8 +179,6 @@ const navItems = [
               }`}
               {...(item.active && { 'aria-current': 'page' })}
               tabindex="-1"
-              data-track-nav="mobile-nav-link"
-              data-page={item.label.toLowerCase()}
             >
               {item.label}
             </a>
@@ -205,8 +192,6 @@ const navItems = [
             class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 text-center mt-4 shadow-md"
             tabindex="-1"
             aria-label={primaryCtaLabel}
-            data-track-cta="mobile-nav-cta"
-            data-cta-label={primaryCtaLabel}
           >
             📞 {primaryCtaLabel.includes('Discovery') ? (
               <>Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold ml-1">FREE</span> Discovery Call</>
@@ -230,8 +215,6 @@ const navItems = [
       href={primaryCtaHref}
       class="block w-full bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-3 px-6 rounded-full text-center shadow-md transition-all duration-300"
       aria-label="Get Started"
-      data-track-cta="sticky-mobile-cta"
-      data-cta-label="Get Started"
     >
       Get Started
     </a>
@@ -379,23 +362,15 @@ const navItems = [
           icon.className = newState ? 'fas fa-times text-xl' : 'fas fa-bars text-xl';
         }
 
-        // Track analytics event
-        if (newState) {
-          trackEvent('nav_menu_open', {
-            page: window.location.pathname
-          });
 
-          // Focus first menu item when opened
+        // Focus first menu item when opened
+        if (newState) {
           const focusableElements = getFocusableElements();
           if (focusableElements.length > 0) {
             setTimeout(() => {
               (focusableElements[0] as HTMLElement).focus();
             }, 100);
           }
-        } else {
-          trackEvent('nav_menu_close', {
-            page: window.location.pathname
-          });
         }
       };
 
@@ -549,61 +524,5 @@ const navItems = [
       });
     }
 
-    // 📊 Analytics Tracking
-    /**
-     * Track event helper function
-     * @param {string} eventName - Name of the event
-     * @param {object} props - Event properties
-     */
-    function trackEvent(eventName: string, props: Record<string, any> = {}) {
-      // Console log for development/debugging
-      console.log('📊 GlobalNav Analytics Event:', eventName, props);
-
-      // Push to dataLayer for Google Analytics / Tag Manager
-      if (typeof window !== 'undefined') {
-        (window as any).dataLayer = (window as any).dataLayer || [];
-        (window as any).dataLayer.push({
-          event: eventName,
-          ...props
-        });
-      }
-
-      // Alternative: Direct gtag call if using GA4 directly
-      if (typeof (window as any).gtag === 'function') {
-        (window as any).gtag('event', eventName, props);
-      }
-    }
-
-    // Track navigation link clicks
-    const navLinks = document.querySelectorAll('[data-track-nav]');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        const trackType = link.getAttribute('data-track-nav');
-        const page = link.getAttribute('data-page');
-        const service = link.getAttribute('data-service');
-
-        trackEvent('nav_link_click', {
-          link_type: trackType,
-          page: page || 'unknown',
-          service: service || undefined,
-          location: window.location.pathname
-        });
-      });
-    });
-
-    // Track CTA button clicks
-    const ctaButtons = document.querySelectorAll('[data-track-cta]');
-    ctaButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const ctaType = button.getAttribute('data-track-cta');
-        const ctaLabel = button.getAttribute('data-cta-label');
-
-        trackEvent('nav_cta_click', {
-          cta_type: ctaType,
-          label: ctaLabel || 'unknown',
-          page: window.location.pathname
-        });
-      });
-    });
   });
 </script>

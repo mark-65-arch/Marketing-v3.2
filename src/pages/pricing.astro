@@ -28,7 +28,7 @@ const pricingPlans = [
     ],
     bestFor: 'Businesses who need to show up on Google and start getting calls.',
     learnMoreUrl: `${import.meta.env.BASE_URL}business-profile-optimization`,
-    learnMoreLabel: 'Google Business Profile Optimization',
+    learnMoreLabel: 'Get Found on Google (Starter Plan)',
     ctaUrl: `${import.meta.env.BASE_URL}contact#contact-options`,
     ctaLabel: 'Book a FREE Discovery Call'
   },
@@ -50,7 +50,7 @@ const pricingPlans = [
     ],
     bestFor: 'Owners ready to turn their website into a steady source of customers.',
     learnMoreUrl: `${import.meta.env.BASE_URL}website-design-that-converts`,
-    learnMoreLabel: 'Websites That Convert — Growth',
+    learnMoreLabel: 'Build Your Website Foundation (Growth Plan)',
     ctaUrl: `${import.meta.env.BASE_URL}contact#contact-options`,
     ctaLabel: 'Book a FREE Discovery Call'
   },
@@ -73,7 +73,7 @@ const pricingPlans = [
     ],
     bestFor: 'Businesses ready to dominate their market and scale growth.',
     learnMoreUrl: `${import.meta.env.BASE_URL}pro-website-growth-plan`,
-    learnMoreLabel: 'Website & Growth — Pro',
+    learnMoreLabel: 'Expand Your Online Presence (Pro Plan)',
     ctaUrl: `${import.meta.env.BASE_URL}contact#contact-options`,
     ctaLabel: 'Book a FREE Discovery Call'
   }
@@ -169,7 +169,6 @@ const faqs = [
           href={`${import.meta.env.BASE_URL}contact#contact-options`}
           class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg mb-6"
           aria-label="Book a FREE Discovery Call"
-          data-track-cta="pricing-hero-cta"
         >
           👉 Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
         </a>
@@ -292,8 +291,6 @@ const faqs = [
                   plan.popular ? 'text-blue-200 hover:text-white' : 'text-blue-600 hover:text-blue-800'
                 }`}
                 aria-label={`Learn more about ${plan.name} plan`}
-                data-track-link="pricing-learn-more"
-                data-plan={plan.id}
               >
                 Learn more: {plan.learnMoreLabel} ›
               </a>
@@ -306,8 +303,6 @@ const faqs = [
                     : 'bg-blue-600 text-white hover:bg-blue-700'
                 }`}
                 aria-label={`${plan.ctaLabel} for ${plan.name} plan`}
-                data-track-cta="pricing-card-cta"
-                data-plan={plan.id}
               >
                 👉 {plan.ctaLabel}
               </a>
@@ -321,13 +316,11 @@ const faqs = [
         <a
           href={`${import.meta.env.BASE_URL}contact`}
           class="text-blue-600 hover:text-blue-800 hover:underline transition-colors font-medium"
-          data-track-link="pricing-custom"
         >Custom pricing</a>
         {' '}and{' '}
         <a
           href={`${import.meta.env.BASE_URL}seo-growth-strategy`}
           class="text-blue-600 hover:text-blue-800 hover:underline transition-colors font-medium"
-          data-track-link="pricing-monthly"
         >monthly packages</a>
         {' '}available upon request.
       </p>
@@ -520,7 +513,6 @@ const faqs = [
               class="accordion-trigger w-full text-left p-6 hover:bg-blue-50/30 focus:outline-none focus:ring-2 focus:ring-blue-300 flex justify-between items-center transition-colors"
               aria-expanded="false"
               aria-controls={`faq-${faq.id}`}
-              data-track-faq={faq.id}
             >
               <span class="font-bold text-blue-900 pr-4 text-base md:text-lg flex items-center">
                 <span class="mr-3 text-2xl">
@@ -557,7 +549,6 @@ const faqs = [
           href={`${import.meta.env.BASE_URL}contact#contact-options`}
           class="inline-block bg-white text-blue-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 w-full sm:w-auto"
           aria-label="Book a FREE Discovery Call"
-          data-track-cta="pricing-final-cta-discovery"
         >
           👉 Book a FREE Discovery Call
         </a>
@@ -566,7 +557,6 @@ const faqs = [
           href={`${import.meta.env.BASE_URL}contact#contact-form`}
           class="inline-block bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-800 border-2 border-white/30 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 w-full sm:w-auto"
           aria-label="Request a Custom Proposal"
-          data-track-cta="pricing-final-cta-proposal"
         >
           📩 Request a Custom Proposal
         </a>
@@ -574,75 +564,22 @@ const faqs = [
     </div>
   </section>
 
-  <!-- Analytics Script -->
-  <script is:inline>
-    // Track pricing page events
-    function trackEvent(eventName, props) {
-      props = props || {};
-      console.log('📊 Pricing Page Analytics:', eventName, props);
-
-      if (typeof window !== 'undefined') {
-        // Google Tag Manager dataLayer
-        window.dataLayer = window.dataLayer || [];
-        var eventData = Object.assign({ event: eventName }, props);
-        window.dataLayer.push(eventData);
-
-        // Google Analytics gtag (fallback)
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', eventName, props);
-        }
-      }
-    }
-
-    // Track CTA button clicks
+  <!-- FAQ Accordion Script -->
+  <script>
+    // Wait for DOM
     document.addEventListener('DOMContentLoaded', function() {
-      var ctaButtons = document.querySelectorAll('[data-track-cta]');
-      ctaButtons.forEach(function(button) {
-        button.addEventListener('click', function(e) {
-          var ctaType = button.getAttribute('data-track-cta');
-          var plan = button.getAttribute('data-plan');
-
-          trackEvent('pricing_cta_click', {
-            cta_type: ctaType,
-            plan: plan || undefined,
-            page: 'pricing'
-          });
-        });
-      });
-
-      // Track Learn More link clicks
-      var learnMoreLinks = document.querySelectorAll('[data-track-link]');
-      learnMoreLinks.forEach(function(link) {
-        link.addEventListener('click', function(e) {
-          var linkType = link.getAttribute('data-track-link');
-          var plan = link.getAttribute('data-plan');
-
-          trackEvent('pricing_link_click', {
-            link_type: linkType,
-            plan: plan || undefined,
-            page: 'pricing'
-          });
-        });
-      });
-
       // FAQ Accordion functionality
-      var accordionTriggers = document.querySelectorAll('.accordion-trigger');
+      const accordionTriggers = document.querySelectorAll('.accordion-trigger');
 
       accordionTriggers.forEach(function(trigger) {
         trigger.addEventListener('click', function() {
-          var isOpen = trigger.getAttribute('aria-expanded') === 'true';
-          var contentId = trigger.getAttribute('aria-controls');
-          var content = document.getElementById(contentId || '');
-          var icon = trigger.querySelector('.accordion-icon');
-          var faqId = trigger.getAttribute('data-track-faq');
+          const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+          const contentId = trigger.getAttribute('aria-controls');
+          const content = document.getElementById(contentId || '');
+          const icon = trigger.querySelector('.accordion-icon');
 
-          // Track FAQ open
-          if (!isOpen && faqId) {
-            trackEvent('pricing_faq_open', {
-              faq_id: faqId,
-              page: 'pricing'
-            });
-          }
+          // Update state FIRST
+          const newState = !isOpen;
 
           // Close all other accordions
           accordionTriggers.forEach(function(otherTrigger) {
@@ -663,19 +600,19 @@ const faqs = [
           });
 
           // Toggle current accordion
-          trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+          trigger.setAttribute('aria-expanded', newState ? 'true' : 'false');
           if (content) {
-            content.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
+            content.setAttribute('aria-hidden', newState ? 'false' : 'true');
 
-            if (isOpen) {
-              content.style.maxHeight = '0';
-              if (icon) {
-                icon.classList.remove('rotate-180');
-              }
-            } else {
+            if (newState) {
               content.style.maxHeight = content.scrollHeight + 'px';
               if (icon) {
                 icon.classList.add('rotate-180');
+              }
+            } else {
+              content.style.maxHeight = '0';
+              if (icon) {
+                icon.classList.remove('rotate-180');
               }
             }
           }

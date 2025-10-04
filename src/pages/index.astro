@@ -78,7 +78,12 @@ const breadcrumbs: BreadcrumbItem[] = [];
 
                         <!-- Plumber Image -->
                         <img src={`${import.meta.env.BASE_URL}Plumber.webp`}
-                             alt="Plumber using smartphone to find local services"
+                             alt="Houston plumber using smartphone to manage business calls and appointments - representing local businesses getting found online"
+                             width="780"
+                             height="780"
+                             fetchpriority="high"
+                             loading="eager"
+                             decoding="sync"
                              class="plumber-image w-full max-w-[780px] h-auto transform hover:scale-105 transition-all duration-700 relative">
 
                         <!-- Floating badge -->
@@ -896,91 +901,6 @@ const breadcrumbs: BreadcrumbItem[] = [];
             </p>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- Branding -->
-                <div>
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center mr-2">
-                            <i class="fas fa-robot text-white"></i>
-                        </div>
-                        <span class="font-bold">Marketing AI Houston</span>
-                    </div>
-                    <p class="text-gray-400 mb-4">AI-powered web design & SEO for Houston small businesses.</p>
-                    <a href={`${import.meta.env.BASE_URL}contact#contact-options`} class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300">
-                        Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
-                    </a>
-                </div>
-
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Solutions</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
-                        <li><a href={`${import.meta.env.BASE_URL}contact`} class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact Info -->
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-blue-600 mt-1 mr-3"></i>
-                            <span class="text-gray-400">Houston, TX</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-phone text-blue-600 mt-1 mr-3"></i>
-                            <a href="tel:+1234567890" class="text-gray-400 hover:text-white transition-colors">(123) 456-7890</a>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-envelope text-blue-600 mt-1 mr-3"></i>
-                            <a href="mailto:info@marketingaihouston.com" class="text-gray-400 hover:text-white transition-colors">info@marketingaihouston.com</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Our Commitments -->
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Our Commitments</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <div class="flex items-center">
-                            <i class="fab fa-google text-blue-600 mr-2"></i>
-                            <span class="text-gray-400">Google Business Profile</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-search text-blue-600 mr-2"></i>
-                            <span class="text-gray-400">SEO-friendly</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-mobile-alt text-blue-600 mr-2"></i>
-                            <span class="text-gray-400">Mobile-first</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-robot text-blue-600 mr-2"></i>
-                            <span class="text-gray-400">AI-ready</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 mt-4">Proudly serving Houston small businesses</p>
-                </div>
-            </div>
-
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
-                <p class="text-gray-400">© Marketing AI Houston. All rights reserved.</p>
-                <div class="mt-2">
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors mx-2">Privacy Policy</a>
-                    <span class="text-gray-600">|</span>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors mx-2">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <script>
         // Mobile menu toggle

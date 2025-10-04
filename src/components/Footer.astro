@@ -87,15 +87,19 @@ const trustSignals = [
 
     <!-- 📋 Main Footer Content -->
     <div class="py-12">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 lg:gap-16">
 
         <!-- 🏠 Brand & Contact -->
         <div class="md:col-span-1">
           <!-- Brand -->
           <div class="flex items-center mb-6" role="img" aria-label="Marketing AI Houston">
-            <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center mr-3">
-              <i class="fas fa-robot text-white" aria-hidden="true"></i>
-            </div>
+            <img
+              src={`${import.meta.env.BASE_URL}leaning-leaf.png`}
+              alt="Marketing AI Houston logo"
+              width="40"
+              height="40"
+              class="w-10 h-10 mr-3"
+            />
             <span class="font-bold text-lg">Marketing AI Houston</span>
           </div>
 
@@ -107,10 +111,10 @@ const trustSignals = [
           <!-- Primary CTA -->
           <a
             href={`${import.meta.env.BASE_URL}contact#contact-options`}
-            class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg focus:ring-4 focus:ring-blue-200"
+            class="inline-flex items-center justify-center gap-1 bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg focus:ring-4 focus:ring-blue-200 whitespace-nowrap"
             aria-label="Book a free discovery call"
           >
-            📞 Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold ml-1">FREE</span> Call
+            <span class="flex items-center gap-1">📞 Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Call</span>
           </a>
         </div>
 
@@ -138,11 +142,11 @@ const trustSignals = [
           <h3 class="text-lg font-bold mb-6">Contact Info</h3>
           <address class="not-italic space-y-3">
             <div class="flex items-start">
-              <i class="fas fa-map-marker-alt text-blue-400 mt-1 mr-3 text-sm" aria-hidden="true"></i>
+              <i class="fas fa-map-marker-alt text-blue-400 mt-1 mr-3 text-sm flex-shrink-0" aria-hidden="true"></i>
               <span class="text-gray-400">{contactInfo.address}</span>
             </div>
             <div class="flex items-start">
-              <i class="fas fa-phone text-blue-400 mt-1 mr-3 text-sm" aria-hidden="true"></i>
+              <i class="fas fa-phone text-blue-400 mt-1 mr-3 text-sm flex-shrink-0" aria-hidden="true"></i>
               <a
                 href={`tel:${contactInfo.phone.replace(/\D/g, '')}`}
                 class="text-gray-400 hover:text-white transition-colors duration-200"
@@ -152,17 +156,17 @@ const trustSignals = [
               </a>
             </div>
             <div class="flex items-start">
-              <i class="fas fa-envelope text-blue-400 mt-1 mr-3 text-sm" aria-hidden="true"></i>
+              <i class="fas fa-envelope text-blue-400 mt-1 mr-3 text-sm flex-shrink-0" aria-hidden="true"></i>
               <a
                 href={`mailto:${contactInfo.email}`}
-                class="text-gray-400 hover:text-white transition-colors duration-200"
+                class="text-gray-400 hover:text-white transition-colors duration-200 break-all text-sm"
                 aria-label={`Email us at ${contactInfo.email}`}
               >
                 {contactInfo.email}
               </a>
             </div>
             <div class="flex items-start">
-              <i class="fas fa-clock text-blue-400 mt-1 mr-3 text-sm" aria-hidden="true"></i>
+              <i class="fas fa-clock text-blue-400 mt-1 mr-3 text-sm flex-shrink-0" aria-hidden="true"></i>
               <span class="text-gray-400">{contactInfo.businessHours}</span>
             </div>
           </address>

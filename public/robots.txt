@@ -1,10 +1,12 @@
-# Allow all crawlers
+# ⚠️ DEVELOPMENT MODE: Block all crawlers while site is under construction
+# TODO: RE-ENABLE indexing before migrating to main domain!
 User-agent: *
-Allow: /
+Disallow: /
 
-# Sitemap location
-Sitemap: https://mark-65-arch.github.io/Marketing-v3.2/sitemap-index.xml
+# Sitemap location (commented out during development)
+# Sitemap: https://mark-65-arch.github.io/Marketing-v3.2/sitemap-index.xml
 
-# Disallow admin/temp paths (if any exist in future)
+# When ready for production, use this configuration instead:
 # User-agent: *
-# Disallow: /admin/
+# Allow: /
+# Sitemap: https://yourmaindomain.com/sitemap-index.xml

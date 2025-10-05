@@ -1,6 +1,6 @@
 {
   "name": "Marketing AI Houston",
-  "short_name": "MAI Houston",
+  "short_name": "Marketing AI",
   "icons": [
     {
       "src": "/Marketing-v3.2/web-app-manifest-192x192.png",
@@ -16,6 +16,6 @@
     }
   ],
   "theme_color": "#0A2540",
-  "background_color": "#0A2540",
+  "background_color": "#ffffff",
   "display": "standalone"
 }

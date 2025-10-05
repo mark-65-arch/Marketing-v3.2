@@ -151,30 +151,21 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <div class="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-teal-600 rounded-tl-3xl opacity-30"></div>
                     <div class="absolute bottom-0 right-0 w-20 h-20 border-b-4 border-r-4 border-blue-600 rounded-br-3xl opacity-30"></div>
 
-                    <!-- Google Form - Direct Link (iframe blocked by security policies) -->
-                    <div class="w-full max-w-3xl mx-auto text-center py-16">
-                        <div class="mb-8">
-                            <div class="text-6xl mb-6">📝</div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Ready to Fill Out the Form?</h3>
-                            <p class="text-gray-700 mb-8 max-w-xl mx-auto">
-                                Click the button below to open our secure contact form in a new tab. It only takes 2 minutes to complete.
-                            </p>
-                        </div>
-
-                        <a
-                            href="https://docs.google.com/forms/d/e/1FAIpQLSfUTmSL4dEVHL1OLBZncgvPgU_S6vH8_GLOM4KlV1VohMKKow/viewform"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg focus:ring-4 focus:ring-blue-200"
+                    <!-- Google Form Embedded -->
+                    <div class="w-full mx-auto">
+                        <iframe
+                            id="google-form-iframe"
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSfUTmSL4dEVHL1OLBZncgvPgU_S6vH8_GLOM4KlV1VohMKKow/viewform?embedded=true"
+                            width="100%"
+                            height="2349"
+                            frameborder="0"
+                            marginheight="0"
+                            marginwidth="0"
+                            class="w-full rounded-lg"
+                            title="Contact Form"
                         >
-                            📝 Open Contact Form
-                            <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-                        </a>
-
-                        <p class="mt-6 text-sm text-gray-600">
-                            <i class="fas fa-lock text-teal-600 mr-1"></i>
-                            Secure form powered by Google
-                        </p>
+                            Loading…
+                        </iframe>
                     </div>
                 </div>
             </div>

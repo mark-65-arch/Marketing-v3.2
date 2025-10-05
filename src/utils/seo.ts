@@ -40,8 +40,8 @@ export const BUSINESS_INFO = {
   description: 'AI-powered web design & SEO for Houston small businesses',
   url: 'https://mark-65-arch.github.io/Marketing-v3.2',
   logo: 'https://mark-65-arch.github.io/Marketing-v3.2/logo.png',
-  phone: '+1-234-567-8890',
-  email: 'info@marketingaihouston.com',
+  phone: '+1-281-544-0572',
+  email: 'team@marketingaihouston.com',
   address: {
     streetAddress: '',
     addressLocality: 'Houston',

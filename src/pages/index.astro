@@ -668,24 +668,29 @@ const breadcrumbs: BreadcrumbItem[] = [];
             </div>
 
             <!-- Custom Pricing & Monthly Packages Line -->
-            <p class="text-center mt-12 text-sm text-gray-600 max-w-3xl mx-auto">
-                <a
-                    href={`${import.meta.env.BASE_URL}pricing`}
-                    class="text-blue-600 hover:text-blue-800 hover:underline transition-colors"
-                    aria-label="View custom pricing options"
-                >
-                    Custom pricing
-                </a>
-                and
-                <a
-                    href={`${import.meta.env.BASE_URL}seo-growth-strategy`}
-                    class="text-blue-600 hover:text-blue-800 hover:underline transition-colors"
-                    aria-label="Explore monthly SEO packages"
-                >
-                    monthly packages
-                </a>
-                available upon request.
-            </p>
+            <div class="text-center mt-12 max-w-3xl mx-auto">
+                <div class="inline-flex items-center bg-gradient-to-r from-blue-50 to-teal-50 border-2 border-blue-200 rounded-full px-8 py-4 shadow-md hover:shadow-lg transition-all duration-300">
+                    <i class="fas fa-info-circle text-blue-600 mr-3 text-lg"></i>
+                    <p class="text-base font-semibold text-gray-800">
+                        <a
+                            href={`${import.meta.env.BASE_URL}pricing`}
+                            class="text-blue-600 hover:text-blue-800 transition-colors font-bold"
+                            aria-label="View custom pricing options"
+                        >
+                            Custom pricing
+                        </a>
+                        <span class="mx-2">and</span>
+                        <a
+                            href={`${import.meta.env.BASE_URL}seo-growth-strategy`}
+                            class="text-blue-600 hover:text-blue-800 transition-colors font-bold"
+                            aria-label="Explore monthly SEO packages"
+                        >
+                            monthly packages
+                        </a>
+                        <span class="ml-2">available upon request</span>
+                    </p>
+                </div>
+            </div>
 
             <!-- Our Commitments Section -->
             <div class="mt-10 text-center">

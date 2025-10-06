@@ -3,6 +3,7 @@
 // Purpose: Consistent HTML structure, SEO optimization, and performance best practices
 // Used by: All pages across the site
 import '../styles/global.css';
+import CookieBanner from '../components/CookieBanner.astro';
 
 interface Props {
   title: string;
@@ -263,6 +264,9 @@ const preloadResources = [
   <main id="main-content">
     <slot />
   </main>
+
+  <!-- 🍪 Cookie Consent Banner -->
+  <CookieBanner />
 
   <!-- ⚡ Performance: Deferred JavaScript for non-critical functionality -->
   <script>

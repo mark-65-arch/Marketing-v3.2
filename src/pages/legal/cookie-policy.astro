@@ -1,0 +1,261 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const BASE_URL = import.meta.env.BASE_URL;
+const currentURL = `${BASE_URL}legal/cookie-policy`;
+
+const breadcrumbs = [
+  { name: 'Home', url: BASE_URL },
+  { name: 'Legal', url: `${BASE_URL}legal/` },
+  { name: 'Cookie Policy', url: currentURL }
+];
+---
+
+<MainLayout
+  title="Cookie Policy | Marketing AI Houston"
+  description="Understand how Marketing AI Houston uses cookies and tracking technologies. Learn about cookie types, purposes, duration, and how to manage your preferences."
+  canonicalURL={currentURL}
+  breadcrumbs={breadcrumbs}
+>
+  <main class="min-h-screen bg-gradient-to-b from-ocean-50 to-white py-12 sm:py-16 lg:py-20">
+    <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8 lg:p-12">
+        <header class="mb-8 border-b border-ocean-100 pb-6">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-ocean-900 mb-4">
+            Cookie Policy
+          </h1>
+          <p class="text-sm text-ocean-600">
+            <time datetime="2025-10-06">Last updated: October 6, 2025</time>
+          </p>
+        </header>
+
+        <div class="prose prose-ocean prose-lg max-w-none">
+          <p class="lead">This Cookie Policy explains what cookies and similar technologies Marketing AI Houston uses on marketingaihouston.com, why we use them, and how you can control them. For broader privacy details, see our <a href={`${BASE_URL}legal/privacy-policy`}>Privacy Policy</a>.</p>
+
+          <div class="bg-blue-50 border-l-4 border-blue-600 p-4 mb-6">
+            <p class="text-sm text-blue-900">
+              <strong>Important:</strong> Analytics cookies are enabled by default to help us improve our website. You can opt out at any time through the Cookie Settings link in our footer or by clicking "Reject non-essential cookies" in the cookie banner.
+            </p>
+          </div>
+
+          <section>
+            <h2>1. What are cookies</h2>
+            <p>Cookies are small text files placed on your device by your browser when you visit a website. They help the site remember your preferences and provide analytics and functionality.</p>
+          </section>
+
+          <section>
+            <h2>2. Cookies we use (specific types, purpose, duration, opt-out)</h2>
+
+            <h3>Strictly necessary cookies</h3>
+            <dl>
+              <dt class="font-semibold text-ocean-900">Purpose:</dt>
+              <dd class="mb-2">Enable core site functionality such as secure form submissions and basic navigation.</dd>
+
+              <dt class="font-semibold text-ocean-900">Example names:</dt>
+              <dd class="mb-2">session, csrftoken (implementation-specific).</dd>
+
+              <dt class="font-semibold text-ocean-900">Duration:</dt>
+              <dd class="mb-2">session or up to 1 year for persistent session cookies.</dd>
+
+              <dt class="font-semibold text-ocean-900">Opt-out:</dt>
+              <dd class="mb-4">Not available because these cookies are essential.</dd>
+            </dl>
+
+            <h3>Performance and analytics cookies (Google Analytics 4) - Enabled by Default</h3>
+            <dl>
+              <dt class="font-semibold text-ocean-900">Purpose:</dt>
+              <dd class="mb-2">Collect anonymous or pseudonymous information about site usage to help us improve performance and user experience. <strong>These cookies are enabled by default</strong> under our legitimate interest to understand and improve our website.</dd>
+
+              <dt class="font-semibold text-ocean-900">Example names:</dt>
+              <dd class="mb-2">_ga, _gid, _ga&lt;container-id&gt;.</dd>
+
+              <dt class="font-semibold text-ocean-900">Duration:</dt>
+              <dd class="mb-2">_ga = 24 months; _gid = 24 hours; other GA4 identifiers up to 24 months.</dd>
+
+              <dt class="font-semibold text-ocean-900">Default status:</dt>
+              <dd class="mb-2"><strong>Enabled by default.</strong> These cookies start working when you first visit our site.</dd>
+
+              <dt class="font-semibold text-ocean-900">Opt-out:</dt>
+              <dd class="mb-4">Click "Cookie Settings" in the footer and uncheck "Analytics Cookies", click "Reject non-essential cookies" in the cookie banner, block cookies in your browser, or use Google's opt-out tools. Once you opt out, analytics tracking will stop immediately.</dd>
+            </dl>
+
+            <h3>Functional cookies</h3>
+            <dl>
+              <dt class="font-semibold text-ocean-900">Purpose:</dt>
+              <dd class="mb-2">Remember user choices like cookie preferences or language.</dd>
+
+              <dt class="font-semibold text-ocean-900">Example names:</dt>
+              <dd class="mb-2">cookie_consent, preference.</dd>
+
+              <dt class="font-semibold text-ocean-900">Duration:</dt>
+              <dd class="mb-2">1 year.</dd>
+
+              <dt class="font-semibold text-ocean-900">Opt-out:</dt>
+              <dd class="mb-4">You can reject these via the cookie preference center; rejecting may reduce certain conveniences.</dd>
+            </dl>
+
+            <h3>Marketing and advertising cookies</h3>
+            <dl>
+              <dt class="font-semibold text-ocean-900">Purpose:</dt>
+              <dd class="mb-2">Deliver relevant marketing and measure campaign effectiveness (third-party networks may set these).</dd>
+
+              <dt class="font-semibold text-ocean-900">Example names:</dt>
+              <dd class="mb-2">_gid (ad networks), IDE, _gcl_au (Google Ads).</dd>
+
+              <dt class="font-semibold text-ocean-900">Duration:</dt>
+              <dd class="mb-2">90 days to 2 years depending on the vendor; typical duration: 1 year.</dd>
+
+              <dt class="font-semibold text-ocean-900">Opt-out:</dt>
+              <dd class="mb-4">Use the cookie preference center, vendor opt-out pages (for example, Google Ads Settings), or browser/OS privacy controls.</dd>
+            </dl>
+          </section>
+
+          <section>
+            <h2>3. Third-party cookies</h2>
+            <p>Third-party services used on our site (analytics, embeds, marketing platforms) may set their own cookies. These cookies are governed by the third parties' privacy and cookie policies. Examples of third parties we may use: Google (Analytics, Ads), Stripe (payments, for certain checkout flows), Cloudflare (security), and SendGrid (email tracking for marketing emails). Review those vendors' policies for vendor-specific opt-out mechanisms.</p>
+          </section>
+
+          <section>
+            <h2>4. How to control cookies</h2>
+            <ul>
+              <li>Use your browser settings to block or delete cookies (Chrome, Firefox, Edge, Safari provide controls).</li>
+              <li>Use the cookie preference center on our site (if available) to accept or reject non-essential cookies.</li>
+              <li>Use vendor opt-out tools (for example, Google Ads Settings) or browser privacy extensions.</li>
+            </ul>
+            <p><strong>Note:</strong> Blocking cookies may affect site functionality and some features may not work as expected.</p>
+          </section>
+
+          <section>
+            <h2>5. Cookie table (quick reference)</h2>
+            <div class="overflow-x-auto">
+              <table class="min-w-full border-collapse border border-ocean-200 my-6">
+                <thead class="bg-ocean-50">
+                  <tr>
+                    <th class="border border-ocean-200 px-4 py-2 text-left font-semibold text-ocean-900">Type</th>
+                    <th class="border border-ocean-200 px-4 py-2 text-left font-semibold text-ocean-900">Purpose</th>
+                    <th class="border border-ocean-200 px-4 py-2 text-left font-semibold text-ocean-900">Duration</th>
+                    <th class="border border-ocean-200 px-4 py-2 text-left font-semibold text-ocean-900">Opt-out</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="border border-ocean-200 px-4 py-2">Strictly necessary</td>
+                    <td class="border border-ocean-200 px-4 py-2">Site functionality</td>
+                    <td class="border border-ocean-200 px-4 py-2">Session or 1 year</td>
+                    <td class="border border-ocean-200 px-4 py-2">No</td>
+                  </tr>
+                  <tr class="bg-blue-50">
+                    <td class="border border-ocean-200 px-4 py-2"><strong>Analytics (Google Analytics 4)</strong><br><span class="text-xs bg-blue-600 text-white px-2 py-0.5 rounded">Enabled by Default</span></td>
+                    <td class="border border-ocean-200 px-4 py-2">Usage and improvements</td>
+                    <td class="border border-ocean-200 px-4 py-2">24 months</td>
+                    <td class="border border-ocean-200 px-4 py-2">Yes (opt-out available)</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-ocean-200 px-4 py-2">Functional</td>
+                    <td class="border border-ocean-200 px-4 py-2">Preferences</td>
+                    <td class="border border-ocean-200 px-4 py-2">12 months</td>
+                    <td class="border border-ocean-200 px-4 py-2">Yes</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-ocean-200 px-4 py-2">Marketing</td>
+                    <td class="border border-ocean-200 px-4 py-2">Advertising personalization</td>
+                    <td class="border border-ocean-200 px-4 py-2">90 days–24 months (typical: 12 months)</td>
+                    <td class="border border-ocean-200 px-4 py-2">Yes</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2>6. Changes to cookie use</h2>
+            <p>We may update the cookies we use as services and tools change. We will update this policy and the "Last updated" date when we make material changes.</p>
+          </section>
+
+          <section>
+            <h2>7. Contact</h2>
+            <p>For questions about cookies or to request cookie-related privacy actions, contact:</p>
+            <address class="not-italic">
+              <strong>Marketing AI Houston</strong><br>
+              Email: <a href="mailto:team@marketingaihouston.com">team@marketingaihouston.com</a>
+            </address>
+          </section>
+        </div>
+
+        <footer class="mt-12 pt-6 border-t border-ocean-100">
+          <nav class="flex flex-wrap gap-4 text-sm text-ocean-600">
+            <a href={`${BASE_URL}legal/terms-of-service`} class="hover:text-ocean-800 underline">Terms of Service</a>
+            <a href={`${BASE_URL}legal/privacy-policy`} class="hover:text-ocean-800 underline">Privacy Policy</a>
+            <a href={`${BASE_URL}legal/accessibility-statement`} class="hover:text-ocean-800 underline">Accessibility Statement</a>
+            <a href={`${BASE_URL}legal/copyright-notice`} class="hover:text-ocean-800 underline">Copyright Notice</a>
+          </nav>
+        </footer>
+      </div>
+    </article>
+  </main>
+</MainLayout>
+
+<style>
+  .prose {
+    color: #075985;
+  }
+
+  .prose h2 {
+    color: #0c4a6e;
+    font-weight: 700;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    font-size: 1.5em;
+  }
+
+  .prose h3 {
+    color: #0c4a6e;
+    font-weight: 600;
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+    font-size: 1.25em;
+  }
+
+  .prose p {
+    margin-bottom: 1em;
+    line-height: 1.75;
+  }
+
+  .prose .lead {
+    font-size: 1.125em;
+    color: #0369a1;
+    margin-bottom: 1.5em;
+  }
+
+  .prose a {
+    color: #0284c7;
+    text-decoration: underline;
+  }
+
+  .prose a:hover {
+    color: #075985;
+  }
+
+  .prose dl {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  .prose ul {
+    list-style-type: disc;
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+  }
+
+  .prose li {
+    margin-bottom: 0.5em;
+  }
+
+  .prose section {
+    margin-bottom: 2em;
+  }
+
+  .prose table {
+    font-size: 0.875rem;
+  }
+</style>

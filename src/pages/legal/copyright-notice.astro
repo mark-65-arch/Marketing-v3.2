@@ -1,0 +1,169 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const BASE_URL = import.meta.env.BASE_URL;
+const currentURL = `${BASE_URL}legal/copyright-notice`;
+
+const breadcrumbs = [
+  { name: 'Home', url: BASE_URL },
+  { name: 'Legal', url: `${BASE_URL}legal/` },
+  { name: 'Copyright Notice', url: currentURL }
+];
+---
+
+<MainLayout
+  title="Copyright Notice | Marketing AI Houston"
+  description="Copyright and intellectual property information for Marketing AI Houston. Learn about content ownership, permitted uses, and DMCA takedown procedures."
+  canonicalURL={currentURL}
+  breadcrumbs={breadcrumbs}
+>
+  <main class="min-h-screen bg-gradient-to-b from-ocean-50 to-white py-12 sm:py-16 lg:py-20">
+    <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8 lg:p-12">
+        <header class="mb-8 border-b border-ocean-100 pb-6">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-ocean-900 mb-4">
+            Copyright Notice
+          </h1>
+          <p class="text-sm text-ocean-600">
+            <time datetime="2025-10-06">Last updated: October 6, 2025</time>
+          </p>
+        </header>
+
+        <div class="prose prose-ocean prose-lg max-w-none">
+          <p class="lead">All content on the Marketing AI Houston website, including text, graphics, logos, icons, images, audio clips, videos, and software (collectively "Content"), is protected by copyright and other intellectual property laws and is the property of Marketing AI Houston or its licensors unless otherwise noted.</p>
+
+          <section>
+            <h2>Ownership and Rights</h2>
+            <dl>
+              <dt class="font-semibold text-ocean-900">Owner:</dt>
+              <dd class="mb-4">Marketing AI Houston owns or controls the copyright in the site Content unless an explicit notice states otherwise.</dd>
+
+              <dt class="font-semibold text-ocean-900">Reserved rights:</dt>
+              <dd class="mb-4">All rights not expressly granted are reserved. You may not reproduce, distribute, publicly display, modify, create derivative works from, or otherwise exploit the Content without our prior written permission.</dd>
+            </dl>
+          </section>
+
+          <section>
+            <h2>Permitted Uses</h2>
+            <p>You may view, download, and print Content from the Site for your personal, non-commercial use only, provided you retain all copyright and other proprietary notices and do not modify the Content.</p>
+            <p>To request permission for any reuse, commercial use, or modification of Content, contact us at <a href="mailto:team@marketingaihouston.com">team@marketingaihouston.com</a> with subject line "Copyright Permission Request" and include the Content you wish to use and the proposed use.</p>
+          </section>
+
+          <section>
+            <h2>Third-Party Content and Licenses</h2>
+            <p>Some Content on the Site is licensed from third parties (including stock images, icons, fonts, and plugins) and remains subject to those third-party license terms. It is your responsibility to confirm any usage rights for third-party Content before reuse.</p>
+            <p>Where applicable, we provide attribution or licensing information alongside the Content or upon request.</p>
+          </section>
+
+          <section>
+            <h2>DMCA and Takedown Policy</h2>
+            <p>If you believe that your copyrighted work has been posted on our Site in a way that constitutes copyright infringement, please notify us immediately by sending a written notice to <a href="mailto:team@marketingaihouston.com">team@marketingaihouston.com</a> with the subject line "DMCA Takedown Notice" and include all of the following information:</p>
+            <ul>
+              <li>A physical or electronic signature of the copyright owner or a person authorized to act on their behalf.</li>
+              <li>Identification of the copyrighted work claimed to have been infringed.</li>
+              <li>Identification of the material claimed to be infringing and sufficient information to locate it on the Site (for example, the specific URL).</li>
+              <li>Your contact information (address, telephone number, and email address).</li>
+              <li>A statement that you have a good-faith belief that the use is not authorized by the copyright owner, its agent, or the law.</li>
+              <li>A statement, under penalty of perjury, that the information in the notice is accurate and that you are the copyright owner or authorized to act on the owner's behalf.</li>
+            </ul>
+            <p>We will respond to proper notices and may remove or disable access to the allegedly infringing material as required by applicable law.</p>
+          </section>
+
+          <section>
+            <h2>Corrections and Attribution Requests</h2>
+            <p>If you believe Content on the Site contains incorrect attribution or requires correction, email <a href="mailto:team@marketingaihouston.com">team@marketingaihouston.com</a> with the subject line "Copyright Correction Request" and provide details about the Content and the requested correction.</p>
+          </section>
+
+          <section>
+            <h2>Fair Use and Permissions</h2>
+            <p>Nothing in this Copyright Notice is intended to limit rights you may have under applicable law, including fair use or fair dealing exceptions. If you are unsure whether your intended use is permitted, contact us for permission or seek legal advice.</p>
+          </section>
+
+          <section>
+            <h2>Contact</h2>
+            <p>For all copyright, licensing, and DMCA notices, contact:</p>
+            <address class="not-italic">
+              <strong>Marketing AI Houston</strong><br>
+              Email: <a href="mailto:team@marketingaihouston.com">team@marketingaihouston.com</a>
+            </address>
+          </section>
+
+          <section>
+            <h2>Changes to this Notice</h2>
+            <p>We may update this Copyright Notice from time to time. The "Last updated" date at the top of this page reflects the most recent revision.</p>
+          </section>
+        </div>
+
+        <footer class="mt-12 pt-6 border-t border-ocean-100">
+          <nav class="flex flex-wrap gap-4 text-sm text-ocean-600">
+            <a href={`${BASE_URL}legal/terms-of-service`} class="hover:text-ocean-800 underline">Terms of Service</a>
+            <a href={`${BASE_URL}legal/privacy-policy`} class="hover:text-ocean-800 underline">Privacy Policy</a>
+            <a href={`${BASE_URL}legal/cookie-policy`} class="hover:text-ocean-800 underline">Cookie Policy</a>
+            <a href={`${BASE_URL}legal/accessibility-statement`} class="hover:text-ocean-800 underline">Accessibility Statement</a>
+          </nav>
+        </footer>
+      </div>
+    </article>
+  </main>
+</MainLayout>
+
+<style>
+  .prose {
+    color: #075985;
+  }
+
+  .prose h2 {
+    color: #0c4a6e;
+    font-weight: 700;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    font-size: 1.5em;
+  }
+
+  .prose h3 {
+    color: #0c4a6e;
+    font-weight: 600;
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+    font-size: 1.25em;
+  }
+
+  .prose p {
+    margin-bottom: 1em;
+    line-height: 1.75;
+  }
+
+  .prose .lead {
+    font-size: 1.125em;
+    color: #0369a1;
+    margin-bottom: 1.5em;
+  }
+
+  .prose a {
+    color: #0284c7;
+    text-decoration: underline;
+  }
+
+  .prose a:hover {
+    color: #075985;
+  }
+
+  .prose dl {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  .prose ul {
+    list-style-type: disc;
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+  }
+
+  .prose li {
+    margin-bottom: 0.5em;
+  }
+
+  .prose section {
+    margin-bottom: 2em;
+  }
+</style>

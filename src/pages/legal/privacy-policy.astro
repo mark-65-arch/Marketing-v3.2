@@ -1,0 +1,231 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const BASE_URL = import.meta.env.BASE_URL;
+const currentURL = `${BASE_URL}legal/privacy-policy`;
+
+const breadcrumbs = [
+  { name: 'Home', url: BASE_URL },
+  { name: 'Legal', url: `${BASE_URL}legal/` },
+  { name: 'Privacy Policy', url: currentURL }
+];
+---
+
+<MainLayout
+  title="Privacy Policy | Marketing AI Houston"
+  description="Learn how Marketing AI Houston collects, uses, and protects your personal data. Read our comprehensive privacy policy for transparency on data handling practices."
+  canonicalURL={currentURL}
+  breadcrumbs={breadcrumbs}
+>
+  <main class="min-h-screen bg-gradient-to-b from-ocean-50 to-white py-12 sm:py-16 lg:py-20">
+    <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8 lg:p-12">
+        <header class="mb-8 border-b border-ocean-100 pb-6">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-ocean-900 mb-4">
+            Privacy Policy
+          </h1>
+          <p class="text-sm text-ocean-600">
+            <time datetime="2025-10-06">Last updated: October 6, 2025</time>
+          </p>
+        </header>
+
+        <div class="prose prose-ocean prose-lg max-w-none">
+          <section>
+            <h2>Scope</h2>
+            <p>This Privacy Policy explains how Marketing AI Houston ("we", "us", "our") collects, uses, shares, and protects personal data when you visit marketingaihouston.com, use our services, or communicate with us. It also explains your rights and how to contact us about privacy or request a Data Processing Agreement (DPA).</p>
+          </section>
+
+          <section>
+            <h2>1. Data we collect</h2>
+            <dl>
+              <dt class="font-semibold text-ocean-900">Contact details:</dt>
+              <dd class="mb-4">name, email address, phone number provided via contact forms, proposals, or email.</dd>
+
+              <dt class="font-semibold text-ocean-900">Client project data:</dt>
+              <dd class="mb-4">company name, business address, project requirements, account credentials and API keys you provide for integration, and other materials needed to deliver Services.</dd>
+
+              <dt class="font-semibold text-ocean-900">Payment and billing data:</dt>
+              <dd class="mb-4">invoicing details, billing address, and payment transaction metadata (we do not store full card numbers; payments are processed by third-party payment processors).</dd>
+
+              <dt class="font-semibold text-ocean-900">Usage and analytics:</dt>
+              <dd class="mb-4">anonymized or pseudonymized analytics data collected via cookies and analytics tools (page views, referrer, device and browser information, IP address in hashed or truncated form).</dd>
+
+              <dt class="font-semibold text-ocean-900">Support and communications:</dt>
+              <dd class="mb-4">messages, attachments, and records of interactions (email, chat, intake forms).</dd>
+
+              <dt class="font-semibold text-ocean-900">Optional marketing data:</dt>
+              <dd class="mb-4">if you subscribe to newsletters or marketing communications, we store your subscription preferences and engagement data.</dd>
+            </dl>
+          </section>
+
+          <section>
+            <h2>2. Purposes for processing</h2>
+            <p>We process personal data for these purposes:</p>
+            <ul>
+              <li>To respond to inquiries, deliver proposals, and provide our Services.</li>
+              <li>To bill and collect payments, manage accounts, and perform contract obligations.</li>
+              <li>To run and improve our website, analyze usage, and measure marketing effectiveness.</li>
+              <li>To send administrative and marketing communications when you opt in.</li>
+              <li>To comply with legal obligations and resolve disputes.</li>
+              <li>To perform security, fraud prevention, and abuse mitigation.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>3. Legal bases for processing (where applicable)</h2>
+            <dl>
+              <dt class="font-semibold text-ocean-900">Contract performance:</dt>
+              <dd class="mb-4">processing necessary to deliver Services and fulfill agreements.</dd>
+
+              <dt class="font-semibold text-ocean-900">Consent:</dt>
+              <dd class="mb-4">for marketing communications and certain optional cookies where we ask for explicit consent.</dd>
+
+              <dt class="font-semibold text-ocean-900">Legitimate interests:</dt>
+              <dd class="mb-4">running and improving our website through analytics (enabled by default with opt-out), security, fraud prevention, and direct B2B communications, balanced against your privacy rights. We use analytics cookies by default to understand how visitors use our site and improve performance. You can opt out at any time through our Cookie Settings.</dd>
+
+              <dt class="font-semibold text-ocean-900">Legal compliance:</dt>
+              <dd class="mb-4">where required by law or to respond to legal claims.</dd>
+            </dl>
+          </section>
+
+          <section>
+            <h2>4. Data retention</h2>
+            <p>We retain contact, billing, and project data for as long as necessary to provide Services and for a reasonable period afterwards for accounting, legal, and business purposes (typically 3–7 years depending on legal/regulatory requirements).</p>
+            <p>Analytics and cookie data retention varies by tool; aggregated or anonymized data may be kept indefinitely.</p>
+            <p>If you request deletion, we will delete or anonymize personal data where feasible, subject to contractual, legal, or legitimate business retention needs.</p>
+          </section>
+
+          <section>
+            <h2>5. Your rights</h2>
+            <p>Depending on your jurisdiction, you may have rights including to:</p>
+            <ul>
+              <li>Access the personal data we hold about you.</li>
+              <li>Correct inaccurate or incomplete data.</li>
+              <li>Request deletion of your personal data (subject to retention obligations).</li>
+              <li>Restrict or object to certain processing.</li>
+              <li>Request portability of data you provided.</li>
+              <li>Withdraw consent for processing that relies on consent.</li>
+            </ul>
+            <p>To exercise rights, contact <a href="mailto:team@marketingaihouston.com">team@marketingaihouston.com</a>. We will verify requests and respond within applicable legal timeframes.</p>
+          </section>
+
+          <section>
+            <h2>6. Sharing and third parties</h2>
+            <p>We may share personal data with:</p>
+            <ul>
+              <li>Service providers and subprocessors who help deliver Services (hosting providers, analytics, email delivery, payment processors, CRM, project management tools).</li>
+              <li>Third parties for legal reasons when required by law or to protect our rights.</li>
+              <li>Prospective buyers or partners in the event of a business sale or reorganization (with contractual protections).</li>
+            </ul>
+            <p>Common subprocessors include: hosting provider, Stripe/PayPal (payments), Google Analytics or privacy-first analytics alternative, email provider (e.g., SendGrid), and project management/CRM tools.</p>
+            <p>A DPA is available on request and will list subprocessors and processing details.</p>
+          </section>
+
+          <section>
+            <h2>7. International transfers</h2>
+            <p>We operate from the United States and may transfer personal data to subprocessors or partners located outside your country, including countries without the same data protection laws as your jurisdiction. We use appropriate safeguards for international transfers, such as standard contractual clauses or equivalent protections where required.</p>
+          </section>
+
+          <section>
+            <h2>8. Security</h2>
+            <p>We use administrative, technical, and physical measures to protect personal data (access controls, encryption in transit, secure hosting, and reasonable operational security). No system is completely secure; in the event of a data breach, we will follow applicable breach-notification laws and notify affected parties and regulators as required.</p>
+          </section>
+
+          <section>
+            <h2>9. Children</h2>
+            <p>Our Site and Services are not directed to children under 16. We do not knowingly collect personal data from children under 16. If you believe we have inadvertently collected data from a child, contact <a href="mailto:team@marketingaihouston.com">team@marketingaihouston.com</a> to request deletion.</p>
+          </section>
+
+          <section>
+            <h2>10. Cookies and tracking</h2>
+            <p>We use cookies and similar technologies for site functionality, analytics, and marketing. <strong>Analytics cookies are enabled by default</strong> to help us understand how visitors use our site and improve performance. You can opt out of analytics cookies at any time through our Cookie Settings in the footer or by rejecting non-essential cookies in the cookie banner.</p>
+            <p>For complete details on the cookies we use, their purpose, duration, and how to manage your preferences, see our <a href={`${BASE_URL}legal/cookie-policy`}>Cookie Policy</a>.</p>
+          </section>
+
+          <section>
+            <h2>11. Data Processing Agreement (DPA)</h2>
+            <p>A DPA is available to clients who require one for compliance with GDPR, UK GDPR, or other data protection laws. To request a DPA or for questions about data processing terms and subprocessors, contact <a href="mailto:team@marketingaihouston.com">team@marketingaihouston.com</a>.</p>
+          </section>
+
+          <section>
+            <h2>12. Contact and privacy officer</h2>
+            <p>For privacy inquiries, requests, or concerns:</p>
+            <address class="not-italic">
+              <strong>Marketing AI Houston</strong><br>
+              Email: <a href="mailto:team@marketingaihouston.com">team@marketingaihouston.com</a>
+            </address>
+          </section>
+
+          <section>
+            <h2>13. Changes to this policy</h2>
+            <p>We may update this Privacy Policy from time to time. Material changes will be posted on this page with a revised "Last updated" date. Continued use of the Site after changes indicates acceptance of the updated policy.</p>
+          </section>
+        </div>
+
+        <footer class="mt-12 pt-6 border-t border-ocean-100">
+          <nav class="flex flex-wrap gap-4 text-sm text-ocean-600">
+            <a href={`${BASE_URL}legal/terms-of-service`} class="hover:text-ocean-800 underline">Terms of Service</a>
+            <a href={`${BASE_URL}legal/cookie-policy`} class="hover:text-ocean-800 underline">Cookie Policy</a>
+            <a href={`${BASE_URL}legal/accessibility-statement`} class="hover:text-ocean-800 underline">Accessibility Statement</a>
+            <a href={`${BASE_URL}legal/copyright-notice`} class="hover:text-ocean-800 underline">Copyright Notice</a>
+          </nav>
+        </footer>
+      </div>
+    </article>
+  </main>
+</MainLayout>
+
+<style>
+  .prose {
+    color: #075985;
+  }
+
+  .prose h2 {
+    color: #0c4a6e;
+    font-weight: 700;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    font-size: 1.5em;
+  }
+
+  .prose h3 {
+    color: #0c4a6e;
+    font-weight: 600;
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+    font-size: 1.25em;
+  }
+
+  .prose p {
+    margin-bottom: 1em;
+    line-height: 1.75;
+  }
+
+  .prose a {
+    color: #0284c7;
+    text-decoration: underline;
+  }
+
+  .prose a:hover {
+    color: #075985;
+  }
+
+  .prose dl {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  .prose ul {
+    list-style-type: disc;
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+  }
+
+  .prose li {
+    margin-bottom: 0.5em;
+  }
+
+  .prose section {
+    margin-bottom: 2em;
+  }
+</style>

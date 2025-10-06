@@ -1,0 +1,245 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const BASE_URL = import.meta.env.BASE_URL;
+const currentURL = `${BASE_URL}legal/terms-of-service`;
+
+const breadcrumbs = [
+  { name: 'Home', url: BASE_URL },
+  { name: 'Legal', url: `${BASE_URL}legal/` },
+  { name: 'Terms of Service', url: currentURL }
+];
+---
+
+<MainLayout
+  title="Terms of Service | Marketing AI Houston"
+  description="Terms and conditions governing the use of Marketing AI Houston's website and services. Read our complete terms of service for web design, SEO, and digital marketing services."
+  canonicalURL={currentURL}
+  breadcrumbs={breadcrumbs}
+>
+  <main class="min-h-screen bg-gradient-to-b from-ocean-50 to-white py-12 sm:py-16 lg:py-20">
+    <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8 lg:p-12">
+        <header class="mb-8 border-b border-ocean-100 pb-6">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-ocean-900 mb-4">
+            Terms of Service
+          </h1>
+          <p class="text-sm text-ocean-600">
+            <time datetime="2025-10-06">Last updated: October 6, 2025</time>
+          </p>
+        </header>
+
+        <div class="prose prose-ocean prose-lg max-w-none">
+          <section>
+            <h2>1. Introduction</h2>
+            <p>These Terms govern your access to and use of the website, services, and content provided by Marketing AI Houston ("we", "us", "our"). By accessing or using the Site or requesting our Services you agree to these Terms. If you are entering into a separate signed agreement or proposal with us, the signed agreement governs to the extent it conflicts with these Terms.</p>
+          </section>
+
+          <section>
+            <h2>2. Definitions</h2>
+            <dl>
+              <dt class="font-semibold text-ocean-900">Site:</dt>
+              <dd class="mb-4">marketingaihouston.com and all pages, subdomains, and site content.</dd>
+
+              <dt class="font-semibold text-ocean-900">Services:</dt>
+              <dd class="mb-4">web design, website builds, SEO, optimization, consulting, and related services offered by Marketing AI Houston.</dd>
+
+              <dt class="font-semibold text-ocean-900">Client:</dt>
+              <dd class="mb-4">any person or entity that requests or purchases Services.</dd>
+
+              <dt class="font-semibold text-ocean-900">Deliverables:</dt>
+              <dd class="mb-4">work products, files, designs, code, content, and materials delivered to the Client as part of the Services.</dd>
+            </dl>
+          </section>
+
+          <section>
+            <h2>3. Scope of Services</h2>
+            <p>Service descriptions, deliverables, timelines, and fees are set out in each proposal or signed agreement. We provide Services as specified in the applicable scope of work. Any changes to scope, timeline, or pricing must be agreed in writing.</p>
+          </section>
+
+          <section>
+            <h2>4. Proposals, Contracts, and Order of Precedence</h2>
+            <p>A signed proposal, statement of work, or agreement is required to begin paid Services.</p>
+            <p>Where there is a conflict between these Terms and a signed agreement, the signed agreement governs.</p>
+            <p>Where there is no signed agreement, these Terms apply.</p>
+          </section>
+
+          <section>
+            <h2>5. Payments, Invoicing, Payment Disputes, and Late Payment</h2>
+
+            <h3>5.A Payments and Invoicing</h3>
+            <p>Fees are as set forth in each proposal, invoice, or signed agreement. Unless otherwise stated, invoices are due within 14 days of the invoice date. Client is responsible for all taxes, duties, or similar charges unless otherwise agreed in writing.</p>
+            <p>We may require deposits, milestone payments, or prepayment for certain Services; work will not commence or will be paused until required payments are received.</p>
+            <p>We reserve the right to suspend or withhold Deliverables for overdue accounts. Overdue amounts accrue interest at 1.5% per month or the maximum rate permitted by law, whichever is lower, plus all costs of collection, including reasonable attorneys' fees.</p>
+
+            <h3>5.B Payment Disputes</h3>
+            <p>If Client disputes an invoice, Client must notify Marketing AI Houston in writing within 14 days of the invoice date, specifying the invoice number, disputed amount, and reason for dispute. Failure to timely notify will waive the right to dispute the invoice.</p>
+            <p>Client must pay any undisputed portion of the invoice by the due date. Marketing AI Houston will promptly investigate bona fide disputes and attempt in good faith to resolve them. If a dispute is resolved in Client's favor, we will issue an appropriate credit or refund.</p>
+            <p>While a bona fide dispute is being resolved, neither party will commence any legal action for the disputed amount except as necessary to preserve rights. Marketing AI Houston may suspend Services for continued nonpayment after providing seven (7) days' written notice.</p>
+          </section>
+
+          <section>
+            <h2>6. Refunds, Cancellations, Retainers, and Recurring Services</h2>
+
+            <h3>6.A Retainers and Prepaid Work</h3>
+            <p>Retainers or prepayments, if required, will be applied to future invoices for Services. Unless otherwise specified in a signed agreement, retainer fees are non-refundable but will be credited against final invoices for Services rendered. If Client terminates a signed agreement, any unused retainer balance after deduction of performed work and expenses will be returned within 30 days, subject to the deduction of outstanding fees, expenses, and reasonable wind‑down costs.</p>
+
+            <h3>6.B Subscriptions, Hosting, and Recurring Services</h3>
+            <p>Recurring services (including subscriptions and hosting) are billed in advance according to the billing cycle set out in the applicable order or agreement. Recurring billing continues until cancelled. Cancellations must be submitted in writing and will take effect at the end of the then‑current billing period. No pro‑rated refunds will be issued for partial billing periods unless expressly stated in the applicable agreement.</p>
+            <p>Marketing AI Houston is not responsible for data retention after cancellation unless a separate data‑retention arrangement is agreed and paid for; Clients should export or request their data prior to cancellation.</p>
+
+            <h3>6.C Cancellations, Termination, and Refund Eligibility</h3>
+            <p>Except as otherwise stated in a signed agreement, refunds are not provided for work already performed or for time and materials services once work has commenced. If Client cancels a project prior to substantial performance, Client will pay for all work performed up to the cancellation date, plus any non‑recoverable third‑party costs.</p>
+            <p>If Marketing AI Houston terminates a signed agreement for Client's material breach, Client remains liable for all fees incurred and for reasonable costs to wind down the project. If Marketing AI Houston terminates for convenience, Marketing AI Houston will refund any prepayment for Services not yet performed, less reasonable wind‑down costs.</p>
+          </section>
+
+          <section>
+            <h2>7. Client Responsibilities</h2>
+            <p>Client will provide timely access to necessary materials, credentials, approvals, content, and feedback.</p>
+            <p>Delays caused by the Client may impact timelines; additional fees may apply for work resumed after extended delays.</p>
+            <p>Client warrants that materials provided do not infringe third-party rights and are accurate.</p>
+          </section>
+
+          <section>
+            <h2>8. Intellectual Property and Licensing</h2>
+            <p>Marketing AI Houston retains ownership of pre-existing tools, templates, frameworks, and underlying code used to deliver Services.</p>
+            <p>Upon full payment, Client receives a non-exclusive, worldwide license to use Deliverables for their business purposes as set out in the signed agreement.</p>
+            <p>Third-party assets (fonts, images, plugins) are subject to their own licenses and must be licensed separately if required.</p>
+            <p>We reserve the right to showcase work in our portfolio and marketing materials unless a separate written confidentiality agreement restricts such use.</p>
+          </section>
+
+          <section>
+            <h2>9. Confidentiality</h2>
+            <p>Each party agrees to keep confidential the other party's non-public business information disclosed in connection with the Services.</p>
+            <p>Confidential information does not include information that is public, already known, independently developed, or legally compelled to be disclosed.</p>
+          </section>
+
+          <section>
+            <h2>10. Warranties and Disclaimers</h2>
+            <p>We provide Services using reasonable skill and care. Except as explicitly set out in a signed agreement, Services and Deliverables are provided "as is" without other warranties, express or implied.</p>
+            <p>We do not warrant uninterrupted access, perfect results, search ranking outcomes, or specific business results.</p>
+          </section>
+
+          <section>
+            <h2>11. Limitation of Liability</h2>
+            <p>To the maximum extent permitted by law, Marketing AI Houston's total liability for claims arising from or related to these Terms or the Services will not exceed the total fees paid by the Client to Marketing AI Houston in the 12 months preceding the claim.</p>
+            <p>We are not liable for indirect, incidental, special, punitive, or consequential damages, including lost profits, even if advised of the possibility of such damages.</p>
+          </section>
+
+          <section>
+            <h2>12. Indemnification</h2>
+            <p>Client will indemnify, defend, and hold Marketing AI Houston and its officers, agents, and employees harmless from claims, damages, liabilities, costs, and expenses (including reasonable attorneys' fees) arising from: (a) Client's breach of these Terms; (b) Client-provided materials that infringe third-party rights; or (c) Client's misuse of Deliverables.</p>
+          </section>
+
+          <section>
+            <h2>13. Termination and Suspension</h2>
+            <p>Either party may terminate a signed agreement for material breach if the breach is not cured within 14 days of written notice.</p>
+            <p>Either party may suspend Services for non-payment after providing 7 days' written notice.</p>
+            <p>Termination does not relieve the Client of payment obligations for Services performed or costs incurred before termination.</p>
+          </section>
+
+          <section>
+            <h2>14. Data, Privacy, and Processing</h2>
+            <p>Personal data processing is described in our <a href={`${BASE_URL}legal/privacy-policy`}>Privacy Policy</a>. We will handle personal data in accordance with applicable privacy laws.</p>
+            <p>A Data Processing Agreement (DPA) is available to clients upon request where required by law or contract.</p>
+            <p>Clients are responsible for collecting required consents for data they supply and for compliance with privacy obligations in their jurisdiction.</p>
+          </section>
+
+          <section>
+            <h2>15. Security and Acceptable Use</h2>
+            <p>We implement industry-standard security practices, but no system is fully secure. We are not responsible for losses due to unauthorized access unless caused by our gross negligence.</p>
+            <p>Clients must not use the Site or Services for illegal activities and must not upload malware or harmful content.</p>
+          </section>
+
+          <section>
+            <h2>16. Accessibility</h2>
+            <p>We aim to follow accessibility best practices and maintain an <a href={`${BASE_URL}legal/accessibility-statement`}>Accessibility Statement</a> on the Site. If you encounter accessibility barriers, please contact <a href="mailto:team@marketingaihouston.com">team@marketingaihouston.com</a> and we will make reasonable efforts to address them.</p>
+          </section>
+
+          <section>
+            <h2>17. Third-Party Services and Links</h2>
+            <p>The Site or Deliverables may include integrations with third-party services (hosting, analytics, payment processors). We are not responsible for third-party services' availability, policies, or content.</p>
+          </section>
+
+          <section>
+            <h2>18. Governing Law and Dispute Resolution</h2>
+            <p>These Terms are governed by the laws of the State of Texas without regard to conflict-of-law principles. Any dispute arising from or relating to these Terms or Services will be resolved in state or federal courts located in Harris County, Texas.</p>
+          </section>
+
+          <section>
+            <h2>19. Severability and Entire Agreement</h2>
+            <p>If any provision of these Terms is held invalid or unenforceable, the remaining provisions will remain in full force and effect. These Terms, together with any signed agreement, constitute the entire agreement between the parties concerning the Services.</p>
+          </section>
+
+          <section>
+            <h2>20. Notices and Contact</h2>
+            <p>All notices must be sent to:</p>
+            <address class="not-italic">
+              <strong>Marketing AI Houston</strong><br>
+              Email: <a href="mailto:team@marketingaihouston.com">team@marketingaihouston.com</a>
+            </address>
+          </section>
+
+          <section>
+            <h2>21. Changes to These Terms</h2>
+            <p>We may update these Terms from time to time. Material changes will be posted on this page with an updated "Last updated" date. Continued use of the Site or Services after changes indicates acceptance of the updated Terms.</p>
+          </section>
+        </div>
+
+        <footer class="mt-12 pt-6 border-t border-ocean-100">
+          <nav class="flex flex-wrap gap-4 text-sm text-ocean-600">
+            <a href={`${BASE_URL}legal/privacy-policy`} class="hover:text-ocean-800 underline">Privacy Policy</a>
+            <a href={`${BASE_URL}legal/cookie-policy`} class="hover:text-ocean-800 underline">Cookie Policy</a>
+            <a href={`${BASE_URL}legal/accessibility-statement`} class="hover:text-ocean-800 underline">Accessibility Statement</a>
+            <a href={`${BASE_URL}legal/copyright-notice`} class="hover:text-ocean-800 underline">Copyright Notice</a>
+          </nav>
+        </footer>
+      </div>
+    </article>
+  </main>
+</MainLayout>
+
+<style>
+  .prose {
+    color: #075985;
+  }
+
+  .prose h2 {
+    color: #0c4a6e;
+    font-weight: 700;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    font-size: 1.5em;
+  }
+
+  .prose h3 {
+    color: #0c4a6e;
+    font-weight: 600;
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+    font-size: 1.25em;
+  }
+
+  .prose p {
+    margin-bottom: 1em;
+    line-height: 1.75;
+  }
+
+  .prose a {
+    color: #0284c7;
+    text-decoration: underline;
+  }
+
+  .prose a:hover {
+    color: #075985;
+  }
+
+  .prose dl {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  .prose section {
+    margin-bottom: 2em;
+  }
+</style>

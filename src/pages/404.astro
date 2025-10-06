@@ -1,0 +1,172 @@
+---
+// 🚫 404 Not Found Page
+// Purpose: Custom branded error page with helpful navigation
+// Features: Accessible, mobile-friendly, SEO-optimized
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+
+const BASE_URL = import.meta.env.BASE_URL;
+
+// SEO metadata
+const title = 'Page Not Found';
+const description = "Sorry, we couldn't find that page. Let's get you back on track.";
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  noindex={true}
+>
+  <!-- 🎨 404 Error Page -->
+  <main class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-teal-50 relative overflow-hidden">
+
+    <!-- 🌊 Animated background decorations -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      <!-- Organic blob shapes -->
+      <div class="absolute top-20 left-10 w-64 h-64 bg-blue-200/30 organic-blob blur-3xl animate-blob"></div>
+      <div class="absolute bottom-20 right-10 w-96 h-96 bg-teal-200/30 organic-droplet blur-3xl animate-blob" style="animation-delay: 2s;"></div>
+      <div class="absolute top-1/2 left-1/3 w-72 h-72 bg-blue-100/40 organic-leaf blur-3xl animate-blob" style="animation-delay: 4s;"></div>
+    </div>
+
+    <!-- 📄 Content Container -->
+    <div class="container mx-auto px-4 py-16 relative z-10">
+      <div class="max-w-2xl mx-auto text-center">
+
+        <!-- 🔢 404 Headline -->
+        <div class="mb-8 animate-slide-up">
+          <h1
+            class="text-8xl sm:text-9xl font-heading font-black text-gradient mb-4"
+            aria-label="Error 404"
+          >
+            404
+          </h1>
+
+          <!-- 🔍 Main Heading -->
+          <h2 class="heading-lg text-slate-900 mb-4">
+            Page Not Found
+          </h2>
+
+          <!-- 📝 Subheading -->
+          <p class="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed">
+            Looks like this page doesn't exist or has moved.
+          </p>
+        </div>
+
+        <!-- 🎯 CTA Button -->
+        <div class="mb-8 animate-slide-up" style="animation-delay: 0.1s;">
+          <Button
+            href={BASE_URL}
+            variant="primary"
+            size="lg"
+            ariaLabel="Go back to home page"
+          >
+            <svg
+              class="w-5 h-5 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+            Go back to Home
+          </Button>
+        </div>
+
+        <!-- 📧 Contact Information -->
+        <div class="animate-fade-in" style="animation-delay: 0.2s;">
+          <p class="text-sm text-gray-500">
+            If you think this is an error, contact us at
+            <a
+              href="mailto:team@marketingaihouston.com"
+              class="text-blue-600 hover:text-blue-700 underline focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 rounded transition-colors"
+              aria-label="Email Marketing AI Houston team"
+            >
+              team@marketingaihouston.com
+            </a>
+          </p>
+        </div>
+
+        <!-- 🔗 Additional Navigation (Optional) -->
+        <div class="mt-12 pt-8 border-t border-gray-200 animate-fade-in" style="animation-delay: 0.3s;">
+          <p class="text-sm text-gray-600 mb-4">You might be looking for:</p>
+          <nav aria-label="Quick navigation links">
+            <ul class="flex flex-wrap justify-center gap-4 text-sm">
+              <li>
+                <a
+                  href={`${BASE_URL}business-profile-optimization`}
+                  class="text-blue-600 hover:text-blue-700 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 rounded transition-colors"
+                >
+                  Services
+                </a>
+              </li>
+              <li aria-hidden="true" class="text-gray-300">|</li>
+              <li>
+                <a
+                  href={`${BASE_URL}contact`}
+                  class="text-blue-600 hover:text-blue-700 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 rounded transition-colors"
+                >
+                  Contact
+                </a>
+              </li>
+              <li aria-hidden="true" class="text-gray-300">|</li>
+              <li>
+                <a
+                  href={`${BASE_URL}legal/privacy-policy`}
+                  class="text-blue-600 hover:text-blue-700 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 rounded transition-colors"
+                >
+                  Privacy Policy
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  /* 🎨 Enhanced animations for 404 page */
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out;
+  }
+
+  /* ♿ Respect user motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-slide-up,
+    .animate-fade-in,
+    .animate-blob {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+  /* 🎯 Enhanced focus states for accessibility */
+  a:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  /* 📱 Mobile optimizations */
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 6rem;
+    }
+  }
+</style>

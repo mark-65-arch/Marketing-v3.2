@@ -6,21 +6,25 @@ import '../styles/global.css';
 import CookieBanner from '../components/CookieBanner.astro';
 
 interface Props {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   canonicalURL?: string;
   ogImage?: string;
   noindex?: boolean;
   structuredData?: object;
+  lang?: string;
+  alternateLanguages?: { lang: string; url: string }[];
 }
 
 const {
-  title,
-  description,
+  title = "Marketing AI Houston - AI-Powered Web Design & SEO for Small Businesses",
+  description = "Professional web design and SEO services powered by AI technology for Houston small businesses. Get found online with modern, conversion-focused websites.",
   canonicalURL,
   ogImage = `${import.meta.env.SITE}${import.meta.env.BASE_URL}og-image.png`,
   noindex = false,
-  structuredData
+  structuredData,
+  lang = "en",
+  alternateLanguages = []
 } = Astro.props;
 
 // 🔍 SEO: Generate canonical URL if not provided
@@ -34,7 +38,7 @@ const preloadResources = [
 ---
 
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang={lang} dir="ltr">
 <head>
   <!-- Google Tag Manager -->
   <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -52,6 +56,11 @@ const preloadResources = [
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={currentCanonical} />
+
+  <!-- 🌐 SEO: Hreflang for multilingual support -->
+  {alternateLanguages.map(({ lang: altLang, url }) => (
+    <link rel="alternate" hreflang={altLang} href={url} />
+  ))}
 
   <!-- 🎨 Favicons -->
   <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}favicon-96x96.png`} sizes="96x96" />
@@ -86,32 +95,34 @@ const preloadResources = [
   <meta name="twitter:image" content={ogImage} />
   <meta name="twitter:image:alt" content={`${title} - Marketing AI Houston`} />
 
-  <!-- 🏠 Local Business Schema - Always present for brand consistency -->
+  <!-- 🏢 Organization Schema - Site-wide structured data -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "Organization",
     "name": "Marketing AI Houston",
     "description": "AI-powered web design & SEO for Houston small businesses",
-    "url": import.meta.env.SITE,
-    "telephone": "+1-281-544-0572",
+    "url": `${import.meta.env.SITE}${import.meta.env.BASE_URL}`,
+    "logo": `${import.meta.env.SITE}${import.meta.env.BASE_URL}logo.png`,
     "email": "team@marketingaihouston.com",
+    "telephone": "+1-281-544-0572",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "team@marketingaihouston.com",
+      "contactType": "Customer Service",
+      "areaServed": "US",
+      "availableLanguage": ["English", "Spanish"]
+    },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Houston",
       "addressRegion": "TX",
       "addressCountry": "US"
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "29.7604",
-      "longitude": "-95.3698"
-    },
-    "areaServed": {
-      "@type": "State",
-      "name": "Texas"
-    },
-    "serviceType": ["Web Design", "SEO", "Digital Marketing"],
-    "priceRange": "$500-$5000"
+    "sameAs": [
+      "https://www.linkedin.com/company/marketing-ai-houston",
+      "https://www.facebook.com/marketingaihouston",
+      "https://twitter.com/marketingaihou"
+    ]
   })} />
 
   <!-- 📊 Additional structured data from page -->

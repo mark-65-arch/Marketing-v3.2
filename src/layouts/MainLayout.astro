@@ -24,11 +24,13 @@ interface Props extends SEOConfig {
   structuredData?: object[];
   currentPath?: string;
   pageType?: 'home' | 'service' | 'contact' | 'about' | 'blog';
+  lang?: string;
+  alternateLanguages?: { lang: string; url: string }[];
 }
 
 const {
-  title,
-  description,
+  title = DEFAULT_SEO.title,
+  description = DEFAULT_SEO.description,
   canonicalURL,
   ogImage = `${import.meta.env.SITE}${import.meta.env.BASE_URL}og-image.png`,
   ogType = 'website',
@@ -41,7 +43,9 @@ const {
   breadcrumbs = [],
   structuredData = [],
   currentPath = Astro.url.pathname,
-  pageType = 'home'
+  pageType = 'home',
+  lang = 'en',
+  alternateLanguages = []
 } = Astro.props;
 
 // 🔍 SEO: Enhanced title with brand consistency
@@ -85,6 +89,8 @@ const viewportConfig = pageType === 'contact'
   canonicalURL={canonicalURL}
   ogImage={ogImage}
   noindex={noindex}
+  lang={lang}
+  alternateLanguages={alternateLanguages}
 >
   <!-- 🔍 Enhanced SEO Meta Tags -->
   <Fragment slot="head">

@@ -1,13 +1,13 @@
 ---
-import MainLayout from '../../layouts/MainLayout.astro';
+import MainLayout from '../../../layouts/MainLayout.astro';
 
 const SITE = import.meta.env.SITE;
 const BASE_URL = import.meta.env.BASE_URL;
-const currentURL = `${SITE}${BASE_URL}legal/cookie-policy`;
+const currentURL = `${SITE}${BASE_URL}es/legal/cookie-policy`;
 
 const breadcrumbs = [
-  { name: 'Home', url: `${SITE}${BASE_URL}` },
-  { name: 'Legal', url: `${SITE}${BASE_URL}legal/` },
+  { name: 'Home', url: `${SITE}${BASE_URL}es/` },
+  { name: 'Legal', url: `${SITE}${BASE_URL}es/legal/` },
   { name: 'Cookie Policy', url: currentURL }
 ];
 
@@ -22,7 +22,7 @@ const alternateLanguages = [
   description="Understand how Marketing AI Houston uses cookies and tracking technologies. Learn about cookie types, purposes, duration, and how to manage your preferences."
   canonicalURL={currentURL}
   breadcrumbs={breadcrumbs}
-  lang="en"
+  lang="es"
   alternateLanguages={alternateLanguages}
 >
   <main class="min-h-screen bg-gradient-to-b from-ocean-50 to-white py-12 sm:py-16 lg:py-20">

@@ -1,12 +1,12 @@
-# ⚠️ DEVELOPMENT MODE: Block all crawlers while site is under construction
-# TODO: RE-ENABLE indexing before migrating to main domain!
+# Robots.txt for Marketing AI Houston
+# https://mark-65-arch.github.io/Marketing-v3.2/
+
 User-agent: *
-Disallow: /
+Allow: /
 
-# Sitemap location (commented out during development)
-# Sitemap: https://mark-65-arch.github.io/Marketing-v3.2/sitemap-index.xml
+# Sitemap
+Sitemap: https://mark-65-arch.github.io/Marketing-v3.2/sitemap.xml
 
-# When ready for production, use this configuration instead:
-# User-agent: *
-# Allow: /
-# Sitemap: https://yourmaindomain.com/sitemap-index.xml
+# Disallow admin or test directories (if any exist in the future)
+# Disallow: /admin/
+# Disallow: /test/

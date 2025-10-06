@@ -1,11 +1,11 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-import type { BreadcrumbItem } from '../utils/seo.ts';
+import MainLayout from '../../layouts/MainLayout.astro';
+import type { BreadcrumbItem } from '../../utils/seo.ts';
 
 // 🔍 SEO Configuration
 const pageTitle = 'Marketing AI Houston — Websites That Get Houston Small Businesses Found';
 const pageDescription = 'AI-powered web design & SEO for Houston small businesses. Mobile-first websites that convert, local SEO that works, and growth strategies that deliver results. Launch in weeks, not months.';
-const canonicalURL = `${import.meta.env.SITE}${import.meta.env.BASE_URL}`;
+const canonicalURL = `${import.meta.env.SITE}${import.meta.env.BASE_URL}es/`;
 
 // 🍞 Breadcrumbs (empty for homepage)
 const breadcrumbs: BreadcrumbItem[] = [];
@@ -23,8 +23,8 @@ const alternateLanguages = [
   canonicalURL={canonicalURL}
   breadcrumbs={breadcrumbs}
   pageType="home"
-  currentPath="/"
-  lang="en"
+  currentPath="/es/"
+  lang="es"
   alternateLanguages={alternateLanguages}
 >
 

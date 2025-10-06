@@ -64,8 +64,10 @@ export const BUSINESS_INFO = {
 } as const;
 
 // 🎯 Default SEO Configuration
-export const DEFAULT_SEO: Partial<SEOConfig> = {
-  ogType: 'website',
+export const DEFAULT_SEO = {
+  title: 'Marketing AI Houston - AI-Powered Web Design & SEO for Small Businesses',
+  description: 'Professional web design and SEO services powered by AI technology for Houston small businesses. Get found online with modern, conversion-focused websites.',
+  ogType: 'website' as const,
   keywords: [
     'web design Houston',
     'SEO Houston',
@@ -76,7 +78,7 @@ export const DEFAULT_SEO: Partial<SEOConfig> = {
     'website development'
   ],
   author: 'Marketing AI Houston Team'
-} as const;
+};
 
 // 🏢 Generate LocalBusiness Schema
 export function generateLocalBusinessSchema() {

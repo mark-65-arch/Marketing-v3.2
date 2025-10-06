@@ -1,13 +1,13 @@
 ---
-import MainLayout from '../../layouts/MainLayout.astro';
+import MainLayout from '../../../layouts/MainLayout.astro';
 
 const SITE = import.meta.env.SITE;
 const BASE_URL = import.meta.env.BASE_URL;
-const currentURL = `${SITE}${BASE_URL}legal/accessibility-statement`;
+const currentURL = `${SITE}${BASE_URL}es/legal/accessibility-statement`;
 
 const breadcrumbs = [
-  { name: 'Home', url: `${SITE}${BASE_URL}` },
-  { name: 'Legal', url: `${SITE}${BASE_URL}legal/` },
+  { name: 'Home', url: `${SITE}${BASE_URL}es/` },
+  { name: 'Legal', url: `${SITE}${BASE_URL}es/legal/` },
   { name: 'Accessibility Statement', url: currentURL }
 ];
 
@@ -22,7 +22,7 @@ const alternateLanguages = [
   description="Marketing AI Houston's commitment to web accessibility. Learn about our WCAG 2.1 Level AA conformance efforts and how to report accessibility issues."
   canonicalURL={currentURL}
   breadcrumbs={breadcrumbs}
-  lang="en"
+  lang="es"
   alternateLanguages={alternateLanguages}
 >
   <main class="min-h-screen bg-gradient-to-b from-ocean-50 to-white py-12 sm:py-16 lg:py-20">

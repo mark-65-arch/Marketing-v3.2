@@ -28,10 +28,10 @@ const BASE_URL = import.meta.env.BASE_URL;
             Cookie Preferences
           </h2>
           <p id="cookie-banner-description" class="text-gray-300 text-sm sm:text-base mb-2">
-            We use cookies to improve your experience, analyze site traffic, and show relevant ads. <strong class="text-white">Analytics cookies are enabled by default</strong> to help us improve our site.
+            We use cookies to improve your experience, analyze site traffic, and show relevant ads.
           </p>
           <p class="text-gray-400 text-xs">
-            You can opt out or manage your choices anytime in Cookie settings. By clicking Accept all cookies you agree to our
+            Manage your choices anytime in Cookie settings. By clicking Accept all cookies you agree to our
             <a href={`${BASE_URL}legal/cookie-policy`} class="text-blue-400 hover:text-blue-300 underline">Cookie Policy</a> and
             <a href={`${BASE_URL}legal/privacy-policy`} class="text-blue-400 hover:text-blue-300 underline">Privacy Policy</a>.
           </p>
@@ -235,59 +235,75 @@ const BASE_URL = import.meta.env.BASE_URL;
 </div>
 
 <script>
-  // 🍪 Cookie Consent Management
-  // Handles user consent, localStorage persistence, and cookie controls
+  // 🍪 Cookie Consent Management with GTM/GA4 Integration
+  import {
+    getConsentPreferences,
+    saveConsentPreferences,
+    acceptAllCookies,
+    rejectNonEssentialCookies,
+    hasGivenConsent,
+    isAnalyticsEnabled,
+    getDefaultPreferences
+  } from '../utils/consent';
+  import {
+    initializeGTM,
+    initializeGA4,
+    enableAnalytics,
+    disableAnalytics
+  } from '../utils/analytics';
 
-  const CONSENT_KEY = 'cookie_consent';
-  const CONSENT_VERSION = '1.0';
-  const CONSENT_DURATION_DAYS = 365; // 12 months
-
-  interface CookieConsent {
-    version: string;
-    timestamp: number;
-    necessary: boolean;
-    analytics: boolean;
-    marketing: boolean;
-    functional: boolean;
-  }
-
-  class CookieConsentManager {
+  class CookieConsentUI {
     private banner: HTMLElement | null;
     private modal: HTMLElement | null;
-    private consent: CookieConsent | null;
     private previousFocus: HTMLElement | null = null;
+
+    // Get GTM/GA4 IDs from environment or meta tags
+    private gtmId: string = import.meta.env.PUBLIC_GTM_ID || 'GTM-KQS29VV6';
+    private ga4Id: string = import.meta.env.PUBLIC_GA4_ID || '';
 
     constructor() {
       this.banner = document.getElementById('cookie-banner');
       this.modal = document.getElementById('cookie-settings-modal');
-      this.consent = this.loadConsent();
       this.init();
     }
 
     init() {
-      // Show banner if no consent recorded
-      if (!this.consent) {
+      // Check if user has given consent
+      const hasConsent = hasGivenConsent();
+
+      if (!hasConsent) {
+        // No consent given yet - show banner
         this.showBanner();
-        // Apply default consent (analytics enabled by default)
-        this.applyDefaultConsent();
+
+        // Initialize analytics with default (enabled) since analytics is enabled by default
+        if (isAnalyticsEnabled()) {
+          this.initializeAnalytics();
+        }
       } else {
-        this.applyConsent(this.consent);
+        // User has given consent - apply their preferences
+        if (isAnalyticsEnabled()) {
+          this.initializeAnalytics();
+        }
       }
 
-      // Banner button handlers
+      this.bindEvents();
+    }
+
+    bindEvents() {
+      // Banner buttons
       document.getElementById('cookie-accept-btn')?.addEventListener('click', () => {
-        this.acceptAll();
+        this.handleAcceptAll();
       });
 
       document.getElementById('cookie-reject-btn')?.addEventListener('click', () => {
-        this.rejectNonEssential();
+        this.handleRejectNonEssential();
       });
 
       document.getElementById('cookie-settings-btn')?.addEventListener('click', () => {
         this.openModal();
       });
 
-      // Modal handlers
+      // Modal buttons
       document.getElementById('cookie-modal-close')?.addEventListener('click', () => {
         this.closeModal();
       });
@@ -297,167 +313,65 @@ const BASE_URL = import.meta.env.BASE_URL;
       });
 
       document.getElementById('cookie-modal-save')?.addEventListener('click', () => {
-        this.saveCustomPreferences();
+        this.handleSavePreferences();
       });
 
       document.getElementById('cookie-modal-reject')?.addEventListener('click', () => {
-        this.rejectNonEssential();
+        this.handleRejectNonEssential();
         this.closeModal();
       });
 
-      // Keyboard accessibility for modal
+      // Keyboard accessibility
       this.modal?.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
           this.closeModal();
         }
       });
-    }
 
-    loadConsent(): CookieConsent | null {
-      try {
-        const stored = localStorage.getItem(CONSENT_KEY);
-        if (!stored) return null;
+      // Listen for consent changes
+      window.addEventListener('consentChanged', ((e: CustomEvent) => {
+        const preferences = e.detail;
 
-        const consent: CookieConsent = JSON.parse(stored);
-
-        // Check if consent is expired (12 months)
-        const expiryTime = consent.timestamp + (CONSENT_DURATION_DAYS * 24 * 60 * 60 * 1000);
-        if (Date.now() > expiryTime) {
-          localStorage.removeItem(CONSENT_KEY);
-          return null;
+        if (preferences.analytics) {
+          this.initializeAnalytics();
+        } else {
+          disableAnalytics(this.ga4Id);
         }
+      }) as EventListener);
+    }
 
-        // Check version compatibility
-        if (consent.version !== CONSENT_VERSION) {
-          return null;
-        }
-
-        return consent;
-      } catch (error) {
-        console.error('Error loading consent:', error);
-        return null;
+    initializeAnalytics() {
+      if (this.gtmId) {
+        initializeGTM(this.gtmId);
+      }
+      if (this.ga4Id) {
+        initializeGA4(this.ga4Id);
       }
     }
 
-    saveConsent(consent: CookieConsent) {
-      try {
-        localStorage.setItem(CONSENT_KEY, JSON.stringify(consent));
-        this.consent = consent;
-        this.applyConsent(consent);
-      } catch (error) {
-        console.error('Error saving consent:', error);
-      }
-    }
-
-    applyDefaultConsent() {
-      // Enable analytics by default (user hasn't made a choice yet)
-      this.enableAnalytics();
-    }
-
-    applyConsent(consent: CookieConsent) {
-      // Analytics consent
-      if (consent.analytics) {
-        this.enableAnalytics();
-      } else {
-        this.disableAnalytics();
-      }
-
-      // Marketing consent
-      if (consent.marketing) {
-        this.enableMarketing();
-      } else {
-        this.disableMarketing();
-      }
-
-      // Functional consent
-      if (consent.functional) {
-        this.enableFunctional();
-      } else {
-        this.disableFunctional();
-      }
-    }
-
-    enableAnalytics() {
-      // Enable Google Analytics or other analytics
-      if (typeof window.gtag !== 'undefined') {
-        window.gtag('consent', 'update', {
-          'analytics_storage': 'granted'
-        });
-      }
-    }
-
-    disableAnalytics() {
-      if (typeof window.gtag !== 'undefined') {
-        window.gtag('consent', 'update', {
-          'analytics_storage': 'denied'
-        });
-      }
-    }
-
-    enableMarketing() {
-      if (typeof window.gtag !== 'undefined') {
-        window.gtag('consent', 'update', {
-          'ad_storage': 'granted',
-          'ad_user_data': 'granted',
-          'ad_personalization': 'granted'
-        });
-      }
-    }
-
-    disableMarketing() {
-      if (typeof window.gtag !== 'undefined') {
-        window.gtag('consent', 'update', {
-          'ad_storage': 'denied',
-          'ad_user_data': 'denied',
-          'ad_personalization': 'denied'
-        });
-      }
-    }
-
-    enableFunctional() {
-      // Functional cookies enabled
-    }
-
-    disableFunctional() {
-      // Functional cookies disabled
-    }
-
-    acceptAll() {
-      const consent: CookieConsent = {
-        version: CONSENT_VERSION,
-        timestamp: Date.now(),
-        necessary: true,
-        analytics: true,
-        marketing: true,
-        functional: true
-      };
-      this.saveConsent(consent);
+    handleAcceptAll() {
+      acceptAllCookies();
       this.hideBanner();
+      // Analytics will be initialized via consentChanged event
     }
 
-    rejectNonEssential() {
-      const consent: CookieConsent = {
-        version: CONSENT_VERSION,
-        timestamp: Date.now(),
-        necessary: true,
-        analytics: false,
-        marketing: false,
-        functional: false
-      };
-      this.saveConsent(consent);
+    handleRejectNonEssential() {
+      rejectNonEssentialCookies();
       this.hideBanner();
+      // Analytics will be disabled via consentChanged event
     }
 
-    saveCustomPreferences() {
-      const consent: CookieConsent = {
-        version: CONSENT_VERSION,
-        timestamp: Date.now(),
-        necessary: true,
-        analytics: (document.getElementById('cookie-analytics') as HTMLInputElement)?.checked || false,
-        marketing: (document.getElementById('cookie-marketing') as HTMLInputElement)?.checked || false,
-        functional: (document.getElementById('cookie-functional') as HTMLInputElement)?.checked || false
-      };
-      this.saveConsent(consent);
+    handleSavePreferences() {
+      const analytics = (document.getElementById('cookie-analytics') as HTMLInputElement)?.checked || false;
+      const marketing = (document.getElementById('cookie-marketing') as HTMLInputElement)?.checked || false;
+      const functional = (document.getElementById('cookie-functional') as HTMLInputElement)?.checked || false;
+
+      saveConsentPreferences({
+        analytics,
+        marketing,
+        functional
+      });
+
       this.hideBanner();
       this.closeModal();
     }
@@ -466,6 +380,12 @@ const BASE_URL = import.meta.env.BASE_URL;
       if (this.banner) {
         this.banner.classList.remove('translate-y-full');
         this.banner.setAttribute('aria-hidden', 'false');
+
+        // Focus first button for accessibility
+        setTimeout(() => {
+          const firstButton = this.banner?.querySelector('button') as HTMLElement;
+          firstButton?.focus();
+        }, 300); // Wait for slide animation
       }
     }
 
@@ -481,24 +401,21 @@ const BASE_URL = import.meta.env.BASE_URL;
         // Store current focus for restoration
         this.previousFocus = document.activeElement as HTMLElement;
 
-        // Set current preferences in checkboxes
-        if (this.consent) {
-          (document.getElementById('cookie-analytics') as HTMLInputElement).checked = this.consent.analytics;
-          (document.getElementById('cookie-marketing') as HTMLInputElement).checked = this.consent.marketing;
-          (document.getElementById('cookie-functional') as HTMLInputElement).checked = this.consent.functional;
-        } else {
-          // Default: analytics enabled, others disabled
-          (document.getElementById('cookie-analytics') as HTMLInputElement).checked = true;
-          (document.getElementById('cookie-marketing') as HTMLInputElement).checked = false;
-          (document.getElementById('cookie-functional') as HTMLInputElement).checked = false;
-        }
+        // Load current or default preferences
+        const preferences = getConsentPreferences() || getDefaultPreferences();
+
+        (document.getElementById('cookie-analytics') as HTMLInputElement).checked = preferences.analytics;
+        (document.getElementById('cookie-marketing') as HTMLInputElement).checked = preferences.marketing;
+        (document.getElementById('cookie-functional') as HTMLInputElement).checked = preferences.functional;
 
         this.modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
 
-        // Focus first interactive element
-        const firstButton = this.modal.querySelector('button:not([disabled])') as HTMLElement;
-        firstButton?.focus();
+        // Focus close button for keyboard accessibility
+        setTimeout(() => {
+          const closeButton = document.getElementById('cookie-modal-close') as HTMLElement;
+          closeButton?.focus();
+        }, 50);
       }
     }
 
@@ -519,10 +436,10 @@ const BASE_URL = import.meta.env.BASE_URL;
   // Initialize on DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      new CookieConsentManager();
+      new CookieConsentUI();
     });
   } else {
-    new CookieConsentManager();
+    new CookieConsentUI();
   }
 
   // Expose for manual control (e.g., footer link to reopen settings)
@@ -531,6 +448,12 @@ const BASE_URL = import.meta.env.BASE_URL;
     if (modal) {
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
+
+      // Focus close button
+      setTimeout(() => {
+        const closeButton = document.getElementById('cookie-modal-close') as HTMLElement;
+        closeButton?.focus();
+      }, 50);
     }
   };
 </script>

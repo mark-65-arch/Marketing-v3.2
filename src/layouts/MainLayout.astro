@@ -130,7 +130,7 @@ const hreflangLinks = [
   ogImage={ogImage}
   noindex={noindex}
   lang={lang}
-  alternateLanguages={alternateLanguages}
+  alternateLanguages={hreflangLinks}
 >
   <!-- 🔍 Enhanced SEO Meta Tags -->
   <Fragment slot="head">
@@ -157,11 +157,6 @@ const hreflangLinks = [
     <!-- 🐦 Twitter Card tags -->
     {twitterTags.map(tag => (
       <meta name={tag.name} content={tag.content} />
-    ))}
-
-    <!-- 🌐 Hreflang tags for multilingual SEO -->
-    {hreflangLinks.map(link => (
-      <link rel="alternate" hreflang={link.lang} href={link.url} />
     ))}
 
     <!-- 🔗 Preconnect to external domains for performance -->

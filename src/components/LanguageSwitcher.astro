@@ -1,0 +1,201 @@
+---
+// 🌐 Language Switcher Component
+// Purpose: Toggle between English and Spanish versions of pages
+// Features: Keyboard accessible, screen reader friendly, preserves current route
+
+interface Props {
+  currentPath?: string;
+  currentLang?: string;
+}
+
+const {
+  currentPath = Astro.url.pathname,
+  currentLang = 'en'
+} = Astro.props;
+
+// Remove BASE_URL and /es/ prefix to get the clean path
+const baseUrl = import.meta.env.BASE_URL || '/';
+let cleanPath = currentPath;
+
+// Remove BASE_URL prefix if it exists
+if (cleanPath.startsWith(baseUrl) && baseUrl !== '/') {
+  cleanPath = cleanPath.slice(baseUrl.length);
+}
+
+// Remove leading slash if present
+if (cleanPath.startsWith('/')) {
+  cleanPath = cleanPath.slice(1);
+}
+
+// Remove /es/ prefix if present
+if (cleanPath.startsWith('es/')) {
+  cleanPath = cleanPath.slice(3);
+}
+
+// Remove trailing slash
+if (cleanPath.endsWith('/') && cleanPath.length > 1) {
+  cleanPath = cleanPath.slice(0, -1);
+}
+
+// Generate the alternate language URL
+const isCurrentlySpanish = currentLang === 'es' || currentPath.includes('/es/');
+const alternateUrl = isCurrentlySpanish
+  ? `${baseUrl}${cleanPath}`  // Switch to English
+  : `${baseUrl}es/${cleanPath}`; // Switch to Spanish
+
+const alternateLang = isCurrentlySpanish ? 'en' : 'es';
+const alternateLangLabel = isCurrentlySpanish ? 'English' : 'Español';
+const currentLangLabel = isCurrentlySpanish ? 'Español' : 'English';
+---
+
+<div class="language-switcher" role="navigation" aria-label="Language switcher">
+  <button
+    type="button"
+    class="lang-toggle-button group flex items-center gap-2 px-3 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+    aria-label={`Switch language to ${alternateLangLabel}`}
+    aria-expanded="false"
+    data-alternate-url={alternateUrl}
+    data-alternate-lang={alternateLang}
+  >
+    <i class="fas fa-globe text-blue-600 group-hover:text-blue-700" aria-hidden="true"></i>
+    <span class="font-medium text-sm hidden sm:inline">{currentLangLabel}</span>
+    <span class="font-medium text-sm sm:hidden">{currentLang.toUpperCase()}</span>
+    <i class="fas fa-chevron-down text-xs transition-transform duration-200" aria-hidden="true"></i>
+  </button>
+
+  <!-- Dropdown menu -->
+  <div class="lang-dropdown absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible transform -translate-y-2 transition-all duration-200 z-50">
+    <div class="py-2">
+      <a
+        href={isCurrentlySpanish ? `${baseUrl}${cleanPath}` : `${baseUrl}${cleanPath}`}
+        class={`block px-4 py-2 text-sm transition-colors duration-200 ${!isCurrentlySpanish ? 'text-blue-600 bg-blue-50 font-semibold' : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600'}`}
+        lang="en"
+        hreflang="en"
+      >
+        <i class="fas fa-check mr-2 ${!isCurrentlySpanish ? 'visible' : 'invisible'}" aria-hidden="true"></i>
+        English
+      </a>
+      <a
+        href={alternateUrl}
+        class={`block px-4 py-2 text-sm transition-colors duration-200 ${isCurrentlySpanish ? 'text-blue-600 bg-blue-50 font-semibold' : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600'}`}
+        lang="es"
+        hreflang="es"
+      >
+        <i class="fas fa-check mr-2 ${isCurrentlySpanish ? 'visible' : 'invisible'}" aria-hidden="true"></i>
+        Español
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .language-switcher {
+    position: relative;
+  }
+
+  .lang-toggle-button:hover + .lang-dropdown,
+  .lang-dropdown:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Keyboard navigation support */
+  .lang-toggle-button:focus + .lang-dropdown,
+  .lang-toggle-button[aria-expanded="true"] + .lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Rotate chevron when dropdown is open */
+  .lang-toggle-button:hover .fa-chevron-down,
+  .lang-toggle-button[aria-expanded="true"] .fa-chevron-down {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  // Language switcher functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const langButtons = document.querySelectorAll('.lang-toggle-button');
+
+    langButtons.forEach(button => {
+      const dropdown = button.nextElementSibling as HTMLElement;
+
+      // Click to toggle dropdown
+      button.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', (!isExpanded).toString());
+
+        // Toggle dropdown visibility
+        if (!isExpanded) {
+          dropdown.style.opacity = '1';
+          dropdown.style.visibility = 'visible';
+          dropdown.style.transform = 'translateY(0)';
+        } else {
+          dropdown.style.opacity = '0';
+          dropdown.style.visibility = 'hidden';
+          dropdown.style.transform = 'translateY(-0.5rem)';
+        }
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!button.contains(e.target as Node) && !dropdown.contains(e.target as Node)) {
+          button.setAttribute('aria-expanded', 'false');
+          dropdown.style.opacity = '0';
+          dropdown.style.visibility = 'hidden';
+          dropdown.style.transform = 'translateY(-0.5rem)';
+        }
+      });
+
+      // Keyboard navigation
+      button.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          button.click();
+        } else if (e.key === 'Escape') {
+          button.setAttribute('aria-expanded', 'false');
+          dropdown.style.opacity = '0';
+          dropdown.style.visibility = 'hidden';
+          dropdown.style.transform = 'translateY(-0.5rem)';
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          const firstLink = dropdown.querySelector('a');
+          if (firstLink) {
+            button.setAttribute('aria-expanded', 'true');
+            dropdown.style.opacity = '1';
+            dropdown.style.visibility = 'visible';
+            dropdown.style.transform = 'translateY(0)';
+            (firstLink as HTMLElement).focus();
+          }
+        }
+      });
+
+      // Handle arrow key navigation within dropdown
+      const dropdownLinks = dropdown.querySelectorAll('a');
+      dropdownLinks.forEach((link, index) => {
+        link.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const nextLink = dropdownLinks[index + 1] || dropdownLinks[0];
+            (nextLink as HTMLElement).focus();
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prevLink = dropdownLinks[index - 1] || dropdownLinks[dropdownLinks.length - 1];
+            (prevLink as HTMLElement).focus();
+          } else if (e.key === 'Escape') {
+            e.preventDefault();
+            button.setAttribute('aria-expanded', 'false');
+            dropdown.style.opacity = '0';
+            dropdown.style.visibility = 'hidden';
+            dropdown.style.transform = 'translateY(-0.5rem)';
+            (button as HTMLElement).focus();
+          }
+        });
+      });
+    });
+  });
+</script>

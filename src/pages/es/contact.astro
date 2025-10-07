@@ -1,0 +1,465 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import type { BreadcrumbItem } from '../../utils/seo.ts';
+
+// 🔍 SEO Configuration
+const pageTitle = 'Contáctanos';
+const pageDescription = 'Contacta a Marketing AI Houston para una consulta gratuita. Ayudamos a pequeñas empresas de Houston a ser encontradas en línea con diseño web impulsado por IA y servicios de SEO.';
+const canonicalURL = `${import.meta.env.SITE}${import.meta.env.BASE_URL}es/contact`;
+
+// 🍞 Breadcrumbs
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Inicio', url: `${import.meta.env.BASE_URL}es/` },
+  { name: 'Contacto', url: `${import.meta.env.BASE_URL}es/contact` }
+];
+
+// 🛡️ CSP hashes for contact page inline scripts
+// iframe script hash: sha256-yJmBxiBN4AeSn7iBlg4OWHPT0EsUF6nCxNGCkynYDTI=
+// accordion script hash: sha256-jQ9jE2f/RdmljlEiEL5/wzUpriXsUrG9h9ByoESgO5w=
+---
+
+<MainLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalURL}
+  breadcrumbs={breadcrumbs}
+  pageType="contact"
+  currentPath="/es/contact"
+>
+
+    <!-- Hero Section -->
+    <section class="py-20 md:py-24 relative overflow-hidden">
+        <!-- Background elements -->
+        <div class="absolute inset-0">
+            <div class="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-blue-600 to-teal-600 organic-blob opacity-20 animate-blob"></div>
+            <div class="absolute top-40 right-20 w-72 h-72 bg-gradient-to-br from-teal-600 to-blue-300 organic-leaf opacity-20 animate-float"></div>
+            <div class="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-br from-blue-900 to-blue-600 organic-droplet opacity-20 animate-float"></div>
+        </div>
+
+        <div class="relative z-10 px-4 max-w-4xl mx-auto">
+            <div class="text-center">
+                <!-- Visual Cue (Stars) -->
+                <div class="text-yellow-400 text-3xl mb-2">⭐⭐⭐⭐⭐</div>
+
+                <!-- Tagline -->
+                <p class="text-gray-700 mb-8 font-medium">Creado para pequeñas empresas que quieren crecer</p>
+
+                <!-- Headline -->
+                <h1 class="text-5xl md:text-6xl font-black text-gray-900 leading-tight mb-6">
+                    Hablemos Sobre Tu Negocio
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-xl text-gray-700 mb-12 max-w-2xl mx-auto leading-relaxed">
+                    Ya sea que estés listo para lanzar o solo explorando opciones, nos encantaría saber de ti.
+                </p>
+
+                <!-- Primary CTA Button -->
+                <a href="#contact-options" class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg mb-6">
+                    👉 Agenda una Llamada de Descubrimiento <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">GRATIS</span>
+                </a>
+
+                <!-- Supporting One Liner -->
+                <p class="text-gray-700 mb-16">Sin presión, sin jerga — solo una charla rápida para ver si encajamos.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Options Section -->
+    <section id="contact-options" class="py-20 md:py-24 relative overflow-hidden">
+        <!-- Background elements -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-5">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-teal-600 rounded-full filter blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-600 rounded-full filter blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto max-w-6xl px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-600">Elige Cómo Te Gustaría Conectar</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Schedule a Discovery Call -->
+                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white border-opacity-50 text-center">
+                    <div class="text-6xl mb-6">📅</div>
+                    <h3 class="text-2xl font-bold mb-4 text-blue-900 font-poppins">Agenda una Llamada de Descubrimiento</h3>
+                    <p class="text-gray-700 mb-6">Usa nuestro calendario para elegir un horario que te funcione.</p>
+                    <a href="https://calendly.com/marketingaihouston/free-discovery-call" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                        Reserva Ahora
+                    </a>
+                </div>
+
+                <!-- Send a Message -->
+                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white border-opacity-50 text-center">
+                    <div class="text-6xl mb-6">📝</div>
+                    <h3 class="text-2xl font-bold mb-4 text-blue-900 font-poppins">Envía un Mensaje</h3>
+                    <p class="text-gray-700 mb-6">Completa nuestro formulario rápido y te responderemos en 1 día hábil.</p>
+                    <a href="#contact-form" class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                        Enviar Mensaje
+                    </a>
+                </div>
+
+                <!-- Call or Email Directly -->
+                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white border-opacity-50 text-center">
+                    <div class="text-6xl mb-6">📞</div>
+                    <h3 class="text-2xl font-bold mb-4 text-blue-900 font-poppins">Llámanos o Envíanos un Email Directamente</h3>
+                    <p class="text-gray-700 mb-6">¿Prefieres contactarnos directamente? Estamos a solo un clic de distancia.</p>
+                    <div class="space-y-3">
+                        <a href="tel:+12815440572" class="flex items-center justify-center bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
+                            <i class="fas fa-phone mr-2"></i>
+                            (281) 544-0572
+                        </a>
+                        <a href="mailto:team@marketingaihouston.com" class="flex items-center justify-center bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
+                            <i class="fas fa-envelope mr-2"></i>
+                            team@marketingaihouston.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact-form" class="py-20 md:py-24 relative overflow-hidden">
+        <!-- Background elements -->
+        <div class="absolute inset-0">
+            <div class="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-teal-600 to-blue-300 organic-blob opacity-10 animate-float"></div>
+            <div class="absolute bottom-20 left-20 w-72 h-72 bg-gradient-to-br from-blue-600 to-blue-900 organic-leaf opacity-10 animate-float"></div>
+            <div class="absolute top-1/2 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-400 to-teal-500 organic-droplet opacity-5 animate-blob"></div>
+        </div>
+
+        <div class="container mx-auto max-w-4xl px-4 relative z-10">
+            <!-- Header Section -->
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">Envíanos un Mensaje</span>
+                </h2>
+                <p class="text-xl text-gray-700 mb-2">Completa el formulario a continuación y te responderemos en 1 día hábil</p>
+                <div class="flex items-center justify-center gap-2 text-gray-600">
+                    <i class="fas fa-lock text-teal-600"></i>
+                    <span class="text-sm">Tu información está segura y nunca será compartida</span>
+                </div>
+            </div>
+
+            <!-- Form Container with Enhanced Styling -->
+            <div class="relative group">
+                <!-- Decorative glow effect on hover -->
+                <div class="absolute -inset-1 bg-gradient-to-r from-teal-600 to-blue-600 rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"></div>
+
+                <!-- Main form wrapper -->
+                <div class="relative bg-white bg-opacity-90 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl border-2 border-white border-opacity-60 transition-all duration-300 hover:shadow-3xl">
+                    <!-- Decorative corner accents -->
+                    <div class="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-teal-600 rounded-tl-3xl opacity-30"></div>
+                    <div class="absolute bottom-0 right-0 w-20 h-20 border-b-4 border-r-4 border-blue-600 rounded-br-3xl opacity-30"></div>
+
+                    <!-- Google Form Embedded -->
+                    <div class="w-full mx-auto">
+                        <iframe
+                            id="google-form-iframe"
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSfUTmSL4dEVHL1OLBZncgvPgU_S6vH8_GLOM4KlV1VohMKKow/viewform?embedded=true"
+                            width="100%"
+                            height="2349"
+                            frameborder="0"
+                            marginheight="0"
+                            marginwidth="0"
+                            class="w-full rounded-lg"
+                            title="Contact Form"
+                        >
+                            Cargando…
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trust indicators below form -->
+            <div class="mt-8 text-center">
+                <div class="inline-flex items-center gap-6 text-sm text-gray-600 flex-wrap justify-center">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-shield-alt text-teal-600"></i>
+                        <span>Seguridad SSL</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-clock text-blue-600"></i>
+                        <span>Respuesta en 24 horas</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-check-circle text-teal-600"></i>
+                        <span>Garantía Sin Spam</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FAQ Section -->
+    <section class="py-20 md:py-24 relative overflow-hidden">
+        <!-- Background elements -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-5">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600 rounded-full filter blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto max-w-4xl px-4 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center bg-white bg-opacity-80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white border-opacity-50 shadow-sm">
+                    <i class="fas fa-question-circle mr-2 text-teal-600"></i>
+                    Preguntas
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600 font-black">Preguntas Frecuentes</span>
+                </h2>
+                <p class="text-xl text-gray-700 max-w-2xl mx-auto">Respuestas directas — sin jerga, sin letra pequeña oculta.</p>
+            </div>
+
+            <div class="space-y-4 max-w-3xl mx-auto" itemscope itemtype="https://schema.org/FAQPage">
+                <!-- FAQ 1 -->
+                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl overflow-hidden border border-white border-opacity-50" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-50/30 focus:outline-none flex justify-between items-center md:pointer-events-none">
+                        <span class="font-bold text-blue-900 flex items-center">
+                            <span class="mr-3 text-2xl">📞</span>
+                            <span itemprop="name">¿Ofrecen consultas gratuitas?</span>
+                        </span>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                    </button>
+                    <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">
+                            Sí — cada llamada de descubrimiento es gratuita, amigable y enfocada en tus objetivos.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl overflow-hidden border border-white border-opacity-50" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-50/30 focus:outline-none flex justify-between items-center md:pointer-events-none">
+                        <span class="font-bold text-blue-900 flex items-center">
+                            <span class="mr-3 text-2xl">🕒</span>
+                            <span itemprop="name">¿Cuánto dura una llamada típica?</span>
+                        </span>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                    </button>
+                    <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">
+                            La mayoría de las llamadas duran 15–30 minutos. Justo el tiempo suficiente para explorar tus necesidades y los próximos pasos.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl overflow-hidden border border-white border-opacity-50" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-50/30 focus:outline-none flex justify-between items-center md:pointer-events-none">
+                        <span class="font-bold text-blue-900 flex items-center">
+                            <span class="mr-3 text-2xl">🌐</span>
+                            <span itemprop="name">¿Solo trabajan con empresas en Houston?</span>
+                        </span>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                    </button>
+                    <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">
+                            Para nada. Estamos orgullosamente basados en Houston, pero atendemos a propietarios de pequeñas empresas en todo el país. Nuestro proceso es completamente compatible con trabajo remoto.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl overflow-hidden border border-white border-opacity-50" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-50/30 focus:outline-none flex justify-between items-center md:pointer-events-none">
+                        <span class="font-bold text-blue-900 flex items-center">
+                            <span class="mr-3 text-2xl">✉️</span>
+                            <span itemprop="name">¿Puedo simplemente enviarles un email en lugar de reservar una llamada?</span>
+                        </span>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                    </button>
+                    <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">
+                            Absolutamente. Usa nuestro formulario de contacto o envíanos un email directamente — lo que funcione mejor para ti.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl overflow-hidden border border-white border-opacity-50" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-50/30 focus:outline-none flex justify-between items-center md:pointer-events-none">
+                        <span class="font-bold text-blue-900 flex items-center">
+                            <span class="mr-3 text-2xl">📅</span>
+                            <span itemprop="name">¿Qué sucede después de que reserve una llamada?</span>
+                        </span>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                    </button>
+                    <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">
+                            Recibirás un email de confirmación con una invitación de calendario. Nos reuniremos vía Zoom o teléfono en el horario programado.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-20 md:py-24 relative overflow-hidden bg-gradient-to-br from-blue-900 to-blue-600">
+        <div class="container mx-auto max-w-4xl px-4 relative z-10 text-center">
+            <h2 class="text-4xl md:text-5xl font-black mb-6 text-white">
+                Comencemos con una Conversación Rápida
+            </h2>
+            <p class="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
+                Elige un horario, envía un mensaje o simplemente llámanos — estamos aquí para ayudar.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="#contact-options" class="bg-white text-blue-900 font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    👉 Agenda una Llamada de Descubrimiento <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">GRATIS</span>
+                </a>
+
+                <a href="#contact-form" class="border-2 border-white text-white hover:bg-white hover:text-blue-900 font-semibold py-4 px-12 rounded-full transition-all duration-300">
+                    📩 Envía un Mensaje
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script is:inline>
+        // Google Form iframe height adjustment on submission
+        let formLoadCounter = 0;
+
+        // Attach event listener to iframe after DOM is loaded
+        window.addEventListener('DOMContentLoaded', function() {
+            const iframe = document.getElementById('google-form-iframe');
+
+            if (iframe) {
+                console.log('✅ Iframe found, attaching load listener...');
+
+                iframe.addEventListener('load', function() {
+                    formLoadCounter += 1;
+                    console.log('🔄 Form iframe loaded - Count:', formLoadCounter);
+
+                    // On second load, the form has been submitted and shows confirmation page
+                    if (formLoadCounter === 2) {
+                        console.log('✅ Form submitted! Resizing iframe...');
+
+                        // Smoothly transition to smaller height for confirmation message
+                        iframe.style.height = '300px';
+                        console.log('📏 Iframe height changed to 300px');
+
+                        // Scroll to show the confirmation message
+                        setTimeout(() => {
+                            iframe.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start',
+                                inline: 'nearest'
+                            });
+                            console.log('📜 Scrolled to confirmation message');
+                        }, 300);
+                    }
+                });
+            } else {
+                console.error('❌ Iframe not found!');
+            }
+        });
+    </script>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const element = e.target as HTMLAnchorElement;
+                const href = element.getAttribute('href');
+                if (href) {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Accordion functionality for FAQ
+        const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+
+        accordionTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const accordionItem = trigger.parentElement;
+                const chevron = trigger.querySelector('i');
+
+                // Toggle accordion content
+                accordionItem.classList.toggle('accordion-open');
+
+                // Rotate chevron icon
+                if (accordionItem.classList.contains('accordion-open')) {
+                    chevron.style.transform = 'rotate(180deg)';
+                } else {
+                    chevron.style.transform = 'rotate(0)';
+                }
+            });
+        });
+    </script>
+
+    <!-- Custom page-specific styles -->
+    <style>
+        /* Custom styles */
+        .organic-blob {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+
+        .organic-droplet {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+
+        .organic-leaf {
+            border-radius: 20% 80% 20% 80% / 80% 20% 80% 20%;
+        }
+
+        /* FAQ Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-open .accordion-content {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        /* Desktop: Always show content */
+        @media (min-width: 768px) {
+            .accordion-content {
+                max-height: none !important;
+                overflow: visible !important;
+            }
+
+            .accordion-trigger {
+                pointer-events: none !important;
+            }
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+    </style>
+
+</MainLayout>

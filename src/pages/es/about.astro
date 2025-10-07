@@ -1,0 +1,410 @@
+---
+// 📄 About Page (Spanish)
+// Purpose: Company information, mission, values, and process
+// Features: Hero section, mission statement, differentiators, process, values
+
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Inicio', url: `${import.meta.env.BASE_URL}es/` },
+  { name: 'Acerca de', url: `${import.meta.env.BASE_URL}es/about` }
+];
+---
+
+<MainLayout
+  title="Acerca de Marketing AI Houston — Diseño Web y SEO para Pequeñas Empresas"
+  description="Conoce Marketing AI Houston. Ayudamos a pequeñas empresas a aparecer en línea a través de sitios web claros y enfocados en conversiones y estrategias éticas de SEO. Construido para empresas basadas en servicios."
+  currentPath="/es/about"
+  breadcrumbs={breadcrumbs}
+  keywords={['acerca de marketing ai houston', 'diseño web pequeñas empresas', 'empresa seo houston', 'seo ético', 'diseño móvil primero', 'marketing empresas servicios']}
+>
+  <!-- Hero Section -->
+  <section class="min-h-[70vh] flex items-center justify-center relative overflow-hidden pt-16 pb-20 bg-gradient-to-br from-blue-50 to-white">
+    <!-- Background elements -->
+    <div class="absolute inset-0 opacity-5 hidden md:block">
+      <div class="text-9xl font-bold absolute top-10 left-10 text-blue-900">CONFIANZA</div>
+      <div class="text-9xl font-bold absolute top-1/2 right-10 text-teal-600">CRECER</div>
+      <div class="text-9xl font-bold absolute bottom-10 left-1/3 text-blue-600">CONSTRUIR</div>
+    </div>
+
+    <!-- Organic blob elements -->
+    <div class="absolute inset-0">
+      <div class="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full opacity-10 animate-pulse-slow"></div>
+      <div class="absolute top-40 right-20 w-72 h-72 bg-gradient-to-br from-teal-600 to-blue-300 rounded-full opacity-10 animate-pulse-slow" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-br from-blue-900 to-blue-600 rounded-full opacity-10 animate-pulse-slow" style="animation-delay: 2s;"></div>
+    </div>
+
+    <div class="relative z-10 px-4 max-w-5xl mx-auto text-center">
+      <!-- Stars and tagline -->
+      <div class="text-yellow-400 text-3xl mb-2">⭐⭐⭐⭐⭐</div>
+      <p class="text-gray-700 mb-8 text-lg">Construido para Pequeñas Empresas. Impulsado por IA. Enfocado en Claridad.</p>
+
+      <!-- Headline -->
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 leading-tight mb-6">
+        Acerca de <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-600">Marketing AI Houston</span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="text-xl md:text-2xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
+        Ayudamos a pequeñas empresas a mejorar su presencia en línea a través de sitios web claros y enfocados en conversiones y estrategias éticas de SEO.
+      </p>
+
+      <!-- CTA Button -->
+      <a
+        href={`${import.meta.env.BASE_URL}es/contact#contact-options`}
+        class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg mb-6"
+      >
+        👉 Reserva una Llamada de Descubrimiento
+      </a>
+
+      <!-- Supporting one-liner -->
+      <p class="text-gray-700 mb-12">Sin jerga. Sin presión. Solo marketing práctico construido alrededor de tus objetivos.</p>
+
+      <!-- Key Metrics -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50">
+          <div class="text-4xl mb-3">📱</div>
+          <div class="text-gray-900 font-bold">100% móvil primero</div>
+          <div class="text-gray-700 text-sm">sitios web</div>
+        </div>
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50">
+          <div class="text-4xl mb-3">📈</div>
+          <div class="text-gray-900 font-bold">Visibilidad mejorada</div>
+          <div class="text-gray-700 text-sm">en semanas</div>
+        </div>
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50">
+          <div class="text-4xl mb-3">🔍</div>
+          <div class="text-gray-900 font-bold">Proceso transparente</div>
+          <div class="text-gray-700 text-sm">desde la estrategia hasta el lanzamiento</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="py-20 md:py-24 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full opacity-5">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-teal-600 rounded-full filter blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-600 rounded-full filter blur-3xl"></div>
+    </div>
+
+    <div class="container mx-auto max-w-4xl px-4 relative z-10">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-bullseye mr-2 text-blue-600"></i>
+          Nuestra Misión
+        </div>
+        <h2 class="text-4xl md:text-5xl font-black mb-8">
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-teal-600">Ayudando a Pequeñas Empresas a Aparecer y Destacarse en Línea</span>
+        </h2>
+      </div>
+
+      <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-xl border border-white/50">
+        <p class="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed">
+          Marketing AI Houston fue creado para hacer que el diseño web y el SEO sean más accesibles para empresas basadas en servicios. Nos enfocamos en <strong>claridad, usabilidad y prácticas éticas</strong> — no atajos o promesas infladas.
+        </p>
+        <p class="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed">
+          Nuestro objetivo es ayudarte a construir un sitio web y presencia en búsqueda que refleje tu negocio, genere confianza y apoye el crecimiento a largo plazo.
+        </p>
+        <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+          Nos enfocamos en estrategias que apoyan <strong>mejor visibilidad, mayor compromiso y progreso medible</strong> — no soluciones rápidas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Makes Us Different -->
+  <section class="py-20 md:py-24 relative overflow-hidden bg-gradient-to-br from-blue-50 to-white">
+    <div class="container mx-auto max-w-6xl px-4 relative z-10">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-star mr-2 text-teal-600"></i>
+          Qué Nos Hace Diferentes
+        </div>
+        <h2 class="text-4xl md:text-5xl font-black mb-4">
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-900">Por Qué los Clientes Trabajan con Nosotros</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Benefit 1 -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/50">
+          <div class="text-5xl mb-4">🧠</div>
+          <h3 class="text-2xl font-bold mb-3 text-blue-900">Estrategia Centrada en el Cliente</h3>
+          <p class="text-gray-700">Adaptamos cada proyecto a tus objetivos y audiencia.</p>
+        </div>
+
+        <!-- Benefit 2 -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/50">
+          <div class="text-5xl mb-4">📱</div>
+          <h3 class="text-2xl font-bold mb-3 text-blue-900">Diseño Móvil Primero</h3>
+          <p class="text-gray-700">Construido para cómo los clientes realmente navegan.</p>
+        </div>
+
+        <!-- Benefit 3 -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/50">
+          <div class="text-5xl mb-4">🔍</div>
+          <h3 class="text-2xl font-bold mb-3 text-blue-900">SEO que Prioriza la Visibilidad</h3>
+          <p class="text-gray-700">Estrategias éticas y locales que apoyan la descubribilidad.</p>
+        </div>
+
+        <!-- Benefit 4 -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/50">
+          <div class="text-5xl mb-4">🛠️</div>
+          <h3 class="text-2xl font-bold mb-3 text-blue-900">Flujo de Trabajo Modular</h3>
+          <p class="text-gray-700">Pasos claros, especificaciones reutilizables y transferencia fácil.</p>
+        </div>
+
+        <!-- Benefit 5 -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/50">
+          <div class="text-5xl mb-4">🤝</div>
+          <h3 class="text-2xl font-bold mb-3 text-blue-900">Comunicación Transparente</h3>
+          <p class="text-gray-700">Sin jerga, sin sorpresas, solo actualizaciones honestas.</p>
+        </div>
+
+        <!-- Benefit 6 -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/50">
+          <div class="text-5xl mb-4">⚡</div>
+          <h3 class="text-2xl font-bold mb-3 text-blue-900">Proceso de Lanzamiento Rápido</h3>
+          <p class="text-gray-700">En vivo en semanas, no meses.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How We Work -->
+  <section class="py-20 md:py-24 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full opacity-10"></div>
+      <div class="absolute bottom-20 right-20 w-72 h-72 bg-gradient-to-br from-teal-600 to-blue-300 rounded-full opacity-10"></div>
+    </div>
+
+    <div class="container mx-auto max-w-6xl px-4 relative z-10">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-route mr-2 text-blue-600"></i>
+          Nuestro Proceso
+        </div>
+        <h2 class="text-4xl md:text-5xl font-black mb-4">
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-900">Nuestro Proceso Está Construido para la Claridad</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Step 1 -->
+        <div class="text-center bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/50">
+          <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-600 to-teal-600 flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <span class="text-white text-2xl font-bold">1</span>
+          </div>
+          <div class="text-5xl mb-4">💬</div>
+          <h3 class="text-2xl font-bold mb-3 text-blue-900">Llamada de Descubrimiento</h3>
+          <p class="text-gray-700">Aprendemos sobre tu negocio, objetivos y audiencia.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="text-center bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/50">
+          <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-600 to-teal-600 flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <span class="text-white text-2xl font-bold">2</span>
+          </div>
+          <div class="text-5xl mb-4">🧩</div>
+          <h3 class="text-2xl font-bold mb-3 text-blue-900">Planificación Modular</h3>
+          <p class="text-gray-700">Construimos especificaciones de contenido y diseño sección por sección.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="text-center bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/50">
+          <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-600 to-teal-600 flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <span class="text-white text-2xl font-bold">3</span>
+          </div>
+          <div class="text-5xl mb-4">🚀</div>
+          <h3 class="text-2xl font-bold mb-3 text-blue-900">Lanzar y Optimizar</h3>
+          <p class="text-gray-700">Lanzamos, rastreamos el rendimiento y refinamos basándonos en retroalimentación.</p>
+        </div>
+      </div>
+
+      <p class="text-center mt-12 text-lg text-gray-700 max-w-3xl mx-auto bg-white/70 backdrop-blur-sm px-8 py-4 rounded-full border border-white/50">
+        👉 Cada paso está documentado, es transparente y adaptado a tu negocio.
+      </p>
+    </div>
+  </section>
+
+  <!-- Who We Serve -->
+  <section class="py-20 md:py-24 relative overflow-hidden bg-gradient-to-br from-blue-50 to-white">
+    <div class="container mx-auto max-w-6xl px-4 relative z-10">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-users mr-2 text-teal-600"></i>
+          A Quién Servimos
+        </div>
+        <h2 class="text-4xl md:text-5xl font-black mb-8">
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">Construido para Empresas Basadas en Servicios</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+        <!-- Industry 1 -->
+        <div class="flex flex-col items-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center shadow-lg mb-4">
+            <i class="fas fa-hammer text-2xl text-white"></i>
+          </div>
+          <span class="text-gray-900 font-medium text-center">Contratistas</span>
+        </div>
+
+        <!-- Industry 2 -->
+        <div class="flex flex-col items-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center shadow-lg mb-4">
+            <i class="fas fa-car text-2xl text-white"></i>
+          </div>
+          <span class="text-gray-900 font-medium text-center">Talleres Automotrices</span>
+        </div>
+
+        <!-- Industry 3 -->
+        <div class="flex flex-col items-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center shadow-lg mb-4">
+            <i class="fas fa-broom text-2xl text-white"></i>
+          </div>
+          <span class="text-gray-900 font-medium text-center">Servicios de Limpieza</span>
+        </div>
+
+        <!-- Industry 4 -->
+        <div class="flex flex-col items-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center shadow-lg mb-4">
+            <i class="fas fa-leaf text-2xl text-white"></i>
+          </div>
+          <span class="text-gray-900 font-medium text-center">Jardinería</span>
+        </div>
+
+        <!-- Industry 5 -->
+        <div class="flex flex-col items-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center shadow-lg mb-4">
+            <i class="fas fa-paw text-2xl text-white"></i>
+          </div>
+          <span class="text-gray-900 font-medium text-center">Servicios para Mascotas</span>
+        </div>
+
+        <!-- Industry 6 -->
+        <div class="flex flex-col items-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center shadow-lg mb-4">
+            <i class="fas fa-heart text-2xl text-white"></i>
+          </div>
+          <span class="text-gray-900 font-medium text-center">Terapeutas</span>
+        </div>
+
+        <!-- Industry 7 -->
+        <div class="flex flex-col items-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center shadow-lg mb-4">
+            <i class="fas fa-balance-scale text-2xl text-white"></i>
+          </div>
+          <span class="text-gray-900 font-medium text-center">Bufetes de Abogados</span>
+        </div>
+
+        <!-- Industry 8 -->
+        <div class="flex flex-col items-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center shadow-lg mb-4">
+            <i class="fas fa-snowflake text-2xl text-white"></i>
+          </div>
+          <span class="text-gray-900 font-medium text-center">HVAC y Reparación</span>
+        </div>
+      </div>
+
+      <p class="text-center text-lg text-gray-700 max-w-3xl mx-auto bg-white/70 backdrop-blur-sm px-8 py-4 rounded-full border border-white/50">
+        👉 Ya sea que estés en Houston o en todo el país, ayudamos a empresas de servicios a crecer en línea.
+      </p>
+    </div>
+  </section>
+
+  <!-- Our Values -->
+  <section class="py-20 md:py-24 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full opacity-5">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-blue-900 rounded-full filter blur-3xl"></div>
+    </div>
+
+    <div class="container mx-auto max-w-4xl px-4 relative z-10">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-shield-alt mr-2 text-blue-900"></i>
+          Nuestros Valores
+        </div>
+        <h2 class="text-4xl md:text-5xl font-black mb-8">
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-teal-600">Por Lo Que Nos Destacamos</span>
+        </h2>
+      </div>
+
+      <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-xl border border-white/50">
+        <ul class="space-y-6">
+          <li class="flex items-start">
+            <i class="fas fa-check-circle text-green-500 text-2xl mr-4 mt-1 flex-shrink-0"></i>
+            <div>
+              <h3 class="text-xl font-bold text-blue-900 mb-1">Claridad sobre complejidad</h3>
+              <p class="text-gray-700">Hacemos que el marketing digital sea comprensible y accionable.</p>
+            </div>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check-circle text-green-500 text-2xl mr-4 mt-1 flex-shrink-0"></i>
+            <div>
+              <h3 class="text-xl font-bold text-blue-900 mb-1">Ética sobre atajos</h3>
+              <p class="text-gray-700">Construimos visibilidad sostenible, no esquemas de solución rápida.</p>
+            </div>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check-circle text-green-500 text-2xl mr-4 mt-1 flex-shrink-0"></i>
+            <div>
+              <h3 class="text-xl font-bold text-blue-900 mb-1">Resultados sobre métricas de vanidad</h3>
+              <p class="text-gray-700">Rastreamos lo que importa: llamadas, conversiones y crecimiento.</p>
+            </div>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check-circle text-green-500 text-2xl mr-4 mt-1 flex-shrink-0"></i>
+            <div>
+              <h3 class="text-xl font-bold text-blue-900 mb-1">Colaboración sobre control</h3>
+              <p class="text-gray-700">Tu negocio, tu visión. Estamos aquí para apoyarla.</p>
+            </div>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check-circle text-green-500 text-2xl mr-4 mt-1 flex-shrink-0"></i>
+            <div>
+              <h3 class="text-xl font-bold text-blue-900 mb-1">Transparencia sobre ventas adicionales</h3>
+              <p class="text-gray-700">Precios honestos, cronogramas claros, sin agendas ocultas.</p>
+            </div>
+          </li>
+        </ul>
+
+        <p class="text-center mt-8 text-lg text-gray-700 font-medium">
+          👉 Construimos confianza haciendo lo correcto — y mostrando nuestro trabajo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-20 md:py-24 relative overflow-hidden bg-gradient-to-br from-blue-900 to-blue-600">
+    <div class="container mx-auto max-w-4xl px-4 relative z-10 text-center">
+      <h2 class="text-4xl md:text-5xl font-black mb-6 text-white">
+        Construyamos Algo Que Funcione
+      </h2>
+      <p class="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
+        Agenda una llamada de descubrimiento gratuita y hablemos sobre tus objetivos.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a
+          href={`${import.meta.env.BASE_URL}es/contact#contact-options`}
+          class="bg-white text-blue-900 font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+        >
+          👉 Reserva una Llamada de Descubrimiento
+        </a>
+
+        <a
+          href={`${import.meta.env.BASE_URL}es/contact#contact-form`}
+          class="border-2 border-white text-white hover:bg-white hover:text-blue-900 font-semibold py-4 px-12 rounded-full transition-all duration-300"
+        >
+          📩 Solicita una Cotización Gratuita
+        </a>
+      </div>
+
+      <p class="text-white mt-12 max-w-2xl mx-auto">
+        Sin jerga. Sin contratos largos. Solo resultados claros para propietarios de pequeñas empresas.
+      </p>
+    </div>
+  </section>
+</MainLayout>

@@ -1,0 +1,718 @@
+---
+// 🎯 Pro Website & Growth Plan Service Page
+// Purpose: Premium service page for comprehensive website + growth strategy
+// Features: Full package details, benefits, pricing, FAQ
+
+import MainLayout from '../../layouts/MainLayout.astro';
+import Card from '../../components/ui/Card.astro';
+import Button from '../../components/ui/Button.astro';
+
+import {
+  generateServiceSchema,
+  generateFAQSchema,
+  type BreadcrumbItem,
+  type FAQItem
+} from '../../utils/seo.ts';
+
+// 🌐 Alternate Language Configuration
+const alternateLanguages = [
+  { lang: 'en', url: `${import.meta.env.SITE}${import.meta.env.BASE_URL}pro-website-growth-plan` },
+  { lang: 'es', url: `${import.meta.env.SITE}${import.meta.env.BASE_URL}es/pro-website-growth-plan` }
+];
+
+// 🔍 SEO Configuration
+const pageTitle = 'Plan Pro de Sitio Web y Crecimiento — Solución Integral para Dominar el Mercado';
+const pageDescription = 'Un sitio web integral enfocado en conversiones junto con una estrategia de crecimiento de 90 días — diseñado para dominar su mercado. Hasta 16 páginas con seguimiento avanzado.';
+const canonicalURL = `${import.meta.env.SITE}${import.meta.env.BASE_URL}es/pro-website-growth-plan`;
+
+// 🍞 Breadcrumb Navigation
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Inicio', url: `${import.meta.env.BASE_URL}es/` },
+  { name: 'Servicios', url: `${import.meta.env.BASE_URL}es/#services` },
+  { name: 'Expanda Su Presencia en Línea (Plan Pro)', url: `${import.meta.env.BASE_URL}es/pro-website-growth-plan` }
+];
+
+// 📊 Service Schema Data
+const serviceSchema = generateServiceSchema({
+  name: 'Plan Pro de Sitio Web y Crecimiento',
+  description: 'Paquete premium de diseño web y estrategia de crecimiento. Hasta 16 páginas, páginas de servicios individuales, páginas de destino locales y optimización de 90 días.',
+  provider: 'Marketing AI Houston',
+  serviceType: 'Web Design & SEO',
+  areaServed: 'United States',
+  priceRange: '$3,497'
+});
+
+// ❓ FAQ Data
+const faqs: FAQItem[] = [
+  {
+    question: '¿Es este un plan único o mensual?',
+    answer: 'Construcción única con optimización de 90 días incluida.'
+  },
+  {
+    question: '¿Puedo elegir mis páginas de servicios?',
+    answer: 'Sí — le ayudaremos a priorizar según el volumen de búsqueda y los objetivos de conversión.'
+  },
+  {
+    question: '¿Qué pasa si necesito más de 16 páginas?',
+    answer: 'Ofrecemos complementos escalables y paquetes personalizados.'
+  },
+  {
+    question: '¿Trabajan con empresas de múltiples ubicaciones?',
+    answer: 'Sí — este plan es ideal para expandirse a través de ciudades o áreas de servicio.'
+  }
+];
+
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<MainLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalURL}
+  breadcrumbs={breadcrumbs}
+  structuredData={[serviceSchema, faqSchema]}
+  pageType="service"
+  currentPath="/es/pro-website-growth-plan"
+  lang="es"
+  alternateLanguages={alternateLanguages}
+>
+  <!-- 🎯 Hero Section -->
+  <section class="section-padding relative overflow-hidden">
+    <!-- 🎨 Background Elements -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-blue-600 to-teal-600 organic-blob animate-float"></div>
+      <div class="absolute bottom-20 right-20 w-72 h-72 bg-gradient-to-br from-teal-600 to-blue-300 organic-leaf animate-float animation-delay-400"></div>
+    </div>
+
+    <div class="container mx-auto container-padding relative z-10">
+      <div class="text-center max-w-4xl mx-auto">
+        <!-- ⭐ Trust Signal -->
+        <div class="text-yellow-400 text-3xl mb-4">⭐⭐⭐⭐⭐</div>
+        <p class="text-gray-700 mb-8 font-medium">Construido para Empresas Listas para Escalar</p>
+
+        <!-- 🎯 Main Headline -->
+        <h1 class="text-5xl md:text-7xl font-black text-gray-900 leading-tight mb-6">
+          <span class="text-gradient font-black text-6xl md:text-8xl block mb-4 leading-tight" style="padding-bottom: 0.25rem;">Plan Pro de Sitio Web y Crecimiento</span>
+        </h1>
+
+        <!-- 📝 Subheadline -->
+        <p class="text-xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
+          Un sitio web integral enfocado en conversiones junto con una estrategia de crecimiento de 90 días — diseñado para dominar su mercado.
+        </p>
+
+        <!-- 🎯 Primary CTA -->
+        <Button
+          variant="primary"
+          size="lg"
+          href={`${import.meta.env.BASE_URL}es/contact#contact-options`}
+          class="mb-6"
+        >
+          👉 Reserve una Consulta de Descubrimiento
+        </Button>
+
+        <!-- 💬 Supporting Text -->
+        <p class="text-gray-700 mb-16">Construyamos algo que trabaje más duro que sus competidores.</p>
+
+        <!-- 📊 Key Metrics -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <Card class="text-center" padding="lg">
+            <div class="text-4xl mb-3">📄</div>
+            <div class="text-gray-900 font-bold">Hasta 16 páginas</div>
+          </Card>
+
+          <Card class="text-center" padding="lg">
+            <div class="text-4xl mb-3">📅</div>
+            <div class="text-gray-900 font-bold">Hoja de ruta de optimización de 90 días</div>
+          </Card>
+
+          <Card class="text-center" padding="lg">
+            <div class="text-4xl mb-3">📊</div>
+            <div class="text-gray-900 font-bold">Seguimiento y estrategia avanzados</div>
+          </Card>
+        </div>
+
+        <!-- 🏢 Industry Icons -->
+        <div class="mt-16 flex flex-wrap justify-center gap-8">
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <i class="fas fa-hammer text-2xl text-gray-900" aria-hidden="true"></i>
+            </div>
+            <span class="text-gray-700 font-medium">Contratistas</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <i class="fas fa-balance-scale text-2xl text-gray-900" aria-hidden="true"></i>
+            </div>
+            <span class="text-gray-700 font-medium">Bufetes de Abogados</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <i class="fas fa-user-md text-2xl text-gray-900" aria-hidden="true"></i>
+            </div>
+            <span class="text-gray-700 font-medium">Terapeutas</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <i class="fas fa-building text-2xl text-gray-900" aria-hidden="true"></i>
+            </div>
+            <span class="text-gray-700 font-medium">Múltiples Ubicaciones</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📋 What's Included Section -->
+  <section class="section-padding relative overflow-hidden bg-gradient-to-br from-gray-50 to-white">
+    <div class="container mx-auto container-padding">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-check-circle mr-2 text-blue-600" aria-hidden="true"></i>
+          Qué Está Incluido
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Todo en Un Paquete Escalable</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-palette text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Sitio Web Integral de Hasta 16 Páginas</h3>
+            <p class="text-gray-700">Construido para claridad, SEO y conversión.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-list-ul text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Páginas de Servicios Individuales (hasta 6)</h3>
+            <p class="text-gray-700">Adaptadas a cada oferta con orientación de palabras clave.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-map-marker-alt text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Páginas de Destino Locales (hasta 6 áreas de Houston)</h3>
+            <p class="text-gray-700">Optimizadas geográficamente para visibilidad y confianza.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-file-alt text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Creación de Contenido Personalizado</h3>
+            <p class="text-gray-700">Escrito para convertir y coincidir con la intención de búsqueda.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-chart-line text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Seguimiento Avanzado de Conversiones</h3>
+            <p class="text-gray-700">Vea qué está funcionando y de dónde provienen los clientes potenciales.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-search text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Análisis de Competencia + Estrategia de Palabras Clave</h3>
+            <p class="text-gray-700">Conozca su mercado y supere a los competidores.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-rocket text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Optimización de 90 Días con Revisiones Mensuales</h3>
+            <p class="text-gray-700">Refine, pruebe y crezca.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-gift text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Incluye Todos los Servicios de Crecimiento</h3>
+            <p class="text-gray-700">Todo de su paquete base, mejorado.</p>
+          </div>
+        </Card>
+      </div>
+
+      <p class="text-center text-lg text-gray-600 italic mt-12">
+        👉 Ideal para empresas listas para dominar su mercado y escalar el crecimiento.
+      </p>
+    </div>
+  </section>
+
+  <!-- 💎 Benefits Section -->
+  <section class="section-padding relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-teal-600 rounded-full filter blur-3xl"></div>
+    </div>
+
+    <div class="container mx-auto container-padding relative z-10">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-trophy mr-2 text-teal-600" aria-hidden="true"></i>
+          Los Beneficios
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Por Qué Funciona el Plan Pro</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <Card class="text-center" padding="xl">
+          <div class="text-5xl mb-4">📊</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Construido para Escalar</h3>
+          <p class="text-gray-700">Más páginas, más palabras clave, más visibilidad.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="text-5xl mb-4">✨</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Diseñado para la Confianza</h3>
+          <p class="text-gray-700">Diseño limpio, mensajes claros y relevancia local.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="text-5xl mb-4">📞</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Enfocado en Conversión</h3>
+          <p class="text-gray-700">Cada página construida para generar llamadas, formularios y reservas.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="text-5xl mb-4">🔍</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Estratégico</h3>
+          <p class="text-gray-700">Respaldado por investigación de palabras clave, análisis de competidores y optimización continua.</p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🛤️ How It Works Section -->
+  <section class="section-padding bg-gradient-to-br from-blue-50 to-white">
+    <div class="container mx-auto container-padding">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-route mr-2 text-blue-600" aria-hidden="true"></i>
+          Proceso Simple
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Comenzar es Simple</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <Card class="text-center" padding="xl">
+          <div class="w-20 h-20 rounded-full gradient-ocean-teal flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <span class="text-white text-2xl font-bold">1</span>
+          </div>
+          <div class="text-5xl mb-4">💬</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-4">Consulta de Descubrimiento</h3>
+          <p class="text-gray-700">Objetivos, ofertas, geografía y competidores.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="w-20 h-20 rounded-full gradient-ocean-teal flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <span class="text-white text-2xl font-bold">2</span>
+          </div>
+          <div class="text-5xl mb-4">🎨</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-4">Fase de Construcción</h3>
+          <p class="text-gray-700">Diseño, contenido, SEO, seguimiento.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="w-20 h-20 rounded-full gradient-ocean-teal flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <span class="text-white text-2xl font-bold">3</span>
+          </div>
+          <div class="text-5xl mb-4">📈</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-4">Fase de Optimización</h3>
+          <p class="text-gray-700">Revisiones mensuales, pruebas y refinamiento.</p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- 💰 Pricing Section -->
+  <section class="section-padding relative overflow-hidden">
+    <div class="container mx-auto container-padding">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-dollar-sign mr-2 text-teal-600" aria-hidden="true"></i>
+          Paquete Premium
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Plan Pro — $3,497</span>
+        </h2>
+      </div>
+
+      <div class="max-w-3xl mx-auto">
+        <Card variant="pricing" class="text-center transform hover:scale-105 transition-transform duration-300">
+          <div class="p-8">
+            <div class="text-6xl mb-6">⚡</div>
+            <h3 class="text-3xl font-bold text-blue-900 mb-4">Todo Lo Que Necesita para Dominar</h3>
+
+            <div class="text-5xl font-black text-blue-900 mb-8">$3,497</div>
+
+            <div class="text-left space-y-4 mb-8">
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Sitio web integral de hasta 16 páginas</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Páginas de servicios individuales (hasta 6)</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Páginas de destino de áreas locales (hasta 6 áreas de Houston)</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Creación de contenido personalizado</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Seguimiento avanzado de conversiones</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Análisis de competencia + estrategia de palabras clave</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Optimización de 90 días con revisiones mensuales</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Incluye todos los servicios de crecimiento</span>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4">
+              <Button
+                variant="primary"
+                size="lg"
+                href={`${import.meta.env.BASE_URL}es/contact#contact-options`}
+                fullWidth
+              >
+                Reserve una Consulta de Descubrimiento
+              </Button>
+
+              <Button
+                variant="outline"
+                size="lg"
+                href={`${import.meta.env.BASE_URL}es/contact#contact-form`}
+                fullWidth
+              >
+                Solicite una Propuesta Personalizada
+              </Button>
+            </div>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- ❓ FAQ Section -->
+  <section class="section-padding bg-gradient-to-br from-gray-50 to-white">
+    <div class="container mx-auto container-padding">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-question-circle mr-2 text-teal-600" aria-hidden="true"></i>
+          Preguntas
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Preguntas Frecuentes</span>
+        </h2>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-4" itemscope itemtype="https://schema.org/FAQPage">
+        {faqs.map((faq, index) => (
+          <Card class="overflow-hidden" key={index}>
+            <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-50/30 focus:outline-none flex justify-between items-center">
+                <span class="font-bold text-blue-900 flex items-center">
+                  <span class="mr-3 text-2xl">
+                    {index === 0 ? '⏱️' : index === 1 ? '📋' : index === 2 ? '📄' : '🏢'}
+                  </span>
+                  <span itemprop="name">{faq.question}</span>
+                </span>
+                <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" aria-hidden="true"></i>
+              </button>
+              <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <div class="p-6 pt-0 text-gray-700" itemprop="text">
+                  {faq.answer}
+                </div>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 🎯 Final CTA Section -->
+  <section class="section-padding bg-gradient-to-br from-blue-900 to-blue-600 text-white">
+    <div class="container mx-auto container-padding text-center">
+      <h2 class="text-4xl md:text-5xl font-black mb-6">
+        ¿Listo para Expandir Su Presencia en Línea?
+      </h2>
+      <p class="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
+        Construyamos un sitio que genere confianza, se posicione localmente e impulse un crecimiento real.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <Button
+          variant="secondary"
+          size="lg"
+          href={`${import.meta.env.BASE_URL}es/contact#contact-options`}
+        >
+          👉 Reserve una Consulta de Descubrimiento
+        </Button>
+
+        <Button
+          variant="outline"
+          size="lg"
+          href={`${import.meta.env.BASE_URL}es/contact#contact-form`}
+          class="border-white text-white hover:bg-white hover:text-blue-900"
+        >
+          📩 Solicite una Propuesta Personalizada
+        </Button>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  /* Define CSS custom properties for colors */
+  :root {
+    --color-ocean-deep: #0A2540;
+    --color-ocean-deeper: #020617;
+    --color-ocean-blue: #3B82F6;
+    --color-ocean-light: #60A5FA;
+    --color-ocean-teal: #198072;
+    --color-ocean-teal-dark: #14B8A6;
+    --color-ocean-sky: #BFDBFE;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  p, a, span, li {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Force maximum boldness for headers */
+  h1, h1 *, h1 span {
+    font-weight: 900 !important;
+    font-family: 'Poppins', sans-serif !important;
+  }
+
+  h2, h2 *, h2 span {
+    font-weight: 900 !important;
+    font-family: 'Poppins', sans-serif !important;
+  }
+
+  /* Layout utilities */
+  .section-padding {
+    padding: 5rem 0;
+  }
+
+  .container-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Typography utilities */
+  .heading-xl {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.1;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .heading-lg {
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1.2;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  @media (min-width: 768px) {
+    .section-padding {
+      padding: 6rem 0;
+    }
+
+    .heading-xl {
+      font-size: 4rem;
+    }
+
+    .heading-lg {
+      font-size: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-padding {
+      padding: 8rem 0;
+    }
+
+    .heading-xl {
+      font-size: 5rem;
+    }
+
+    .heading-lg {
+      font-size: 4rem;
+    }
+  }
+
+  /* Organic shapes */
+  .organic-blob {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+
+  .organic-droplet {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+
+  .organic-leaf {
+    border-radius: 20% 80% 20% 80% / 80% 20% 80% 20%;
+  }
+
+  /* Gradients */
+  .gradient-ocean-teal {
+    background: linear-gradient(135deg, var(--color-ocean-blue), var(--color-ocean-teal));
+  }
+
+  /* Animations */
+  .animation-delay-200 { animation-delay: 0.2s; }
+  .animation-delay-400 { animation-delay: 0.4s; }
+  .animation-delay-600 { animation-delay: 0.6s; }
+  .animation-delay-800 { animation-delay: 0.8s; }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+  }
+
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  /* 🎯 Service Page Specific Styles */
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .accordion-open .accordion-content {
+    max-height: 200px;
+    transition: max-height 0.5s ease-in;
+  }
+
+  /* 🎨 Enhanced hover effects */
+  .card-glass:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  /* 🎯 Gradient text animation */
+  .text-gradient {
+    background: linear-gradient(135deg, #3b82f6, #14b8a6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-weight: 900 !important;
+  }
+
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+</style>
+
+<script>
+  // 🎯 FAQ Accordion Functionality (All Devices)
+  document.addEventListener('DOMContentLoaded', () => {
+    const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+
+    accordionTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const accordionItem = trigger.parentElement?.parentElement;
+        const chevron = trigger.querySelector('i.fa-chevron-down');
+
+        if (accordionItem && chevron) {
+          accordionItem.classList.toggle('accordion-open');
+
+          if (accordionItem.classList.contains('accordion-open')) {
+            chevron.style.transform = 'rotate(180deg)';
+          } else {
+            chevron.style.transform = 'rotate(0)';
+          }
+        }
+      });
+    });
+  });
+
+  // 📊 Enhanced scroll animations for service page
+  document.addEventListener('DOMContentLoaded', () => {
+    if ('IntersectionObserver' in window) {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all cards and important elements
+      const elementsToAnimate = document.querySelectorAll('.card-glass, .heading-lg, .heading-xl');
+      elementsToAnimate.forEach(el => observer.observe(el));
+    }
+  });
+</script>

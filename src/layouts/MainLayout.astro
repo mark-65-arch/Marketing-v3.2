@@ -81,6 +81,46 @@ const twitterTags = generateTwitterCardTags({
 const viewportConfig = pageType === 'contact'
   ? 'width=device-width, initial-scale=1.0, user-scalable=yes'
   : 'width=device-width, initial-scale=1.0';
+
+// 🌐 Hreflang automation: Generate alternate language URLs
+const siteUrl = import.meta.env.SITE || 'https://marketingaihouston.com';
+const baseUrl = import.meta.env.BASE_URL || '/';
+
+// Get clean path without BASE_URL and /es/ prefix
+let cleanPath = currentPath;
+if (cleanPath.startsWith(baseUrl) && baseUrl !== '/') {
+  cleanPath = cleanPath.slice(baseUrl.length);
+}
+if (cleanPath.startsWith('/')) {
+  cleanPath = cleanPath.slice(1);
+}
+if (cleanPath.startsWith('es/')) {
+  cleanPath = cleanPath.slice(3);
+}
+if (cleanPath.endsWith('/') && cleanPath.length > 1) {
+  cleanPath = cleanPath.slice(0, -1);
+}
+
+// Determine if current page is Spanish
+const isSpanishPage = lang === 'es' || currentPath.includes('/es/');
+
+// Generate hreflang URLs
+const enUrl = `${siteUrl}${baseUrl}${cleanPath}`;
+const esUrl = `${siteUrl}${baseUrl}es/${cleanPath}`;
+
+// Normalize URLs (remove trailing slashes except for root)
+const normalizeUrl = (url: string) => {
+  if (url.endsWith('/') && !url.endsWith('//')) {
+    return url;
+  }
+  return url.endsWith('/') ? url.slice(0, -1) : url;
+};
+
+const hreflangLinks = [
+  { lang: 'en', url: normalizeUrl(enUrl) },
+  { lang: 'es', url: normalizeUrl(esUrl) },
+  { lang: 'x-default', url: normalizeUrl(enUrl) } // Default to English
+];
 ---
 
 <BaseLayout
@@ -117,6 +157,11 @@ const viewportConfig = pageType === 'contact'
     <!-- 🐦 Twitter Card tags -->
     {twitterTags.map(tag => (
       <meta name={tag.name} content={tag.content} />
+    ))}
+
+    <!-- 🌐 Hreflang tags for multilingual SEO -->
+    {hreflangLinks.map(link => (
+      <link rel="alternate" hreflang={link.lang} href={link.url} />
     ))}
 
     <!-- 🔗 Preconnect to external domains for performance -->
@@ -171,7 +216,7 @@ const viewportConfig = pageType === 'contact'
   </Fragment>
 
   <!-- 🧭 Site Header -->
-  <GlobalNav currentPath={currentPath} />
+  <GlobalNav currentPath={currentPath} currentLang={lang} />
 
   <!-- 📍 Breadcrumb Navigation (if provided) -->
   {breadcrumbs.length > 0 && (
@@ -205,7 +250,7 @@ const viewportConfig = pageType === 'contact'
   </main>
 
   <!-- 🦶 Site Footer -->
-  <Footer showNewsletter={showNewsletter} />
+  <Footer showNewsletter={showNewsletter} currentLang={lang} />
 
   <!-- Page-specific interactions -->
   <script define:vars={{ pageType, currentPath }} type="module">

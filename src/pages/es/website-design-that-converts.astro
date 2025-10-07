@@ -1,0 +1,789 @@
+---
+// 🎯 Website Design That Converts Service Page (Spanish)
+// Purpose: Service-specific landing page for conversion-focused website design
+// Features: Service details, benefits, pricing, FAQ, conversion optimization
+
+import MainLayout from '../../layouts/MainLayout.astro';
+import Card from '../../components/ui/Card.astro';
+import Button from '../../components/ui/Button.astro';
+
+import {
+  generateServiceSchema,
+  generateFAQSchema,
+  type BreadcrumbItem,
+  type FAQItem
+} from '../../utils/seo.ts';
+
+// 🌐 Alternate Languages
+const alternateLanguages = [
+  { lang: 'en', url: `${import.meta.env.SITE}${import.meta.env.BASE_URL}website-design-that-converts` },
+  { lang: 'es', url: `${import.meta.env.SITE}${import.meta.env.BASE_URL}es/website-design-that-converts` }
+];
+
+// 🔍 SEO Configuration
+const pageTitle = 'Sitios Web Que Convierten — Diseño Web Mobile-First para Pequeñas Empresas';
+const pageDescription = 'Creamos sitios web mobile-first, optimizados para SEO y diseñados para generar confianza, recibir llamadas y hacer crecer su negocio. Lance en semanas, no meses.';
+const canonicalURL = `${import.meta.env.SITE}${import.meta.env.BASE_URL}es/website-design-that-converts`;
+
+// 🍞 Breadcrumb Navigation
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Inicio', url: `${import.meta.env.BASE_URL}es/` },
+  { name: 'Servicios', url: `${import.meta.env.BASE_URL}es/#services` },
+  { name: 'Construya la Base de Su Sitio Web (Plan Growth)', url: `${import.meta.env.BASE_URL}es/website-design-that-converts` }
+];
+
+// 📊 Service Schema Data
+const serviceSchema = generateServiceSchema({
+  name: 'Diseño de Sitios Web Enfocado en Conversión',
+  description: 'Diseño web profesional optimizado para móviles, SEO local y conversiones. Construido para generar confianza e impulsar llamadas de clientes.',
+  provider: 'Marketing AI Houston',
+  serviceType: 'Web Design',
+  areaServed: 'United States',
+  priceRange: '$1,497-$3,497'
+});
+
+// ❓ FAQ Data
+const faqs: FAQItem[] = [
+  {
+    question: '¿Cuánto tiempo toma?',
+    answer: 'La mayoría de los sitios web se lanzan en solo unas pocas semanas.'
+  },
+  {
+    question: '¿Puedo mantener mi dominio?',
+    answer: 'Sí, le ayudaremos a conectarlo a su nuevo sitio.'
+  },
+  {
+    question: '¿Mi sitio aparecerá en Google?',
+    answer: 'Sí — cada sitio incluye SEO y schema markup para ayudarle a posicionarse en búsquedas locales.'
+  },
+  {
+    question: '¿Qué pasa si necesito cambios más adelante?',
+    answer: 'Planes de soporte continuo están disponibles si necesita actualizaciones o características adicionales.'
+  },
+  {
+    question: '¿Solo trabajan con empresas de Houston?',
+    answer: 'No — servimos a propietarios de pequeñas empresas en todo el país. Nuestro proceso es completamente remoto.'
+  }
+];
+
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<MainLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalURL}
+  breadcrumbs={breadcrumbs}
+  structuredData={[serviceSchema, faqSchema]}
+  pageType="service"
+  currentPath="/es/website-design-that-converts"
+  lang="es"
+  alternateLanguages={alternateLanguages}
+>
+  <!-- 🎯 Hero Section -->
+  <section class="section-padding relative overflow-hidden">
+    <!-- 🎨 Background Elements -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-blue-600 to-teal-600 organic-blob animate-float"></div>
+      <div class="absolute bottom-20 right-20 w-72 h-72 bg-gradient-to-br from-teal-600 to-blue-300 organic-leaf animate-float animation-delay-400"></div>
+    </div>
+
+    <div class="container mx-auto container-padding relative z-10">
+      <div class="text-center max-w-4xl mx-auto">
+        <!-- ⭐ Trust Signal -->
+        <div class="text-yellow-400 text-3xl mb-4">⭐⭐⭐⭐⭐</div>
+        <p class="text-gray-700 mb-8 font-medium">Confiado por Propietarios de Pequeñas Empresas en Todo el País</p>
+
+        <!-- 🎯 Main Headline -->
+        <h1 class="text-5xl md:text-7xl font-black text-gray-900 leading-tight mb-6">
+          <span class="text-gray-900 font-black">Sitios Web Que </span>
+          <span class="text-gradient font-black text-6xl md:text-8xl block mb-4 leading-tight" style="padding-bottom: 0.25rem;">Convierten</span>
+        </h1>
+
+        <!-- 📝 Subheadline -->
+        <p class="text-xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
+          Creamos sitios web mobile-first, optimizados para SEO y diseñados para generar confianza, recibir llamadas y hacer crecer su negocio.
+        </p>
+
+        <!-- 🎯 Primary CTA -->
+        <Button
+          variant="primary"
+          size="lg"
+          href={`${import.meta.env.BASE_URL}es/contact#contact-options`}
+          class="mb-6"
+        >
+          👉 Reserve una Llamada de Descubrimiento
+        </Button>
+
+        <!-- 💬 Supporting Text -->
+        <p class="text-gray-700 mb-16">Sin jerga, sin presión — solo una charla rápida sobre sus objetivos.</p>
+
+        <!-- 📊 Key Metrics -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <Card class="text-center" padding="lg">
+            <div class="text-4xl mb-3">⚡</div>
+            <div class="text-gray-900 font-bold">Lance en semanas, no meses</div>
+          </Card>
+
+          <Card class="text-center" padding="lg">
+            <div class="text-4xl mb-3">📞</div>
+            <div class="text-gray-900 font-bold">70% de los clientes ven más llamadas después del rediseño</div>
+          </Card>
+
+          <Card class="text-center" padding="lg">
+            <div class="text-4xl mb-3">📱</div>
+            <div class="text-gray-900 font-bold">100% compatible con móviles y optimizado para Google</div>
+          </Card>
+        </div>
+
+        <!-- 🏢 Industry Icons -->
+        <div class="mt-16 flex flex-wrap justify-center gap-8">
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <i class="fas fa-hammer text-2xl text-gray-900" aria-hidden="true"></i>
+            </div>
+            <span class="text-gray-700 font-medium">Contratistas</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <i class="fas fa-car text-2xl text-gray-900" aria-hidden="true"></i>
+            </div>
+            <span class="text-gray-700 font-medium">Talleres Auto</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <i class="fas fa-broom text-2xl text-gray-900" aria-hidden="true"></i>
+            </div>
+            <span class="text-gray-700 font-medium">Limpieza</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <i class="fas fa-leaf text-2xl text-gray-900" aria-hidden="true"></i>
+            </div>
+            <span class="text-gray-700 font-medium">Jardinería</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <i class="fas fa-paw text-2xl text-gray-900" aria-hidden="true"></i>
+            </div>
+            <span class="text-gray-700 font-medium">Servicios Mascotas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📋 What's Included Section -->
+  <section class="section-padding relative overflow-hidden bg-gradient-to-br from-gray-50 to-white">
+    <div class="container mx-auto container-padding">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-check-circle mr-2 text-blue-600" aria-hidden="true"></i>
+          Qué Está Incluido
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Qué Está Incluido en Su Paquete de Sitio Web</span>
+        </h2>
+        <p class="text-xl text-gray-700 max-w-3xl mx-auto">Todo lo que necesita para lanzar un sitio moderno, optimizado para móviles que genera confianza e impulsa llamadas.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-mobile-alt text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Sitio Web de 4 Páginas Optimizado para Móviles</h3>
+            <p class="text-gray-700">Diseñado para verse genial y cargar rápido en teléfonos, tabletas y computadoras.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-palette text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Diseño Moderno y Responsivo</h3>
+            <p class="text-gray-700">Diseño limpio, navegación fácil y construido para credibilidad.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-search text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">SEO Local + Schema Markup</h3>
+            <p class="text-gray-700">Ayuda a que su sitio aparezca en Google cuando los clientes buscan cerca.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-microphone-alt text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Optimización para Búsqueda por Voz</h3>
+            <p class="text-gray-700">Formato preparado para el futuro para que su negocio sea encontrado por asistentes de voz.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-phone text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Funcionalidad Click-to-Call y Formularios de Contacto</h3>
+            <p class="text-gray-700">Facilita que los visitantes se comuniquen con usted al instante.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-chart-line text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Configuración de Google Analytics</h3>
+            <p class="text-gray-700">Rastree visitas, llamadas y conversiones con informes claros.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4 md:col-span-2" padding="lg">
+          <div class="flex-shrink-0">
+            <i class="fas fa-gift text-2xl text-blue-600" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Incluye Todos los Servicios Starter</h3>
+            <p class="text-gray-700">Todo desde la optimización de su Perfil de Negocio de Google está incluido.</p>
+          </div>
+        </Card>
+      </div>
+
+      <p class="text-center text-lg text-gray-600 italic mt-12">
+        👉 Ideal para propietarios listos para convertir su sitio web en una fuente constante de clientes.
+      </p>
+    </div>
+  </section>
+
+  <!-- 💎 Benefits Section -->
+  <section class="section-padding relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-teal-600 rounded-full filter blur-3xl"></div>
+    </div>
+
+    <div class="container mx-auto container-padding relative z-10">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-trophy mr-2 text-teal-600" aria-hidden="true"></i>
+          Los Beneficios
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Por Qué Los Propietarios de Pequeñas Empresas Aman Estos Sitios Web</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <Card class="text-center" padding="xl">
+          <div class="text-5xl mb-4">📞</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Más Llamadas y Consultas</h3>
+          <p class="text-gray-700">Su sitio está construido para convertir — con llamadas a la acción claras y botones click-to-call.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="text-5xl mb-4">📱</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Experiencia Mobile-First</h3>
+          <p class="text-gray-700">Diseñado para cómo los clientes realmente navegan: en teléfonos, rápido y en movimiento.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="text-5xl mb-4">🔍</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Listo para Búsqueda desde el Día Uno</h3>
+          <p class="text-gray-700">SEO local y schema markup le ayudan a aparecer cuando la gente busca cerca.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="text-5xl mb-4">✨</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Diseño que Genera Confianza</h3>
+          <p class="text-gray-700">Diseño limpio, visuales modernos y mensajes claros que le hacen verse creíble y accesible.</p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- 💡 Why It Works Section -->
+  <section class="section-padding bg-gradient-to-br from-blue-50 to-white">
+    <div class="container mx-auto container-padding">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="heading-lg mb-8">
+          <span class="text-gradient">Su Sitio Web Debería Trabajar Tan Duro Como Usted</span>
+        </h2>
+        <div class="text-xl text-gray-800 leading-relaxed space-y-6">
+          <p>
+            La mayoría de los sitios web de pequeñas empresas están desactualizados, invisibles o confusos. Se ven bien pero no convierten — y a menudo les faltan lo básico como optimización para móviles, SEO local o llamadas a la acción claras. Nosotros arreglamos eso.
+          </p>
+          <p>
+            Nuestros sitios web están construidos para generar confianza, impulsar llamadas y aparecer cuando los clientes buscan. Desde el diseño hasta los mensajes y la visibilidad en Google, cada detalle está diseñado para ayudar a crecer su negocio.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🛤️ How It Works Section -->
+  <section class="section-padding relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-blue-600 to-teal-600 organic-droplet animate-float"></div>
+    </div>
+
+    <div class="container mx-auto container-padding relative z-10">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-route mr-2 text-blue-600" aria-hidden="true"></i>
+          Proceso Simple
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Comenzar Es Simple</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <Card class="text-center" padding="xl">
+          <div class="w-20 h-20 rounded-full gradient-ocean-teal flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <span class="text-white text-2xl font-bold">1</span>
+          </div>
+          <div class="text-5xl mb-4">💬</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-4">Llamada de Descubrimiento</h3>
+          <p class="text-gray-700">Discutimos objetivos, clientes y prioridades.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="w-20 h-20 rounded-full gradient-ocean-teal flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <span class="text-white text-2xl font-bold">2</span>
+          </div>
+          <div class="text-5xl mb-4">🎨</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-4">Diseño y Construcción SEO</h3>
+          <p class="text-gray-700">Creamos diseños, contenido y SEO técnico.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="w-20 h-20 rounded-full gradient-ocean-teal flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <span class="text-white text-2xl font-bold">3</span>
+          </div>
+          <div class="text-5xl mb-4">🚀</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-4">Lanzamiento + Configuración de Analytics</h3>
+          <p class="text-gray-700">Publicamos, rastreamos y optimizamos para conversiones.</p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- 💰 Pricing Section -->
+  <section class="section-padding bg-gradient-to-br from-gray-50 to-white">
+    <div class="container mx-auto container-padding">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-dollar-sign mr-2 text-teal-600" aria-hidden="true"></i>
+          Precios Transparentes
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Paquetes de Sitios Web Transparentes</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Growth Plan -->
+        <Card variant="pricing" class="text-center transform hover:scale-105 transition-transform duration-300 relative">
+          <div class="absolute top-4 right-4 bg-gradient-to-r from-blue-600 to-teal-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+            MÁS POPULAR
+          </div>
+          <div class="p-8">
+            <div class="text-6xl mb-6">🚀</div>
+            <h3 class="text-3xl font-bold text-blue-900 mb-4">Plan Growth</h3>
+            <p class="text-gray-600 mb-6">Perfecto para empresas que necesitan aparecer en Google y empezar a recibir llamadas.</p>
+
+            <div class="text-5xl font-black text-blue-900 mb-8">$1,497</div>
+
+            <div class="text-left space-y-4 mb-8">
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Sitio web de 4 páginas optimizado para móviles</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>SEO local + schema markup</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Optimización para búsqueda por voz</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Funcionalidad click-to-call</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Configuración de Google Analytics</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Incluye todos los servicios Starter</span>
+              </div>
+            </div>
+
+            <p class="text-sm text-gray-600 italic mb-6">👉 Ideal para propietarios listos para convertir su sitio web en una fuente constante de clientes.</p>
+
+            <Button
+              variant="primary"
+              size="lg"
+              href={`${import.meta.env.BASE_URL}es/contact#contact-options`}
+              fullWidth
+            >
+              Reserve una Llamada de Descubrimiento
+            </Button>
+          </div>
+        </Card>
+
+        <!-- Pro Plan -->
+        <Card variant="pricing" class="text-center transform hover:scale-105 transition-transform duration-300">
+          <div class="p-8">
+            <div class="text-6xl mb-6">⚡</div>
+            <h3 class="text-3xl font-bold text-blue-900 mb-4">Plan Pro</h3>
+            <p class="text-gray-600 mb-6">Ideal para empresas listas para dominar su mercado y escalar crecimiento.</p>
+
+            <div class="text-5xl font-black text-blue-900 mb-8">$3,497</div>
+
+            <div class="text-left space-y-4 mb-8">
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Hasta 16 páginas de sitio web integral</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Páginas de servicios individuales (hasta 6)</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Páginas de destino de áreas locales (hasta 6 áreas de Houston)</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Creación de contenido personalizado</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Seguimiento avanzado de conversiones</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Análisis de competencia + estrategia de palabras clave</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Optimización de 90 días con revisiones mensuales</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <span>Incluye todos los servicios Growth</span>
+              </div>
+            </div>
+
+            <p class="text-sm text-gray-600 italic mb-6">👉 Ideal para empresas listas para dominar su mercado y escalar crecimiento.</p>
+
+            <Button
+              variant="primary"
+              size="lg"
+              href={`${import.meta.env.BASE_URL}es/contact#contact-options`}
+              fullWidth
+            >
+              Reserve una Llamada de Descubrimiento
+            </Button>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- ❓ FAQ Section -->
+  <section class="section-padding relative overflow-hidden">
+    <div class="container mx-auto container-padding">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <i class="fas fa-question-circle mr-2 text-teal-600" aria-hidden="true"></i>
+          Preguntas
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Preguntas Frecuentes</span>
+        </h2>
+        <p class="text-xl text-gray-700 max-w-2xl mx-auto">Respuestas directas — sin jerga, sin letra pequeña oculta.</p>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-4" itemscope itemtype="https://schema.org/FAQPage">
+        {faqs.map((faq, index) => (
+          <Card class="overflow-hidden" key={index}>
+            <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-50/30 focus:outline-none flex justify-between items-center">
+                <span class="font-bold text-blue-900 flex items-center">
+                  <span class="mr-3 text-2xl">
+                    {index === 0 ? '⏱️' : index === 1 ? '🌐' : index === 2 ? '🔍' : index === 3 ? '🔧' : '🌍'}
+                  </span>
+                  <span itemprop="name">{faq.question}</span>
+                </span>
+                <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" aria-hidden="true"></i>
+              </button>
+              <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <div class="p-6 pt-0 text-gray-700" itemprop="text">
+                  {faq.answer}
+                </div>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 🎯 Final CTA Section -->
+  <section class="section-padding bg-gradient-to-br from-blue-900 to-blue-600 text-white">
+    <div class="container mx-auto container-padding text-center">
+      <h2 class="text-4xl md:text-5xl font-black mb-6">
+        Construyamos un Sitio Web Que Funcione
+      </h2>
+      <p class="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
+        Diseñaremos un sitio que genere confianza, impulse llamadas y haga crecer su negocio.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <Button
+          variant="secondary"
+          size="lg"
+          href={`${import.meta.env.BASE_URL}es/contact#contact-options`}
+        >
+          👉 Reserve una Llamada de Descubrimiento
+        </Button>
+
+        <Button
+          variant="outline"
+          size="lg"
+          href={`${import.meta.env.BASE_URL}es/contact#contact-form`}
+          class="border-white text-white hover:bg-white hover:text-blue-900"
+        >
+          📩 Solicite una Cotización Gratis
+        </Button>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  /* Define CSS custom properties for colors */
+  :root {
+    --color-ocean-deep: #0A2540;
+    --color-ocean-deeper: #020617;
+    --color-ocean-blue: #3B82F6;
+    --color-ocean-light: #60A5FA;
+    --color-ocean-teal: #198072;
+    --color-ocean-teal-dark: #14B8A6;
+    --color-ocean-sky: #BFDBFE;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  p, a, span, li {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Force maximum boldness for headers */
+  h1, h1 *, h1 span {
+    font-weight: 900 !important;
+    font-family: 'Poppins', sans-serif !important;
+  }
+
+  h2, h2 *, h2 span {
+    font-weight: 900 !important;
+    font-family: 'Poppins', sans-serif !important;
+  }
+
+  /* Layout utilities */
+  .section-padding {
+    padding: 5rem 0;
+  }
+
+  .container-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Typography utilities */
+  .heading-xl {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.1;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .heading-lg {
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1.2;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  @media (min-width: 768px) {
+    .section-padding {
+      padding: 6rem 0;
+    }
+
+    .heading-xl {
+      font-size: 4rem;
+    }
+
+    .heading-lg {
+      font-size: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-padding {
+      padding: 8rem 0;
+    }
+
+    .heading-xl {
+      font-size: 5rem;
+    }
+
+    .heading-lg {
+      font-size: 4rem;
+    }
+  }
+
+  /* Organic shapes */
+  .organic-blob {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+
+  .organic-droplet {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+
+  .organic-leaf {
+    border-radius: 20% 80% 20% 80% / 80% 20% 80% 20%;
+  }
+
+  /* Gradients */
+  .gradient-ocean-teal {
+    background: linear-gradient(135deg, var(--color-ocean-blue), var(--color-ocean-teal));
+  }
+
+  /* Animations */
+  .animation-delay-200 { animation-delay: 0.2s; }
+  .animation-delay-400 { animation-delay: 0.4s; }
+  .animation-delay-600 { animation-delay: 0.6s; }
+  .animation-delay-800 { animation-delay: 0.8s; }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+  }
+
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  /* 🎯 Service Page Specific Styles */
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .accordion-open .accordion-content {
+    max-height: 200px;
+    transition: max-height 0.5s ease-in;
+  }
+
+  /* 🎨 Enhanced hover effects */
+  .card-glass:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  /* 🎯 Gradient text animation */
+  .text-gradient {
+    background: linear-gradient(135deg, #3b82f6, #14b8a6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-weight: 900 !important;
+  }
+
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+</style>
+
+<script>
+  // 🎯 FAQ Accordion Functionality (All Devices)
+  document.addEventListener('DOMContentLoaded', () => {
+    const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+
+    accordionTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const accordionItem = trigger.parentElement?.parentElement;
+        const chevron = trigger.querySelector('i.fa-chevron-down');
+
+        if (accordionItem && chevron) {
+          accordionItem.classList.toggle('accordion-open');
+
+          if (accordionItem.classList.contains('accordion-open')) {
+            chevron.style.transform = 'rotate(180deg)';
+          } else {
+            chevron.style.transform = 'rotate(0)';
+          }
+        }
+      });
+    });
+  });
+
+  // 📊 Enhanced scroll animations for service page
+  document.addEventListener('DOMContentLoaded', () => {
+    if ('IntersectionObserver' in window) {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all cards and important elements
+      const elementsToAnimate = document.querySelectorAll('.card-glass, .heading-lg, .heading-xl');
+      elementsToAnimate.forEach(el => observer.observe(el));
+    }
+  });
+</script>

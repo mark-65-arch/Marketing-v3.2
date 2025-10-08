@@ -116,9 +116,52 @@ const currentLangLabel = isCurrentlySpanish ? 'Español' : 'English';
 </style>
 
 <script>
-  // Language switcher functionality
+  // Language switcher functionality with persistent storage
   document.addEventListener('DOMContentLoaded', () => {
     const langButtons = document.querySelectorAll('.lang-toggle-button');
+
+    // Check for stored language preference and redirect if needed
+    const storedLang = localStorage.getItem('preferredLanguage');
+    const currentPath = window.location.pathname;
+    const baseUrl = import.meta.env.BASE_URL || '/';
+
+    if (storedLang) {
+      const isCurrentlySpanish = currentPath.includes('/es/') || currentPath.includes('/es');
+      const shouldBeSpanish = storedLang === 'es';
+
+      // Only redirect if preference doesn't match current language
+      if (shouldBeSpanish && !isCurrentlySpanish) {
+        // Redirect to Spanish version
+        let cleanPath = currentPath;
+        if (cleanPath.startsWith(baseUrl) && baseUrl !== '/') {
+          cleanPath = cleanPath.slice(baseUrl.length);
+        }
+        if (cleanPath.startsWith('/')) {
+          cleanPath = cleanPath.slice(1);
+        }
+        if (!cleanPath || cleanPath === '') {
+          // Homepage
+          window.location.href = `${baseUrl}es/`;
+        } else {
+          window.location.href = `${baseUrl}es/${cleanPath}`;
+        }
+      } else if (!shouldBeSpanish && isCurrentlySpanish) {
+        // Redirect to English version
+        let cleanPath = currentPath;
+        if (cleanPath.startsWith(baseUrl) && baseUrl !== '/') {
+          cleanPath = cleanPath.slice(baseUrl.length);
+        }
+        if (cleanPath.startsWith('/')) {
+          cleanPath = cleanPath.slice(1);
+        }
+        if (cleanPath.startsWith('es/')) {
+          cleanPath = cleanPath.slice(3);
+        } else if (cleanPath === 'es') {
+          cleanPath = '';
+        }
+        window.location.href = `${baseUrl}${cleanPath}`;
+      }
+    }
 
     langButtons.forEach(button => {
       const dropdown = button.nextElementSibling as HTMLElement;
@@ -177,6 +220,14 @@ const currentLangLabel = isCurrentlySpanish ? 'Español' : 'English';
       // Handle arrow key navigation within dropdown
       const dropdownLinks = dropdown.querySelectorAll('a');
       dropdownLinks.forEach((link, index) => {
+        // Store language preference when clicking a language option
+        link.addEventListener('click', (e) => {
+          const selectedLang = link.getAttribute('hreflang');
+          if (selectedLang) {
+            localStorage.setItem('preferredLanguage', selectedLang);
+          }
+        });
+
         link.addEventListener('keydown', (e) => {
           if (e.key === 'ArrowDown') {
             e.preventDefault();

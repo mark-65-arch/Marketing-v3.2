@@ -3,7 +3,17 @@
 // Purpose: GDPR/CCPA compliant cookie consent with granular controls
 // Features: localStorage persistence, accessible, mobile-friendly
 
+interface Props {
+  currentLang?: string;
+}
+
+const {
+  currentLang = 'en'
+} = Astro.props;
+
 const BASE_URL = import.meta.env.BASE_URL;
+const isSpanish = currentLang === 'es';
+const langPrefix = isSpanish ? 'es/' : '';
 ---
 
 <!-- 🍪 Cookie Consent Banner -->
@@ -25,15 +35,21 @@ const BASE_URL = import.meta.env.BASE_URL;
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path d="M10 2a8 8 0 100 16 8 8 0 000-16zM7 9a1 1 0 100-2 1 1 0 000 2zm3-4a1 1 0 11-2 0 1 1 0 012 0zm1 7a1 1 0 100-2 1 1 0 000 2zm3-3a1 1 0 11-2 0 1 1 0 012 0z"/>
             </svg>
-            Cookie Preferences
+            {isSpanish ? 'Preferencias de Cookies' : 'Cookie Preferences'}
           </h2>
           <p id="cookie-banner-description" class="text-gray-300 text-sm sm:text-base mb-2">
-            We use cookies to improve your experience, analyze site traffic, and show relevant ads.
+            {isSpanish
+              ? 'Utilizamos cookies para mejorar su experiencia, analizar el tráfico del sitio y mostrar anuncios relevantes.'
+              : 'We use cookies to improve your experience, analyze site traffic, and show relevant ads.'
+            }
           </p>
           <p class="text-gray-400 text-xs">
-            Manage your choices anytime in Cookie settings. By clicking Accept all cookies you agree to our
-            <a href={`${BASE_URL}legal/cookie-policy`} class="text-blue-400 hover:text-blue-300 underline">Cookie Policy</a> and
-            <a href={`${BASE_URL}legal/privacy-policy`} class="text-blue-400 hover:text-blue-300 underline">Privacy Policy</a>.
+            {isSpanish
+              ? 'Administre sus opciones en cualquier momento en Configuración de cookies. Al hacer clic en Aceptar todas las cookies, acepta nuestra'
+              : 'Manage your choices anytime in Cookie settings. By clicking Accept all cookies you agree to our'
+            }
+            <a href={`${BASE_URL}${langPrefix}legal/cookie-policy`} class="text-blue-400 hover:text-blue-300 underline">{isSpanish ? 'Política de Cookies' : 'Cookie Policy'}</a> {isSpanish ? 'y' : 'and'}
+            <a href={`${BASE_URL}${langPrefix}legal/privacy-policy`} class="text-blue-400 hover:text-blue-300 underline">{isSpanish ? 'Política de Privacidad' : 'Privacy Policy'}</a>.
           </p>
         </div>
 
@@ -42,23 +58,23 @@ const BASE_URL = import.meta.env.BASE_URL;
           <button
             id="cookie-settings-btn"
             class="px-4 py-2.5 text-sm font-medium text-white bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors duration-200 focus:ring-4 focus:ring-slate-500 focus:outline-none whitespace-nowrap"
-            aria-label="Open cookie settings"
+            aria-label={isSpanish ? 'Abrir configuración de cookies' : 'Open cookie settings'}
           >
-            Cookie settings
+            {isSpanish ? 'Configuración de cookies' : 'Cookie settings'}
           </button>
           <button
             id="cookie-reject-btn"
             class="px-4 py-2.5 text-sm font-medium text-slate-900 bg-gray-200 hover:bg-gray-300 rounded-lg transition-colors duration-200 focus:ring-4 focus:ring-gray-300 focus:outline-none whitespace-nowrap"
-            aria-label="Reject non-essential cookies"
+            aria-label={isSpanish ? 'Rechazar cookies no esenciales' : 'Reject non-essential cookies'}
           >
-            Reject non-essential
+            {isSpanish ? 'Rechazar no esenciales' : 'Reject non-essential'}
           </button>
           <button
             id="cookie-accept-btn"
             class="px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 rounded-lg transition-all duration-200 focus:ring-4 focus:ring-blue-300 focus:outline-none whitespace-nowrap"
-            aria-label="Accept all cookies"
+            aria-label={isSpanish ? 'Aceptar todas las cookies' : 'Accept all cookies'}
           >
-            Accept all cookies
+            {isSpanish ? 'Aceptar todas las cookies' : 'Accept all cookies'}
           </button>
         </div>
       </div>
@@ -85,12 +101,12 @@ const BASE_URL = import.meta.env.BASE_URL;
         <!-- Modal Header -->
         <div class="border-b border-gray-200 px-6 py-4 flex items-center justify-between">
           <h2 id="cookie-modal-title" class="text-2xl font-bold text-slate-900">
-            Cookie Settings
+            {isSpanish ? 'Configuración de Cookies' : 'Cookie Settings'}
           </h2>
           <button
             id="cookie-modal-close"
             class="text-gray-400 hover:text-gray-600 transition-colors p-2 rounded-full hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 focus:outline-none"
-            aria-label="Close cookie settings"
+            aria-label={isSpanish ? 'Cerrar configuración de cookies' : 'Close cookie settings'}
           >
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -102,12 +118,18 @@ const BASE_URL = import.meta.env.BASE_URL;
         <div class="px-6 py-6 max-h-96 overflow-y-auto">
           <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
             <p class="text-sm text-blue-900">
-              <strong>About Analytics:</strong> We use analytics to understand how visitors use our site. These cookies are enabled by default to help us improve performance. You can opt out anytime.
+              <strong>{isSpanish ? 'Acerca de Análisis:' : 'About Analytics:'}</strong> {isSpanish
+                ? 'Utilizamos análisis para comprender cómo los visitantes usan nuestro sitio. Estas cookies están habilitadas de forma predeterminada para ayudarnos a mejorar el rendimiento. Puede optar por no participar en cualquier momento.'
+                : 'We use analytics to understand how visitors use our site. These cookies are enabled by default to help us improve performance. You can opt out anytime.'
+              }
             </p>
           </div>
 
           <p class="text-gray-600 mb-6">
-            Choose which cookies you want to allow. You can change these settings at any time.
+            {isSpanish
+              ? 'Elija qué cookies desea permitir. Puede cambiar esta configuración en cualquier momento.'
+              : 'Choose which cookies you want to allow. You can change these settings at any time.'
+            }
           </p>
 
           <!-- Cookie Categories -->
@@ -117,9 +139,12 @@ const BASE_URL = import.meta.env.BASE_URL;
             <div class="border border-gray-200 rounded-lg p-4 bg-gray-50">
               <div class="flex items-start justify-between">
                 <div class="flex-1">
-                  <h3 class="font-semibold text-slate-900 mb-1">Strictly Necessary Cookies</h3>
+                  <h3 class="font-semibold text-slate-900 mb-1">{isSpanish ? 'Cookies Estrictamente Necesarias' : 'Strictly Necessary Cookies'}</h3>
                   <p class="text-sm text-gray-600">
-                    Required for the website to function. These cannot be disabled.
+                    {isSpanish
+                      ? 'Necesarias para que el sitio web funcione. Estas no se pueden desactivar.'
+                      : 'Required for the website to function. These cannot be disabled.'
+                    }
                   </p>
                 </div>
                 <div class="ml-4">
@@ -129,7 +154,7 @@ const BASE_URL = import.meta.env.BASE_URL;
                     checked
                     disabled
                     class="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-not-allowed opacity-50"
-                    aria-label="Strictly necessary cookies (always enabled)"
+                    aria-label={isSpanish ? 'Cookies estrictamente necesarias (siempre habilitadas)' : 'Strictly necessary cookies (always enabled)'}
                   />
                 </div>
               </div>
@@ -140,14 +165,20 @@ const BASE_URL = import.meta.env.BASE_URL;
               <div class="flex items-start justify-between">
                 <div class="flex-1">
                   <h3 class="font-semibold text-slate-900 mb-1 flex items-center gap-2">
-                    Analytics Cookies
-                    <span class="text-xs font-normal bg-blue-600 text-white px-2 py-0.5 rounded">Enabled by Default</span>
+                    {isSpanish ? 'Cookies de Análisis' : 'Analytics Cookies'}
+                    <span class="text-xs font-normal bg-blue-600 text-white px-2 py-0.5 rounded">{isSpanish ? 'Habilitadas de forma predeterminada' : 'Enabled by Default'}</span>
                   </h3>
                   <p class="text-sm text-gray-700 mb-2">
-                    Help us understand how visitors interact with our website (Google Analytics).
+                    {isSpanish
+                      ? 'Nos ayudan a comprender cómo los visitantes interactúan con nuestro sitio web (Google Analytics).'
+                      : 'Help us understand how visitors interact with our website (Google Analytics).'
+                    }
                   </p>
                   <p class="text-xs text-gray-600 italic">
-                    These cookies are enabled by default. Uncheck to opt out.
+                    {isSpanish
+                      ? 'Estas cookies están habilitadas de forma predeterminada. Desmarque para optar por no participar.'
+                      : 'These cookies are enabled by default. Uncheck to opt out.'
+                    }
                   </p>
                 </div>
                 <div class="ml-4">
@@ -156,7 +187,7 @@ const BASE_URL = import.meta.env.BASE_URL;
                     id="cookie-analytics"
                     checked
                     class="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
-                    aria-label="Enable analytics cookies"
+                    aria-label={isSpanish ? 'Habilitar cookies de análisis' : 'Enable analytics cookies'}
                   />
                 </div>
               </div>
@@ -166,9 +197,12 @@ const BASE_URL = import.meta.env.BASE_URL;
             <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
               <div class="flex items-start justify-between">
                 <div class="flex-1">
-                  <h3 class="font-semibold text-slate-900 mb-1">Marketing Cookies</h3>
+                  <h3 class="font-semibold text-slate-900 mb-1">{isSpanish ? 'Cookies de Marketing' : 'Marketing Cookies'}</h3>
                   <p class="text-sm text-gray-600">
-                    Used to show you relevant ads and measure campaign effectiveness.
+                    {isSpanish
+                      ? 'Se utilizan para mostrarle anuncios relevantes y medir la efectividad de las campañas.'
+                      : 'Used to show you relevant ads and measure campaign effectiveness.'
+                    }
                   </p>
                 </div>
                 <div class="ml-4">
@@ -176,7 +210,7 @@ const BASE_URL = import.meta.env.BASE_URL;
                     type="checkbox"
                     id="cookie-marketing"
                     class="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
-                    aria-label="Enable marketing cookies"
+                    aria-label={isSpanish ? 'Habilitar cookies de marketing' : 'Enable marketing cookies'}
                   />
                 </div>
               </div>
@@ -186,9 +220,12 @@ const BASE_URL = import.meta.env.BASE_URL;
             <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
               <div class="flex items-start justify-between">
                 <div class="flex-1">
-                  <h3 class="font-semibold text-slate-900 mb-1">Functional Cookies</h3>
+                  <h3 class="font-semibold text-slate-900 mb-1">{isSpanish ? 'Cookies Funcionales' : 'Functional Cookies'}</h3>
                   <p class="text-sm text-gray-600">
-                    Remember your preferences and provide enhanced features.
+                    {isSpanish
+                      ? 'Recuerdan sus preferencias y proporcionan funciones mejoradas.'
+                      : 'Remember your preferences and provide enhanced features.'
+                    }
                   </p>
                 </div>
                 <div class="ml-4">
@@ -196,7 +233,7 @@ const BASE_URL = import.meta.env.BASE_URL;
                     type="checkbox"
                     id="cookie-functional"
                     class="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
-                    aria-label="Enable functional cookies"
+                    aria-label={isSpanish ? 'Habilitar cookies funcionales' : 'Enable functional cookies'}
                   />
                 </div>
               </div>
@@ -207,8 +244,8 @@ const BASE_URL = import.meta.env.BASE_URL;
           <!-- Learn More Link -->
           <div class="mt-6 pt-6 border-t border-gray-200">
             <p class="text-sm text-gray-600">
-              For more information, see our
-              <a href={`${BASE_URL}legal/cookie-policy`} class="text-blue-600 hover:text-blue-700 underline font-medium">Cookie Policy</a>.
+              {isSpanish ? 'Para obtener más información, consulte nuestra' : 'For more information, see our'}
+              <a href={`${BASE_URL}${langPrefix}legal/cookie-policy`} class="text-blue-600 hover:text-blue-700 underline font-medium">{isSpanish ? 'Política de Cookies' : 'Cookie Policy'}</a>.
             </p>
           </div>
         </div>
@@ -219,13 +256,13 @@ const BASE_URL = import.meta.env.BASE_URL;
             id="cookie-modal-reject"
             class="px-6 py-2.5 text-sm font-medium text-slate-900 bg-gray-200 hover:bg-gray-300 rounded-lg transition-colors duration-200 focus:ring-4 focus:ring-gray-300 focus:outline-none"
           >
-            Reject All
+            {isSpanish ? 'Rechazar Todas' : 'Reject All'}
           </button>
           <button
             id="cookie-modal-save"
             class="px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 rounded-lg transition-all duration-200 focus:ring-4 focus:ring-blue-300 focus:outline-none"
           >
-            Save Preferences
+            {isSpanish ? 'Guardar Preferencias' : 'Save Preferences'}
           </button>
         </div>
 
@@ -446,6 +483,13 @@ const BASE_URL = import.meta.env.BASE_URL;
   (window as any).openCookieSettings = () => {
     const modal = document.getElementById('cookie-settings-modal');
     if (modal) {
+      // Load current or default preferences
+      const preferences = getConsentPreferences() || getDefaultPreferences();
+
+      (document.getElementById('cookie-analytics') as HTMLInputElement).checked = preferences.analytics;
+      (document.getElementById('cookie-marketing') as HTMLInputElement).checked = preferences.marketing;
+      (document.getElementById('cookie-functional') as HTMLInputElement).checked = preferences.functional;
+
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
 

@@ -3,8 +3,8 @@ import { getCollection } from 'astro:content';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const SITE_URL = 'https://mark-65-arch.github.io';
-const BASE_PATH = '/Marketing-v3.2/';
+const SITE_URL = process.env.SITE || 'https://marketingaihouston.com';
+const BASE_PATH = process.env.NODE_ENV === 'production' ? '/' : '/Marketing-v3.2/';
 
 interface SitemapEntry {
   url: string;

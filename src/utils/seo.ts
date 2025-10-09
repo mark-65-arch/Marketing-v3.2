@@ -38,8 +38,8 @@ export interface ServiceSchema {
 export const BUSINESS_INFO = {
   name: 'Marketing AI Houston',
   description: 'AI-powered web design & SEO for Houston small businesses',
-  url: 'https://mark-65-arch.github.io/Marketing-v3.2',
-  logo: 'https://mark-65-arch.github.io/Marketing-v3.2/logo.png',
+  url: 'https://marketingaihouston.com',
+  logo: 'https://marketingaihouston.com/logo.png',
   phone: '+1-281-544-0572',
   email: 'team@marketingaihouston.com',
   address: {

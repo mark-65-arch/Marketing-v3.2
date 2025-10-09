@@ -44,7 +44,6 @@ export function createHoneypot(formId: string): HTMLInputElement {
 
   // Add additional bot detection
   honeypot.addEventListener('focus', () => {
-    console.warn('🚨 Potential bot detected - honeypot focused');
     honeypot.setAttribute('data-bot-detected', 'true');
   });
 

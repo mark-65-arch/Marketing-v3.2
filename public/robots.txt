@@ -1,11 +1,11 @@
 # Robots.txt for Marketing AI Houston
-# https://marketingaihouston.com/Marketing-v3.2/
+# https://marketingaihouston.com/
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://marketingaihouston.com/Marketing-v3.2/sitemap.xml
+Sitemap: https://marketingaihouston.com/sitemap-index.xml
 
 # Disallow admin or test directories (if any exist in the future)
 # Disallow: /admin/

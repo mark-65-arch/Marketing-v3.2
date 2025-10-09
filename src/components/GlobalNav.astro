@@ -28,7 +28,7 @@ const isSpanish = currentLang === 'es';
 const langPrefix = isSpanish ? 'es/' : '';
 
 // Set default CTA label based on language
-const ctaLabel = primaryCtaLabel || (isSpanish ? 'Reserva una Llamada de Descubrimiento' : 'Book a Discovery Call');
+const ctaLabel = primaryCtaLabel || (isSpanish ? 'Reserva una Llamada' : 'Book a Discovery Call');
 
 // 🧭 Navigation items configuration
 const navItems = [
@@ -220,9 +220,9 @@ const navItems = [
             tabindex="-1"
             aria-label={ctaLabel}
           >
-            📞 {ctaLabel.includes('Discovery') || ctaLabel.includes('Descubrimiento') ? (
+            📞 {ctaLabel.includes('Discovery') || ctaLabel.includes('Llamada') ? (
               isSpanish ? (
-                <>Reserva una Llamada <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold ml-1">GRATIS</span> de Descubrimiento</>
+                <>Reserva una Llamada <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold ml-1">GRATIS</span></>
               ) : (
                 <>Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold ml-1">FREE</span> Discovery Call</>
               )

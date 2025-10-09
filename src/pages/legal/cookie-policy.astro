@@ -33,7 +33,7 @@ const alternateLanguages = [
             Cookie Policy
           </h1>
           <p class="text-sm text-ocean-600">
-            <time datetime="2025-10-06">Last updated: October 6, 2025</time>
+            <time datetime="2025-01-09">Last updated: January 9, 2025</time>
           </p>
         </header>
 
@@ -42,7 +42,7 @@ const alternateLanguages = [
 
           <div class="bg-blue-50 border-l-4 border-blue-600 p-4 mb-6">
             <p class="text-sm text-blue-900">
-              <strong>Important:</strong> Analytics cookies are enabled by default to help us improve our website. You can opt out at any time through the Cookie Settings link in our footer or by clicking "Reject non-essential cookies" in the cookie banner.
+              <strong>Important:</strong> We use Google Tag Manager with Consent Mode v2. By default, all tracking is <strong>denied</strong> until you click "Accept" in our cookie banner. When you accept, we enable analytics cookies to help us improve our website. You can opt out at any time by clearing your browser cookies or using browser privacy controls.
             </p>
           </div>
 
@@ -69,22 +69,22 @@ const alternateLanguages = [
               <dd class="mb-4">Not available because these cookies are essential.</dd>
             </dl>
 
-            <h3>Performance and analytics cookies (Google Analytics 4) - Enabled by Default</h3>
+            <h3>Performance and analytics cookies (Google Analytics 4 via Google Tag Manager)</h3>
             <dl>
               <dt class="font-semibold text-ocean-900">Purpose:</dt>
-              <dd class="mb-2">Collect anonymous or pseudonymous information about site usage to help us improve performance and user experience. <strong>These cookies are enabled by default</strong> under our legitimate interest to understand and improve our website.</dd>
+              <dd class="mb-2">Collect anonymous or pseudonymous information about site usage to help us improve performance and user experience. These cookies only activate after you accept our cookie banner.</dd>
 
               <dt class="font-semibold text-ocean-900">Example names:</dt>
-              <dd class="mb-2">_ga, _gid, _ga&lt;container-id&gt;.</dd>
+              <dd class="mb-2">_ga, _gid, _ga&lt;container-id&gt;, _gat.</dd>
 
               <dt class="font-semibold text-ocean-900">Duration:</dt>
-              <dd class="mb-2">_ga = 24 months; _gid = 24 hours; other GA4 identifiers up to 24 months.</dd>
+              <dd class="mb-2">_ga = 24 months; _gid = 24 hours; _gat = 1 minute; other GA4 identifiers up to 24 months.</dd>
 
-              <dt class="font-semibold text-ocean-900">Default status:</dt>
-              <dd class="mb-2"><strong>Enabled by default.</strong> These cookies start working when you first visit our site.</dd>
+              <dt class="font-semibold text-ocean-900">Consent Mode:</dt>
+              <dd class="mb-2">We use <strong>Google Consent Mode v2</strong>. By default, consent is <strong>denied</strong>. When you click "Accept" in our cookie banner, consent updates to <strong>granted</strong> and tracking begins. Before you accept, only privacy-preserving "consent pings" are sent (no cookies, no personal data).</dd>
 
               <dt class="font-semibold text-ocean-900">Opt-out:</dt>
-              <dd class="mb-4">Click "Cookie Settings" in the footer and uncheck "Analytics Cookies", click "Reject non-essential cookies" in the cookie banner, block cookies in your browser, or use Google's opt-out tools. Once you opt out, analytics tracking will stop immediately.</dd>
+              <dd class="mb-4">To prevent analytics cookies: (1) Don't click "Accept" on our cookie banner, (2) Clear cookies in your browser if you previously accepted, (3) Block cookies using browser settings, or (4) Use <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">Google's Browser Opt-out Add-on</a>.</dd>
             </dl>
 
             <h3>Functional cookies</h3>
@@ -125,12 +125,28 @@ const alternateLanguages = [
 
           <section>
             <h2>4. How to control cookies</h2>
+
+            <h3>Our Cookie Banner</h3>
+            <p>When you first visit our site, you'll see a cookie banner at the bottom of the page with a simple message and an "Accept" button. Your choices:</p>
             <ul>
-              <li>Use your browser settings to block or delete cookies (Chrome, Firefox, Edge, Safari provide controls).</li>
-              <li>Use the cookie preference center on our site (if available) to accept or reject non-essential cookies.</li>
-              <li>Use vendor opt-out tools (for example, Google Ads Settings) or browser privacy extensions.</li>
+              <li><strong>Click "Accept":</strong> Enables analytics cookies (stored for 365 days). You can reverse this by clearing your browser cookies.</li>
+              <li><strong>Don't click "Accept":</strong> No analytics cookies will be set. Only essential cookies (like your cookie consent preference) will be stored.</li>
             </ul>
-            <p><strong>Note:</strong> Blocking cookies may affect site functionality and some features may not work as expected.</p>
+
+            <h3>Browser Controls</h3>
+            <ul>
+              <li>Use your browser settings to block or delete cookies. All major browsers (Chrome, Firefox, Edge, Safari) provide cookie controls.</li>
+              <li>Clear your browsing data to remove existing cookies, including your consent preference.</li>
+              <li>Enable "Do Not Track" or use browser privacy modes (though these may not prevent all tracking).</li>
+            </ul>
+
+            <h3>Google-Specific Opt-Out</h3>
+            <ul>
+              <li>Install <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">Google Analytics Opt-out Browser Add-on</a> to prevent Google Analytics tracking across all websites.</li>
+              <li>Visit <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">Google Ads Settings</a> to control ad personalization.</li>
+            </ul>
+
+            <p><strong>Note:</strong> Blocking all cookies may affect site functionality. Essential cookies are required for the site to work properly.</p>
           </section>
 
           <section>
@@ -153,10 +169,10 @@ const alternateLanguages = [
                     <td class="border border-ocean-200 px-4 py-2">No</td>
                   </tr>
                   <tr class="bg-blue-50">
-                    <td class="border border-ocean-200 px-4 py-2"><strong>Analytics (Google Analytics 4)</strong><br><span class="text-xs bg-blue-600 text-white px-2 py-0.5 rounded">Enabled by Default</span></td>
-                    <td class="border border-ocean-200 px-4 py-2">Usage and improvements</td>
+                    <td class="border border-ocean-200 px-4 py-2"><strong>Analytics (Google Analytics 4)</strong><br><span class="text-xs bg-green-600 text-white px-2 py-0.5 rounded">Consent Required</span></td>
+                    <td class="border border-ocean-200 px-4 py-2">Usage and improvements (via GTM Consent Mode v2)</td>
                     <td class="border border-ocean-200 px-4 py-2">24 months</td>
-                    <td class="border border-ocean-200 px-4 py-2">Yes (opt-out available)</td>
+                    <td class="border border-ocean-200 px-4 py-2">Yes (don't accept banner or clear cookies)</td>
                   </tr>
                   <tr>
                     <td class="border border-ocean-200 px-4 py-2">Functional</td>

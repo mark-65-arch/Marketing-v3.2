@@ -1,7 +1,7 @@
 ---
-// 🍪 Cookie Consent Banner Component
-// Purpose: GDPR/CCPA compliant cookie consent with granular controls
-// Features: localStorage persistence, accessible, mobile-friendly
+// 🍪 Simplified Cookie Banner Component
+// Purpose: Texas TDPSA-compliant cookie notice for small business
+// Features: Single accept button, friendly language, mobile-responsive
 
 interface Props {
   currentLang?: string;
@@ -16,7 +16,7 @@ const isSpanish = currentLang === 'es';
 const langPrefix = isSpanish ? 'es/' : '';
 ---
 
-<!-- 🍪 Cookie Consent Banner -->
+<!-- 🍪 Simple Cookie Notice Banner -->
 <div
   id="cookie-banner"
   class="fixed bottom-0 left-0 right-0 z-50 transform translate-y-full transition-transform duration-300 ease-in-out"
@@ -26,391 +26,124 @@ const langPrefix = isSpanish ? 'es/' : '';
   aria-hidden="true"
 >
   <div class="bg-slate-900/95 backdrop-blur-sm border-t border-slate-700 shadow-2xl">
-    <div class="container mx-auto px-4 py-4 sm:py-6 max-w-7xl">
-      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+    <div class="container mx-auto px-4 py-4 max-w-6xl">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
 
-        <!-- 📝 Banner Content -->
+        <!-- 📝 Banner Message -->
         <div class="flex-1">
-          <h2 id="cookie-banner-title" class="text-white font-semibold text-lg mb-2 flex items-center gap-2">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M10 2a8 8 0 100 16 8 8 0 000-16zM7 9a1 1 0 100-2 1 1 0 000 2zm3-4a1 1 0 11-2 0 1 1 0 012 0zm1 7a1 1 0 100-2 1 1 0 000 2zm3-3a1 1 0 11-2 0 1 1 0 012 0z"/>
-            </svg>
-            {isSpanish ? 'Preferencias de Cookies' : 'Cookie Preferences'}
-          </h2>
-          <p id="cookie-banner-description" class="text-gray-300 text-sm sm:text-base mb-2">
+          <p id="cookie-banner-description" class="text-white text-sm sm:text-base">
             {isSpanish
-              ? 'Utilizamos cookies para mejorar su experiencia, analizar el tráfico del sitio y mostrar anuncios relevantes.'
-              : 'We use cookies to improve your experience, analyze site traffic, and show relevant ads.'
+              ? 'Utilizamos cookies para mejorar su experiencia y entender cómo usa nuestro sitio.'
+              : 'We use cookies to improve your experience and understand how you use our site.'
             }
-          </p>
-          <p class="text-gray-400 text-xs">
-            {isSpanish
-              ? 'Administre sus opciones en cualquier momento en Configuración de cookies. Al hacer clic en Aceptar todas las cookies, acepta nuestra'
-              : 'Manage your choices anytime in Cookie settings. By clicking Accept all cookies you agree to our'
-            }
-            <a href={`${BASE_URL}${langPrefix}legal/cookie-policy`} class="text-blue-400 hover:text-blue-300 underline">{isSpanish ? 'Política de Cookies' : 'Cookie Policy'}</a> {isSpanish ? 'y' : 'and'}
-            <a href={`${BASE_URL}${langPrefix}legal/privacy-policy`} class="text-blue-400 hover:text-blue-300 underline">{isSpanish ? 'Política de Privacidad' : 'Privacy Policy'}</a>.
+            <a
+              href={`${BASE_URL}${langPrefix}legal/privacy-policy`}
+              class="text-blue-400 hover:text-blue-300 underline ml-1"
+            >
+              {isSpanish ? 'Más información' : 'Learn more'}
+            </a>
           </p>
         </div>
 
-        <!-- 🎛️ Action Buttons -->
-        <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 lg:flex-shrink-0">
-          <button
-            id="cookie-settings-btn"
-            class="px-4 py-2.5 text-sm font-medium text-white bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors duration-200 focus:ring-4 focus:ring-slate-500 focus:outline-none whitespace-nowrap"
-            aria-label={isSpanish ? 'Abrir configuración de cookies' : 'Open cookie settings'}
-          >
-            {isSpanish ? 'Configuración de cookies' : 'Cookie settings'}
-          </button>
-          <button
-            id="cookie-reject-btn"
-            class="px-4 py-2.5 text-sm font-medium text-slate-900 bg-gray-200 hover:bg-gray-300 rounded-lg transition-colors duration-200 focus:ring-4 focus:ring-gray-300 focus:outline-none whitespace-nowrap"
-            aria-label={isSpanish ? 'Rechazar cookies no esenciales' : 'Reject non-essential cookies'}
-          >
-            {isSpanish ? 'Rechazar no esenciales' : 'Reject non-essential'}
-          </button>
+        <!-- ✅ Accept Button -->
+        <div class="flex-shrink-0">
           <button
             id="cookie-accept-btn"
-            class="px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 rounded-lg transition-all duration-200 focus:ring-4 focus:ring-blue-300 focus:outline-none whitespace-nowrap"
-            aria-label={isSpanish ? 'Aceptar todas las cookies' : 'Accept all cookies'}
+            class="w-full sm:w-auto px-6 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 rounded-lg transition-all duration-200 focus:ring-4 focus:ring-blue-300 focus:outline-none shadow-lg"
+            aria-label={isSpanish ? 'Aceptar cookies' : 'Accept cookies'}
           >
-            {isSpanish ? 'Aceptar todas las cookies' : 'Accept all cookies'}
+            {isSpanish ? 'Aceptar' : 'Accept'}
           </button>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- 🎛️ Cookie Settings Modal -->
-<div
-  id="cookie-settings-modal"
-  class="fixed inset-0 z-50 hidden"
-  role="dialog"
-  aria-labelledby="cookie-modal-title"
-  aria-modal="true"
->
-  <!-- Backdrop -->
-  <div class="fixed inset-0 bg-black/60 backdrop-blur-sm" id="cookie-modal-backdrop"></div>
-
-  <!-- Modal Content -->
-  <div class="fixed inset-0 overflow-y-auto">
-    <div class="flex min-h-full items-center justify-center p-4">
-      <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full transform transition-all">
-
-        <!-- Modal Header -->
-        <div class="border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-          <h2 id="cookie-modal-title" class="text-2xl font-bold text-slate-900">
-            {isSpanish ? 'Configuración de Cookies' : 'Cookie Settings'}
-          </h2>
-          <button
-            id="cookie-modal-close"
-            class="text-gray-400 hover:text-gray-600 transition-colors p-2 rounded-full hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 focus:outline-none"
-            aria-label={isSpanish ? 'Cerrar configuración de cookies' : 'Close cookie settings'}
-          >
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-          </button>
-        </div>
-
-        <!-- Modal Body -->
-        <div class="px-6 py-6 max-h-96 overflow-y-auto">
-          <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-            <p class="text-sm text-blue-900">
-              <strong>{isSpanish ? 'Acerca de Análisis:' : 'About Analytics:'}</strong> {isSpanish
-                ? 'Utilizamos análisis para comprender cómo los visitantes usan nuestro sitio. Estas cookies están habilitadas de forma predeterminada para ayudarnos a mejorar el rendimiento. Puede optar por no participar en cualquier momento.'
-                : 'We use analytics to understand how visitors use our site. These cookies are enabled by default to help us improve performance. You can opt out anytime.'
-              }
-            </p>
-          </div>
-
-          <p class="text-gray-600 mb-6">
-            {isSpanish
-              ? 'Elija qué cookies desea permitir. Puede cambiar esta configuración en cualquier momento.'
-              : 'Choose which cookies you want to allow. You can change these settings at any time.'
-            }
-          </p>
-
-          <!-- Cookie Categories -->
-          <div class="space-y-4">
-
-            <!-- Strictly Necessary -->
-            <div class="border border-gray-200 rounded-lg p-4 bg-gray-50">
-              <div class="flex items-start justify-between">
-                <div class="flex-1">
-                  <h3 class="font-semibold text-slate-900 mb-1">{isSpanish ? 'Cookies Estrictamente Necesarias' : 'Strictly Necessary Cookies'}</h3>
-                  <p class="text-sm text-gray-600">
-                    {isSpanish
-                      ? 'Necesarias para que el sitio web funcione. Estas no se pueden desactivar.'
-                      : 'Required for the website to function. These cannot be disabled.'
-                    }
-                  </p>
-                </div>
-                <div class="ml-4">
-                  <input
-                    type="checkbox"
-                    id="cookie-necessary"
-                    checked
-                    disabled
-                    class="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-not-allowed opacity-50"
-                    aria-label={isSpanish ? 'Cookies estrictamente necesarias (siempre habilitadas)' : 'Strictly necessary cookies (always enabled)'}
-                  />
-                </div>
-              </div>
-            </div>
-
-            <!-- Analytics -->
-            <div class="border border-blue-200 rounded-lg p-4 bg-blue-50 hover:border-blue-300 transition-colors">
-              <div class="flex items-start justify-between">
-                <div class="flex-1">
-                  <h3 class="font-semibold text-slate-900 mb-1 flex items-center gap-2">
-                    {isSpanish ? 'Cookies de Análisis' : 'Analytics Cookies'}
-                    <span class="text-xs font-normal bg-blue-600 text-white px-2 py-0.5 rounded">{isSpanish ? 'Habilitadas de forma predeterminada' : 'Enabled by Default'}</span>
-                  </h3>
-                  <p class="text-sm text-gray-700 mb-2">
-                    {isSpanish
-                      ? 'Nos ayudan a comprender cómo los visitantes interactúan con nuestro sitio web (Google Analytics).'
-                      : 'Help us understand how visitors interact with our website (Google Analytics).'
-                    }
-                  </p>
-                  <p class="text-xs text-gray-600 italic">
-                    {isSpanish
-                      ? 'Estas cookies están habilitadas de forma predeterminada. Desmarque para optar por no participar.'
-                      : 'These cookies are enabled by default. Uncheck to opt out.'
-                    }
-                  </p>
-                </div>
-                <div class="ml-4">
-                  <input
-                    type="checkbox"
-                    id="cookie-analytics"
-                    checked
-                    class="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
-                    aria-label={isSpanish ? 'Habilitar cookies de análisis' : 'Enable analytics cookies'}
-                  />
-                </div>
-              </div>
-            </div>
-
-            <!-- Marketing -->
-            <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
-              <div class="flex items-start justify-between">
-                <div class="flex-1">
-                  <h3 class="font-semibold text-slate-900 mb-1">{isSpanish ? 'Cookies de Marketing' : 'Marketing Cookies'}</h3>
-                  <p class="text-sm text-gray-600">
-                    {isSpanish
-                      ? 'Se utilizan para mostrarle anuncios relevantes y medir la efectividad de las campañas.'
-                      : 'Used to show you relevant ads and measure campaign effectiveness.'
-                    }
-                  </p>
-                </div>
-                <div class="ml-4">
-                  <input
-                    type="checkbox"
-                    id="cookie-marketing"
-                    class="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
-                    aria-label={isSpanish ? 'Habilitar cookies de marketing' : 'Enable marketing cookies'}
-                  />
-                </div>
-              </div>
-            </div>
-
-            <!-- Functional -->
-            <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
-              <div class="flex items-start justify-between">
-                <div class="flex-1">
-                  <h3 class="font-semibold text-slate-900 mb-1">{isSpanish ? 'Cookies Funcionales' : 'Functional Cookies'}</h3>
-                  <p class="text-sm text-gray-600">
-                    {isSpanish
-                      ? 'Recuerdan sus preferencias y proporcionan funciones mejoradas.'
-                      : 'Remember your preferences and provide enhanced features.'
-                    }
-                  </p>
-                </div>
-                <div class="ml-4">
-                  <input
-                    type="checkbox"
-                    id="cookie-functional"
-                    class="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
-                    aria-label={isSpanish ? 'Habilitar cookies funcionales' : 'Enable functional cookies'}
-                  />
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Learn More Link -->
-          <div class="mt-6 pt-6 border-t border-gray-200">
-            <p class="text-sm text-gray-600">
-              {isSpanish ? 'Para obtener más información, consulte nuestra' : 'For more information, see our'}
-              <a href={`${BASE_URL}${langPrefix}legal/cookie-policy`} class="text-blue-600 hover:text-blue-700 underline font-medium">{isSpanish ? 'Política de Cookies' : 'Cookie Policy'}</a>.
-            </p>
-          </div>
-        </div>
-
-        <!-- Modal Footer -->
-        <div class="border-t border-gray-200 px-6 py-4 flex flex-col sm:flex-row gap-3 sm:justify-end">
-          <button
-            id="cookie-modal-reject"
-            class="px-6 py-2.5 text-sm font-medium text-slate-900 bg-gray-200 hover:bg-gray-300 rounded-lg transition-colors duration-200 focus:ring-4 focus:ring-gray-300 focus:outline-none"
-          >
-            {isSpanish ? 'Rechazar Todas' : 'Reject All'}
-          </button>
-          <button
-            id="cookie-modal-save"
-            class="px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 rounded-lg transition-all duration-200 focus:ring-4 focus:ring-blue-300 focus:outline-none"
-          >
-            {isSpanish ? 'Guardar Preferencias' : 'Save Preferences'}
-          </button>
-        </div>
-
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  // 🍪 Cookie Consent Management with GTM/GA4 Integration
-  import {
-    getConsentPreferences,
-    saveConsentPreferences,
-    acceptAllCookies,
-    rejectNonEssentialCookies,
-    hasGivenConsent,
-    isAnalyticsEnabled,
-    getDefaultPreferences
-  } from '../utils/consent';
-  import {
-    initializeGTM,
-    initializeGA4,
-    enableAnalytics,
-    disableAnalytics
-  } from '../utils/analytics';
+  // 🍪 Simple Cookie Consent Management
 
-  class CookieConsentUI {
+  const CONSENT_COOKIE_NAME = 'mah_cookie_consent';
+  const CONSENT_EXPIRY_DAYS = 365;
+
+  class SimpleCookieBanner {
     private banner: HTMLElement | null;
-    private modal: HTMLElement | null;
-    private previousFocus: HTMLElement | null = null;
-
-    // Get GTM/GA4 IDs from environment or meta tags
-    private gtmId: string = import.meta.env.PUBLIC_GTM_ID || 'GTM-KQS29VV6';
-    private ga4Id: string = import.meta.env.PUBLIC_GA4_ID || '';
 
     constructor() {
       this.banner = document.getElementById('cookie-banner');
-      this.modal = document.getElementById('cookie-settings-modal');
       this.init();
     }
 
     init() {
-      // Check if user has given consent
-      const hasConsent = hasGivenConsent();
-
-      if (!hasConsent) {
-        // No consent given yet - show banner
+      // Check if user has already accepted
+      if (!this.hasAcceptedCookies()) {
         this.showBanner();
-
-        // Initialize analytics with default (enabled) since analytics is enabled by default
-        if (isAnalyticsEnabled()) {
-          this.initializeAnalytics();
-        }
       } else {
-        // User has given consent - apply their preferences
-        if (isAnalyticsEnabled()) {
-          this.initializeAnalytics();
-        }
+        // User previously accepted - update GTM consent
+        this.updateGTMConsent('granted');
       }
 
       this.bindEvents();
     }
 
     bindEvents() {
-      // Banner buttons
       document.getElementById('cookie-accept-btn')?.addEventListener('click', () => {
-        this.handleAcceptAll();
+        this.handleAccept();
       });
-
-      document.getElementById('cookie-reject-btn')?.addEventListener('click', () => {
-        this.handleRejectNonEssential();
-      });
-
-      document.getElementById('cookie-settings-btn')?.addEventListener('click', () => {
-        this.openModal();
-      });
-
-      // Modal buttons
-      document.getElementById('cookie-modal-close')?.addEventListener('click', () => {
-        this.closeModal();
-      });
-
-      document.getElementById('cookie-modal-backdrop')?.addEventListener('click', () => {
-        this.closeModal();
-      });
-
-      document.getElementById('cookie-modal-save')?.addEventListener('click', () => {
-        this.handleSavePreferences();
-      });
-
-      document.getElementById('cookie-modal-reject')?.addEventListener('click', () => {
-        this.handleRejectNonEssential();
-        this.closeModal();
-      });
-
-      // Keyboard accessibility
-      this.modal?.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          this.closeModal();
-        }
-      });
-
-      // Listen for consent changes
-      window.addEventListener('consentChanged', ((e: CustomEvent) => {
-        const preferences = e.detail;
-
-        if (preferences.analytics) {
-          this.initializeAnalytics();
-        } else {
-          disableAnalytics(this.ga4Id);
-        }
-      }) as EventListener);
     }
 
-    initializeAnalytics() {
-      if (this.gtmId) {
-        initializeGTM(this.gtmId);
+    hasAcceptedCookies(): boolean {
+      // Check localStorage first
+      try {
+        const stored = localStorage.getItem(CONSENT_COOKIE_NAME);
+        if (stored === 'true') return true;
+      } catch (e) {
+        console.warn('LocalStorage unavailable:', e);
       }
-      if (this.ga4Id) {
-        initializeGA4(this.ga4Id);
+
+      // Fallback to cookie
+      const cookie = document.cookie
+        .split('; ')
+        .find(row => row.startsWith(`${CONSENT_COOKIE_NAME}=`));
+
+      return cookie?.split('=')[1] === 'true';
+    }
+
+    saveConsent() {
+      const expiryDate = new Date();
+      expiryDate.setDate(expiryDate.getDate() + CONSENT_EXPIRY_DAYS);
+
+      // Save to localStorage
+      try {
+        localStorage.setItem(CONSENT_COOKIE_NAME, 'true');
+      } catch (e) {
+        console.warn('Failed to save to localStorage:', e);
+      }
+
+      // Save to cookie as backup
+      try {
+        document.cookie = `${CONSENT_COOKIE_NAME}=true; expires=${expiryDate.toUTCString()}; path=/; SameSite=Strict`;
+      } catch (e) {
+        console.warn('Failed to save cookie:', e);
       }
     }
 
-    handleAcceptAll() {
-      acceptAllCookies();
+    handleAccept() {
+      this.saveConsent();
+      this.updateGTMConsent('granted');
       this.hideBanner();
-      // Analytics will be initialized via consentChanged event
     }
 
-    handleRejectNonEssential() {
-      rejectNonEssentialCookies();
-      this.hideBanner();
-      // Analytics will be disabled via consentChanged event
-    }
-
-    handleSavePreferences() {
-      const analytics = (document.getElementById('cookie-analytics') as HTMLInputElement)?.checked || false;
-      const marketing = (document.getElementById('cookie-marketing') as HTMLInputElement)?.checked || false;
-      const functional = (document.getElementById('cookie-functional') as HTMLInputElement)?.checked || false;
-
-      saveConsentPreferences({
-        analytics,
-        marketing,
-        functional
-      });
-
-      this.hideBanner();
-      this.closeModal();
+    updateGTMConsent(state: 'granted' | 'denied') {
+      // Update GTM Consent Mode v2
+      if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          'analytics_storage': state
+        });
+        console.log(`GTM consent updated: analytics_storage=${state}`);
+      } else {
+        console.warn('gtag function not available');
+      }
     }
 
     showBanner() {
@@ -418,11 +151,11 @@ const langPrefix = isSpanish ? 'es/' : '';
         this.banner.classList.remove('translate-y-full');
         this.banner.setAttribute('aria-hidden', 'false');
 
-        // Focus first button for accessibility
+        // Focus accept button for accessibility
         setTimeout(() => {
-          const firstButton = this.banner?.querySelector('button') as HTMLElement;
-          firstButton?.focus();
-        }, 300); // Wait for slide animation
+          const acceptButton = document.getElementById('cookie-accept-btn') as HTMLElement;
+          acceptButton?.focus();
+        }, 300);
       }
     }
 
@@ -432,101 +165,34 @@ const langPrefix = isSpanish ? 'es/' : '';
         this.banner.setAttribute('aria-hidden', 'true');
       }
     }
+  }
 
-    openModal() {
-      if (this.modal) {
-        // Store current focus for restoration
-        this.previousFocus = document.activeElement as HTMLElement;
-
-        // Load current or default preferences
-        const preferences = getConsentPreferences() || getDefaultPreferences();
-
-        (document.getElementById('cookie-analytics') as HTMLInputElement).checked = preferences.analytics;
-        (document.getElementById('cookie-marketing') as HTMLInputElement).checked = preferences.marketing;
-        (document.getElementById('cookie-functional') as HTMLInputElement).checked = preferences.functional;
-
-        this.modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-
-        // Focus close button for keyboard accessibility
-        setTimeout(() => {
-          const closeButton = document.getElementById('cookie-modal-close') as HTMLElement;
-          closeButton?.focus();
-        }, 50);
-      }
-    }
-
-    closeModal() {
-      if (this.modal) {
-        this.modal.classList.add('hidden');
-        document.body.style.overflow = '';
-
-        // Restore focus to previous element
-        if (this.previousFocus) {
-          this.previousFocus.focus();
-          this.previousFocus = null;
-        }
-      }
+  // Type declaration for gtag
+  declare global {
+    interface Window {
+      gtag?: (...args: any[]) => void;
+      dataLayer?: any[];
     }
   }
 
   // Initialize on DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      new CookieConsentUI();
+      new SimpleCookieBanner();
     });
   } else {
-    new CookieConsentUI();
+    new SimpleCookieBanner();
   }
-
-  // Expose for manual control (e.g., footer link to reopen settings)
-  (window as any).openCookieSettings = () => {
-    const modal = document.getElementById('cookie-settings-modal');
-    if (modal) {
-      // Load current or default preferences
-      const preferences = getConsentPreferences() || getDefaultPreferences();
-
-      (document.getElementById('cookie-analytics') as HTMLInputElement).checked = preferences.analytics;
-      (document.getElementById('cookie-marketing') as HTMLInputElement).checked = preferences.marketing;
-      (document.getElementById('cookie-functional') as HTMLInputElement).checked = preferences.functional;
-
-      modal.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-
-      // Focus close button
-      setTimeout(() => {
-        const closeButton = document.getElementById('cookie-modal-close') as HTMLElement;
-        closeButton?.focus();
-      }, 50);
-    }
-  };
 </script>
 
 <style>
-  /* Smooth transitions */
+  /* Smooth banner animation */
   #cookie-banner {
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
   }
 
-  /* Modal animations */
-  #cookie-settings-modal:not(.hidden) .bg-white {
-    animation: modalSlideUp 0.3s ease-out;
-  }
-
-  @keyframes modalSlideUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px) scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
-
   /* Focus states for accessibility */
   button:focus-visible,
-  input:focus-visible,
   a:focus-visible {
     outline: 2px solid #3b82f6;
     outline-offset: 2px;
@@ -542,15 +208,8 @@ const langPrefix = isSpanish ? 'es/' : '';
 
   /* Respect user's motion preferences */
   @media (prefers-reduced-motion: reduce) {
-    #cookie-banner,
-    #cookie-settings-modal * {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
+    #cookie-banner {
       transition-duration: 0.01ms !important;
-    }
-
-    #cookie-settings-modal:not(.hidden) .bg-white {
-      animation: none;
     }
   }
 </style>

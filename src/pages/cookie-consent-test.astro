@@ -149,12 +149,8 @@ const breadcrumbs = [
 
   <script>
     import {
-      getConsentPreferences,
-      hasGivenConsent,
-      isAnalyticsEnabled,
-      isFunctionalEnabled,
-      isMarketingEnabled,
-      removeConsentPreferences
+      hasAcceptedCookies,
+      removeConsent
     } from '../utils/consent';
     import { trackEvent } from '../utils/analytics';
 
@@ -175,8 +171,7 @@ const breadcrumbs = [
 
     // Update consent status display
     function updateConsentStatus() {
-      const hasConsent = hasGivenConsent();
-      const preferences = getConsentPreferences();
+      const hasConsent = hasAcceptedCookies();
 
       // Has Consent
       const hasConsentEl = document.getElementById('status-has-consent');
@@ -190,8 +185,8 @@ const breadcrumbs = [
         }
       }
 
-      // Analytics
-      const analyticsEnabled = isAnalyticsEnabled();
+      // Analytics (simplified: all cookies accepted when consent is given)
+      const analyticsEnabled = hasConsent;
       const analyticsEl = document.getElementById('status-analytics');
       if (analyticsEl) {
         if (analyticsEnabled) {
@@ -203,8 +198,8 @@ const breadcrumbs = [
         }
       }
 
-      // Marketing
-      const marketingEnabled = isMarketingEnabled();
+      // Marketing (simplified: same as analytics in this implementation)
+      const marketingEnabled = hasConsent;
       const marketingEl = document.getElementById('status-marketing');
       if (marketingEl) {
         if (marketingEnabled) {
@@ -216,8 +211,8 @@ const breadcrumbs = [
         }
       }
 
-      // Functional
-      const functionalEnabled = isFunctionalEnabled();
+      // Functional (simplified: same as analytics in this implementation)
+      const functionalEnabled = hasConsent;
       const functionalEl = document.getElementById('status-functional');
       if (functionalEl) {
         if (functionalEnabled) {
@@ -229,12 +224,12 @@ const breadcrumbs = [
         }
       }
 
-      addLog(`Consent status updated: Analytics=${analyticsEnabled}, Marketing=${marketingEnabled}, Functional=${functionalEnabled}`);
+      addLog(`Consent status updated: All cookies=${hasConsent ? 'Accepted' : 'Not accepted yet'}`);
     }
 
     // Clear consent
     document.getElementById('clear-consent-btn')?.addEventListener('click', () => {
-      removeConsentPreferences();
+      removeConsent();
       addLog('✅ All consent preferences cleared');
       setTimeout(() => {
         location.reload();
@@ -243,7 +238,7 @@ const breadcrumbs = [
 
     // Send test event
     document.getElementById('track-event-btn')?.addEventListener('click', () => {
-      if (isAnalyticsEnabled()) {
+      if (hasAcceptedCookies()) {
         trackEvent('test_event', {
           category: 'Test',
           action: 'Button Click',
@@ -251,7 +246,7 @@ const breadcrumbs = [
         });
         addLog('📊 Test analytics event sent');
       } else {
-        addLog('❌ Cannot send event: Analytics is disabled');
+        addLog('❌ Cannot send event: Cookies not accepted yet');
       }
     });
 
@@ -264,9 +259,8 @@ const breadcrumbs = [
     });
 
     // Listen for consent changes
-    window.addEventListener('consentChanged', (e: Event) => {
-      const customEvent = e as CustomEvent;
-      addLog(`🔄 Consent changed: ${JSON.stringify(customEvent.detail)}`);
+    window.addEventListener('cookieConsentAccepted', () => {
+      addLog(`🔄 Cookie consent accepted`);
       updateConsentStatus();
     });
 

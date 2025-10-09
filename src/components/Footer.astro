@@ -241,14 +241,6 @@ const trustSignals = [
                 )}
               </>
             ))}
-            <span class="text-gray-600" aria-hidden="true">|</span>
-            <button
-              id="footer-cookie-settings"
-              class="text-gray-400 hover:text-white text-sm transition-colors duration-200 focus:text-white cursor-pointer whitespace-nowrap"
-              aria-label={isSpanish ? 'Gestionar preferencias de cookies' : 'Manage cookie preferences'}
-            >
-              {isSpanish ? 'Configuración de Cookies' : 'Cookie Settings'}
-            </button>
           </div>
         </nav>
       </div>
@@ -300,18 +292,6 @@ const trustSignals = [
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           scrollToTop();
-        }
-      });
-    }
-  });
-
-  // 🍪 Cookie Settings button handler
-  document.addEventListener('DOMContentLoaded', () => {
-    const cookieSettingsBtn = document.getElementById('footer-cookie-settings');
-    if (cookieSettingsBtn) {
-      cookieSettingsBtn.addEventListener('click', () => {
-        if (typeof window.openCookieSettings === 'function') {
-          window.openCookieSettings();
         }
       });
     }

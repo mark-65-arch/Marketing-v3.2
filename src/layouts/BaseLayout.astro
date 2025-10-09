@@ -40,8 +40,19 @@ const preloadResources = [
 <!DOCTYPE html>
 <html lang={lang} dir="ltr">
 <head>
-  <!-- Google Tag Manager -->
-  <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  <!-- Google Tag Manager with Consent Mode v2 -->
+  <script is:inline>window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied',
+    'functionality_storage': 'denied',
+    'personalization_storage': 'denied',
+    'wait_for_update': 500
+  });
+
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -147,14 +158,14 @@ const preloadResources = [
   <!--
     CSP Configuration:
     - Uses script hashes instead of 'unsafe-inline' for better security
-    - BaseLayout GTM script hash: sha256-t6JZZvLwY8ccCw4UkWjvdn+lofNJCgKzPhuegvg/69Y=
+    - BaseLayout GTM Consent Mode v2 script hash: sha256-u44bMp1/QKfVxdVXqfyeJcrcjPqAZFAj4COcRMQgbaM=
     - BaseLayout lazy load/security script hash: sha256-k8Ko4YMZ/6Dklcy0pZe7nIzQlgtSH/FK+/A4nDfxOQw=
     - Contact page iframe script hash: sha256-yJmBxiBN4AeSn7iBlg4OWHPT0EsUF6nCxNGCkynYDTI=
     - Contact page accordion script hash: sha256-jQ9jE2f/RdmljlEiEL5/wzUpriXsUrG9h9ByoESgO5w=
     - style-src includes 'unsafe-inline' for Tailwind and dynamic styles (low risk for CSS)
     - frame-ancestors 'self' prevents clickjacking by disallowing iframe embedding from other origins
   -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-t6JZZvLwY8ccCw4UkWjvdn+lofNJCgKzPhuegvg/69Y=' 'sha256-k8Ko4YMZ/6Dklcy0pZe7nIzQlgtSH/FK+/A4nDfxOQw=' 'sha256-yJmBxiBN4AeSn7iBlg4OWHPT0EsUF6nCxNGCkynYDTI=' 'sha256-jQ9jE2f/RdmljlEiEL5/wzUpriXsUrG9h9ByoESgO5w=' https://cdnjs.cloudflare.com https://calendly.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://www.google.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://usebasin.com https://www.google-analytics.com https://www.googletagmanager.com https://www.google.com https://www.googleadservices.com https://docs.google.com; frame-src https://calendly.com https://docs.google.com; frame-ancestors 'self';" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-u44bMp1/QKfVxdVXqfyeJcrcjPqAZFAj4COcRMQgbaM=' 'sha256-k8Ko4YMZ/6Dklcy0pZe7nIzQlgtSH/FK+/A4nDfxOQw=' 'sha256-yJmBxiBN4AeSn7iBlg4OWHPT0EsUF6nCxNGCkynYDTI=' 'sha256-jQ9jE2f/RdmljlEiEL5/wzUpriXsUrG9h9ByoESgO5w=' https://cdnjs.cloudflare.com https://calendly.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://www.google.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://usebasin.com https://www.google-analytics.com https://www.googletagmanager.com https://www.google.com https://www.googleadservices.com https://docs.google.com; frame-src https://calendly.com https://docs.google.com; frame-ancestors 'self';" />
 
   <!-- 🍪 Future: Cookie consent preparation -->
   <!-- Cookie consent will be implemented here when needed -->

@@ -51,10 +51,10 @@ const footerLinks = {
 
 // 🏆 Trust signals and certifications
 const trustSignals = [
-  { icon: 'fab fa-google', label: 'Google Partners' },
-  { icon: 'fas fa-search', label: 'SEO Certified' },
-  { icon: 'fas fa-mobile-alt', label: 'Mobile-First' },
-  { icon: 'fas fa-robot', label: 'AI-Ready' }
+  { icon: 'fab fa-google', label: isSpanish ? 'Socios de Google' : 'Google Partners' },
+  { icon: 'fas fa-search', label: isSpanish ? 'Certificado en SEO' : 'SEO Certified' },
+  { icon: 'fas fa-mobile-alt', label: isSpanish ? 'Móvil Primero' : 'Mobile-First' },
+  { icon: 'fas fa-robot', label: isSpanish ? 'Preparado para IA' : 'AI-Ready' }
 ];
 ---
 
@@ -97,7 +97,7 @@ const trustSignals = [
 
     <!-- 📋 Main Footer Content -->
     <div class="py-12">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 lg:gap-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12">
 
         <!-- 🏠 Brand & Contact -->
         <div class="md:col-span-1">
@@ -216,35 +216,35 @@ const trustSignals = [
 
     <!-- 📄 Legal & Copyright -->
     <div class="border-t border-gray-800 py-8">
-      <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-6 lg:space-y-0 gap-6">
 
         <!-- Copyright -->
-        <div class="text-center md:text-left">
+        <div class="text-center lg:text-left w-full lg:w-auto">
           <p class="text-gray-400 text-sm">
             © {new Date().getFullYear()} Marketing AI Houston. All rights reserved.
           </p>
         </div>
 
         <!-- Legal Links -->
-        <nav aria-label="Legal links" class="text-center md:text-right">
-          <div class="flex flex-wrap justify-center md:justify-end gap-6">
+        <nav aria-label="Legal links" class="w-full lg:w-auto">
+          <div class="flex flex-wrap justify-center lg:justify-end gap-x-4 gap-y-2 text-center lg:text-right">
             {footerLinks.legal.map((link, index) => (
-              <span class="flex items-center">
+              <>
                 <a
                   href={link.href}
-                  class="text-gray-400 hover:text-white text-sm transition-colors duration-200 focus:text-white"
+                  class="text-gray-400 hover:text-white text-sm transition-colors duration-200 focus:text-white whitespace-nowrap"
                 >
                   {link.label}
                 </a>
                 {index < footerLinks.legal.length - 1 && (
-                  <span class="text-gray-600 mx-3" aria-hidden="true">|</span>
+                  <span class="text-gray-600" aria-hidden="true">|</span>
                 )}
-              </span>
+              </>
             ))}
-            <span class="text-gray-600 mx-3" aria-hidden="true">|</span>
+            <span class="text-gray-600" aria-hidden="true">|</span>
             <button
-              onclick="window.openCookieSettings?.()"
-              class="text-gray-400 hover:text-white text-sm transition-colors duration-200 focus:text-white cursor-pointer"
+              id="footer-cookie-settings"
+              class="text-gray-400 hover:text-white text-sm transition-colors duration-200 focus:text-white cursor-pointer whitespace-nowrap"
               aria-label={isSpanish ? 'Gestionar preferencias de cookies' : 'Manage cookie preferences'}
             >
               {isSpanish ? 'Configuración de Cookies' : 'Cookie Settings'}
@@ -300,6 +300,18 @@ const trustSignals = [
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           scrollToTop();
+        }
+      });
+    }
+  });
+
+  // 🍪 Cookie Settings button handler
+  document.addEventListener('DOMContentLoaded', () => {
+    const cookieSettingsBtn = document.getElementById('footer-cookie-settings');
+    if (cookieSettingsBtn) {
+      cookieSettingsBtn.addEventListener('click', () => {
+        if (typeof window.openCookieSettings === 'function') {
+          window.openCookieSettings();
         }
       });
     }

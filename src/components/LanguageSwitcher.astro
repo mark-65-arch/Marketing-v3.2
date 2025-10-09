@@ -39,9 +39,26 @@ if (cleanPath.endsWith('/') && cleanPath.length > 1) {
 
 // Generate the alternate language URL
 const isCurrentlySpanish = currentLang === 'es' || currentPath.includes('/es/');
-const alternateUrl = isCurrentlySpanish
-  ? `${baseUrl}${cleanPath}`  // Switch to English
-  : `${baseUrl}es/${cleanPath}`; // Switch to Spanish
+
+// Handle special path mappings for pages with different structures
+let alternateUrl = '';
+let englishUrl = '';
+
+if (cleanPath === 'seo-growth-strategy') {
+  // English SEO page -> Spanish version is in services/
+  englishUrl = `${baseUrl}seo-growth-strategy`;
+  alternateUrl = `${baseUrl}es/services/seo-growth-strategy`;
+} else if (cleanPath === 'services/seo-growth-strategy') {
+  // Spanish SEO page -> English version is at root
+  englishUrl = `${baseUrl}seo-growth-strategy`;
+  alternateUrl = `${baseUrl}seo-growth-strategy`;
+} else {
+  // Standard mapping for all other pages
+  englishUrl = `${baseUrl}${cleanPath}`;
+  alternateUrl = isCurrentlySpanish
+    ? `${baseUrl}${cleanPath}`  // Switch to English
+    : `${baseUrl}es/${cleanPath}`; // Switch to Spanish
+}
 
 const alternateLang = isCurrentlySpanish ? 'en' : 'es';
 const alternateLangLabel = isCurrentlySpanish ? 'English' : 'Español';
@@ -51,38 +68,38 @@ const currentLangLabel = isCurrentlySpanish ? 'Español' : 'English';
 <div class="language-switcher" role="navigation" aria-label="Language switcher">
   <button
     type="button"
-    class="lang-toggle-button group flex items-center gap-2 px-3 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+    class="lang-toggle-button group flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-teal-50 hover:from-blue-100 hover:to-teal-100 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-200 shadow-sm"
     aria-label={`Switch language to ${alternateLangLabel}`}
     aria-expanded="false"
     data-alternate-url={alternateUrl}
     data-alternate-lang={alternateLang}
   >
-    <i class="fas fa-globe text-blue-600 group-hover:text-blue-700" aria-hidden="true"></i>
-    <span class="font-medium text-sm hidden sm:inline">{currentLangLabel}</span>
-    <span class="font-medium text-sm sm:hidden">{currentLang.toUpperCase()}</span>
-    <i class="fas fa-chevron-down text-xs transition-transform duration-200" aria-hidden="true"></i>
+    <i class="fas fa-globe bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent group-hover:from-blue-700 group-hover:to-teal-700" aria-hidden="true"></i>
+    <span class="font-semibold text-sm bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent hidden sm:inline">{currentLangLabel}</span>
+    <span class="font-semibold text-sm bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent sm:hidden">{currentLang.toUpperCase()}</span>
+    <i class="fas fa-chevron-down text-xs text-blue-600 group-hover:text-teal-600 transition-all duration-300" aria-hidden="true"></i>
   </button>
 
   <!-- Dropdown menu -->
-  <div class="lang-dropdown absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible transform -translate-y-2 transition-all duration-200 z-50">
+  <div class="lang-dropdown absolute right-0 mt-2 w-44 bg-white/95 backdrop-blur-sm rounded-xl shadow-xl border border-white/50 opacity-0 invisible transform -translate-y-2 transition-all duration-300 z-50">
     <div class="py-2">
       <a
-        href={isCurrentlySpanish ? `${baseUrl}${cleanPath}` : `${baseUrl}${cleanPath}`}
-        class={`block px-4 py-2 text-sm transition-colors duration-200 ${!isCurrentlySpanish ? 'text-blue-600 bg-blue-50 font-semibold' : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600'}`}
+        href={englishUrl}
+        class={`flex items-center gap-2 px-4 py-3 text-sm transition-all duration-200 rounded-lg mx-2 ${!isCurrentlySpanish ? 'bg-gradient-to-r from-blue-600 to-teal-600 text-white font-semibold shadow-md' : 'text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-teal-50'}`}
         lang="en"
         hreflang="en"
       >
-        <i class="fas fa-check mr-2 ${!isCurrentlySpanish ? 'visible' : 'invisible'}" aria-hidden="true"></i>
-        English
+        <i class={`fas fa-check text-xs ${!isCurrentlySpanish ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true"></i>
+        <span class="flex-1">English</span>
       </a>
       <a
         href={alternateUrl}
-        class={`block px-4 py-2 text-sm transition-colors duration-200 ${isCurrentlySpanish ? 'text-blue-600 bg-blue-50 font-semibold' : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600'}`}
+        class={`flex items-center gap-2 px-4 py-3 text-sm transition-all duration-200 rounded-lg mx-2 ${isCurrentlySpanish ? 'bg-gradient-to-r from-blue-600 to-teal-600 text-white font-semibold shadow-md' : 'text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-teal-50'}`}
         lang="es"
         hreflang="es"
       >
-        <i class="fas fa-check mr-2 ${isCurrentlySpanish ? 'visible' : 'invisible'}" aria-hidden="true"></i>
-        Español
+        <i class={`fas fa-check text-xs ${isCurrentlySpanish ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true"></i>
+        <span class="flex-1">Español</span>
       </a>
     </div>
   </div>
@@ -142,6 +159,9 @@ const currentLangLabel = isCurrentlySpanish ? 'Español' : 'English';
         if (!cleanPath || cleanPath === '') {
           // Homepage
           window.location.href = `${baseUrl}es/`;
+        } else if (cleanPath === 'seo-growth-strategy') {
+          // Special case: English SEO page -> Spanish version is in services/
+          window.location.href = `${baseUrl}es/services/seo-growth-strategy`;
         } else {
           window.location.href = `${baseUrl}es/${cleanPath}`;
         }
@@ -159,7 +179,12 @@ const currentLangLabel = isCurrentlySpanish ? 'Español' : 'English';
         } else if (cleanPath === 'es') {
           cleanPath = '';
         }
-        window.location.href = `${baseUrl}${cleanPath}`;
+        if (cleanPath === 'services/seo-growth-strategy') {
+          // Special case: Spanish SEO page -> English version is at root
+          window.location.href = `${baseUrl}seo-growth-strategy`;
+        } else {
+          window.location.href = `${baseUrl}${cleanPath}`;
+        }
       }
     }
 

@@ -328,85 +328,9 @@ const breadcrumbs: BreadcrumbItem[] = [
         </div>
     </section>
 
-    <script is:inline>
-        // Google Form iframe height adjustment on submission
-        let formLoadCounter = 0;
-
-        // Attach event listener to iframe after DOM is loaded
-        window.addEventListener('DOMContentLoaded', function() {
-            const iframe = document.getElementById('google-form-iframe');
-
-            if (iframe) {
-                console.log('✅ Iframe found, attaching load listener...');
-
-                iframe.addEventListener('load', function() {
-                    formLoadCounter += 1;
-                    console.log('🔄 Form iframe loaded - Count:', formLoadCounter);
-
-                    // On second load, the form has been submitted and shows confirmation page
-                    if (formLoadCounter === 2) {
-                        console.log('✅ Form submitted! Resizing iframe...');
-
-                        // Smoothly transition to smaller height for confirmation message
-                        iframe.style.height = '300px';
-                        console.log('📏 Iframe height changed to 300px');
-
-                        // Scroll to show the confirmation message
-                        setTimeout(() => {
-                            iframe.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start',
-                                inline: 'nearest'
-                            });
-                            console.log('📜 Scrolled to confirmation message');
-                        }, 300);
-                    }
-                });
-            } else {
-                console.error('❌ Iframe not found!');
-            }
-        });
-    </script>
-
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const element = e.target as HTMLAnchorElement;
-                const href = element.getAttribute('href');
-                if (href) {
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }
-            });
-        });
-
-        // Accordion functionality for FAQ
-        const accordionTriggers = document.querySelectorAll('.accordion-trigger');
-
-        accordionTriggers.forEach(trigger => {
-            trigger.addEventListener('click', () => {
-                const accordionItem = trigger.parentElement;
-                const chevron = trigger.querySelector('i');
-
-                // Toggle accordion content
-                accordionItem.classList.toggle('accordion-open');
-
-                // Rotate chevron icon
-                if (accordionItem.classList.contains('accordion-open')) {
-                    chevron.style.transform = 'rotate(180deg)';
-                } else {
-                    chevron.style.transform = 'rotate(0)';
-                }
-            });
-        });
-    </script>
+    <!-- External scripts for CSP compliance -->
+    <script src={`${import.meta.env.BASE_URL}js/google-form-handler.js`}></script>
+    <script src={`${import.meta.env.BASE_URL}js/contact-page.js`}></script>
 
     <!-- Custom page-specific styles -->
     <style>

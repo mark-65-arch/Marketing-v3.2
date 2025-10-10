@@ -13,6 +13,25 @@ import {
   type BreadcrumbItem,
   type FAQItem
 } from '../utils/seo.ts';
+import BalanceScaleIcon from '../components/icons/BalanceScaleIcon.astro';
+import BuildingIcon from '../components/icons/BuildingIcon.astro';
+import ChartLineIcon from '../components/icons/ChartLineIcon.astro';
+import CheckCircleIcon from '../components/icons/CheckCircleIcon.astro';
+import CheckIcon from '../components/icons/CheckIcon.astro';
+import ChevronDownIcon from '../components/icons/ChevronDownIcon.astro';
+import DollarIcon from '../components/icons/DollarIcon.astro';
+import FileIcon from '../components/icons/FileIcon.astro';
+import GiftIcon from '../components/icons/GiftIcon.astro';
+import HammerIcon from '../components/icons/HammerIcon.astro';
+import ListIcon from '../components/icons/ListIcon.astro';
+import MapMarkerIcon from '../components/icons/MapMarkerIcon.astro';
+import PaletteIcon from '../components/icons/PaletteIcon.astro';
+import QuestionCircleIcon from '../components/icons/QuestionCircleIcon.astro';
+import RocketIcon from '../components/icons/RocketIcon.astro';
+import RouteIcon from '../components/icons/RouteIcon.astro';
+import SearchIcon from '../components/icons/SearchIcon.astro';
+import TrophyIcon from '../components/icons/TrophyIcon.astro';
+import UserMdIcon from '../components/icons/UserMdIcon.astro';
 
 // 🔍 SEO Configuration
 const pageTitle = 'Pro Website & Growth Plan — Comprehensive Solution for Market Domination';
@@ -127,25 +146,25 @@ const faqSchema = generateFAQSchema(faqs);
         <div class="mt-16 flex flex-wrap justify-center gap-8">
           <div class="flex flex-col items-center">
             <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
-              <i class="fas fa-hammer text-2xl text-gray-900" aria-hidden="true"></i>
+              <HammerIcon class="text-2xl text-gray-900" aria-hidden="true" />
             </div>
             <span class="text-gray-700 font-medium">Contractors</span>
           </div>
           <div class="flex flex-col items-center">
             <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
-              <i class="fas fa-balance-scale text-2xl text-gray-900" aria-hidden="true"></i>
+              <BalanceScaleIcon class="text-2xl text-gray-900" aria-hidden="true" />
             </div>
             <span class="text-gray-700 font-medium">Law Firms</span>
           </div>
           <div class="flex flex-col items-center">
             <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
-              <i class="fas fa-user-md text-2xl text-gray-900" aria-hidden="true"></i>
+              <UserMdIcon class="text-2xl text-gray-900" aria-hidden="true" />
             </div>
             <span class="text-gray-700 font-medium">Therapists</span>
           </div>
           <div class="flex flex-col items-center">
             <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
-              <i class="fas fa-building text-2xl text-gray-900" aria-hidden="true"></i>
+              <BuildingIcon class="text-2xl text-gray-900" aria-hidden="true" />
             </div>
             <span class="text-gray-700 font-medium">Multi-location</span>
           </div>
@@ -159,7 +178,7 @@ const faqSchema = generateFAQSchema(faqs);
     <div class="container mx-auto container-padding">
       <div class="text-center mb-16">
         <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
-          <i class="fas fa-check-circle mr-2 text-blue-600" aria-hidden="true"></i>
+          <CheckCircleIcon class="mr-2 text-blue-600" aria-hidden="true" />
           What's Included
         </div>
         <h2 class="heading-lg mb-4">
@@ -170,7 +189,7 @@ const faqSchema = generateFAQSchema(faqs);
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <Card class="flex items-start space-x-4" padding="lg">
           <div class="flex-shrink-0">
-            <i class="fas fa-palette text-2xl text-blue-600" aria-hidden="true"></i>
+            <PaletteIcon class="text-2xl text-blue-600" aria-hidden="true" />
           </div>
           <div>
             <h3 class="text-xl font-bold text-blue-900 mb-2">Up to 16-Page Comprehensive Website</h3>
@@ -180,7 +199,7 @@ const faqSchema = generateFAQSchema(faqs);
 
         <Card class="flex items-start space-x-4" padding="lg">
           <div class="flex-shrink-0">
-            <i class="fas fa-list-ul text-2xl text-blue-600" aria-hidden="true"></i>
+            <ListIcon class="text-2xl text-blue-600" aria-hidden="true" />
           </div>
           <div>
             <h3 class="text-xl font-bold text-blue-900 mb-2">Individual Service Pages (up to 6)</h3>
@@ -190,7 +209,7 @@ const faqSchema = generateFAQSchema(faqs);
 
         <Card class="flex items-start space-x-4" padding="lg">
           <div class="flex-shrink-0">
-            <i class="fas fa-map-marker-alt text-2xl text-blue-600" aria-hidden="true"></i>
+            <MapMarkerIcon class="text-2xl text-blue-600" aria-hidden="true" />
           </div>
           <div>
             <h3 class="text-xl font-bold text-blue-900 mb-2">Local Landing Pages (up to 6 Houston areas)</h3>
@@ -200,7 +219,7 @@ const faqSchema = generateFAQSchema(faqs);
 
         <Card class="flex items-start space-x-4" padding="lg">
           <div class="flex-shrink-0">
-            <i class="fas fa-file-alt text-2xl text-blue-600" aria-hidden="true"></i>
+            <FileIcon class="text-2xl text-blue-600" aria-hidden="true" />
           </div>
           <div>
             <h3 class="text-xl font-bold text-blue-900 mb-2">Custom Content Creation</h3>
@@ -210,7 +229,7 @@ const faqSchema = generateFAQSchema(faqs);
 
         <Card class="flex items-start space-x-4" padding="lg">
           <div class="flex-shrink-0">
-            <i class="fas fa-chart-line text-2xl text-blue-600" aria-hidden="true"></i>
+            <ChartLineIcon class="text-2xl text-blue-600" aria-hidden="true" />
           </div>
           <div>
             <h3 class="text-xl font-bold text-blue-900 mb-2">Advanced Conversion Tracking</h3>
@@ -220,7 +239,7 @@ const faqSchema = generateFAQSchema(faqs);
 
         <Card class="flex items-start space-x-4" padding="lg">
           <div class="flex-shrink-0">
-            <i class="fas fa-search text-2xl text-blue-600" aria-hidden="true"></i>
+            <SearchIcon class="text-2xl text-blue-600" aria-hidden="true" />
           </div>
           <div>
             <h3 class="text-xl font-bold text-blue-900 mb-2">Competition Analysis + Keyword Strategy</h3>
@@ -230,7 +249,7 @@ const faqSchema = generateFAQSchema(faqs);
 
         <Card class="flex items-start space-x-4" padding="lg">
           <div class="flex-shrink-0">
-            <i class="fas fa-rocket text-2xl text-blue-600" aria-hidden="true"></i>
+            <RocketIcon class="text-2xl text-blue-600" aria-hidden="true" />
           </div>
           <div>
             <h3 class="text-xl font-bold text-blue-900 mb-2">90-Day Optimization with Monthly Check-ins</h3>
@@ -240,7 +259,7 @@ const faqSchema = generateFAQSchema(faqs);
 
         <Card class="flex items-start space-x-4" padding="lg">
           <div class="flex-shrink-0">
-            <i class="fas fa-gift text-2xl text-blue-600" aria-hidden="true"></i>
+            <GiftIcon class="text-2xl text-blue-600" aria-hidden="true" />
           </div>
           <div>
             <h3 class="text-xl font-bold text-blue-900 mb-2">Includes All Growth Services</h3>
@@ -264,7 +283,7 @@ const faqSchema = generateFAQSchema(faqs);
     <div class="container mx-auto container-padding relative z-10">
       <div class="text-center mb-16">
         <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
-          <i class="fas fa-trophy mr-2 text-teal-600" aria-hidden="true"></i>
+          <TrophyIcon class="mr-2 text-teal-600" aria-hidden="true" />
           The Benefits
         </div>
         <h2 class="heading-lg mb-4">
@@ -305,7 +324,7 @@ const faqSchema = generateFAQSchema(faqs);
     <div class="container mx-auto container-padding">
       <div class="text-center mb-16">
         <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
-          <i class="fas fa-route mr-2 text-blue-600" aria-hidden="true"></i>
+          <RouteIcon class="mr-2 text-blue-600" aria-hidden="true" />
           Simple Process
         </div>
         <h2 class="heading-lg mb-4">
@@ -349,7 +368,7 @@ const faqSchema = generateFAQSchema(faqs);
     <div class="container mx-auto container-padding">
       <div class="text-center mb-16">
         <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
-          <i class="fas fa-dollar-sign mr-2 text-teal-600" aria-hidden="true"></i>
+          <DollarIcon class="mr-2 text-teal-600" aria-hidden="true" />
           Premium Package
         </div>
         <h2 class="heading-lg mb-4">
@@ -367,35 +386,35 @@ const faqSchema = generateFAQSchema(faqs);
 
             <div class="text-left space-y-4 mb-8">
               <div class="flex items-start">
-                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
                 <span>Up to 16-page comprehensive website</span>
               </div>
               <div class="flex items-start">
-                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
                 <span>Individual service pages (up to 6)</span>
               </div>
               <div class="flex items-start">
-                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
                 <span>Local area landing pages (up to 6 Houston areas)</span>
               </div>
               <div class="flex items-start">
-                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
                 <span>Custom content creation</span>
               </div>
               <div class="flex items-start">
-                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
                 <span>Advanced conversion tracking</span>
               </div>
               <div class="flex items-start">
-                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
                 <span>Competition analysis + keyword strategy</span>
               </div>
               <div class="flex items-start">
-                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
                 <span>90-day optimization with monthly check-ins</span>
               </div>
               <div class="flex items-start">
-                <i class="fas fa-check text-blue-600 mt-1 mr-3" aria-hidden="true"></i>
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
                 <span>Includes all Growth services</span>
               </div>
             </div>
@@ -430,7 +449,7 @@ const faqSchema = generateFAQSchema(faqs);
     <div class="container mx-auto container-padding">
       <div class="text-center mb-16">
         <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
-          <i class="fas fa-question-circle mr-2 text-teal-600" aria-hidden="true"></i>
+          <QuestionCircleIcon class="mr-2 text-teal-600" aria-hidden="true" />
           Questions
         </div>
         <h2 class="heading-lg mb-4">
@@ -449,7 +468,7 @@ const faqSchema = generateFAQSchema(faqs);
                   </span>
                   <span itemprop="name">{faq.question}</span>
                 </span>
-                <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" aria-hidden="true"></i>
+                <ChevronDownIcon class="text-blue-600 transition-transform duration-300" aria-hidden="true" />
               </button>
               <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                 <div class="p-6 pt-0 text-gray-700" itemprop="text">

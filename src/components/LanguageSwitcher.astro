@@ -3,6 +3,10 @@
 // Purpose: Toggle between English and Spanish versions of pages
 // Features: Keyboard accessible, screen reader friendly, preserves current route
 
+import GlobeIcon from './icons/GlobeIcon.astro';
+import ChevronDownIcon from './icons/ChevronDownIcon.astro';
+import CheckIcon from './icons/CheckIcon.astro';
+
 interface Props {
   currentPath?: string;
   currentLang?: string;
@@ -74,10 +78,10 @@ const currentLangLabel = isCurrentlySpanish ? 'Español' : 'English';
     data-alternate-url={alternateUrl}
     data-alternate-lang={alternateLang}
   >
-    <i class="fas fa-globe bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent group-hover:from-blue-700 group-hover:to-teal-700" aria-hidden="true"></i>
+    <GlobeIcon class="w-4 h-4 bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent group-hover:from-blue-700 group-hover:to-teal-700" />
     <span class="font-semibold text-sm bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent hidden sm:inline">{currentLangLabel}</span>
     <span class="font-semibold text-sm bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent sm:hidden">{currentLang.toUpperCase()}</span>
-    <i class="fas fa-chevron-down text-xs text-blue-600 group-hover:text-teal-600 transition-all duration-300" aria-hidden="true"></i>
+    <ChevronDownIcon class="w-3 h-3 text-blue-600 group-hover:text-teal-600 transition-all duration-300 lang-chevron" />
   </button>
 
   <!-- Dropdown menu -->
@@ -89,7 +93,7 @@ const currentLangLabel = isCurrentlySpanish ? 'Español' : 'English';
         lang="en"
         hreflang="en"
       >
-        <i class={`fas fa-check text-xs ${!isCurrentlySpanish ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true"></i>
+        <CheckIcon class={`w-3 h-3 ${!isCurrentlySpanish ? 'opacity-100' : 'opacity-0'}`} />
         <span class="flex-1">English</span>
       </a>
       <a
@@ -98,7 +102,7 @@ const currentLangLabel = isCurrentlySpanish ? 'Español' : 'English';
         lang="es"
         hreflang="es"
       >
-        <i class={`fas fa-check text-xs ${isCurrentlySpanish ? 'opacity-100' : 'opacity-0'}`} aria-hidden="true"></i>
+        <CheckIcon class={`w-3 h-3 ${isCurrentlySpanish ? 'opacity-100' : 'opacity-0'}`} />
         <span class="flex-1">Español</span>
       </a>
     </div>
@@ -126,8 +130,8 @@ const currentLangLabel = isCurrentlySpanish ? 'Español' : 'English';
   }
 
   /* Rotate chevron when dropdown is open */
-  .lang-toggle-button:hover .fa-chevron-down,
-  .lang-toggle-button[aria-expanded="true"] .fa-chevron-down {
+  .lang-toggle-button:hover .lang-chevron,
+  .lang-toggle-button[aria-expanded="true"] .lang-chevron {
     transform: rotate(180deg);
   }
 </style>

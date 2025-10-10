@@ -1,6 +1,14 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import type { BreadcrumbItem } from '../utils/seo.ts';
+import CheckCircleIcon from '../components/icons/CheckCircleIcon.astro';
+import ChevronDownIcon from '../components/icons/ChevronDownIcon.astro';
+import ClockIcon from '../components/icons/ClockIcon.astro';
+import EnvelopeIcon from '../components/icons/EnvelopeIcon.astro';
+import LockIcon from '../components/icons/LockIcon.astro';
+import PhoneIcon from '../components/icons/PhoneIcon.astro';
+import QuestionCircleIcon from '../components/icons/QuestionCircleIcon.astro';
+import ShieldIcon from '../components/icons/ShieldIcon.astro';
 
 // 🔍 SEO Configuration
 const pageTitle = 'Get in Touch';
@@ -109,11 +117,11 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <p class="text-gray-700 mb-6">Prefer to reach out directly? We're just a click away.</p>
                     <div class="space-y-3">
                         <a href="tel:+12815440572" class="flex items-center justify-center bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
-                            <i class="fas fa-phone mr-2"></i>
+                            <PhoneIcon class="mr-2" />
                             (281) 544-0572
                         </a>
                         <a href="mailto:team@marketingaihouston.com" class="flex items-center justify-center bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
-                            <i class="fas fa-envelope mr-2"></i>
+                            <EnvelopeIcon class="mr-2" />
                             team@marketingaihouston.com
                         </a>
                     </div>
@@ -139,7 +147,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </h2>
                 <p class="text-xl text-gray-700 mb-2">Fill out the form below and we'll get back to you within 1 business day</p>
                 <div class="flex items-center justify-center gap-2 text-gray-600">
-                    <i class="fas fa-lock text-teal-600"></i>
+                    <LockIcon class="text-teal-600" />
                     <span class="text-sm">Your information is secure and will never be shared</span>
                 </div>
             </div>
@@ -178,15 +186,15 @@ const breadcrumbs: BreadcrumbItem[] = [
             <div class="mt-8 text-center">
                 <div class="inline-flex items-center gap-6 text-sm text-gray-600 flex-wrap justify-center">
                     <div class="flex items-center gap-2">
-                        <i class="fas fa-shield-alt text-teal-600"></i>
+                        <ShieldIcon class="text-teal-600" />
                         <span>SSL Secured</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <i class="fas fa-clock text-blue-600"></i>
+                        <ClockIcon class="text-blue-600" />
                         <span>24-hour Response Time</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <i class="fas fa-check-circle text-teal-600"></i>
+                        <CheckCircleIcon class="text-teal-600" />
                         <span>No Spam Guarantee</span>
                     </div>
                 </div>
@@ -205,7 +213,7 @@ const breadcrumbs: BreadcrumbItem[] = [
         <div class="container mx-auto max-w-4xl px-4 relative z-10">
             <div class="text-center mb-16">
                 <div class="inline-flex items-center bg-white bg-opacity-80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white border-opacity-50 shadow-sm">
-                    <i class="fas fa-question-circle mr-2 text-teal-600"></i>
+                    <QuestionCircleIcon class="mr-2 text-teal-600" />
                     Questions
                 </div>
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
@@ -222,7 +230,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                             <span class="mr-3 text-2xl">📞</span>
                             <span itemprop="name">Do you offer free consultations?</span>
                         </span>
-                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                        <ChevronDownIcon class="text-blue-600 transition-transform duration-300 md:hidden" />
                     </button>
                     <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">
@@ -238,7 +246,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                             <span class="mr-3 text-2xl">🕒</span>
                             <span itemprop="name">How long does a typical call take?</span>
                         </span>
-                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                        <ChevronDownIcon class="text-blue-600 transition-transform duration-300 md:hidden" />
                     </button>
                     <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">
@@ -254,7 +262,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                             <span class="mr-3 text-2xl">🌐</span>
                             <span itemprop="name">Do you only work with businesses in Houston?</span>
                         </span>
-                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                        <ChevronDownIcon class="text-blue-600 transition-transform duration-300 md:hidden" />
                     </button>
                     <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">
@@ -270,7 +278,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                             <span class="mr-3 text-2xl">✉️</span>
                             <span itemprop="name">Can I just email you instead of booking a call?</span>
                         </span>
-                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                        <ChevronDownIcon class="text-blue-600 transition-transform duration-300 md:hidden" />
                     </button>
                     <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">
@@ -286,7 +294,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                             <span class="mr-3 text-2xl">📅</span>
                             <span itemprop="name">What happens after I book a call?</span>
                         </span>
-                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                        <ChevronDownIcon class="text-blue-600 transition-transform duration-300 md:hidden" />
                     </button>
                     <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">

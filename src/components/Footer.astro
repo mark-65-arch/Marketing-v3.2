@@ -3,6 +3,16 @@
 // Purpose: Site-wide footer with contact info, links, and trust signals
 // Features: Responsive layout, proper link structure, business information
 
+import GoogleIcon from './icons/GoogleIcon.astro';
+import SearchIcon from './icons/SearchIcon.astro';
+import MobileIcon from './icons/MobileIcon.astro';
+import RobotIcon from './icons/RobotIcon.astro';
+import MapMarkerIcon from './icons/MapMarkerIcon.astro';
+import PhoneIcon from './icons/PhoneIcon.astro';
+import EnvelopeIcon from './icons/EnvelopeIcon.astro';
+import ClockIcon from './icons/ClockIcon.astro';
+import ChevronUpIcon from './icons/ChevronUpIcon.astro';
+
 interface Props {
   showNewsletter?: boolean;
   currentLang?: string;
@@ -51,10 +61,10 @@ const footerLinks = {
 
 // 🏆 Trust signals and certifications
 const trustSignals = [
-  { icon: 'fab fa-google', label: isSpanish ? 'Socios de Google' : 'Google Partners' },
-  { icon: 'fas fa-search', label: isSpanish ? 'Certificado en SEO' : 'SEO Certified' },
-  { icon: 'fas fa-mobile-alt', label: isSpanish ? 'Móvil Primero' : 'Mobile-First' },
-  { icon: 'fas fa-robot', label: isSpanish ? 'Preparado para IA' : 'AI-Ready' }
+  { component: 'GoogleIcon', label: isSpanish ? 'Socios de Google' : 'Google Partners' },
+  { component: 'SearchIcon', label: isSpanish ? 'Certificado en SEO' : 'SEO Certified' },
+  { component: 'MobileIcon', label: isSpanish ? 'Móvil Primero' : 'Mobile-First' },
+  { component: 'RobotIcon', label: isSpanish ? 'Preparado para IA' : 'AI-Ready' }
 ];
 ---
 
@@ -159,11 +169,11 @@ const trustSignals = [
           <h3 class="text-lg font-bold mb-6">{isSpanish ? 'Información de Contacto' : 'Contact Info'}</h3>
           <address class="not-italic space-y-3">
             <div class="flex items-start">
-              <i class="fas fa-map-marker-alt text-blue-400 mt-1 mr-3 text-sm flex-shrink-0" aria-hidden="true"></i>
+              <MapMarkerIcon class="text-blue-400 mt-1 mr-3 text-sm flex-shrink-0 w-4 h-4" />
               <span class="text-gray-400">{contactInfo.address}</span>
             </div>
             <div class="flex items-start">
-              <i class="fas fa-phone text-blue-400 mt-1 mr-3 text-sm flex-shrink-0" aria-hidden="true"></i>
+              <PhoneIcon class="text-blue-400 mt-1 mr-3 text-sm flex-shrink-0 w-4 h-4" />
               <a
                 href={`tel:${contactInfo.phone.replace(/\D/g, '')}`}
                 class="text-gray-400 hover:text-white transition-colors duration-200"
@@ -173,7 +183,7 @@ const trustSignals = [
               </a>
             </div>
             <div class="flex items-start">
-              <i class="fas fa-envelope text-blue-400 mt-1 mr-3 text-sm flex-shrink-0" aria-hidden="true"></i>
+              <EnvelopeIcon class="text-blue-400 mt-1 mr-3 text-sm flex-shrink-0 w-4 h-4" />
               <a
                 href={`mailto:${contactInfo.email}`}
                 class="text-gray-400 hover:text-white transition-colors duration-200 break-all text-sm"
@@ -183,7 +193,7 @@ const trustSignals = [
               </a>
             </div>
             <div class="flex items-start">
-              <i class="fas fa-clock text-blue-400 mt-1 mr-3 text-sm flex-shrink-0" aria-hidden="true"></i>
+              <ClockIcon class="text-blue-400 mt-1 mr-3 text-sm flex-shrink-0 w-4 h-4" />
               <span class="text-gray-400">{contactInfo.businessHours}</span>
             </div>
           </address>
@@ -195,7 +205,10 @@ const trustSignals = [
           <div class="space-y-3">
             {trustSignals.map(signal => (
               <div class="flex items-center">
-                <i class={`${signal.icon} text-blue-400 mr-3 text-sm`} aria-hidden="true"></i>
+                {signal.component === 'GoogleIcon' && <GoogleIcon class="text-blue-400 mr-3 text-sm w-4 h-4" />}
+                {signal.component === 'SearchIcon' && <SearchIcon class="text-blue-400 mr-3 text-sm w-4 h-4" />}
+                {signal.component === 'MobileIcon' && <MobileIcon class="text-blue-400 mr-3 text-sm w-4 h-4" />}
+                {signal.component === 'RobotIcon' && <RobotIcon class="text-blue-400 mr-3 text-sm w-4 h-4" />}
                 <span class="text-gray-400 text-sm">{signal.label}</span>
               </div>
             ))}
@@ -255,7 +268,7 @@ const trustSignals = [
   aria-label="Back to top"
   title="Back to top"
 >
-  <i class="fas fa-chevron-up" aria-hidden="true"></i>
+  <ChevronUpIcon class="w-4 h-4 mx-auto" />
 </button>
 
 <script>

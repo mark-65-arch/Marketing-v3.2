@@ -4,6 +4,20 @@
 // Features: Hero section, mission statement, differentiators, process, values
 
 import MainLayout from '../../layouts/MainLayout.astro';
+import BalanceScaleIcon from '../../components/icons/BalanceScaleIcon.astro';
+import BroomIcon from '../../components/icons/BroomIcon.astro';
+import BullseyeIcon from '../../components/icons/BullseyeIcon.astro';
+import CarIcon from '../../components/icons/CarIcon.astro';
+import CheckCircleIcon from '../../components/icons/CheckCircleIcon.astro';
+import HammerIcon from '../../components/icons/HammerIcon.astro';
+import HeartIcon from '../../components/icons/HeartIcon.astro';
+import LeafIcon from '../../components/icons/LeafIcon.astro';
+import PawIcon from '../../components/icons/PawIcon.astro';
+import RouteIcon from '../../components/icons/RouteIcon.astro';
+import ShieldIcon from '../../components/icons/ShieldIcon.astro';
+import SnowflakeIcon from '../../components/icons/SnowflakeIcon.astro';
+import StarIcon from '../../components/icons/StarIcon.astro';
+import UsersIcon from '../../components/icons/UsersIcon.astro';
 
 const breadcrumbs = [
   { name: 'Inicio', url: `${import.meta.env.BASE_URL}es/` },
@@ -92,7 +106,7 @@ const breadcrumbs = [
     <div class="container mx-auto max-w-4xl px-4 relative z-10">
       <div class="text-center mb-12">
         <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
-          <i class="fas fa-bullseye mr-2 text-blue-600"></i>
+          <BullseyeIcon class="mr-2 text-blue-600" />
           Nuestra Misión
         </div>
         <h2 class="text-4xl md:text-5xl font-black mb-8">
@@ -119,7 +133,7 @@ const breadcrumbs = [
     <div class="container mx-auto max-w-6xl px-4 relative z-10">
       <div class="text-center mb-16">
         <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
-          <i class="fas fa-star mr-2 text-teal-600"></i>
+          <StarIcon class="mr-2 text-teal-600" />
           Qué Nos Hace Diferentes
         </div>
         <h2 class="text-4xl md:text-5xl font-black mb-4">
@@ -183,7 +197,7 @@ const breadcrumbs = [
     <div class="container mx-auto max-w-6xl px-4 relative z-10">
       <div class="text-center mb-16">
         <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
-          <i class="fas fa-route mr-2 text-blue-600"></i>
+          <RouteIcon class="mr-2 text-blue-600" />
           Nuestro Proceso
         </div>
         <h2 class="text-4xl md:text-5xl font-black mb-4">
@@ -234,7 +248,7 @@ const breadcrumbs = [
     <div class="container mx-auto max-w-6xl px-4 relative z-10">
       <div class="text-center mb-16">
         <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
-          <i class="fas fa-users mr-2 text-teal-600"></i>
+          <UsersIcon class="mr-2 text-teal-600" />
           A Quién Servimos
         </div>
         <h2 class="text-4xl md:text-5xl font-black mb-8">
@@ -246,7 +260,7 @@ const breadcrumbs = [
         <!-- Industry 1 -->
         <div class="flex flex-col items-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
           <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center shadow-lg mb-4">
-            <i class="fas fa-hammer text-2xl text-white"></i>
+            <HammerIcon class="text-2xl text-white" />
           </div>
           <span class="text-gray-900 font-medium text-center">Contratistas</span>
         </div>
@@ -254,7 +268,7 @@ const breadcrumbs = [
         <!-- Industry 2 -->
         <div class="flex flex-col items-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
           <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center shadow-lg mb-4">
-            <i class="fas fa-car text-2xl text-white"></i>
+            <CarIcon class="text-2xl text-white" />
           </div>
           <span class="text-gray-900 font-medium text-center">Talleres Automotrices</span>
         </div>
@@ -262,7 +276,7 @@ const breadcrumbs = [
         <!-- Industry 3 -->
         <div class="flex flex-col items-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
           <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center shadow-lg mb-4">
-            <i class="fas fa-broom text-2xl text-white"></i>
+            <BroomIcon class="text-2xl text-white" />
           </div>
           <span class="text-gray-900 font-medium text-center">Servicios de Limpieza</span>
         </div>
@@ -270,7 +284,7 @@ const breadcrumbs = [
         <!-- Industry 4 -->
         <div class="flex flex-col items-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
           <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center shadow-lg mb-4">
-            <i class="fas fa-leaf text-2xl text-white"></i>
+            <LeafIcon class="text-2xl text-white" />
           </div>
           <span class="text-gray-900 font-medium text-center">Jardinería</span>
         </div>
@@ -278,7 +292,7 @@ const breadcrumbs = [
         <!-- Industry 5 -->
         <div class="flex flex-col items-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
           <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center shadow-lg mb-4">
-            <i class="fas fa-paw text-2xl text-white"></i>
+            <PawIcon class="text-2xl text-white" />
           </div>
           <span class="text-gray-900 font-medium text-center">Servicios para Mascotas</span>
         </div>
@@ -286,7 +300,7 @@ const breadcrumbs = [
         <!-- Industry 6 -->
         <div class="flex flex-col items-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
           <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center shadow-lg mb-4">
-            <i class="fas fa-heart text-2xl text-white"></i>
+            <HeartIcon class="text-2xl text-white" />
           </div>
           <span class="text-gray-900 font-medium text-center">Terapeutas</span>
         </div>
@@ -294,7 +308,7 @@ const breadcrumbs = [
         <!-- Industry 7 -->
         <div class="flex flex-col items-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
           <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center shadow-lg mb-4">
-            <i class="fas fa-balance-scale text-2xl text-white"></i>
+            <BalanceScaleIcon class="text-2xl text-white" />
           </div>
           <span class="text-gray-900 font-medium text-center">Bufetes de Abogados</span>
         </div>
@@ -302,7 +316,7 @@ const breadcrumbs = [
         <!-- Industry 8 -->
         <div class="flex flex-col items-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
           <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center shadow-lg mb-4">
-            <i class="fas fa-snowflake text-2xl text-white"></i>
+            <SnowflakeIcon class="text-2xl text-white" />
           </div>
           <span class="text-gray-900 font-medium text-center">HVAC y Reparación</span>
         </div>
@@ -323,7 +337,7 @@ const breadcrumbs = [
     <div class="container mx-auto max-w-4xl px-4 relative z-10">
       <div class="text-center mb-16">
         <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
-          <i class="fas fa-shield-alt mr-2 text-blue-900"></i>
+          <ShieldIcon class="mr-2 text-blue-900" />
           Nuestros Valores
         </div>
         <h2 class="text-4xl md:text-5xl font-black mb-8">
@@ -334,35 +348,35 @@ const breadcrumbs = [
       <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-xl border border-white/50">
         <ul class="space-y-6">
           <li class="flex items-start">
-            <i class="fas fa-check-circle text-green-500 text-2xl mr-4 mt-1 flex-shrink-0"></i>
+            <CheckCircleIcon class="text-green-500 text-2xl mr-4 mt-1 flex-shrink-0" />
             <div>
               <h3 class="text-xl font-bold text-blue-900 mb-1">Claridad sobre complejidad</h3>
               <p class="text-gray-700">Hacemos que el marketing digital sea comprensible y accionable.</p>
             </div>
           </li>
           <li class="flex items-start">
-            <i class="fas fa-check-circle text-green-500 text-2xl mr-4 mt-1 flex-shrink-0"></i>
+            <CheckCircleIcon class="text-green-500 text-2xl mr-4 mt-1 flex-shrink-0" />
             <div>
               <h3 class="text-xl font-bold text-blue-900 mb-1">Ética sobre atajos</h3>
               <p class="text-gray-700">Construimos visibilidad sostenible, no esquemas de solución rápida.</p>
             </div>
           </li>
           <li class="flex items-start">
-            <i class="fas fa-check-circle text-green-500 text-2xl mr-4 mt-1 flex-shrink-0"></i>
+            <CheckCircleIcon class="text-green-500 text-2xl mr-4 mt-1 flex-shrink-0" />
             <div>
               <h3 class="text-xl font-bold text-blue-900 mb-1">Resultados sobre métricas de vanidad</h3>
               <p class="text-gray-700">Rastreamos lo que importa: llamadas, conversiones y crecimiento.</p>
             </div>
           </li>
           <li class="flex items-start">
-            <i class="fas fa-check-circle text-green-500 text-2xl mr-4 mt-1 flex-shrink-0"></i>
+            <CheckCircleIcon class="text-green-500 text-2xl mr-4 mt-1 flex-shrink-0" />
             <div>
               <h3 class="text-xl font-bold text-blue-900 mb-1">Colaboración sobre control</h3>
               <p class="text-gray-700">Tu negocio, tu visión. Estamos aquí para apoyarla.</p>
             </div>
           </li>
           <li class="flex items-start">
-            <i class="fas fa-check-circle text-green-500 text-2xl mr-4 mt-1 flex-shrink-0"></i>
+            <CheckCircleIcon class="text-green-500 text-2xl mr-4 mt-1 flex-shrink-0" />
             <div>
               <h3 class="text-xl font-bold text-blue-900 mb-1">Transparencia sobre ventas adicionales</h3>
               <p class="text-gray-700">Precios honestos, cronogramas claros, sin agendas ocultas.</p>

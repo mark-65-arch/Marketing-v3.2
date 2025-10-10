@@ -1,6 +1,10 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import type { BreadcrumbItem } from '../utils/seo.ts';
+import ClockIcon from '../components/icons/ClockIcon.astro';
+import PhoneIcon from '../components/icons/PhoneIcon.astro';
+import LightbulbIcon from '../components/icons/LightbulbIcon.astro';
+import EnvelopeIcon from '../components/icons/EnvelopeIcon.astro';
 
 // 🔍 SEO Configuration
 const pageTitle = 'Thank You';
@@ -52,15 +56,15 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <h2 class="text-2xl font-bold mb-4 text-blue-900">What happens next?</h2>
                 <div class="space-y-3 text-left">
                     <div class="flex items-start">
-                        <i class="fas fa-clock text-blue-600 mt-1 mr-3"></i>
+                        <ClockIcon class="text-blue-600 mt-1 mr-3" />
                         <span class="text-gray-700">We'll review your message within a few hours</span>
                     </div>
                     <div class="flex items-start">
-                        <i class="fas fa-phone text-blue-600 mt-1 mr-3"></i>
+                        <PhoneIcon class="text-blue-600 mt-1 mr-3" />
                         <span class="text-gray-700">One of our team members will reach out to discuss your needs</span>
                     </div>
                     <div class="flex items-start">
-                        <i class="fas fa-lightbulb text-blue-600 mt-1 mr-3"></i>
+                        <LightbulbIcon class="text-blue-600 mt-1 mr-3" />
                         <span class="text-gray-700">We'll provide a custom strategy for your business</span>
                     </div>
                 </div>
@@ -82,11 +86,11 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <h3 class="text-lg font-bold mb-4 text-blue-900">Need immediate assistance?</h3>
                 <div class="space-y-2">
                     <p class="text-gray-700">
-                        <i class="fas fa-phone text-blue-600 mr-2"></i>
+                        <PhoneIcon class="text-blue-600 mr-2" />
                         <a href="tel:+12815440572" class="text-blue-600 hover:text-blue-800 font-medium">(281) 544-0572</a>
                     </p>
                     <p class="text-gray-700">
-                        <i class="fas fa-envelope text-blue-600 mr-2"></i>
+                        <EnvelopeIcon class="text-blue-600 mr-2" />
                         <a href="mailto:team@marketingaihouston.com" class="text-blue-600 hover:text-blue-800 font-medium">team@marketingaihouston.com</a>
                     </p>
                 </div>

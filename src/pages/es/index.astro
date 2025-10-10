@@ -1,6 +1,31 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
 import type { BreadcrumbItem } from '../../utils/seo.ts';
+import BroomIcon from '../../components/icons/BroomIcon.astro';
+import CarIcon from '../../components/icons/CarIcon.astro';
+import ChartLineIcon from '../../components/icons/ChartLineIcon.astro';
+import CheckCircleIcon from '../../components/icons/CheckCircleIcon.astro';
+import CheckIcon from '../../components/icons/CheckIcon.astro';
+import ChevronDownIcon from '../../components/icons/ChevronDownIcon.astro';
+import DollarIcon from '../../components/icons/DollarIcon.astro';
+import GiftIcon from '../../components/icons/GiftIcon.astro';
+import GlobeIcon from '../../components/icons/GlobeIcon.astro';
+import HammerIcon from '../../components/icons/HammerIcon.astro';
+import HeartIcon from '../../components/icons/HeartIcon.astro';
+import InfoCircleIcon from '../../components/icons/InfoCircleIcon.astro';
+import LeafIcon from '../../components/icons/LeafIcon.astro';
+import MapMarkerIcon from '../../components/icons/MapMarkerIcon.astro';
+import MicrophoneIcon from '../../components/icons/MicrophoneIcon.astro';
+import PawIcon from '../../components/icons/PawIcon.astro';
+import PhoneIcon from '../../components/icons/PhoneIcon.astro';
+import QuestionCircleIcon from '../../components/icons/QuestionCircleIcon.astro';
+import RocketIcon from '../../components/icons/RocketIcon.astro';
+import RouteIcon from '../../components/icons/RouteIcon.astro';
+import ShieldIcon from '../../components/icons/ShieldIcon.astro';
+import StarIcon from '../../components/icons/StarIcon.astro';
+import TimesCircleIcon from '../../components/icons/TimesCircleIcon.astro';
+import TimesIcon from '../../components/icons/TimesIcon.astro';
+import ToolsIcon from '../../components/icons/ToolsIcon.astro';
 
 // 🔍 SEO Configuration
 const pageTitle = 'Marketing AI Houston — Sitios Web Que Hacen Que Pequeñas Empresas de Houston Sean Encontradas';
@@ -97,18 +122,18 @@ const alternateLanguages = [
                         <!-- Floating badge -->
                         <div class="floating-badge">
                             <div class="flex items-center">
-                                <i class="fas fa-phone text-blue-600 text-xl mr-2"></i>
+                                <PhoneIcon class="text-blue-600 text-xl mr-2" />
                                 <span class="font-bold text-blue-900">Recibe Más Llamadas</span>
                             </div>
                         </div>
 
                         <!-- Additional floating elements -->
                         <div class="absolute -bottom-10 -left-10 bg-white rounded-full p-3 shadow-lg animate-float animation-delay-800">
-                            <i class="fas fa-map-marker-alt text-teal-600 text-2xl"></i>
+                            <MapMarkerIcon class="text-teal-600 text-2xl" />
                         </div>
 
                         <div class="absolute top-20 -left-5 bg-white rounded-full p-3 shadow-lg animate-float animation-delay-1200">
-                            <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                            <StarIcon class="text-yellow-400 text-2xl" />
                         </div>
                     </div>
                 </div>
@@ -149,31 +174,31 @@ const alternateLanguages = [
                 <div class="flex flex-wrap justify-center gap-8">
                     <div class="flex flex-col items-center text-center">
                         <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
-                            <i class="fas fa-hammer text-2xl text-gray-900"></i>
+                            <HammerIcon class="text-2xl text-gray-900" />
                         </div>
                         <span class="text-gray-700 font-medium">Contratistas</span>
                     </div>
                     <div class="flex flex-col items-center text-center">
                         <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
-                            <i class="fas fa-car text-2xl text-gray-900"></i>
+                            <CarIcon class="text-2xl text-gray-900" />
                         </div>
                         <span class="text-gray-700 font-medium">Talleres</span>
                     </div>
                     <div class="flex flex-col items-center text-center">
                         <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
-                            <i class="fas fa-broom text-2xl text-gray-900"></i>
+                            <BroomIcon class="text-2xl text-gray-900" />
                         </div>
                         <span class="text-gray-700 font-medium">Limpieza</span>
                     </div>
                     <div class="flex flex-col items-center text-center">
                         <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
-                            <i class="fas fa-leaf text-2xl text-gray-900"></i>
+                            <LeafIcon class="text-2xl text-gray-900" />
                         </div>
                         <span class="text-gray-700 font-medium">Jardinería</span>
                     </div>
                     <div class="flex flex-col items-center text-center">
                         <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
-                            <i class="fas fa-paw text-2xl text-gray-900"></i>
+                            <PawIcon class="text-2xl text-gray-900" />
                         </div>
                         <span class="text-gray-700 font-medium">Mascotas</span>
                     </div>
@@ -193,7 +218,7 @@ const alternateLanguages = [
         <div class="container mx-auto max-w-6xl px-4 relative z-10">
             <div class="text-center mb-16">
                 <div class="inline-flex items-center bg-white bg-opacity-80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white border-opacity-50 shadow-sm">
-                    <i class="fas fa-chart-line mr-2 text-blue-600"></i>
+                    <ChartLineIcon class="mr-2 text-blue-600" />
                     Antes y Después
                 </div>
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
@@ -205,20 +230,20 @@ const alternateLanguages = [
                 <!-- Before Column -->
                 <div class="bg-gray-100 bg-opacity-70 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
                     <h3 class="text-2xl font-bold mb-6 text-gray-700 flex items-center">
-                        <i class="fas fa-times-circle text-red-500 mr-3"></i>
+                        <TimesCircleIcon class="text-red-500 mr-3" />
                         Antes
                     </h3>
                     <ul class="space-y-4">
                         <li class="flex items-start">
-                            <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                            <TimesIcon class="text-red-500 mt-1 mr-3" />
                             <span class="text-gray-700">Difícil de encontrar en Google</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                            <TimesIcon class="text-red-500 mt-1 mr-3" />
                             <span class="text-gray-700">Los teléfonos no suenan</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                            <TimesIcon class="text-red-500 mt-1 mr-3" />
                             <span class="text-gray-700">Sitio web enterrado en la página 3</span>
                         </li>
                     </ul>
@@ -227,20 +252,20 @@ const alternateLanguages = [
                 <!-- After Column -->
                 <div class="bg-green-50 bg-opacity-70 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
                     <h3 class="text-2xl font-bold mb-6 text-green-700 flex items-center">
-                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                        <CheckCircleIcon class="text-green-500 mr-3" />
                         Después
                     </h3>
                     <ul class="space-y-4">
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <CheckIcon class="text-green-500 mt-1 mr-3" />
                             <span class="text-gray-700">Apareciendo cuando los clientes buscan</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <CheckIcon class="text-green-500 mt-1 mr-3" />
                             <span class="text-gray-700">Flujo constante de nuevas llamadas</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <CheckIcon class="text-green-500 mt-1 mr-3" />
                             <span class="text-gray-700">Sitio web trabajando 24/7 para traer negocios</span>
                         </li>
                     </ul>
@@ -264,7 +289,7 @@ const alternateLanguages = [
         <div class="container mx-auto max-w-6xl px-4 relative z-10">
             <div class="text-center mb-16">
                 <div class="inline-flex items-center bg-white bg-opacity-80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white border-opacity-50 shadow-sm">
-                    <i class="fas fa-tools mr-2 text-blue-600"></i>
+                    <ToolsIcon class="mr-2 text-blue-600" />
                     Nuestras Soluciones
                 </div>
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
@@ -277,7 +302,7 @@ const alternateLanguages = [
                 <!-- Solution 1 -->
                 <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white border-opacity-50">
                     <div class="w-16 h-16 rounded-full gradient-ocean-teal flex items-center justify-center mb-6 shadow-lg">
-                        <i class="fas fa-globe text-white text-2xl"></i>
+                        <GlobeIcon class="text-white text-2xl" />
                     </div>
                     <h3 class="text-2xl font-bold mb-3 text-blue-900 font-poppins">SEO Local y Visibilidad</h3>
                     <p class="text-gray-700">Aparece cuando los clientes buscan en tu área</p>
@@ -286,7 +311,7 @@ const alternateLanguages = [
                 <!-- Solution 2 -->
                 <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white border-opacity-50">
                     <div class="w-16 h-16 rounded-full gradient-ocean-teal flex items-center justify-center mb-6 shadow-lg">
-                        <i class="fas fa-phone text-white text-2xl"></i>
+                        <PhoneIcon class="text-white text-2xl" />
                     </div>
                     <h3 class="text-2xl font-bold mb-3 text-blue-900 font-poppins">Sitios Web Enfocados en Conversión</h3>
                     <p class="text-gray-700">Convierte clics en llamadas y citas</p>
@@ -295,7 +320,7 @@ const alternateLanguages = [
                 <!-- Solution 3 -->
                 <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white border-opacity-50">
                     <div class="w-16 h-16 rounded-full gradient-ocean-teal flex items-center justify-center mb-6 shadow-lg">
-                        <i class="fas fa-rocket text-white text-2xl"></i>
+                        <RocketIcon class="text-white text-2xl" />
                     </div>
                     <h3 class="text-2xl font-bold mb-3 text-blue-900 font-poppins">Proceso de Lanzamiento Rápido</h3>
                     <p class="text-gray-700">Ponte en línea en semanas, no meses</p>
@@ -304,7 +329,7 @@ const alternateLanguages = [
                 <!-- Solution 4 -->
                 <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white border-opacity-50">
                     <div class="w-16 h-16 rounded-full gradient-ocean-teal flex items-center justify-center mb-6 shadow-lg">
-                        <i class="fas fa-microphone text-white text-2xl"></i>
+                        <MicrophoneIcon class="text-white text-2xl" />
                     </div>
                     <h3 class="text-2xl font-bold mb-3 text-blue-900 font-poppins">Listo para IA y Búsqueda por Voz</h3>
                     <p class="text-gray-700">Optimizado para cómo la gente busca hoy, no hace 10 años</p>
@@ -313,7 +338,7 @@ const alternateLanguages = [
                 <!-- Solution 5 -->
                 <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white border-opacity-50">
                     <div class="w-16 h-16 rounded-full gradient-ocean-teal flex items-center justify-center mb-6 shadow-lg">
-                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                        <ShieldIcon class="text-white text-2xl" />
                     </div>
                     <h3 class="text-2xl font-bold mb-3 text-blue-900 font-poppins">Marketing Transparente y Ético</h3>
                     <p class="text-gray-700">Sin tarifas ocultas, sin tácticas turbias</p>
@@ -333,7 +358,7 @@ const alternateLanguages = [
         <div class="container mx-auto max-w-6xl px-4 relative z-10">
             <div class="text-center mb-16">
                 <div class="inline-flex items-center bg-white bg-opacity-80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white border-opacity-50 shadow-sm">
-                    <i class="fas fa-gift mr-2 text-teal-600"></i>
+                    <GiftIcon class="mr-2 text-teal-600" />
                     Lo Que Obtienes
                 </div>
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
@@ -383,7 +408,7 @@ const alternateLanguages = [
         <div class="container mx-auto max-w-6xl px-4 relative z-10">
             <div class="text-center mb-16">
                 <div class="inline-flex items-center bg-white bg-opacity-80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white border-opacity-50 shadow-sm">
-                    <i class="fas fa-star mr-2 text-blue-900"></i>
+                    <StarIcon class="mr-2 text-blue-900" />
                     Por Qué Elegirnos
                 </div>
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
@@ -440,7 +465,7 @@ const alternateLanguages = [
         <div class="container mx-auto max-w-6xl px-4 relative z-10">
             <div class="text-center mb-16">
                 <div class="inline-flex items-center bg-white bg-opacity-80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white border-opacity-50 shadow-sm">
-                    <i class="fas fa-route mr-2 text-blue-600"></i>
+                    <RouteIcon class="mr-2 text-blue-600" />
                     Proceso Simple
                 </div>
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
@@ -497,7 +522,7 @@ const alternateLanguages = [
         <div class="container mx-auto max-w-6xl px-4 relative z-10">
             <div class="text-center mb-16">
                 <div class="inline-flex items-center bg-white bg-opacity-80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white border-opacity-50 shadow-sm">
-                    <i class="fas fa-dollar-sign mr-2 text-teal-600"></i>
+                    <DollarIcon class="mr-2 text-teal-600" />
                     Precios Simples
                 </div>
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
@@ -517,23 +542,23 @@ const alternateLanguages = [
 
                         <ul class="mb-8 space-y-3">
                             <li class="flex items-start">
-                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <CheckIcon class="text-blue-600 mt-1 mr-3" />
                                 <span>Renovación y optimización de Perfil de Negocio de Google</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <CheckIcon class="text-blue-600 mt-1 mr-3" />
                                 <span>Información precisa del negocio + categorías</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <CheckIcon class="text-blue-600 mt-1 mr-3" />
                                 <span>Organización de fotos usando tus fotos existentes</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <CheckIcon class="text-blue-600 mt-1 mr-3" />
                                 <span>Plantillas de solicitud de reseñas y capacitación</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <CheckIcon class="text-blue-600 mt-1 mr-3" />
                                 <span>Configuración de mensajería con respuestas automáticas</span>
                             </li>
                         </ul>
@@ -568,31 +593,31 @@ const alternateLanguages = [
 
                         <ul class="mb-8 space-y-3">
                             <li class="flex items-start">
-                                <i class="fas fa-check text-teal-400 mt-1 mr-3"></i>
+                                <CheckIcon class="text-teal-400 mt-1 mr-3" />
                                 <span>Sitio web de 4 páginas optimizado para móviles</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-teal-400 mt-1 mr-3"></i>
+                                <CheckIcon class="text-teal-400 mt-1 mr-3" />
                                 <span>Diseño moderno y responsivo</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-teal-400 mt-1 mr-3"></i>
+                                <CheckIcon class="text-teal-400 mt-1 mr-3" />
                                 <span>Local SEO + schema markup</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-teal-400 mt-1 mr-3"></i>
+                                <CheckIcon class="text-teal-400 mt-1 mr-3" />
                                 <span>Optimización para búsqueda por voz</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-teal-400 mt-1 mr-3"></i>
+                                <CheckIcon class="text-teal-400 mt-1 mr-3" />
                                 <span>Funcionalidad de clic para llamar y formularios de contacto</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-teal-400 mt-1 mr-3"></i>
+                                <CheckIcon class="text-teal-400 mt-1 mr-3" />
                                 <span>Configuración de Google Analytics</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-teal-400 mt-1 mr-3"></i>
+                                <CheckIcon class="text-teal-400 mt-1 mr-3" />
                                 <span>Incluye todos los servicios Iniciales</span>
                             </li>
                         </ul>
@@ -624,35 +649,35 @@ const alternateLanguages = [
 
                         <ul class="mb-8 space-y-3">
                             <li class="flex items-start">
-                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <CheckIcon class="text-blue-600 mt-1 mr-3" />
                                 <span>Sitio web integral de hasta 16 páginas</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <CheckIcon class="text-blue-600 mt-1 mr-3" />
                                 <span>Páginas de servicio individuales (hasta 6)</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <CheckIcon class="text-blue-600 mt-1 mr-3" />
                                 <span>Páginas de destino de áreas locales (hasta 6 áreas de Houston)</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <CheckIcon class="text-blue-600 mt-1 mr-3" />
                                 <span>Creación de contenido personalizado</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <CheckIcon class="text-blue-600 mt-1 mr-3" />
                                 <span>Seguimiento avanzado de conversiones</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <CheckIcon class="text-blue-600 mt-1 mr-3" />
                                 <span>Análisis de competencia + estrategia de palabras clave</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <CheckIcon class="text-blue-600 mt-1 mr-3" />
                                 <span>Optimización de 90 días con revisiones mensuales</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <CheckIcon class="text-blue-600 mt-1 mr-3" />
                                 <span>Incluye todos los servicios de Crecimiento</span>
                             </li>
                         </ul>
@@ -678,7 +703,7 @@ const alternateLanguages = [
             <!-- Custom Pricing & Monthly Packages Line -->
             <div class="text-center mt-12 max-w-3xl mx-auto">
                 <div class="inline-flex items-center bg-gradient-to-r from-blue-50 to-teal-50 border-2 border-blue-200 rounded-full px-8 py-4 shadow-md hover:shadow-lg transition-all duration-300">
-                    <i class="fas fa-info-circle text-blue-600 mr-3 text-lg"></i>
+                    <InfoCircleIcon class="text-blue-600 mr-3 text-lg" />
                     <p class="text-base font-semibold text-gray-800">
                         <a
                             href={`${import.meta.env.BASE_URL}es/pricing`}
@@ -709,7 +734,7 @@ const alternateLanguages = [
                     <div
                         class="w-full md:w-auto bg-gray-50 rounded-lg shadow-sm px-4 py-3 flex items-start md:items-center gap-3 border border-gray-100 hover:shadow-md transition-shadow cursor-pointer"
                     >
-                        <i class="fas fa-check-circle text-green-500 text-lg mt-1 md:mt-0 flex-shrink-0" aria-hidden="true"></i>
+                        <CheckCircleIcon class="text-green-500 text-lg mt-1 md:mt-0 flex-shrink-0" aria-hidden="true" />
                         <span class="text-gray-800 text-sm md:text-base font-medium text-left">Sin tarifas ocultas — lo que cotizamos es lo que pagas.</span>
                     </div>
 
@@ -717,7 +742,7 @@ const alternateLanguages = [
                     <div
                         class="w-full md:w-auto bg-gray-50 rounded-lg shadow-sm px-4 py-3 flex items-start md:items-center gap-3 border border-gray-100 hover:shadow-md transition-shadow cursor-pointer"
                     >
-                        <i class="fas fa-check-circle text-green-500 text-lg mt-1 md:mt-0 flex-shrink-0" aria-hidden="true"></i>
+                        <CheckCircleIcon class="text-green-500 text-lg mt-1 md:mt-0 flex-shrink-0" aria-hidden="true" />
                         <span class="text-gray-800 text-sm md:text-base font-medium text-left">Sin contratos largos — soporte mes a mes disponible.</span>
                     </div>
 
@@ -725,7 +750,7 @@ const alternateLanguages = [
                     <div
                         class="w-full md:w-auto bg-gray-50 rounded-lg shadow-sm px-4 py-3 flex items-start md:items-center gap-3 border border-gray-100 hover:shadow-md transition-shadow cursor-pointer"
                     >
-                        <i class="fas fa-check-circle text-green-500 text-lg mt-1 md:mt-0 flex-shrink-0" aria-hidden="true"></i>
+                        <CheckCircleIcon class="text-green-500 text-lg mt-1 md:mt-0 flex-shrink-0" aria-hidden="true" />
                         <span class="text-gray-800 text-sm md:text-base font-medium text-left">Precios transparentes — planes diseñados para escalar con tu negocio.</span>
                     </div>
                 </div>
@@ -749,7 +774,7 @@ const alternateLanguages = [
         <div class="container mx-auto max-w-4xl px-4 relative z-10">
             <div class="text-center mb-16">
                 <div class="inline-flex items-center bg-white bg-opacity-80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white border-opacity-50 shadow-sm">
-                    <i class="fas fa-heart mr-2 text-blue-900"></i>
+                    <HeartIcon class="mr-2 text-blue-900" />
                     Confiado Por
                 </div>
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
@@ -780,7 +805,7 @@ const alternateLanguages = [
         <div class="container mx-auto max-w-4xl px-4 relative z-10">
             <div class="text-center mb-16">
                 <div class="inline-flex items-center bg-white bg-opacity-80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white border-opacity-50 shadow-sm">
-                    <i class="fas fa-question-circle mr-2 text-teal-600"></i>
+                    <QuestionCircleIcon class="mr-2 text-teal-600" />
                     Preguntas
                 </div>
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
@@ -797,7 +822,7 @@ const alternateLanguages = [
                             <span class="mr-3 text-2xl">⏱️</span>
                             <span itemprop="name">¿Cuánto tiempo toma lanzar mi sitio web?</span>
                         </span>
-                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                        <ChevronDownIcon class="text-blue-600 transition-transform duration-300 md:hidden" />
                     </button>
                     <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">
@@ -813,7 +838,7 @@ const alternateLanguages = [
                             <span class="mr-3 text-2xl">📋</span>
                             <span itemprop="name">¿Tengo que firmar un contrato a largo plazo?</span>
                         </span>
-                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                        <ChevronDownIcon class="text-blue-600 transition-transform duration-300 md:hidden" />
                     </button>
                     <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">
@@ -829,7 +854,7 @@ const alternateLanguages = [
                             <span class="mr-3 text-2xl">🌐</span>
                             <span itemprop="name">¿Qué pasa si ya tengo un sitio web?</span>
                         </span>
-                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                        <ChevronDownIcon class="text-blue-600 transition-transform duration-300 md:hidden" />
                     </button>
                     <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">
@@ -845,7 +870,7 @@ const alternateLanguages = [
                             <span class="mr-3 text-2xl">🔍</span>
                             <span itemprop="name">¿Mi sitio aparecerá en Google?</span>
                         </span>
-                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                        <ChevronDownIcon class="text-blue-600 transition-transform duration-300 md:hidden" />
                     </button>
                     <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">
@@ -861,7 +886,7 @@ const alternateLanguages = [
                             <span class="mr-3 text-2xl">🏢</span>
                             <span itemprop="name">¿Qué te hace diferente de otras agencias?</span>
                         </span>
-                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                        <ChevronDownIcon class="text-blue-600 transition-transform duration-300 md:hidden" />
                     </button>
                     <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">
@@ -877,7 +902,7 @@ const alternateLanguages = [
                             <span class="mr-3 text-2xl">🔧</span>
                             <span itemprop="name">¿Qué pasa si necesito cambios después del lanzamiento?</span>
                         </span>
-                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300 md:hidden"></i>
+                        <ChevronDownIcon class="text-blue-600 transition-transform duration-300 md:hidden" />
                     </button>
                     <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <div class="p-6 pt-0 md:pt-3 text-gray-700" itemprop="text">

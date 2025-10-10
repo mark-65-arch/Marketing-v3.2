@@ -6,6 +6,7 @@
 import BaseLayout from './BaseLayout.astro';
 import GlobalNav from '../components/GlobalNav.astro';
 import Footer from '../components/Footer.astro';
+import ChevronRightIcon from '../components/icons/ChevronRightIcon.astro';
 
 import {
   generateLocalBusinessSchema,
@@ -163,11 +164,7 @@ const hreflangLinks = [
     <link rel="preconnect" href="https://usebasin.com" />
     <link rel="preconnect" href="https://calendly.com" />
 
-    <!-- 🎨 Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
-    <!-- 🎨 Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-iw3OoTErCYJJB9mCa8LNS2hbsQ7M3C0EpIsO/H5+EGAkPGc6rk+V8i04oW/K5xq0" crossorigin="anonymous" />
+    <!-- ⚡ Performance: Google Fonts and Font Awesome removed - using self-hosted fonts and custom SVG icons for faster LCP -->
 
     <!-- 🎯 Page-specific structured data -->
     {allStructuredData.map(schema => (
@@ -221,7 +218,7 @@ const hreflangLinks = [
           {breadcrumbs.map((crumb, index) => (
             <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="flex items-center">
               {index > 0 && (
-                <i class="fas fa-chevron-right text-gray-400 mx-2 text-xs" aria-hidden="true"></i>
+                <ChevronRightIcon class="text-gray-400 mx-2 w-3 h-3" />
               )}
               <a
                 href={crumb.url}

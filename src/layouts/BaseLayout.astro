@@ -30,10 +30,10 @@ const {
 // 🔍 SEO: Generate canonical URL if not provided
 const currentCanonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).toString();
 
-// 🎯 Performance: Preload critical font files
+// 🎯 Performance: Preload critical font files (WOFF2 for optimal compression)
 const preloadResources = [
-  { href: `${import.meta.env.BASE_URL}fonts/inter-400.ttf`, rel: 'preload', as: 'font', type: 'font/ttf', crossorigin: 'anonymous' },
-  { href: `${import.meta.env.BASE_URL}fonts/poppins-700.ttf`, rel: 'preload', as: 'font', type: 'font/ttf', crossorigin: 'anonymous' },
+  { href: `${import.meta.env.BASE_URL}fonts/inter-400.woff2`, rel: 'preload', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
+  { href: `${import.meta.env.BASE_URL}fonts/poppins-700.woff2`, rel: 'preload', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
 ];
 ---
 

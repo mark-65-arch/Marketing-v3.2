@@ -1,11 +1,12 @@
-/* Self-hosted fonts for better performance */
+/* Self-hosted fonts for better performance - WOFF2 optimized */
 
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('inter-400.ttf') format('truetype');
+  src: url('inter-400.woff2') format('woff2'),
+       url('inter-400.ttf') format('truetype');
 }
 
 @font-face {
@@ -13,7 +14,8 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('inter-600.ttf') format('truetype');
+  src: url('inter-600.woff2') format('woff2'),
+       url('inter-600.ttf') format('truetype');
 }
 
 @font-face {
@@ -21,7 +23,8 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('poppins-700.ttf') format('truetype');
+  src: url('poppins-700.woff2') format('woff2'),
+       url('poppins-700.ttf') format('truetype');
 }
 
 @font-face {
@@ -29,5 +32,6 @@
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url('poppins-900.ttf') format('truetype');
+  src: url('poppins-900.woff2') format('woff2'),
+       url('poppins-900.ttf') format('truetype');
 }

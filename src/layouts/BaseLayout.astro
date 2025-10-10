@@ -31,9 +31,12 @@ const {
 const currentCanonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).toString();
 
 // 🎯 Performance: Preload critical font files (WOFF2 for optimal compression)
+// Preload ALL fonts to break critical request chain (avoid fonts loading after CSS)
 const preloadResources = [
   { href: `${import.meta.env.BASE_URL}fonts/inter-400.woff2`, rel: 'preload', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
+  { href: `${import.meta.env.BASE_URL}fonts/inter-600.woff2`, rel: 'preload', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
   { href: `${import.meta.env.BASE_URL}fonts/poppins-700.woff2`, rel: 'preload', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
+  { href: `${import.meta.env.BASE_URL}fonts/poppins-900.woff2`, rel: 'preload', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
 ];
 ---
 

@@ -548,7 +548,7 @@ const faqs = [
               </span>
               <ChevronDownIcon class="text-blue-600 transition-transform duration-300 flex-shrink-0 accordion-icon" />
             </button>
-            <div id={`faq-${faq.id}`} class="accordion-content overflow-hidden" style="max-height: 0;" aria-hidden="true">
+            <div id={`faq-${faq.id}`} class="accordion-content overflow-hidden" aria-hidden="true">
               <div class="p-6 pt-0 text-gray-700 text-sm md:text-base">
                 {faq.answer}
               </div>
@@ -590,11 +590,11 @@ const faqs = [
     </div>
   </section>
 
-  <!-- FAQ Accordion Script -->
+  <!-- FAQ Accordion Script - Optimized to prevent forced reflows -->
   <script>
     // Wait for DOM
     document.addEventListener('DOMContentLoaded', function() {
-      // FAQ Accordion functionality
+      // FAQ Accordion functionality - optimized to avoid forced reflows
       const accordionTriggers = document.querySelectorAll('.accordion-trigger');
 
       accordionTriggers.forEach(function(trigger) {
@@ -617,7 +617,7 @@ const faqs = [
               otherTrigger.setAttribute('aria-expanded', 'false');
               if (otherContent) {
                 otherContent.setAttribute('aria-hidden', 'true');
-                otherContent.style.maxHeight = '0';
+                otherContent.classList.remove('accordion-open');
               }
               if (otherIcon) {
                 otherIcon.classList.remove('rotate-180');
@@ -625,18 +625,18 @@ const faqs = [
             }
           });
 
-          // Toggle current accordion
+          // Toggle current accordion - use class instead of scrollHeight to avoid forced reflow
           trigger.setAttribute('aria-expanded', newState ? 'true' : 'false');
           if (content) {
             content.setAttribute('aria-hidden', newState ? 'false' : 'true');
 
             if (newState) {
-              content.style.maxHeight = content.scrollHeight + 'px';
+              content.classList.add('accordion-open');
               if (icon) {
                 icon.classList.add('rotate-180');
               }
             } else {
-              content.style.maxHeight = '0';
+              content.classList.remove('accordion-open');
               if (icon) {
                 icon.classList.remove('rotate-180');
               }
@@ -646,4 +646,17 @@ const faqs = [
       });
     });
   </script>
+
+  <!-- Accordion CSS - uses max-height with transitions, no JS reflows -->
+  <style>
+    .accordion-content {
+      max-height: 0;
+      transition: max-height 0.3s ease-out;
+      overflow: hidden;
+    }
+
+    .accordion-content.accordion-open {
+      max-height: 500px; /* Large enough for any FAQ answer */
+    }
+  </style>
 </MainLayout>

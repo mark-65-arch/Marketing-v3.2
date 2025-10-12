@@ -132,6 +132,8 @@ const hreflangLinks = [
   noindex={noindex}
   lang={lang}
   alternateLanguages={hreflangLinks}
+  pageType={pageType}
+  currentPath={currentPath}
 >
   <!-- 🔍 Enhanced SEO Meta Tags -->
   <Fragment slot="head">
@@ -245,68 +247,8 @@ const hreflangLinks = [
   <Footer showNewsletter={showNewsletter} currentLang={lang} />
 
   <!-- Page-specific interactions -->
-  <script define:vars={{ pageType, currentPath }} type="module">
-    document.addEventListener('DOMContentLoaded', () => {
-      // ✉️ Track email clicks
-      const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
-      emailLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          // Future: Send to analytics
-          // e.g., gtag('event', 'email_click', { page: currentPath });
-        });
-      });
-    });
-
-    // ♿ Accessibility enhancements
-    document.addEventListener('DOMContentLoaded', () => {
-      // Skip link functionality (link is in GlobalNav component)
-      const skipLink = document.querySelector('a[href="#main-content"]');
-      if (skipLink) {
-        skipLink.addEventListener('click', (e) => {
-          e.preventDefault();
-          const mainContent = document.getElementById('main-content');
-          if (mainContent) {
-            mainContent.setAttribute('tabindex', '-1');
-            mainContent.focus();
-            mainContent.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      }
-
-      // Enhanced focus management for better keyboard navigation
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Tab') {
-          document.body.classList.add('user-tabbing');
-        }
-      });
-
-      document.addEventListener('mousedown', () => {
-        document.body.classList.remove('user-tabbing');
-      });
-    });
-
-    // 🎯 Performance: Lazy load background images
-    document.addEventListener('DOMContentLoaded', () => {
-      if ('IntersectionObserver' in window) {
-        const bgImageObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const element = entry.target;
-              const bgImage = element.getAttribute('data-bg');
-              if (bgImage) {
-                element.style.backgroundImage = `url(${bgImage})`;
-                element.classList.add('bg-loaded');
-                bgImageObserver.unobserve(element);
-              }
-            }
-          });
-        });
-
-        document.querySelectorAll('[data-bg]').forEach(element => {
-          bgImageObserver.observe(element);
-        });
-      }
-    });
+  <script>
+    import '../scripts/main-layout.js';
   </script>
 
   <!-- 🎨 Enhanced CSS for layout-specific styling -->

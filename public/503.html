@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="30">
+  <title>We're Updating | Marketing AI Houston</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      background: linear-gradient(135deg, #0c4a6e 0%, #3b82f6 50%, #14b8a6 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      color: #1e293b;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Animated background blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.3;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .blob-1 {
+      width: 300px;
+      height: 300px;
+      background: rgba(59, 130, 246, 0.4);
+      top: -150px;
+      left: -150px;
+      animation-delay: 0s;
+    }
+
+    .blob-2 {
+      width: 400px;
+      height: 400px;
+      background: rgba(20, 184, 166, 0.4);
+      bottom: -200px;
+      right: -200px;
+      animation-delay: 5s;
+    }
+
+    .blob-3 {
+      width: 350px;
+      height: 350px;
+      background: rgba(14, 165, 233, 0.4);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: 10s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      33% {
+        transform: translate(50px, -50px) scale(1.1);
+      }
+      66% {
+        transform: translate(-50px, 50px) scale(0.9);
+      }
+    }
+
+    /* Main container */
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+      padding: 3rem 2rem;
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    /* Logo */
+    .logo-container {
+      margin-bottom: 2rem;
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto;
+    }
+
+    /* Heading */
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #2563eb, #14b8a6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      animation: slideUp 0.6s ease-out 0.2s backwards;
+    }
+
+    /* Message */
+    p {
+      color: #475569;
+      font-size: 1.125rem;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+      animation: slideUp 0.6s ease-out 0.4s backwards;
+    }
+
+    .highlight {
+      color: #0284c7;
+      font-weight: 600;
+    }
+
+    /* Loading animation */
+    .loader-container {
+      margin-top: 2.5rem;
+      animation: slideUp 0.6s ease-out 0.6s backwards;
+    }
+
+    .loader {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 1rem;
+      position: relative;
+    }
+
+    .loader-circle {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 4px solid #e0f2fe;
+      border-top-color: #0284c7;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .loader-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #14b8a6);
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+
+    .dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+    }
+
+    /* Status text */
+    .status {
+      color: #64748b;
+      font-size: 0.875rem;
+      margin-top: 1.5rem;
+      animation: fadeIn 0.6s ease-out 0.8s backwards;
+    }
+
+    /* Contact info */
+    .contact {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #e2e8f0;
+      animation: fadeIn 0.6s ease-out 1s backwards;
+    }
+
+    .contact p {
+      font-size: 0.875rem;
+      color: #64748b;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact a {
+      color: #0284c7;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .contact a:hover {
+      color: #14b8a6;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .container {
+        padding: 2rem 1.5rem;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .logo {
+        width: 64px;
+        height: 64px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated background blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <!-- Main container -->
+  <div class="container">
+    <!-- Logo -->
+    <div class="logo-container">
+      <img src="/leaning-leaf.png" alt="Marketing AI Houston Logo" class="logo">
+    </div>
+
+    <!-- Heading -->
+    <h1>We're Making Improvements</h1>
+
+    <!-- Message -->
+    <p>
+      Our website is currently being updated to serve you better.
+      We'll be back online in just a <span class="highlight">few moments</span>.
+    </p>
+
+    <!-- Loading animation -->
+    <div class="loader-container">
+      <div class="loader">
+        <div class="loader-circle"></div>
+      </div>
+      <div class="loader-dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+
+    <!-- Status -->
+    <div class="status">
+      <p>This page will automatically refresh in <span id="countdown">30</span> seconds...</p>
+    </div>
+
+    <!-- Contact info -->
+    <div class="contact">
+      <p>Need immediate assistance?</p>
+      <p><a href="mailto:contact@marketingaihouston.com">contact@marketingaihouston.com</a></p>
+    </div>
+  </div>
+
+  <script>
+    // Countdown timer
+    let seconds = 30;
+    const countdownElement = document.getElementById('countdown');
+
+    const countdown = setInterval(() => {
+      seconds--;
+      if (countdownElement) {
+        countdownElement.textContent = seconds;
+      }
+
+      if (seconds <= 0) {
+        clearInterval(countdown);
+        window.location.reload();
+      }
+    }, 1000);
+
+    // Try to reload every 10 seconds by checking if the main site is back
+    const checkSite = setInterval(() => {
+      fetch('/')
+        .then(response => {
+          if (response.ok && !response.url.includes('503')) {
+            clearInterval(checkSite);
+            window.location.href = '/';
+          }
+        })
+        .catch(() => {
+          // Site still down, continue checking
+        });
+    }, 10000);
+  </script>
+</body>
+</html>

@@ -141,11 +141,9 @@ const navItems = [
       </nav>
 
       <!-- 🎯 CTA, Language Switcher, and Mobile Menu -->
-      <div class="flex items-center space-x-3">
+      <div class="flex items-center gap-2">
         <!-- 🌐 Language Switcher (Always visible) -->
-        <div>
-          <LanguageSwitcher currentPath={currentPath} currentLang={currentLang} />
-        </div>
+        <LanguageSwitcher currentPath={currentPath} currentLang={currentLang} />
 
         {showContactCTA && (
           <!-- 📞 Primary CTA Button -->
@@ -359,127 +357,126 @@ const navItems = [
   }
 </style>
 
-<script>
-  // 📱 Mobile Menu Functionality with Accessibility
-  document.addEventListener('DOMContentLoaded', () => {
+<script is:inline>
+(function() {
+  // Only run once
+  if (window.globalNavInitialized) return;
+  window.globalNavInitialized = true;
+
+  function initMobileMenu() {
     const mobileMenuButton = document.getElementById('global-nav-mobile-menu-button');
     const mobileMenu = document.getElementById('global-nav-mobile-menu');
 
-    if (mobileMenuButton && mobileMenu) {
-      // Get all focusable elements in menu for focus trap
-      const getFocusableElements = () => {
-        return mobileMenu.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
-      };
+    if (!mobileMenuButton || !mobileMenu) return;
 
-      // Toggle menu function
-      const toggleMenu = () => {
-        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-        const newState = !isExpanded;
+    // Toggle menu function
+    function toggleMenu() {
+      const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+      const newState = !isExpanded;
 
-        // Update button state
-        mobileMenuButton.setAttribute('aria-expanded', newState.toString());
+      // Update button state
+      mobileMenuButton.setAttribute('aria-expanded', String(newState));
 
-        // Update menu visibility
-        mobileMenu.setAttribute('aria-hidden', (!newState).toString());
-        mobileMenu.classList.toggle('active', newState);
+      // Update menu visibility
+      mobileMenu.setAttribute('aria-hidden', String(!newState));
 
-        // Update tabindex for menu items
-        const menuLinks = mobileMenu.querySelectorAll('a');
-        menuLinks.forEach(link => {
-          link.tabIndex = newState ? 0 : -1;
-        });
+      if (newState) {
+        mobileMenu.classList.add('active');
+        mobileMenu.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.remove('active');
+        mobileMenu.classList.add('hidden');
+      }
 
-        // Update icon
-        const icon = mobileMenuButton.querySelector('svg');
-        if (icon) {
-          // Update SVG icon (toggle between bars and close)
-          if (newState) {
-            icon.outerHTML = '<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 384 512" aria-hidden="true"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>';
-          } else {
-            icon.outerHTML = '<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 448 512" aria-hidden="true"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>';
-          }
-        }
+      // Update tabindex for menu items
+      const menuLinks = mobileMenu.querySelectorAll('a');
+      menuLinks.forEach(function(link) {
+        link.tabIndex = newState ? 0 : -1;
+      });
 
-
-        // Focus first menu item when opened
+      // Update icon
+      const icon = mobileMenuButton.querySelector('svg');
+      if (icon) {
         if (newState) {
-          const focusableElements = getFocusableElements();
-          if (focusableElements.length > 0) {
-            setTimeout(() => {
-              (focusableElements[0] as HTMLElement).focus();
-            }, 100);
-          }
+          icon.outerHTML = '<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 384 512" aria-hidden="true"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>';
+        } else {
+          icon.outerHTML = '<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 448 512" aria-hidden="true"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>';
         }
-      };
+      }
 
-      // Button click handler
-      mobileMenuButton.addEventListener('click', toggleMenu);
-
-      // Close menu when clicking outside
-      document.addEventListener('click', (e) => {
-        const isClickInsideMenu = mobileMenu.contains(e.target as Node);
-        const isClickOnButton = mobileMenuButton.contains(e.target as Node);
-
-        if (!isClickInsideMenu && !isClickOnButton && mobileMenu.classList.contains('active')) {
-          toggleMenu();
+      // Focus first menu item when opened
+      if (newState) {
+        const focusableElements = mobileMenu.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
+        if (focusableElements.length > 0) {
+          setTimeout(function() {
+            focusableElements[0].focus();
+          }, 100);
         }
-      });
-
-      // Focus trap for mobile menu
-      document.addEventListener('keydown', (e) => {
-        const isMenuOpen = mobileMenu.classList.contains('active');
-
-        // Close menu on escape key
-        if (e.key === 'Escape' && isMenuOpen) {
-          toggleMenu();
-          mobileMenuButton.focus();
-          return;
-        }
-
-        // Trap focus within menu when open
-        if (e.key === 'Tab' && isMenuOpen) {
-          const focusableElements = Array.from(getFocusableElements());
-          const firstElement = focusableElements[0] as HTMLElement;
-          const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
-
-          if (e.shiftKey) {
-            // Shift+Tab: if on first element, move to last
-            if (document.activeElement === firstElement) {
-              e.preventDefault();
-              lastElement.focus();
-            }
-          } else {
-            // Tab: if on last element, move to first
-            if (document.activeElement === lastElement) {
-              e.preventDefault();
-              firstElement.focus();
-            }
-          }
-        }
-      });
-
-      // Close menu when window is resized to desktop
-      window.addEventListener('resize', () => {
-        if (window.innerWidth >= 768 && mobileMenu.classList.contains('active')) {
-          toggleMenu();
-        }
-      });
+      }
     }
 
+    // Button click handler
+    mobileMenuButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      const isClickInsideMenu = mobileMenu.contains(e.target);
+      const isClickOnButton = mobileMenuButton.contains(e.target);
+
+      if (!isClickInsideMenu && !isClickOnButton && mobileMenu.classList.contains('active')) {
+        toggleMenu();
+      }
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+      const isMenuOpen = mobileMenu.classList.contains('active');
+
+      if (e.key === 'Escape' && isMenuOpen) {
+        toggleMenu();
+        mobileMenuButton.focus();
+      }
+    });
+
+    // Close menu when window is resized to desktop
+    window.addEventListener('resize', function() {
+      if (window.innerWidth >= 768 && mobileMenu.classList.contains('active')) {
+        toggleMenu();
+      }
+    });
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+  } else {
+    initMobileMenu();
+  }
+})();
+
+(function() {
+  if (window.dropdownsInitialized) return;
+  window.dropdownsInitialized = true;
+
+  function initDropdowns() {
     // 📋 Desktop Dropdown Functionality
     const dropdowns = document.querySelectorAll('.nav-dropdown');
 
-    dropdowns.forEach(dropdown => {
+    dropdowns.forEach(function(dropdown) {
       const button = dropdown.querySelector('button');
       const menu = dropdown.querySelector('.dropdown-menu');
 
       if (button && menu) {
         // Click to toggle dropdown (for touch devices)
-        button.addEventListener('click', (e) => {
+        button.addEventListener('click', function(e) {
           e.preventDefault();
 
           // Close other dropdowns
-          dropdowns.forEach(otherDropdown => {
+          dropdowns.forEach(function(otherDropdown) {
             if (otherDropdown !== dropdown) {
               otherDropdown.classList.remove('active');
             }
@@ -490,21 +487,21 @@ const navItems = [
         });
 
         // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-          if (!dropdown.contains(e.target as Node)) {
+        document.addEventListener('click', function(e) {
+          if (!dropdown.contains(e.target)) {
             dropdown.classList.remove('active');
           }
         });
 
         // Close dropdown on escape key
-        document.addEventListener('keydown', (e) => {
+        document.addEventListener('keydown', function(e) {
           if (e.key === 'Escape') {
             dropdown.classList.remove('active');
           }
         });
 
         // Handle keyboard navigation
-        button.addEventListener('keydown', (e) => {
+        button.addEventListener('keydown', function(e) {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             dropdown.classList.toggle('active');
@@ -518,8 +515,8 @@ const navItems = [
 
         // Focus management within dropdown
         const menuLinks = menu.querySelectorAll('a');
-        menuLinks.forEach((link, index) => {
-          link.addEventListener('keydown', (e) => {
+        menuLinks.forEach(function(link, index) {
+          link.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowDown') {
               e.preventDefault();
               const nextLink = menuLinks[index + 1] || menuLinks[0];
@@ -537,17 +534,31 @@ const navItems = [
         });
       }
     });
+  }
 
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDropdowns);
+  } else {
+    initDropdowns();
+  }
+})();
+
+(function() {
+  if (window.stickyCtaInitialized) return;
+  window.stickyCtaInitialized = true;
+
+  function initStickyCta() {
     // 📱 Sticky Mobile CTA - Show on scroll down
     const stickyMobileCta = document.getElementById('global-nav-sticky-mobile-cta');
     if (stickyMobileCta) {
       let lastScrollTop = 0;
-      let scrollTimeout: ReturnType<typeof setTimeout>;
+      let scrollTimeout;
 
-      window.addEventListener('scroll', () => {
+      window.addEventListener('scroll', function() {
         clearTimeout(scrollTimeout);
 
-        scrollTimeout = setTimeout(() => {
+        scrollTimeout = setTimeout(function() {
           const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
           // Show sticky CTA when scrolled down more than 300px and not at bottom
@@ -561,6 +572,13 @@ const navItems = [
         }, 100);
       });
     }
+  }
 
-  });
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initStickyCta);
+  } else {
+    initStickyCta();
+  }
+})();
 </script>

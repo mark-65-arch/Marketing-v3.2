@@ -71,10 +71,7 @@ const preloadResources = [
   <link rel="manifest" href={`${import.meta.env.BASE_URL}site.webmanifest`} />
 
   <!-- 🚫 SEO: Robots directive -->
-  <!-- ⚠️ DEVELOPMENT MODE: Forced noindex during construction -->
-  <!-- TODO: RE-ENABLE conditional noindex before migrating to main domain! -->
-  <!-- Change back to: {noindex && <meta name="robots" content="noindex, nofollow" />} -->
-  <meta name="robots" content="noindex, nofollow" />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
 
   <!-- 📱 Open Graph / Social Media -->
   <meta property="og:type" content="website" />

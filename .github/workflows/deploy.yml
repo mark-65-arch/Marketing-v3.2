@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -27,18 +26,26 @@ jobs:
       - name: 🏗️ Build Astro site
         run: npm run build
 
-      - name: 📋 List dist contents (for debugging)
-        run: |
-          echo "=== Root dist/ contents ==="
-          ls -la dist
-          echo ""
-          echo "=== dist/assets/ contents ==="
-          ls -la dist/_assets || echo "No _assets folder"
-          echo ""
-          echo "=== First 30 lines of index.html ==="
-          head -n 30 dist/index.html
+      # - name: 📋 List dist contents (for debugging)
+      #   run: |
+      #     echo "=== Root dist/ contents ==="
+      #     ls -la dist
+      #     echo ""
+      #     echo "=== dist/assets/ contents ==="
+      #     ls -la dist/_assets || echo "No _assets folder"
+      #     echo ""
+      #     echo "=== First 30 lines of index.html ==="
+      #     head -n 30 dist/index.html
 
-      - name: 🚀 Deploy via FTP
+      - name: 📦 Restore FTP sync state cache
+        uses: actions/cache@v3
+        with:
+          path: .ftp-deploy-sync-state.json
+          key: ftp-sync-${{ github.ref }}
+          restore-keys: |
+            ftp-sync-
+
+      - name: 🚀 Deploy via FTP (Incremental)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -47,4 +54,13 @@ jobs:
           port: ${{ secrets.FTP_PORT }}
           local-dir: ./dist/
           server-dir: ./
-          dangerous-clean-slate: true
+          dangerous-clean-slate: false
+
+      - name: 💾 Save FTP sync state cache
+        uses: actions/cache@v3
+        with:
+          path: .ftp-deploy-sync-state.json
+          key: ftp-sync-${{ github.ref }}
+
+      - name: ✅ Notify deployment success
+        run: echo "🚀 Site deployed successfully to Hostinger!"

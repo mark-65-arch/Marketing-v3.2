@@ -30,7 +30,7 @@ const isSpanish = currentLang === 'es';
 const langPrefix = isSpanish ? 'es/' : '';
 
 // Set default CTA label based on language
-const ctaLabel = primaryCtaLabel || (isSpanish ? 'Reserva una Llamada' : 'Book a Discovery Call');
+const ctaLabel = primaryCtaLabel || (isSpanish ? 'Contacto' : 'Contact Us');
 
 // 🧭 Navigation items configuration
 const navItems = [
@@ -148,7 +148,7 @@ const navItems = [
           <!-- 📞 Primary CTA Button -->
           <a
             href={primaryCtaHref}
-            class="hidden md:inline-flex bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-2 px-4 lg:px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md focus:ring-4 focus:ring-blue-200 text-sm whitespace-nowrap"
+            class="inline-flex bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-2 px-3 md:px-4 lg:px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md focus:ring-4 focus:ring-blue-200 text-sm whitespace-nowrap"
             aria-label={ctaLabel}
           >
             {ctaLabel}
@@ -219,15 +219,7 @@ const navItems = [
             tabindex="-1"
             aria-label={ctaLabel}
           >
-            📞 {ctaLabel.includes('Discovery') || ctaLabel.includes('Llamada') ? (
-              isSpanish ? (
-                <>Reserva una Llamada <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold ml-1">GRATIS</span></>
-              ) : (
-                <>Book a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold ml-1">FREE</span> Discovery Call</>
-              )
-            ) : (
-              ctaLabel
-            )}
+            📞 {ctaLabel}
           </a>
         )}
       </div>

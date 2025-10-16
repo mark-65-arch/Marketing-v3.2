@@ -27,6 +27,7 @@ interface Props extends SEOConfig {
   pageType?: 'home' | 'service' | 'contact' | 'about' | 'blog';
   lang?: string;
   alternateLanguages?: { lang: string; url: string }[];
+  preloadImages?: string[];
 }
 
 const {
@@ -46,7 +47,8 @@ const {
   currentPath = Astro.url.pathname,
   pageType = 'home',
   lang = 'en',
-  alternateLanguages = []
+  alternateLanguages = [],
+  preloadImages = []
 } = Astro.props;
 
 // 🔍 SEO: Enhanced title with brand consistency
@@ -165,6 +167,17 @@ const hreflangLinks = [
     <!-- 🔗 Preconnect to external domains for performance -->
     <link rel="preconnect" href="https://usebasin.com" />
     <link rel="preconnect" href="https://calendly.com" />
+
+    <!-- ⚡ Performance: Preload critical images for faster LCP -->
+    {preloadImages && preloadImages.length > 0 && preloadImages.map(imagePath => (
+      <link
+        rel="preload"
+        as="image"
+        href={imagePath}
+        type="image/webp"
+        fetchpriority="high"
+      />
+    ))}
 
     <!-- ⚡ Performance: Google Fonts and Font Awesome removed - using self-hosted fonts and custom SVG icons for faster LCP -->
 

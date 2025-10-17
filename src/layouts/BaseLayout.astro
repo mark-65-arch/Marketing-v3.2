@@ -16,6 +16,7 @@ interface Props {
   alternateLanguages?: { lang: string; url: string }[];
   pageType?: string;
   currentPath?: string;
+  preloadImages?: string[];
 }
 
 const {
@@ -28,20 +29,33 @@ const {
   lang = "en",
   alternateLanguages = [],
   pageType = 'home',
-  currentPath = Astro.url.pathname
+  currentPath = Astro.url.pathname,
+  preloadImages = []
 } = Astro.props;
 
 // 🔍 SEO: Generate canonical URL if not provided
 const currentCanonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).toString();
 
-// 🎯 Performance: Preload critical font files (WOFF2 for optimal compression)
-// Preload ALL fonts to break critical request chain (avoid fonts loading after CSS)
-const preloadResources = [
+// 🎯 Performance: Preload critical resources
+// IMPORTANT: LCP images MUST be preloaded FIRST with fetchpriority="high"
+// Then fonts are preloaded to break critical request chain
+const imagePreloads = preloadImages.map(imagePath => ({
+  href: imagePath,
+  rel: 'preload',
+  as: 'image',
+  type: 'image/webp',
+  fetchpriority: 'high'
+}));
+
+const fontPreloads = [
   { href: `${import.meta.env.BASE_URL}fonts/inter-400.woff2`, rel: 'preload', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
   { href: `${import.meta.env.BASE_URL}fonts/inter-600.woff2`, rel: 'preload', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
   { href: `${import.meta.env.BASE_URL}fonts/poppins-700.woff2`, rel: 'preload', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
   { href: `${import.meta.env.BASE_URL}fonts/poppins-900.woff2`, rel: 'preload', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
 ];
+
+// Combine with images FIRST (highest priority for LCP)
+const preloadResources = [...imagePreloads, ...fontPreloads];
 ---
 
 <!DOCTYPE html>

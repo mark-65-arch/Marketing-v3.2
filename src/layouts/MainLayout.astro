@@ -136,6 +136,7 @@ const hreflangLinks = [
   alternateLanguages={hreflangLinks}
   pageType={pageType}
   currentPath={currentPath}
+  preloadImages={preloadImages}
 >
   <!-- 🔍 Enhanced SEO Meta Tags -->
   <Fragment slot="head">
@@ -168,18 +169,8 @@ const hreflangLinks = [
     <link rel="preconnect" href="https://usebasin.com" />
     <link rel="preconnect" href="https://calendly.com" />
 
-    <!-- ⚡ Performance: Preload critical images for faster LCP -->
-    {preloadImages && preloadImages.length > 0 && preloadImages.map(imagePath => (
-      <link
-        rel="preload"
-        as="image"
-        href={imagePath}
-        type="image/webp"
-        fetchpriority="high"
-      />
-    ))}
-
     <!-- ⚡ Performance: Google Fonts and Font Awesome removed - using self-hosted fonts and custom SVG icons for faster LCP -->
+    <!-- ⚡ Note: Image preloads are now handled in BaseLayout for optimal positioning in <head> -->
 
     <!-- 🎯 Page-specific structured data -->
     {allStructuredData.map(schema => (

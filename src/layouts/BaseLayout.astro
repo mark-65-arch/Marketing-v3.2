@@ -39,13 +39,21 @@ const currentCanonical = canonicalURL || new URL(Astro.url.pathname, Astro.site)
 // 🎯 Performance: Preload critical resources
 // IMPORTANT: LCP images MUST be preloaded FIRST with fetchpriority="high"
 // Then fonts are preloaded to break critical request chain
-const imagePreloads = preloadImages.map(imagePath => ({
-  href: imagePath,
-  rel: 'preload' as const,
-  as: 'image' as const,
-  type: 'image/webp',
-  fetchpriority: 'high' as const
-}));
+const imagePreloads = preloadImages.map(imagePath => {
+  // Detect image type from file extension
+  const imageType = imagePath.endsWith('.avif') ? 'image/avif' :
+                    imagePath.endsWith('.webp') ? 'image/webp' :
+                    imagePath.endsWith('.jpg') || imagePath.endsWith('.jpeg') ? 'image/jpeg' :
+                    'image/png';
+
+  return {
+    href: imagePath,
+    rel: 'preload' as const,
+    as: 'image' as const,
+    type: imageType,
+    fetchpriority: 'high' as const
+  };
+});
 
 // Only preload fonts used above the fold (Poppins 900 for headings, Inter 400 for body)
 const fontPreloads = [

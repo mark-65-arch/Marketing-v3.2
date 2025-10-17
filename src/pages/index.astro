@@ -51,7 +51,7 @@ const alternateLanguages = [
   currentPath="/"
   lang="en"
   alternateLanguages={alternateLanguages}
-  preloadImages={[`${import.meta.env.BASE_URL}Plumber.webp`]}
+  preloadImages={[`${import.meta.env.BASE_URL}Plumber-400w.avif`]}
 >
 
     <!-- Hero Section -->
@@ -110,15 +110,30 @@ const alternateLanguages = [
                         <!-- Glow effect behind the image -->
                         <div class="image-glow"></div>
 
-                        <!-- Plumber Image -->
-                        <img src={`${import.meta.env.BASE_URL}Plumber.webp`}
-                             alt="Houston plumber using smartphone to manage business calls and appointments - representing local businesses getting found online"
-                             width="780"
-                             height="780"
-                             fetchpriority="high"
-                             loading="eager"
-                             decoding="sync"
-                             class="plumber-image w-full max-w-[780px] h-auto transform hover:scale-105 transition-all duration-700 relative">
+                        <!-- Plumber Image - Responsive with AVIF/WebP -->
+                        <picture>
+                            <!-- AVIF format (best compression) -->
+                            <source
+                                type="image/avif"
+                                srcset={`${import.meta.env.BASE_URL}Plumber-400w.avif 400w, ${import.meta.env.BASE_URL}Plumber-600w.avif 600w, ${import.meta.env.BASE_URL}Plumber-840w.avif 840w`}
+                                sizes="(max-width: 640px) 400px, (max-width: 1024px) 600px, 840px"
+                            />
+                            <!-- WebP format (fallback) -->
+                            <source
+                                type="image/webp"
+                                srcset={`${import.meta.env.BASE_URL}Plumber-400w.webp 400w, ${import.meta.env.BASE_URL}Plumber-600w.webp 600w, ${import.meta.env.BASE_URL}Plumber-840w.webp 840w`}
+                                sizes="(max-width: 640px) 400px, (max-width: 1024px) 600px, 840px"
+                            />
+                            <!-- Original WebP (final fallback) -->
+                            <img src={`${import.meta.env.BASE_URL}Plumber.webp`}
+                                 alt="Houston plumber using smartphone to manage business calls and appointments - representing local businesses getting found online"
+                                 width="840"
+                                 height="1024"
+                                 fetchpriority="high"
+                                 loading="eager"
+                                 decoding="sync"
+                                 class="plumber-image w-full max-w-[840px] h-auto transform hover:scale-105 transition-all duration-700 relative">
+                        </picture>
 
                         <!-- Floating badge -->
                         <div class="floating-badge">
@@ -1102,17 +1117,30 @@ const alternateLanguages = [
         /* Image masking effect to simulate transparent background */
         .plumber-image-container {
             position: relative;
-            filter: drop-shadow(0 25px 50px rgba(59, 130, 246, 0.25));
+            /* Drop-shadow removed on mobile for better LCP - kept on desktop only */
+        }
+
+        /* Desktop only: Add drop shadow for visual depth */
+        @media (min-width: 1024px) {
+            .plumber-image-container {
+                filter: drop-shadow(0 25px 50px rgba(59, 130, 246, 0.25));
+            }
         }
 
         .plumber-image {
-            /* mix-blend-mode removed - was causing 3.6s render delay */
-            filter: contrast(1.1) brightness(1.05);
+            /* Filters removed - were causing render delays on mobile */
             position: relative;
             z-index: 2;
         }
 
-        /* Glow effect behind the image */
+        /* Desktop only: Add subtle contrast boost */
+        @media (min-width: 1024px) {
+            .plumber-image {
+                filter: contrast(1.05) brightness(1.02);
+            }
+        }
+
+        /* Glow effect behind the image - simplified on mobile */
         .image-glow {
             position: absolute;
             top: -10%;
@@ -1120,12 +1148,19 @@ const alternateLanguages = [
             right: -10%;
             bottom: -10%;
             background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, rgba(25, 128, 114, 0.1) 50%, transparent 70%);
-            filter: blur(40px);
             z-index: 1;
-            animation: float 8s ease-in-out infinite;
+            /* Animation and blur disabled on mobile for performance */
         }
 
-        /* Floating badge */
+        /* Desktop only: Enable glow animation and blur */
+        @media (min-width: 1024px) {
+            .image-glow {
+                filter: blur(40px);
+                animation: float 8s ease-in-out infinite;
+            }
+        }
+
+        /* Floating badge - animations disabled on mobile */
         .floating-badge {
             position: absolute;
             top: -20px;
@@ -1135,17 +1170,38 @@ const alternateLanguages = [
             padding: 12px 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             z-index: 10;
-            animation: float 6s ease-in-out infinite;
-            backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.95);
+            /* Animation disabled on mobile for better performance */
         }
 
-        /* Decorative circles */
+        /* Desktop only: Enable badge animation */
+        @media (min-width: 1024px) {
+            .floating-badge {
+                animation: float 6s ease-in-out infinite;
+                backdrop-filter: blur(10px);
+            }
+        }
+
+        /* Decorative circles - animations disabled on mobile */
         .decorative-circle {
             position: absolute;
             border-radius: 50%;
             background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(25, 128, 114, 0.1));
-            animation: float 10s ease-in-out infinite;
+            /* Animation disabled on mobile - enabled on desktop */
+        }
+
+        /* Desktop only: Enable decorative circle animations */
+        @media (min-width: 1024px) {
+            .decorative-circle {
+                animation: float 10s ease-in-out infinite;
+            }
+        }
+
+        /* Disable hover transform on mobile to prevent layout shifts */
+        @media (max-width: 1023px) {
+            .plumber-image {
+                transform: none !important;
+            }
         }
 
         /* Dropdown Menu Styles */

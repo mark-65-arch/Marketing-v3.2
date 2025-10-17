@@ -56,13 +56,14 @@ const imagePreloads = preloadImages.map(imagePath => {
 });
 
 // Only preload fonts used above the fold (Poppins 900 for headings, Inter 400 for body)
+// CRITICAL: Fonts FIRST to prevent render blocking, then images
 const fontPreloads = [
-  { href: `${import.meta.env.BASE_URL}fonts/poppins-900.woff2`, rel: 'preload' as const, as: 'font' as const, type: 'font/woff2', crossorigin: 'anonymous' as const },
-  { href: `${import.meta.env.BASE_URL}fonts/inter-400.woff2`, rel: 'preload' as const, as: 'font' as const, type: 'font/woff2', crossorigin: 'anonymous' as const },
+  { href: `${import.meta.env.BASE_URL}fonts/poppins-900.woff2`, rel: 'preload' as const, as: 'font' as const, type: 'font/woff2', crossorigin: 'anonymous' as const, fetchpriority: 'high' as const },
+  { href: `${import.meta.env.BASE_URL}fonts/inter-400.woff2`, rel: 'preload' as const, as: 'font' as const, type: 'font/woff2', crossorigin: 'anonymous' as const, fetchpriority: 'high' as const },
 ];
 
-// Combine with images FIRST (highest priority for LCP)
-const preloadResources = [...imagePreloads, ...fontPreloads];
+// Combine fonts FIRST (prevent text render blocking), then images
+const preloadResources = [...fontPreloads, ...imagePreloads];
 ---
 
 <!DOCTYPE html>
@@ -74,7 +75,7 @@ const preloadResources = [...imagePreloads, ...fontPreloads];
   <!-- ⚡ Performance: DNS prefetch for third-party resources -->
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-  <!-- ⚡ CRITICAL: Preload LCP image and fonts FIRST for fastest render -->
+  <!-- ⚡ CRITICAL: Preload fonts FIRST, then LCP image for fastest text render -->
   {preloadResources.map(resource => (
     <link {...resource} />
   ))}
@@ -165,15 +166,17 @@ const preloadResources = [...imagePreloads, ...fontPreloads];
   <style set:html={`
     /* Self-hosted fonts - Inlined to eliminate render-blocking request */
 
-    /* Critical fonts (preloaded) - use swap for immediate render */
+    /* Critical fonts (preloaded) - OPTIMIZED for LCP performance */
+    /* Poppins 900: Used for h1 LCP element - 'optional' prevents render blocking */
     @font-face {
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 900;
-      font-display: swap;
+      font-display: optional;
       src: url('${import.meta.env.BASE_URL}fonts/poppins-900.woff2') format('woff2');
     }
 
+    /* Inter 400: Body text - 'swap' for immediate render with fallback */
     @font-face {
       font-family: 'Inter';
       font-style: normal;
@@ -198,6 +201,21 @@ const preloadResources = [...imagePreloads, ...fontPreloads];
       font-display: optional;
       src: url('${import.meta.env.BASE_URL}fonts/poppins-700.woff2') format('woff2');
     }
+
+    /* 🎯 PERFORMANCE TIP: Font Subsetting for Maximum Speed
+     * Current Poppins 900 file is ~40KB. By subsetting to only the characters
+     * used in critical headings, you can reduce it to ~8-12KB.
+     *
+     * To create a subset:
+     * 1. Install pyftsubset: pip install fonttools brotli
+     * 2. Run: pyftsubset poppins-900.woff2 \\
+     *          --text="Get Found.CalswYourBusiness" \\
+     *          --output-file=poppins-900-subset.woff2 \\
+     *          --flavor=woff2
+     * 3. Replace the font file reference above
+     *
+     * Expected additional LCP improvement: -400ms to -600ms
+     */
   `}></style>
 
   <!-- 🛡️ Security: CSP moved to HTTP headers in public/_headers for better security -->

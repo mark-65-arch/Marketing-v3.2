@@ -82,10 +82,11 @@ const alternateLanguages = [
                     <p class="text-gray-700 mb-8">Built for small businesses that want to grow</p>
 
                     <!-- Headline with gradient text for "Get Calls" -->
+                    <!-- ⚡ Performance: Simplified class structure reduces CSS recalc time -->
                     <h1 class="text-5xl md:text-7xl font-black text-gray-900 leading-tight mb-6">
-                        <span class="text-gray-900 font-black">Get Found.</span>
-                        <span class="gradient-text-calls font-black">Get Calls.</span>
-                        <span class="text-gray-900 font-black">Grow Your Business.</span>
+                        <span>Get Found. </span>
+                        <span class="gradient-text-calls">Get Calls. </span>
+                        <span>Grow Your Business.</span>
                     </h1>
 
                     <!-- Subheadline from docx -->
@@ -1087,6 +1088,28 @@ const alternateLanguages = [
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
+        }
+
+        /* 📱 Mobile Performance: Disable gradient to reduce LCP paint complexity */
+        @media (max-width: 768px) {
+            .gradient-text-calls {
+                background: none;
+                -webkit-background-clip: unset;
+                -webkit-text-fill-color: inherit;
+                background-clip: unset;
+                color: #3B82F6; /* Solid blue - eliminates GPU compositing layer */
+            }
+        }
+
+        /* ♿ Accessibility: Respect reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            .gradient-text-calls {
+                background: none;
+                -webkit-background-clip: unset;
+                -webkit-text-fill-color: inherit;
+                background-clip: unset;
+                color: #3B82F6;
+            }
         }
 
         /* Image masking effect to simulate transparent background */

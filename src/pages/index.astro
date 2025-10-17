@@ -972,56 +972,20 @@ const alternateLanguages = [
             --color-ocean-sky: #BFDBFE;
         }
 
-        /* Typography */
+        /* Typography - Force maximum boldness for headers */
         h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+        }
+
+        /* Ensure h1 and all its children use maximum boldness */
+        h1, h1 * {
+            font-weight: 900;
             font-family: 'Poppins', sans-serif;
         }
 
         p, a, span, li {
             font-family: 'Inter', sans-serif;
-        }
-
-        /* Force maximum boldness for headers */
-        h1, h1 *, h1 span {
-            font-weight: 900 !important;
-            font-family: 'Poppins', sans-serif !important;
-        }
-
-        h2, h2 *, h2 span {
-            font-weight: 900 !important;
-            font-family: 'Poppins', sans-serif !important;
-        }
-
-        .gradient-text-calls {
-            font-weight: 900 !important;
-            font-family: 'Poppins', sans-serif !important;
-        }
-
-        /* Target specific classes that might have conflicting styles */
-        .text-transparent, .bg-clip-text {
-            font-weight: 900 !important;
-        }
-
-        /* Make sure font-black class works */
-        .font-black {
-            font-weight: 900 !important;
-        }
-
-        /* Override ALL possible font weight classes from Tailwind */
-        .text-5xl, .text-7xl, .text-4xl, .md\\:text-7xl, .md\\:text-5xl {
-            font-weight: 900 !important;
-        }
-
-        /* Force boldness on gradient text specifically */
-        span[class*="gradient"], span[class*="text-transparent"] {
-            font-weight: 900 !important;
-            font-family: 'Poppins', sans-serif !important;
-        }
-
-        /* Target the main headline specifically */
-        h1.text-5xl span {
-            font-weight: 900 !important;
-            font-family: 'Poppins', sans-serif !important;
         }
 
         /* Custom styles */
@@ -1100,18 +1064,19 @@ const alternateLanguages = [
             display: block;
         }
 
-        /* Custom gradient text for "Get Calls" */
+        /* Custom gradient text for "Get Calls" - Optimized for performance */
         .gradient-text-calls {
             background: linear-gradient(135deg, #3B82F6, #198072);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-fill-color: transparent;
             font-weight: 900;
             font-size: 1.2em;
             display: inline-block;
-            transform: translateY(-5px);
-            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            /* Force text rendering for better boldness visibility */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
 
         /* Image masking effect to simulate transparent background */
@@ -1286,14 +1251,6 @@ const alternateLanguages = [
 
         .animate-pulse-slow {
             animation: pulse 3s infinite;
-        }
-    </style>
-
-    <!-- Final override - loaded after everything else -->
-    <style>
-        h1, h1 span, h2, h2 span {
-            font-weight: 900 !important;
-            font-family: 'Poppins', sans-serif !important;
         }
     </style>
 

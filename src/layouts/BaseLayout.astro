@@ -41,17 +41,16 @@ const currentCanonical = canonicalURL || new URL(Astro.url.pathname, Astro.site)
 // Then fonts are preloaded to break critical request chain
 const imagePreloads = preloadImages.map(imagePath => ({
   href: imagePath,
-  rel: 'preload',
-  as: 'image',
+  rel: 'preload' as const,
+  as: 'image' as const,
   type: 'image/webp',
-  fetchpriority: 'high'
+  fetchpriority: 'high' as const
 }));
 
+// Only preload fonts used above the fold (Poppins 900 for headings, Inter 400 for body)
 const fontPreloads = [
-  { href: `${import.meta.env.BASE_URL}fonts/inter-400.woff2`, rel: 'preload', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
-  { href: `${import.meta.env.BASE_URL}fonts/inter-600.woff2`, rel: 'preload', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
-  { href: `${import.meta.env.BASE_URL}fonts/poppins-700.woff2`, rel: 'preload', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
-  { href: `${import.meta.env.BASE_URL}fonts/poppins-900.woff2`, rel: 'preload', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
+  { href: `${import.meta.env.BASE_URL}fonts/poppins-900.woff2`, rel: 'preload' as const, as: 'font' as const, type: 'font/woff2', crossorigin: 'anonymous' as const },
+  { href: `${import.meta.env.BASE_URL}fonts/inter-400.woff2`, rel: 'preload' as const, as: 'font' as const, type: 'font/woff2', crossorigin: 'anonymous' as const },
 ];
 
 // Combine with images FIRST (highest priority for LCP)
@@ -61,13 +60,17 @@ const preloadResources = [...imagePreloads, ...fontPreloads];
 <!DOCTYPE html>
 <html lang={lang} dir="ltr">
 <head>
-  <!-- Google Tag Manager with Consent Mode v2 (externalized for CSP compliance) -->
-  <!-- Deferred to eliminate render-blocking -->
-  <script defer src={`${import.meta.env.BASE_URL}js/gtm-init.js`}></script>
-  <!-- End Google Tag Manager -->
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ⚡ Performance: DNS prefetch for third-party resources -->
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+  <!-- ⚡ CRITICAL: Preload LCP image and fonts FIRST for fastest render -->
+  {preloadResources.map(resource => (
+    <link {...resource} />
+  ))}
+
   <meta name="generator" content={Astro.generator} />
 
   <!-- 🔍 SEO: Basic meta tags -->
@@ -145,14 +148,24 @@ const preloadResources = [...imagePreloads, ...fontPreloads];
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   )}
 
-  <!-- ⚡ Performance: Resource hints -->
-  {preloadResources.map(resource => (
-    <link {...resource} />
-  ))}
+  <!-- Google Tag Manager with Consent Mode v2 (externalized for CSP compliance) -->
+  <!-- Moved AFTER critical resources to prevent discovery delay -->
+  <script defer src={`${import.meta.env.BASE_URL}js/gtm-init.js`}></script>
+  <!-- End Google Tag Manager -->
 
   <!-- 🎨 Critical CSS: Inlined font-face declarations for faster FCP -->
   <style set:html={`
     /* Self-hosted fonts - Inlined to eliminate render-blocking request */
+
+    /* Critical fonts (preloaded) - use swap for immediate render */
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 900;
+      font-display: swap;
+      src: url('${import.meta.env.BASE_URL}fonts/poppins-900.woff2') format('woff2');
+    }
+
     @font-face {
       font-family: 'Inter';
       font-style: normal;
@@ -161,11 +174,12 @@ const preloadResources = [...imagePreloads, ...fontPreloads];
       src: url('${import.meta.env.BASE_URL}fonts/inter-400.woff2') format('woff2');
     }
 
+    /* Non-critical fonts (not preloaded) - use optional to prevent render blocking */
     @font-face {
       font-family: 'Inter';
       font-style: normal;
       font-weight: 600;
-      font-display: swap;
+      font-display: optional;
       src: url('${import.meta.env.BASE_URL}fonts/inter-600.woff2') format('woff2');
     }
 
@@ -173,16 +187,8 @@ const preloadResources = [...imagePreloads, ...fontPreloads];
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 700;
-      font-display: swap;
+      font-display: optional;
       src: url('${import.meta.env.BASE_URL}fonts/poppins-700.woff2') format('woff2');
-    }
-
-    @font-face {
-      font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 900;
-      font-display: swap;
-      src: url('${import.meta.env.BASE_URL}fonts/poppins-900.woff2') format('woff2');
     }
   `}></style>
 
@@ -280,12 +286,26 @@ const preloadResources = [...imagePreloads, ...fontPreloads];
 
     .animate-float {
       animation: float 6s ease-in-out infinite;
-      will-change: transform;
     }
 
     .animate-blob {
       animation: blob 7s infinite;
-      will-change: transform;
+    }
+
+    /* Disable animations on mobile for better performance */
+    @media (max-width: 768px) {
+      .animate-float,
+      .animate-blob {
+        animation: none;
+      }
+    }
+
+    /* Respect user motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-float,
+      .animate-blob {
+        animation: none;
+      }
     }
 
     /* 🎯 Performance: Smooth scrolling */

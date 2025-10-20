@@ -31,7 +31,13 @@ const {
 } = Astro.props;
 ---
 
-<div id="google-form-container" class="google-form-wrapper">
+<div
+  id="google-form-container"
+  class="google-form-wrapper"
+  data-form-url={formUrl}
+  data-form-height={formHeight}
+  data-form-title={formTitle}
+>
   <!-- Facade: Styled placeholder (visible by default) -->
   <div id="form-facade" class="form-facade">
     <div class="form-facade-content">
@@ -307,66 +313,5 @@ const {
   }
 </style>
 
-<script define:vars={{ formUrl, formHeight, formTitle }}>
-  /**
-   * Lazy Load Google Form on User Interaction
-   *
-   * Performance Strategy:
-   * 1. User sees facade immediately (no blocking)
-   * 2. User clicks "Load Form" button
-   * 3. Script creates iframe and injects it
-   * 4. Google Form loads ONLY when needed
-   *
-   * This prevents the massive 2.4MB Google payload from blocking
-   * the critical rendering path and hero LCP.
-   */
-
-  let formLoaded = false;
-
-  function loadGoogleForm() {
-    if (formLoaded) return;
-
-    const facade = document.getElementById('form-facade');
-    const loadingIndicator = document.getElementById('form-loading');
-    const iframeContainer = document.getElementById('form-iframe-container');
-
-    // Show loading indicator
-    facade?.classList.add('hidden');
-    loadingIndicator?.classList.remove('hidden');
-
-    // Create iframe element
-    const iframe = document.createElement('iframe');
-    iframe.id = 'google-form-iframe';
-    iframe.src = formUrl;
-    iframe.width = '100%';
-    iframe.height = formHeight;
-    iframe.style.border = '0';
-    iframe.title = formTitle;
-    iframe.className = 'w-full rounded-lg';
-
-    // Handle iframe load
-    iframe.addEventListener('load', function() {
-      // Hide loading, show iframe
-      loadingIndicator?.classList.add('hidden');
-      iframeContainer?.classList.remove('hidden');
-
-      console.log('✅ Google Form loaded successfully (lazy)');
-    });
-
-    // Inject iframe into container
-    iframeContainer?.appendChild(iframe);
-    formLoaded = true;
-
-    console.log('📋 Google Form iframe created and loading...');
-  }
-
-  // Attach click event to button
-  document.addEventListener('DOMContentLoaded', function() {
-    const loadButton = document.getElementById('load-form-btn');
-
-    if (loadButton) {
-      loadButton.addEventListener('click', loadGoogleForm);
-      console.log('✅ Google Form facade initialized (click-to-load)');
-    }
-  });
-</script>
+<!-- External script for CSP compliance -->
+<script src={`${import.meta.env.BASE_URL}js/google-form-facade.js`} defer></script>

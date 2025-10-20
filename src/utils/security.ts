@@ -263,20 +263,13 @@ export class FormSecurityManager {
 }
 
 // 🔐 Content Security Policy Helper
+// NOTE: CSP is configured server-side via public/_headers file
+// This function is kept for backward compatibility but should NOT be used
+// All CSP policies are now managed in public/_headers for better security
 export function enforceCSP(): void {
-  // Add basic CSP headers via meta tag (better to do server-side)
-  const cspMeta = document.createElement('meta');
-  cspMeta.httpEquiv = 'Content-Security-Policy';
-  cspMeta.content = [
-    "default-src 'self'",
-    "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://usebasin.com https://calendly.com",
-    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com",
-    "font-src 'self' https://fonts.gstatic.com",
-    "img-src 'self' data: https:",
-    "connect-src 'self' https://usebasin.com https://calendly.com"
-  ].join('; ');
-
-  document.head.appendChild(cspMeta);
+  console.warn('⚠️ enforceCSP() is deprecated. CSP is now configured server-side via _headers file.');
+  console.info('See public/_headers for current CSP configuration including all Google services.');
+  // No longer adding CSP via meta tag - use server-side headers instead
 }
 
 // 🚫 Clickjacking Protection

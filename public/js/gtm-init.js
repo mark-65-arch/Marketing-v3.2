@@ -41,16 +41,36 @@ function loadGTM() {
   })(window,document,'script','dataLayer','GTM-KQS29VV6');
 }
 
-// Load GTM when browser is idle (reduces main-thread blocking)
-if ('requestIdleCallback' in window) {
-  // Use requestIdleCallback for optimal performance
-  requestIdleCallback(function() {
-    loadGTM();
-  }, { timeout: 3000 }); // Load within 3s even if not idle
-} else {
-  // Fallback for browsers without requestIdleCallback (Safari)
-  // Wait 2 seconds to let critical content load first
-  setTimeout(function() {
-    loadGTM();
-  }, 2000);
-}
+/**
+ * Performance Optimization: Load GTM ONLY after LCP element has painted
+ *
+ * Strategy:
+ * 1. Wait for 'load' event (all critical resources loaded)
+ * 2. Then use requestIdleCallback to defer GTM until browser is truly idle
+ * 3. This prevents GTM from interfering with hero LCP rendering
+ *
+ * Expected Impact:
+ * - GTM loads 2-5 seconds later than before
+ * - Hero LCP paints without blocking from Google Tag Manager
+ * - Analytics still captured, just slightly delayed
+ */
+
+// Load GTM ONLY after page load is complete (including LCP)
+window.addEventListener('load', function() {
+  // Additional delay to ensure LCP element has fully painted
+  if ('requestIdleCallback' in window) {
+    // Use requestIdleCallback for optimal performance
+    // Increased timeout to 5s to prioritize LCP over analytics
+    requestIdleCallback(function() {
+      loadGTM();
+      console.log('📊 GTM loaded after LCP (idle callback)');
+    }, { timeout: 5000 });
+  } else {
+    // Fallback for browsers without requestIdleCallback (Safari)
+    // Wait 3 seconds after load to ensure LCP is complete
+    setTimeout(function() {
+      loadGTM();
+      console.log('📊 GTM loaded after LCP (timeout fallback)');
+    }, 3000);
+  }
+});

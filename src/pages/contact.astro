@@ -9,6 +9,7 @@ import LockIcon from '../components/icons/LockIcon.astro';
 import PhoneIcon from '../components/icons/PhoneIcon.astro';
 import QuestionCircleIcon from '../components/icons/QuestionCircleIcon.astro';
 import ShieldIcon from '../components/icons/ShieldIcon.astro';
+import GoogleFormFacade from '../components/GoogleFormFacade.astro';
 
 // 🔍 SEO Configuration
 const pageTitle = 'Get in Touch';
@@ -130,7 +131,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <div class="text-6xl mb-6">📅</div>
                     <h3 class="text-2xl font-bold mb-4 text-blue-900 font-poppins">Schedule a Discovery Call</h3>
                     <p class="text-gray-700 mb-6">Use our calendar to pick a time that works for you.</p>
-                    <a href="https://calendly.com/marketingaihouston/free-discovery-call" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                    <a href="https://calendly.com/marketingaihouston/free-discovery-call" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 no-underline">
                         Book Now
                     </a>
                 </div>
@@ -140,7 +141,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <div class="text-6xl mb-6">📝</div>
                     <h3 class="text-2xl font-bold mb-4 text-blue-900 font-poppins">Send a Message</h3>
                     <p class="text-gray-700 mb-6">Fill out our quick form and we'll reply within 1 business day.</p>
-                    <a href="#contact-form" class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                    <a href="#contact-form" class="inline-block mt-4 bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 no-underline">
                         Send Message
                     </a>
                 </div>
@@ -150,12 +151,12 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <div class="text-6xl mb-6">📞</div>
                     <h3 class="text-2xl font-bold mb-4 text-blue-900 font-poppins">Call or Email Us Directly</h3>
                     <p class="text-gray-700 mb-6">Prefer to reach out directly? We're just a click away.</p>
-                    <div class="space-y-3">
-                        <a href="tel:+12815440572" class="flex items-center justify-center bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
+                    <div class="space-y-3 mt-4">
+                        <a href="tel:+12815440572" class="flex items-center justify-center bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 no-underline">
                             <PhoneIcon class="mr-2" />
                             (281) 544-0572
                         </a>
-                        <a href="mailto:team@marketingaihouston.com" class="flex items-center justify-center bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
+                        <a href="mailto:team@marketingaihouston.com" class="flex items-center justify-center bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-900 hover:to-blue-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 no-underline">
                             <EnvelopeIcon class="mr-2" />
                             team@marketingaihouston.com
                         </a>
@@ -200,21 +201,13 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <div class="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-teal-600 rounded-tl-3xl opacity-30"></div>
                     <div class="absolute bottom-0 right-0 w-20 h-20 border-b-4 border-r-4 border-blue-600 rounded-br-3xl opacity-30"></div>
 
-                    <!-- Google Form Embedded -->
+                    <!-- Google Form Facade (Lazy-loaded for performance) -->
                     <div class="w-full mx-auto">
-                        <iframe
-                            id="google-form-iframe"
-                            src="https://docs.google.com/forms/d/e/1FAIpQLSfUTmSL4dEVHL1OLBZncgvPgU_S6vH8_GLOM4KlV1VohMKKow/viewform?embedded=true"
-                            width="100%"
-                            height="2349"
-                            frameborder="0"
-                            marginheight="0"
-                            marginwidth="0"
-                            class="w-full rounded-lg"
-                            title="Contact Form"
-                        >
-                            Loading…
-                        </iframe>
+                        <GoogleFormFacade
+                            formUrl="https://docs.google.com/forms/d/e/1FAIpQLSfUTmSL4dEVHL1OLBZncgvPgU_S6vH8_GLOM4KlV1VohMKKow/viewform?embedded=true"
+                            formHeight="2349"
+                            formTitle="Contact Form"
+                        />
                     </div>
                 </div>
             </div>
@@ -349,16 +342,16 @@ const breadcrumbs: BreadcrumbItem[] = [
             <h2 class="text-4xl md:text-5xl font-black mb-6 text-white">
                 Let's Start with a Quick Conversation
             </h2>
-            <p class="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
+            <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
                 Pick a time, send a message, or just give us a call — we're here to help.
             </p>
 
-            <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <a href="#contact-options" class="bg-white text-blue-900 font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mt-8">
+                <a href="#contact-options" class="inline-block bg-white text-blue-900 font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg no-underline text-center">
                     👉 Schedule a <span class="bg-yellow-400 text-black px-2 py-1 rounded font-bold">FREE</span> Discovery Call
                 </a>
 
-                <a href="#contact-form" class="border-2 border-white text-white hover:bg-white hover:text-blue-900 font-semibold py-4 px-12 rounded-full transition-all duration-300">
+                <a href="#contact-form" class="inline-block border-2 border-white text-white hover:bg-white hover:text-blue-900 font-semibold py-4 px-12 rounded-full transition-all duration-300 no-underline text-center">
                     📩 Send a Message
                 </a>
             </div>
@@ -367,11 +360,26 @@ const breadcrumbs: BreadcrumbItem[] = [
 
     <!-- ⚡ External scripts for CSP compliance (deferred for non-blocking performance) -->
     <!-- These scripts don't affect hero LCP and are loaded after critical content -->
-    <script defer src={`${import.meta.env.BASE_URL}js/google-form-handler.js`}></script>
+    <!-- google-form-handler.js removed - now handled by GoogleFormFacade component -->
     <script defer src={`${import.meta.env.BASE_URL}js/contact-page.js`}></script>
 
     <!-- Custom page-specific styles -->
     <style>
+        /* Button spacing fixes - ensure buttons render as block-level elements */
+        a.inline-block {
+            display: inline-block !important;
+        }
+
+        a.flex {
+            display: flex !important;
+        }
+
+        /* Ensure proper text rendering in buttons */
+        a.inline-block, a.flex {
+            white-space: normal;
+            line-height: 1.5;
+        }
+
         /* Custom styles */
         /* Commented out - floating blobs disabled (can be re-enabled if needed)
         .organic-blob {

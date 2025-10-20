@@ -56,10 +56,11 @@ const imagePreloads = preloadImages.map(imagePath => {
   };
 });
 
-// Only preload fonts used above the fold (Poppins 900 for headings, Inter 400 for body)
+// Only preload fonts used above the fold (Poppins 900 SUBSET for headings, Inter 400 for body)
 // CRITICAL: Fonts FIRST to prevent render blocking, then images
+// Using subset font (1.8KB) instead of full font (6.7KB) for 73% reduction
 const fontPreloads = [
-  { href: `${import.meta.env.BASE_URL}fonts/poppins-900.woff2`, rel: 'preload' as const, as: 'font' as const, type: 'font/woff2', crossorigin: 'anonymous' as const, fetchpriority: 'high' as const },
+  { href: `${import.meta.env.BASE_URL}fonts/poppins-900-subset.woff2`, rel: 'preload' as const, as: 'font' as const, type: 'font/woff2', crossorigin: 'anonymous' as const, fetchpriority: 'high' as const },
   { href: `${import.meta.env.BASE_URL}fonts/inter-400.woff2`, rel: 'preload' as const, as: 'font' as const, type: 'font/woff2', crossorigin: 'anonymous' as const, fetchpriority: 'high' as const },
 ];
 
@@ -168,7 +169,20 @@ const preloadResources = [...fontPreloads, ...imagePreloads];
     /* Self-hosted fonts - Inlined to eliminate render-blocking request */
 
     /* Critical fonts (preloaded) - OPTIMIZED for hero LCP performance */
-    /* Poppins 900: Used for h1 hero element - 'swap' ensures text visibility immediately */
+    /* Poppins 900 SUBSET: Used for h1 hero element - 1.8KB instead of 6.7KB (73% reduction) */
+    /* Contains only characters used in hero headings across all pages */
+    /* 'swap' ensures text visibility immediately with fallback font */
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 900;
+      font-display: swap;
+      src: url('${import.meta.env.BASE_URL}fonts/poppins-900-subset.woff2') format('woff2');
+      unicode-range: U+0020-007E, U+00A1, U+00E1, U+00E9, U+00ED, U+00F3;
+    }
+
+    /* Full Poppins 900 font: Fallback for characters not in subset */
+    /* Loaded with lower priority, won't block hero LCP */
     @font-face {
       font-family: 'Poppins';
       font-style: normal;

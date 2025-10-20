@@ -2,6 +2,7 @@
 // 🎯 Base Layout Component
 // Purpose: Consistent HTML structure, SEO optimization, and performance best practices
 // Used by: All pages across the site
+// Note: global.css is imported here but Astro will inline critical CSS and defer non-critical
 import '../styles/global.css';
 import CookieBanner from '../components/CookieBanner.astro';
 
@@ -166,13 +167,13 @@ const preloadResources = [...fontPreloads, ...imagePreloads];
   <style set:html={`
     /* Self-hosted fonts - Inlined to eliminate render-blocking request */
 
-    /* Critical fonts (preloaded) - OPTIMIZED for LCP performance */
-    /* Poppins 900: Used for h1 LCP element - 'optional' prevents render blocking */
+    /* Critical fonts (preloaded) - OPTIMIZED for hero LCP performance */
+    /* Poppins 900: Used for h1 hero element - 'swap' ensures text visibility immediately */
     @font-face {
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 900;
-      font-display: optional;
+      font-display: swap;
       src: url('${import.meta.env.BASE_URL}fonts/poppins-900.woff2') format('woff2');
     }
 
@@ -185,12 +186,12 @@ const preloadResources = [...fontPreloads, ...imagePreloads];
       src: url('${import.meta.env.BASE_URL}fonts/inter-400.woff2') format('woff2');
     }
 
-    /* Non-critical fonts (not preloaded) - use optional to prevent render blocking */
+    /* Non-critical fonts (not preloaded) - use swap for consistency */
     @font-face {
       font-family: 'Inter';
       font-style: normal;
       font-weight: 600;
-      font-display: optional;
+      font-display: swap;
       src: url('${import.meta.env.BASE_URL}fonts/inter-600.woff2') format('woff2');
     }
 
@@ -198,7 +199,7 @@ const preloadResources = [...fontPreloads, ...imagePreloads];
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 700;
-      font-display: optional;
+      font-display: swap;
       src: url('${import.meta.env.BASE_URL}fonts/poppins-700.woff2') format('woff2');
     }
 
@@ -352,7 +353,7 @@ const preloadResources = [...fontPreloads, ...imagePreloads];
     }
   </style>
 
-  <!-- 🎯 Additional page-specific head content -->
+  <!-- 🎯 Additional page-specific head content (including critical CSS) -->
   <slot name="head" />
 </head>
 

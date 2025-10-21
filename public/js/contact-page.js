@@ -12,12 +12,14 @@
 
 /**
  * Enable smooth scrolling when clicking internal anchor links
+ * Special handling for #contact-form link to also load the Google Form
  */
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
-    const element = e.target;
-    const href = element.getAttribute('href');
+    const element = e.target.closest('a');
+    const href = element ? element.getAttribute('href') : null;
+
     if (href) {
       const target = document.querySelector(href);
       if (target) {
@@ -25,6 +27,18 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
           behavior: 'smooth',
           block: 'start'
         });
+
+        // Special handling: If link is to #contact-form, trigger form load
+        if (href === '#contact-form') {
+          // Wait for scroll to complete, then trigger form load
+          setTimeout(() => {
+            const loadFormBtn = document.getElementById('load-form-btn');
+            if (loadFormBtn && !loadFormBtn.classList.contains('hidden')) {
+              // Only click if button is still visible (form hasn't been loaded yet)
+              loadFormBtn.click();
+            }
+          }, 800); // Wait for smooth scroll animation
+        }
       }
     }
   });

@@ -50,7 +50,7 @@ jobs:
           restore-keys: |
             ftp-sync-
 
-      - name: 🚀 Deploy via FTP (Full Upload - Clean Slate)
+      - name: 🚀 Deploy via FTP (Incremental)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -59,7 +59,7 @@ jobs:
           port: ${{ secrets.FTP_PORT }}
           local-dir: ./dist/
           server-dir: ./
-          dangerous-clean-slate: true
+          dangerous-clean-slate: false
 
       - name: 💾 Save FTP sync state cache
         uses: actions/cache@v3

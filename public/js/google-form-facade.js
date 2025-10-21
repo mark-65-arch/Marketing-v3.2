@@ -58,42 +58,30 @@
       // Hide loading, show iframe
       if (loadingIndicator) loadingIndicator.classList.add('hidden');
       if (iframeContainer) iframeContainer.classList.remove('hidden');
-
-      console.log('✅ Google Form loaded successfully (lazy)');
     });
 
     // Inject iframe into container
     if (iframeContainer) {
       iframeContainer.appendChild(iframe);
       formLoaded = true;
-      console.log('📋 Google Form iframe created and loading...');
     }
   }
 
   // Attach click event to button when DOM is ready
   function init() {
-    console.log('🔍 Google Form Facade script is running!');
-    console.log('🔍 Document ready state:', document.readyState);
-
     const loadButton = document.getElementById('load-form-btn');
-    console.log('🔍 Load button found:', !!loadButton);
 
     if (loadButton) {
       loadButton.addEventListener('click', loadGoogleForm);
-      console.log('✅ Google Form facade initialized (click-to-load)');
     } else {
-      console.error('❌ Load form button NOT FOUND!');
-      console.log('🔍 Available IDs on page:', Array.from(document.querySelectorAll('[id]')).map(el => el.id).slice(0, 20));
+      console.error('Google Form: Load button not found');
     }
   }
 
   // Initialize when DOM is ready
-  console.log('📋 Google Form Facade script loaded');
   if (document.readyState === 'loading') {
-    console.log('⏳ Waiting for DOMContentLoaded...');
     document.addEventListener('DOMContentLoaded', init);
   } else {
-    console.log('✅ DOM already loaded, initializing immediately');
     init();
   }
 })();

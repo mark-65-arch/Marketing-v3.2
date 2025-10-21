@@ -156,12 +156,22 @@ export function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: items.map((item, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: item.name,
-      item: item.url
-    }))
+    itemListElement: items.map((item, index) => {
+      // Convert relative URLs to absolute URLs for valid schema.org markup
+      let absoluteUrl = item.url;
+      if (!absoluteUrl.startsWith('http://') && !absoluteUrl.startsWith('https://')) {
+        // Remove leading slash if present to avoid double slashes
+        const path = absoluteUrl.startsWith('/') ? absoluteUrl.slice(1) : absoluteUrl;
+        absoluteUrl = `${BUSINESS_INFO.url}/${path}`;
+      }
+
+      return {
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        item: absoluteUrl
+      };
+    })
   };
 }
 

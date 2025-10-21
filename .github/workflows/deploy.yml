@@ -26,16 +26,21 @@ jobs:
       - name: 🏗️ Build Astro site
         run: npm run build
 
-      # - name: 📋 List dist contents (for debugging)
-      #   run: |
-      #     echo "=== Root dist/ contents ==="
-      #     ls -la dist
-      #     echo ""
-      #     echo "=== dist/assets/ contents ==="
-      #     ls -la dist/_assets || echo "No _assets folder"
-      #     echo ""
-      #     echo "=== First 30 lines of index.html ==="
-      #     head -n 30 dist/index.html
+      - name: 📋 List dist contents (for debugging)
+        run: |
+          echo "=== Root dist/ contents ==="
+          ls -la dist
+          echo ""
+          echo "=== dist/js/ contents (checking for google-form-facade.js) ==="
+          ls -la dist/js/ || echo "No js folder"
+          echo ""
+          echo "=== Verify google-form-facade.js exists ==="
+          if [ -f "dist/js/google-form-facade.js" ]; then
+            echo "✅ google-form-facade.js found in dist/js/"
+            head -5 dist/js/google-form-facade.js
+          else
+            echo "❌ google-form-facade.js NOT found in dist/js/"
+          fi
 
       - name: 📦 Restore FTP sync state cache
         uses: actions/cache@v3
@@ -45,7 +50,7 @@ jobs:
           restore-keys: |
             ftp-sync-
 
-      - name: 🚀 Deploy via FTP (Incremental)
+      - name: 🚀 Deploy via FTP (Full Upload - Clean Slate)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -54,7 +59,7 @@ jobs:
           port: ${{ secrets.FTP_PORT }}
           local-dir: ./dist/
           server-dir: ./
-          dangerous-clean-slate: false
+          dangerous-clean-slate: true
 
       - name: 💾 Save FTP sync state cache
         uses: actions/cache@v3

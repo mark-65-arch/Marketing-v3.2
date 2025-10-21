@@ -30,12 +30,21 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 
         // Special handling: If link is to #contact-form, trigger form load
         if (href === '#contact-form') {
+          console.log('🔗 Link to #contact-form clicked, will auto-load form in 800ms');
           // Wait for scroll to complete, then trigger form load
           setTimeout(() => {
             const loadFormBtn = document.getElementById('load-form-btn');
+            console.log('🔍 Looking for load-form-btn...', !!loadFormBtn);
+            console.log('🔍 Button hidden?', loadFormBtn?.classList.contains('hidden'));
+
             if (loadFormBtn && !loadFormBtn.classList.contains('hidden')) {
               // Only click if button is still visible (form hasn't been loaded yet)
+              console.log('✅ Auto-clicking Load Contact Form button');
               loadFormBtn.click();
+            } else if (!loadFormBtn) {
+              console.error('❌ Load form button not found after scroll!');
+            } else {
+              console.log('⚠️ Button is hidden, form already loaded');
             }
           }, 800); // Wait for smooth scroll animation
         }

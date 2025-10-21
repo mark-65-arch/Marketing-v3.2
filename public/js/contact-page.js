@@ -14,7 +14,13 @@
  * Enable smooth scrolling when clicking internal anchor links
  * Special handling for #contact-form link to also load the Google Form
  */
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+function initSmoothScrolling() {
+  console.log('🔧 Initializing smooth scrolling for anchor links...');
+  const anchors = document.querySelectorAll('a[href^="#"]');
+  console.log('🔍 Found', anchors.length, 'anchor links on page');
+
+  anchors.forEach((anchor) => {
+    console.log('🔗 Adding listener to:', anchor.getAttribute('href'));
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
     const element = e.target.closest('a');
@@ -51,7 +57,8 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       }
     }
   });
-});
+  });
+}
 
 // =============================================================================
 // FAQ ACCORDION (Mobile Only)
@@ -61,7 +68,10 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
  * Toggle FAQ accordion items on mobile devices
  * Note: Accordion is disabled on desktop (via CSS)
  */
-const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+function initAccordion() {
+  console.log('🔧 Initializing FAQ accordion...');
+  const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+  console.log('🔍 Found', accordionTriggers.length, 'FAQ items');
 
 accordionTriggers.forEach(trigger => {
   trigger.addEventListener('click', () => {
@@ -79,3 +89,24 @@ accordionTriggers.forEach(trigger => {
     }
   });
 });
+}
+
+// =============================================================================
+// INITIALIZATION
+// =============================================================================
+
+console.log('📄 Contact page script loaded');
+
+// Wait for DOM to be ready before initializing features
+if (document.readyState === 'loading') {
+  console.log('⏳ Waiting for DOM to load...');
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('✅ DOM loaded, initializing contact page features');
+    initSmoothScrolling();
+    initAccordion();
+  });
+} else {
+  console.log('✅ DOM already loaded, initializing immediately');
+  initSmoothScrolling();
+  initAccordion();
+}

@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   accordionTriggers.forEach(trigger => {
     trigger.addEventListener('click', () => {
       const accordionItem = trigger.parentElement?.parentElement;
-      const chevron = trigger.querySelector('i.fa-chevron-down');
+      const chevron = trigger.querySelector('svg');
 
       if (accordionItem && chevron) {
         accordionItem.classList.toggle('accordion-open');

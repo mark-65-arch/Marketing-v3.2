@@ -111,8 +111,8 @@ const faqSchema = generateFAQSchema(faqs);
         <p class="text-gray-700 mb-8 font-medium">Confiado por Propietarios de Pequeñas Empresas en Todo el País</p>
 
         <!-- 🎯 Main Headline -->
-        <h1 class="text-5xl md:text-7xl font-black text-gray-900 leading-tight mb-6">
-          <span class="text-gradient font-black text-6xl md:text-8xl block mb-4 leading-tight" style="padding-bottom: 0.25rem;">SEO y Estrategia de Crecimiento</span>
+        <h1 class="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 leading-tight mb-6">
+          <span class="text-gradient font-black block mb-4 leading-tight" style="padding-bottom: 0.25rem;">SEO y Estrategia de Crecimiento</span>
         </h1>
 
         <!-- 📝 Subheadline -->
@@ -615,7 +615,7 @@ const faqSchema = generateFAQSchema(faqs);
         <p class="text-xl text-gray-700 max-w-2xl mx-auto">Respuestas directas — sin jerga, sin letra pequeña oculta.</p>
       </div>
 
-      <div class="max-w-3xl mx-auto space-y-4" itemscope itemtype="https://schema.org/FAQPage">
+      <div class="max-w-3xl mx-auto space-y-4">
         {faqs.map((faq, index) => (
           <Card class="overflow-hidden" key={index}>
             <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">

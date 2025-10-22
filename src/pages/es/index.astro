@@ -1,6 +1,7 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
-import type { BreadcrumbItem } from '../../utils/seo.ts';
+import type { BreadcrumbItem, FAQItem } from '../../utils/seo.ts';
+import { generateFAQSchema } from '../../utils/seo.ts';
 import BroomIcon from '../../components/icons/BroomIcon.astro';
 import CarIcon from '../../components/icons/CarIcon.astro';
 import ChartLineIcon from '../../components/icons/ChartLineIcon.astro';
@@ -40,6 +41,34 @@ const alternateLanguages = [
   { lang: 'en', url: `${import.meta.env.SITE}${import.meta.env.BASE_URL}` },
   { lang: 'es', url: `${import.meta.env.SITE}${import.meta.env.BASE_URL}es/` }
 ];
+
+// ❓ FAQ Schema Data (for Google rich snippets) - Spanish
+const faqItems: FAQItem[] = [
+  {
+    question: '¿Cuánto tiempo toma lanzar mi sitio web?',
+    answer: 'La mayoría de los proyectos se lanzan en solo unas pocas semanas, no meses. Nuestro proceso optimizado está diseñado para velocidad sin cortar esquinas.'
+  },
+  {
+    question: '¿Tengo que firmar un contrato a largo plazo?',
+    answer: 'No. Creemos en ganarnos tu confianza, no en encerrarte. Nuestros precios son transparentes y flexibles.'
+  },
+  {
+    question: '¿Qué pasa si ya tengo un sitio web?',
+    answer: 'Podemos actualizar y optimizar tu sitio existente, o construir uno nuevo si ese es el mejor camino. De cualquier manera, nos aseguraremos de que sea compatible con móviles, listo para SEO y optimizado para búsqueda por voz.'
+  },
+  {
+    question: '¿Mi sitio aparecerá en Google?',
+    answer: 'Sí — cada sitio que construimos incluye SEO local, marcado de esquema y optimización de Perfil de Negocio de Google. Aunque nadie puede garantizar la posición #1, te preparamos para máxima visibilidad.'
+  },
+  {
+    question: '¿Qué te hace diferente de otras agencias?',
+    answer: 'Las agencias antiguas a menudo alargan los proyectos, usan tácticas desactualizadas y se esconden detrás de jerga. Somos rápidos, transparentes y preparados para el futuro — cada sitio que construimos está optimizado para la búsqueda de hoy, incluidas IA y voz.'
+  },
+  {
+    question: '¿Qué pasa si necesito cambios después del lanzamiento?',
+    answer: 'Después del lanzamiento, tendrás la opción de agregar soporte y optimización continuos. Muchos clientes eligen un plan mensual para que podamos manejar actualizaciones, mejoras de SEO e informes. De esa manera, solo pagas por lo que necesitas, cuando lo necesitas.'
+  }
+];
 ---
 
 <MainLayout
@@ -51,6 +80,7 @@ const alternateLanguages = [
   currentPath="/es/"
   lang="es"
   alternateLanguages={alternateLanguages}
+  structuredData={[generateFAQSchema(faqItems)]}
 >
 
     <!-- Hero Section -->

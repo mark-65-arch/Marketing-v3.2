@@ -76,6 +76,9 @@ const breadcrumbs: BreadcrumbItem[] = [
         h1,h2,h3,p{margin:0}
         .hero-h1{min-height:4.5rem}
         @media(min-width:768px){.hero-h1{min-height:5.25rem}}
+
+        /* Gradient text styling to match service pages */
+        .text-gradient{background:linear-gradient(135deg,#3b82f6,#14b8a6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:transparent;font-weight:900!important}
     </style>
 
     <!-- Hero Section -->
@@ -90,7 +93,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
                 <!-- Headline - CRITICAL LCP ELEMENT -->
                 <h1 class="hero-h1">
-                    Let's Talk About Your Business
+                    <span class="text-gradient">Let's Talk About Your Business</span>
                 </h1>
 
                 <!-- Subheadline -->

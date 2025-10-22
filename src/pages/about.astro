@@ -54,8 +54,8 @@ const breadcrumbs = [
       <p class="text-gray-700 mb-8 text-lg">Built for Small Businesses. Powered by AI. Focused on Clarity.</p>
 
       <!-- Headline -->
-      <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 leading-tight mb-6">
-        About <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-600">Marketing AI Houston</span>
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6">
+        <span class="text-gradient">About Marketing AI Houston</span>
       </h1>
 
       <!-- Subheadline -->
@@ -421,4 +421,16 @@ const breadcrumbs = [
       </p>
     </div>
   </section>
+
+  <style>
+    /* Gradient text styling to match service pages */
+    .text-gradient {
+      background: linear-gradient(135deg, #3b82f6, #14b8a6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      font-weight: 900 !important;
+    }
+  </style>
 </MainLayout>

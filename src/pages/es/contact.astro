@@ -56,8 +56,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <p class="text-gray-700 mb-8 font-medium">Creado para pequeñas empresas que quieren crecer</p>
 
                 <!-- Headline -->
-                <h1 class="text-5xl md:text-6xl font-black text-gray-900 leading-tight mb-6">
-                    Hablemos Sobre Tu Negocio
+                <h1 class="text-5xl md:text-6xl font-black leading-tight mb-6">
+                    <span class="text-gradient">Hablemos Sobre Tu Negocio</span>
                 </h1>
 
                 <!-- Subheadline -->
@@ -88,7 +88,7 @@ const breadcrumbs: BreadcrumbItem[] = [
         <div class="container mx-auto max-w-6xl px-4 relative z-10">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-600">Elige Cómo Te Gustaría Conectar</span>
+                    <span class="text-gradient">Elige Cómo Te Gustaría Conectar</span>
                 </h2>
             </div>
 
@@ -148,7 +148,7 @@ const breadcrumbs: BreadcrumbItem[] = [
             <!-- Header Section -->
             <div class="text-center mb-12">
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">Envíanos un Mensaje</span>
+                    <span class="text-gradient">Envíanos un Mensaje</span>
                 </h2>
                 <p class="text-xl text-gray-700 mb-2">Completa el formulario a continuación y te responderemos en 1 día hábil</p>
                 <div class="flex items-center justify-center gap-2 text-gray-600">
@@ -222,7 +222,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     Preguntas
                 </div>
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600 font-black">Preguntas Frecuentes</span>
+                    <span class="text-gradient">Preguntas Frecuentes</span>
                 </h2>
                 <p class="text-xl text-gray-700 max-w-2xl mx-auto">Respuestas directas — sin jerga, sin letra pequeña oculta.</p>
             </div>
@@ -398,6 +398,16 @@ const breadcrumbs: BreadcrumbItem[] = [
 
         .animate-blob {
             animation: blob 7s infinite;
+        }
+
+        /* Gradient text styling to match service pages */
+        .text-gradient {
+            background: linear-gradient(135deg, #3b82f6, #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            font-weight: 900 !important;
         }
     </style>
 

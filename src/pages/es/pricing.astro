@@ -170,8 +170,8 @@ const faqs = [
         <p class="text-gray-700 mb-8">Diseñado para Propietarios de Pequeñas Empresas</p>
 
         <!-- Headline -->
-        <h1 class="text-5xl md:text-7xl font-black text-gray-900 leading-tight mb-6">
-          Precios Claros y Simples
+        <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6">
+          <span class="text-gradient">Precios Claros y Simples</span>
         </h1>
 
         <!-- Subheadline -->
@@ -356,8 +356,8 @@ const faqs = [
   <!-- Plan Comparison Table -->
   <section class="py-20 md:py-24 bg-white">
     <div class="container mx-auto max-w-6xl px-4">
-      <h2 class="text-3xl md:text-5xl font-black text-center mb-12 text-gray-900">
-        Compare Planes de un Vistazo
+      <h2 class="text-3xl md:text-5xl font-black text-center mb-12">
+        <span class="text-gradient">Compare Planes de un Vistazo</span>
       </h2>
 
       <!-- Desktop Table -->
@@ -411,8 +411,8 @@ const faqs = [
   <!-- What's Included Details -->
   <section class="py-20 md:py-24 bg-gradient-to-br from-blue-50 to-white">
     <div class="container mx-auto max-w-6xl px-4">
-      <h2 class="text-3xl md:text-5xl font-black text-center mb-16 text-gray-900">
-        Qué Está Incluido
+      <h2 class="text-3xl md:text-5xl font-black text-center mb-16">
+        <span class="text-gradient">Qué Está Incluido</span>
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -527,8 +527,8 @@ const faqs = [
   <!-- FAQ Section -->
   <section class="py-20 md:py-24 bg-gradient-to-br from-gray-50 to-white">
     <div class="container mx-auto max-w-4xl px-4">
-      <h2 class="text-3xl md:text-5xl font-black text-center mb-4 text-gray-900">
-        Preguntas Frecuentes
+      <h2 class="text-3xl md:text-5xl font-black text-center mb-4">
+        <span class="text-gradient">Preguntas Frecuentes</span>
       </h2>
       <p class="text-xl text-gray-700 max-w-2xl mx-auto text-center mb-12">Respuestas directas — sin jerga, sin letra pequeña oculta.</p>
 
@@ -603,6 +603,16 @@ const faqs = [
 
     .accordion-content.accordion-open {
       max-height: 500px; /* Large enough for any FAQ answer */
+    }
+
+    /* Gradient text styling to match service pages */
+    .text-gradient {
+      background: linear-gradient(135deg, #3b82f6, #14b8a6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      font-weight: 900 !important;
     }
   </style>
 </MainLayout>

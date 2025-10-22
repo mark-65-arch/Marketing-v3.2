@@ -55,8 +55,8 @@ const breadcrumbs = [
       <p class="text-gray-700 mb-8 text-lg">Construido para Pequeñas Empresas. Impulsado por IA. Enfocado en Claridad.</p>
 
       <!-- Headline -->
-      <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 leading-tight mb-6">
-        Acerca de <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-600">Marketing AI Houston</span>
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6">
+        <span class="text-gradient">Acerca de Marketing AI Houston</span>
       </h1>
 
       <!-- Subheadline -->
@@ -110,7 +110,7 @@ const breadcrumbs = [
           Nuestra Misión
         </div>
         <h2 class="text-4xl md:text-5xl font-black mb-8">
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-teal-600">Ayudando a Pequeñas Empresas a Aparecer y Destacarse en Línea</span>
+          <span class="text-gradient">Ayudando a Pequeñas Empresas a Aparecer y Destacarse en Línea</span>
         </h2>
       </div>
 
@@ -137,7 +137,7 @@ const breadcrumbs = [
           Qué Nos Hace Diferentes
         </div>
         <h2 class="text-4xl md:text-5xl font-black mb-4">
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-900">Por Qué los Clientes Trabajan con Nosotros</span>
+          <span class="text-gradient">Por Qué los Clientes Trabajan con Nosotros</span>
         </h2>
       </div>
 
@@ -201,7 +201,7 @@ const breadcrumbs = [
           Nuestro Proceso
         </div>
         <h2 class="text-4xl md:text-5xl font-black mb-4">
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-900">Nuestro Proceso Está Construido para la Claridad</span>
+          <span class="text-gradient">Nuestro Proceso Está Construido para la Claridad</span>
         </h2>
       </div>
 
@@ -252,7 +252,7 @@ const breadcrumbs = [
           A Quién Servimos
         </div>
         <h2 class="text-4xl md:text-5xl font-black mb-8">
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">Construido para Empresas Basadas en Servicios</span>
+          <span class="text-gradient">Construido para Empresas Basadas en Servicios</span>
         </h2>
       </div>
 
@@ -341,7 +341,7 @@ const breadcrumbs = [
           Nuestros Valores
         </div>
         <h2 class="text-4xl md:text-5xl font-black mb-8">
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-teal-600">Por Lo Que Nos Destacamos</span>
+          <span class="text-gradient">Por Lo Que Nos Destacamos</span>
         </h2>
       </div>
 
@@ -422,4 +422,16 @@ const breadcrumbs = [
       </p>
     </div>
   </section>
+
+  <style>
+    /* Gradient text styling to match service pages */
+    .text-gradient {
+      background: linear-gradient(135deg, #3b82f6, #14b8a6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      font-weight: 900 !important;
+    }
+  </style>
 </MainLayout>

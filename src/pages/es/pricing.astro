@@ -4,6 +4,7 @@
 // Features: Three pricing tiers, comparison table, what's included, commitments, FAQ, CTAs
 
 import MainLayout from '../../layouts/MainLayout.astro';
+import { generateFAQSchema } from '../../utils/seo.ts';
 import BroomIcon from '../../components/icons/BroomIcon.astro';
 import CarIcon from '../../components/icons/CarIcon.astro';
 import CheckCircleIcon from '../../components/icons/CheckCircleIcon.astro';
@@ -136,6 +137,9 @@ const faqs = [
     answer: 'Crecimiento y Pro incluyen configuración de análisis e informes. Para paquetes de SEO, recibirá información mensual y próximos pasos priorizados.'
   }
 ];
+
+// 🔍 Generate FAQ Schema for SEO
+const faqSchema = generateFAQSchema(faqs);
 ---
 
 <MainLayout
@@ -143,6 +147,7 @@ const faqs = [
   description="Diseñado para Propietarios de Pequeñas Empresas. Tres planes: Inicio ($497), Crecimiento ($1,497), Pro ($3,497). Sin tarifas ocultas, sin contratos largos."
   currentPath="/es/pricing"
   breadcrumbs={breadcrumbs}
+  structuredData={[faqSchema]}
   keywords={['precios', 'precios de diseño web', 'precios de seo', 'costo de diseño web houston', 'costo de sitio web para pequeñas empresas', 'precios transparentes']}
   lang="es"
   alternateLanguages={alternateLanguages}

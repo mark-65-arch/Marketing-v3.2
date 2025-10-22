@@ -4,6 +4,7 @@
 // Features: Three pricing tiers, comparison table, what's included, commitments, FAQ, CTAs
 
 import MainLayout from '../layouts/MainLayout.astro';
+import { generateFAQSchema } from '../utils/seo.ts';
 import BroomIcon from '../components/icons/BroomIcon.astro';
 import CarIcon from '../components/icons/CarIcon.astro';
 import CheckCircleIcon from '../components/icons/CheckCircleIcon.astro';
@@ -131,6 +132,9 @@ const faqs = [
     answer: 'Growth and Pro include analytics setup and reporting. For SEO packages, you\'ll receive monthly insights and prioritized next steps.'
   }
 ];
+
+// 🔍 Generate FAQ Schema for SEO
+const faqSchema = generateFAQSchema(faqs);
 ---
 
 <MainLayout
@@ -138,6 +142,7 @@ const faqs = [
   description="Built for Small Business Owners. Three plans: Starter ($497), Growth ($1,497), Pro ($3,497). No hidden fees, no long contracts."
   currentPath="/pricing"
   breadcrumbs={breadcrumbs}
+  structuredData={[faqSchema]}
   keywords={['pricing', 'web design pricing', 'seo pricing', 'houston web design cost', 'small business website cost', 'transparent pricing']}
 >
   <!-- Hero Section -->

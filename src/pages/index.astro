@@ -1,6 +1,7 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import type { BreadcrumbItem } from '../utils/seo.ts';
+import type { BreadcrumbItem, FAQItem } from '../utils/seo.ts';
+import { generateFAQSchema } from '../utils/seo.ts';
 import PhoneIcon from '../components/icons/PhoneIcon.astro';
 import MapMarkerIcon from '../components/icons/MapMarkerIcon.astro';
 import StarIcon from '../components/icons/StarIcon.astro';
@@ -40,6 +41,34 @@ const alternateLanguages = [
   { lang: 'en', url: `${import.meta.env.SITE}${import.meta.env.BASE_URL}` },
   { lang: 'es', url: `${import.meta.env.SITE}${import.meta.env.BASE_URL}es/` }
 ];
+
+// ❓ FAQ Schema Data (for Google rich snippets)
+const faqItems: FAQItem[] = [
+  {
+    question: 'How long does it take to launch my website?',
+    answer: 'Most projects go live in just a few weeks, not months. Our streamlined process is designed for speed without cutting corners.'
+  },
+  {
+    question: 'Do I have to sign a long-term contract?',
+    answer: 'No. We believe in earning your trust, not locking you in. Our pricing is transparent and flexible.'
+  },
+  {
+    question: 'What if I already have a website?',
+    answer: 'We can refresh and optimize your existing site, or build a new one if that\'s the better path. Either way, we\'ll make sure it\'s mobile-friendly, SEO-ready, and optimized for voice search.'
+  },
+  {
+    question: 'Will my site show up on Google?',
+    answer: 'Yes — every site we build includes local SEO, schema markup, and Google Business Profile optimization. While no one can guarantee #1 rankings, we set you up for maximum visibility.'
+  },
+  {
+    question: 'What makes you different from other agencies?',
+    answer: 'Old agencies often drag projects out, use outdated tactics, and hide behind jargon. We\'re fast, transparent, and future-ready — every site we build is optimized for today\'s search, including AI and voice.'
+  },
+  {
+    question: 'What if I need changes after launch?',
+    answer: 'After launch, you\'ll have the option to add ongoing support and optimization. Many clients choose a monthly plan so we can handle updates, SEO improvements, and reporting. That way, you only pay for what you need, when you need it.'
+  }
+];
 ---
 
 <MainLayout
@@ -52,6 +81,7 @@ const alternateLanguages = [
   lang="en"
   alternateLanguages={alternateLanguages}
   preloadImages={[`${import.meta.env.BASE_URL}Plumber-400w.avif`]}
+  structuredData={[generateFAQSchema(faqItems)]}
 >
 
     <!-- Hero Section -->

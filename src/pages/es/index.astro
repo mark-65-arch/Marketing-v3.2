@@ -253,7 +253,7 @@ const faqItems: FAQItem[] = [
                     Antes y Después
                 </div>
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-600">Ve la Diferencia Que Hace la Visibilidad en Línea</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-teal-600 font-black">Ve la Diferencia Que Hace la Visibilidad en Línea</span>
                 </h2>
             </div>
 
@@ -324,7 +324,7 @@ const faqItems: FAQItem[] = [
                     Nuestras Soluciones
                 </div>
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-600 font-black">Ayudando a Pequeñas Empresas de Houston a Ser Encontradas en Línea</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-teal-600 font-black">Ayudando a Pequeñas Empresas de Houston a Ser Encontradas en Línea</span>
                 </h2>
                 <p class="text-xl text-gray-700 max-w-2xl mx-auto">Desde contratistas hasta proveedores de cuidado de mascotas y más, diseñamos sitios web y estrategias de marketing que traen más llamadas, más clientes y más crecimiento.</p>
             </div>
@@ -394,7 +394,7 @@ const faqItems: FAQItem[] = [
                     Lo Que Obtienes
                 </div>
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600 font-black">Lo Que Ganan los Dueños de Pequeñas Empresas de Houston</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-teal-600 font-black">Lo Que Ganan los Dueños de Pequeñas Empresas de Houston</span>
                 </h2>
             </div>
 
@@ -502,7 +502,7 @@ const faqItems: FAQItem[] = [
                     Proceso Simple
                 </div>
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-900 font-black">Comenzar Es Simple</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-teal-600 font-black">Comenzar Es Simple</span>
                 </h2>
             </div>
 
@@ -559,7 +559,7 @@ const faqItems: FAQItem[] = [
                     Precios Simples
                 </div>
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-900 font-black">Precios Claros y Simples</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-teal-600 font-black">Precios Claros y Simples</span>
                 </h2>
                 <p class="text-xl text-gray-700 max-w-2xl mx-auto">Creado para Dueños de Pequeñas Empresas</p>
             </div>
@@ -812,7 +812,7 @@ const faqItems: FAQItem[] = [
                     Confiado Por
                 </div>
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-600 font-black">Confiado por Dueños de Pequeñas Empresas de Houston</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-teal-600 font-black">Confiado por Dueños de Pequeñas Empresas de Houston</span>
                 </h2>
                 <p class="text-xl text-gray-700">Estamos orgullosos de apoyar a las empresas que mantienen nuestra ciudad en marcha.</p>
             </div>
@@ -843,7 +843,7 @@ const faqItems: FAQItem[] = [
                     Preguntas
                 </div>
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600 font-black">Preguntas Frecuentes</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-teal-600 font-black">Preguntas Frecuentes</span>
                 </h2>
                 <p class="text-xl text-gray-700 max-w-2xl mx-auto">Respuestas directas — sin jerga, sin letra pequeña oculta.</p>
             </div>
@@ -990,56 +990,26 @@ const faqItems: FAQItem[] = [
             --color-ocean-sky: #BFDBFE;
         }
 
-        /* Typography */
+        /* Typography - Force maximum boldness for headers */
         h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+        }
+
+        /* Ensure h1 and all its children use maximum boldness */
+        h1, h1 * {
+            font-weight: 900;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Ensure h2 and all its children use maximum boldness */
+        h2, h2 * {
+            font-weight: 900;
             font-family: 'Poppins', sans-serif;
         }
 
         p, a, span, li {
             font-family: 'Inter', sans-serif;
-        }
-
-        /* Force maximum boldness for headers */
-        h1, h1 *, h1 span {
-            font-weight: 900 !important;
-            font-family: 'Poppins', sans-serif !important;
-        }
-
-        h2, h2 *, h2 span {
-            font-weight: 900 !important;
-            font-family: 'Poppins', sans-serif !important;
-        }
-
-        .gradient-text-calls {
-            font-weight: 900 !important;
-            font-family: 'Poppins', sans-serif !important;
-        }
-
-        /* Target specific classes that might have conflicting styles */
-        .text-transparent, .bg-clip-text {
-            font-weight: 900 !important;
-        }
-
-        /* Make sure font-black class works */
-        .font-black {
-            font-weight: 900 !important;
-        }
-
-        /* Override ALL possible font weight classes from Tailwind */
-        .text-5xl, .text-7xl, .text-4xl, .md\\:text-7xl, .md\\:text-5xl {
-            font-weight: 900 !important;
-        }
-
-        /* Force boldness on gradient text specifically */
-        span[class*="gradient"], span[class*="text-transparent"] {
-            font-weight: 900 !important;
-            font-family: 'Poppins', sans-serif !important;
-        }
-
-        /* Target the main headline specifically */
-        h1.text-5xl span {
-            font-weight: 900 !important;
-            font-family: 'Poppins', sans-serif !important;
         }
 
         /* Commented out - floating blobs disabled (can be re-enabled if needed)
@@ -1119,34 +1089,70 @@ const faqItems: FAQItem[] = [
             display: block;
         }
 
-        /* Custom gradient text for "Get Calls" */
+        /* Custom gradient text for "Get Calls" - Optimized for performance */
         .gradient-text-calls {
             background: linear-gradient(135deg, #3B82F6, #198072);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-fill-color: transparent;
             font-weight: 900;
             font-size: 1.2em;
             display: inline-block;
-            transform: translateY(-5px);
-            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            /* Force text rendering for better boldness visibility */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* 📱 Mobile Performance: Disable gradient to reduce LCP paint complexity */
+        @media (max-width: 768px) {
+            .gradient-text-calls {
+                background: none;
+                -webkit-background-clip: unset;
+                -webkit-text-fill-color: inherit;
+                background-clip: unset;
+                color: #2A81B4; /* Blue-teal - midpoint between desktop gradient colors */
+            }
+        }
+
+        /* ♿ Accessibility: Respect reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            .gradient-text-calls {
+                background: none;
+                -webkit-background-clip: unset;
+                -webkit-text-fill-color: inherit;
+                background-clip: unset;
+                color: #3B82F6;
+            }
         }
 
         /* Image masking effect to simulate transparent background */
         .plumber-image-container {
             position: relative;
-            filter: drop-shadow(0 25px 50px rgba(59, 130, 246, 0.25));
+            /* Drop-shadow removed on mobile for better LCP - kept on desktop only */
+        }
+
+        /* Desktop only: Add drop shadow for visual depth */
+        @media (min-width: 1024px) {
+            .plumber-image-container {
+                filter: drop-shadow(0 25px 50px rgba(59, 130, 246, 0.25));
+            }
         }
 
         .plumber-image {
-            mix-blend-mode: multiply;
-            filter: contrast(1.1) brightness(1.05);
+            /* Filters removed - were causing render delays on mobile */
             position: relative;
             z-index: 2;
         }
 
-        /* Glow effect behind the image */
+        /* Desktop only: Add subtle contrast boost */
+        @media (min-width: 1024px) {
+            .plumber-image {
+                filter: contrast(1.05) brightness(1.02);
+            }
+        }
+
+        /* Glow effect behind the image - simplified on mobile */
         .image-glow {
             position: absolute;
             top: -10%;
@@ -1154,12 +1160,19 @@ const faqItems: FAQItem[] = [
             right: -10%;
             bottom: -10%;
             background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, rgba(25, 128, 114, 0.1) 50%, transparent 70%);
-            filter: blur(40px);
             z-index: 1;
-            animation: float 8s ease-in-out infinite;
+            /* Animation and blur disabled on mobile for performance */
         }
 
-        /* Floating badge */
+        /* Desktop only: Enable glow animation and blur */
+        @media (min-width: 1024px) {
+            .image-glow {
+                filter: blur(40px);
+                animation: float 8s ease-in-out infinite;
+            }
+        }
+
+        /* Floating badge - animations disabled on mobile */
         .floating-badge {
             position: absolute;
             top: -20px;
@@ -1169,17 +1182,38 @@ const faqItems: FAQItem[] = [
             padding: 12px 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             z-index: 10;
-            animation: float 6s ease-in-out infinite;
-            backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.95);
+            /* Animation disabled on mobile for better performance */
         }
 
-        /* Decorative circles */
+        /* Desktop only: Enable badge animation */
+        @media (min-width: 1024px) {
+            .floating-badge {
+                animation: float 6s ease-in-out infinite;
+                backdrop-filter: blur(10px);
+            }
+        }
+
+        /* Decorative circles - animations disabled on mobile */
         .decorative-circle {
             position: absolute;
             border-radius: 50%;
             background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(25, 128, 114, 0.1));
-            animation: float 10s ease-in-out infinite;
+            /* Animation disabled on mobile - enabled on desktop */
+        }
+
+        /* Desktop only: Enable decorative circle animations */
+        @media (min-width: 1024px) {
+            .decorative-circle {
+                animation: float 10s ease-in-out infinite;
+            }
+        }
+
+        /* Disable hover transform on mobile to prevent layout shifts */
+        @media (max-width: 1023px) {
+            .plumber-image {
+                transform: none !important;
+            }
         }
 
         /* Dropdown Menu Styles */
@@ -1240,13 +1274,14 @@ const faqItems: FAQItem[] = [
             z-index: 51;
         }
 
-        /* Commented out - floating blobs disabled (can be re-enabled if needed)
+        /* Animations */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
             100% { transform: translateY(0px); }
         }
 
+        /* Commented out - floating blobs disabled (can be re-enabled if needed)
         @keyframes blob {
             0% { transform: translate(0px, 0px) scale(1); }
             33% { transform: translate(30px, -50px) scale(1.1); }
@@ -1265,14 +1300,6 @@ const faqItems: FAQItem[] = [
 
         .animate-pulse-slow {
             animation: pulse 3s infinite;
-        }
-    </style>
-
-    <!-- Final override - loaded after everything else -->
-    <style>
-        h1, h1 span, h2, h2 span {
-            font-weight: 900 !important;
-            font-family: 'Poppins', sans-serif !important;
         }
     </style>
 

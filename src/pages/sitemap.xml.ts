@@ -59,7 +59,7 @@ function generateSitemapEntries(): SitemapEntry[] {
     const lastmod = getFileLastModified(filePath);
 
     entries.push({
-      url: `${SITE_URL}${BASE_PATH}${page.url}`,
+      url: `${SITE_URL}${BASE_PATH}${page.url}${page.url ? '/' : ''}`,
       lastmod,
       changefreq: page.changefreq,
       priority: page.priority
@@ -72,7 +72,7 @@ function generateSitemapEntries(): SitemapEntry[] {
     const lastmod = getFileLastModified(filePath);
 
     entries.push({
-      url: `${SITE_URL}${BASE_PATH}es/${page.url}`,
+      url: `${SITE_URL}${BASE_PATH}es/${page.url}${page.url ? '/' : ''}`,
       lastmod,
       changefreq: page.changefreq,
       priority: page.priority

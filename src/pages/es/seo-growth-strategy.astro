@@ -1,0 +1,846 @@
+---
+// 🎯 SEO & Growth Strategy Service Page (Spanish)
+// Purpose: Service-specific landing page for SEO and growth strategy services
+// Features: Service details, benefits, pricing, FAQ, conversion optimization
+
+import MainLayout from '../../layouts/MainLayout.astro';
+import Card from '../../components/ui/Card.astro';
+import Button from '../../components/ui/Button.astro';
+
+import {
+  generateServiceSchema,
+  generateFAQSchema,
+  type BreadcrumbItem,
+  type FAQItem
+} from '../../utils/seo.ts';
+import BroomIcon from '../../components/icons/BroomIcon.astro';
+import CarIcon from '../../components/icons/CarIcon.astro';
+import ChartBarIcon from '../../components/icons/ChartBarIcon.astro';
+import ChartLineIcon from '../../components/icons/ChartLineIcon.astro';
+import CheckCircleIcon from '../../components/icons/CheckCircleIcon.astro';
+import CheckIcon from '../../components/icons/CheckIcon.astro';
+import ChevronDownIcon from '../../components/icons/ChevronDownIcon.astro';
+import ClockIcon from '../../components/icons/ClockIcon.astro';
+import DollarIcon from '../../components/icons/DollarIcon.astro';
+import FileIcon from '../../components/icons/FileIcon.astro';
+import HammerIcon from '../../components/icons/HammerIcon.astro';
+import LeafIcon from '../../components/icons/LeafIcon.astro';
+import LinkIcon from '../../components/icons/LinkIcon.astro';
+import MapMarkerIcon from '../../components/icons/MapMarkerIcon.astro';
+import PawIcon from '../../components/icons/PawIcon.astro';
+import QuestionCircleIcon from '../../components/icons/QuestionCircleIcon.astro';
+import RocketIcon from '../../components/icons/RocketIcon.astro';
+import RouteIcon from '../../components/icons/RouteIcon.astro';
+import SearchIcon from '../../components/icons/SearchIcon.astro';
+import ToolsIcon from '../../components/icons/ToolsIcon.astro';
+import TrophyIcon from '../../components/icons/TrophyIcon.astro';
+
+// 🔍 SEO Configuration
+const pageTitle = 'SEO y Estrategia de Crecimiento — SEO Ético y Enfocado en Conversiones para Pequeñas Empresas';
+const pageDescription = 'SEO ético y enfocado en conversiones que atrae a los clientes correctos a tu sitio y convierte las visitas en clientes de pago. Reportes claros, resultados medibles.';
+const canonicalURL = `${import.meta.env.SITE}${import.meta.env.BASE_URL}es/seo-growth-strategy/`;
+
+// 🍞 Breadcrumb Navigation
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'Inicio', url: `${import.meta.env.BASE_URL}es/` },
+  { name: 'Servicios', url: `${import.meta.env.BASE_URL}es/#services` },
+  { name: 'SEO y Optimización Continua (Plan de Soporte)', url: `${import.meta.env.BASE_URL}es/seo-growth-strategy` }
+];
+
+// 📊 Service Schema Data
+const serviceSchema = generateServiceSchema({
+  name: 'SEO y Estrategia de Crecimiento',
+  description: 'Servicios profesionales de SEO enfocados en resultados comerciales. Investigación de palabras clave, correcciones técnicas, optimización de contenido e informes mensuales para un crecimiento sostenible.',
+  provider: 'Marketing AI Houston',
+  serviceType: 'SEO Services',
+  areaServed: 'United States',
+  priceRange: '$997-$1,997/month'
+});
+
+// ❓ FAQ Data
+const faqs: FAQItem[] = [
+  {
+    question: '¿Necesito un sitio web para comenzar con SEO?',
+    answer: 'No — el SEO ayuda más con un sitio, pero el SEO local y las mejoras de GBP pueden comenzar a generar llamadas primero.'
+  },
+  {
+    question: '¿Cuánto tiempo hasta que vea resultados?',
+    answer: 'Algunas mejoras técnicas y de página aparecen en semanas; el crecimiento completo y sostenido toma meses dependiendo de la competencia.'
+  },
+  {
+    question: '¿Hay contratos a largo plazo?',
+    answer: 'Ofrecemos paquetes mes a mes y proyectos con alcance definido; el trabajo a largo plazo se recomienda para un crecimiento sostenido.'
+  },
+  {
+    question: '¿Qué reportes recibiré?',
+    answer: 'Informes mensuales claros con tráfico, llamadas, rankings y los siguientes pasos prioritarios.'
+  },
+  {
+    question: '¿Trabajan con empresas fuera de Houston?',
+    answer: 'Sí — nuestros procesos son compatibles con trabajo remoto y atendemos clientes en todo el país.'
+  }
+];
+
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<MainLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalURL}
+  breadcrumbs={breadcrumbs}
+  structuredData={[serviceSchema, faqSchema]}
+  pageType="service"
+  currentPath="/es/seo-growth-strategy"
+  lang="es"
+>
+  <!-- 🎯 Hero Section -->
+  <section class="section-padding relative overflow-hidden">
+    <!-- 🎨 Background Elements -->
+    <!-- Commented out - floating blobs disabled (can be re-enabled if needed)
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-blue-600 to-teal-600 organic-blob animate-float"></div>
+      <div class="absolute bottom-20 right-20 w-72 h-72 bg-gradient-to-br from-teal-600 to-blue-300 organic-leaf animate-float animation-delay-400"></div>
+    </div>
+    -->
+
+    <div class="container mx-auto container-padding relative z-10">
+      <div class="text-center max-w-4xl mx-auto">
+        <!-- ⭐ Trust Signal -->
+        <div class="text-yellow-400 text-3xl mb-4">⭐⭐⭐⭐⭐</div>
+        <p class="text-gray-700 mb-8 font-medium">Confiado por Propietarios de Pequeñas Empresas en Todo el País</p>
+
+        <!-- 🎯 Main Headline -->
+        <h1 class="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 leading-tight mb-6">
+          <span class="text-gradient font-black block mb-4 leading-tight" style="padding-bottom: 0.25rem;">SEO y Estrategia de Crecimiento</span>
+        </h1>
+
+        <!-- 📝 Subheadline -->
+        <p class="text-xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
+          SEO ético y enfocado en conversiones que atrae a los clientes correctos a tu sitio y convierte las visitas en clientes de pago.
+        </p>
+
+        <!-- 🎯 Primary CTA -->
+        <Button
+          variant="primary"
+          size="lg"
+          href={`${import.meta.env.BASE_URL}es/contact#contact-options`}
+          class="mb-6"
+        >
+          👉 Reserva tu Llamada Gratis
+        </Button>
+
+        <!-- 💬 Supporting Text -->
+        <p class="text-gray-700 mb-16">Sin jerga, solo un plan claro: palabras clave, correcciones técnicas y contenido que convierte.</p>
+
+        <!-- 📊 Key Metrics -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <Card class="text-center" padding="lg">
+            <div class="text-4xl mb-3">🔍</div>
+            <div class="text-gray-900 font-bold">Planes de palabras clave vinculados a objetivos comerciales</div>
+          </Card>
+
+          <Card class="text-center" padding="lg">
+            <div class="text-4xl mb-3">📊</div>
+            <div class="text-gray-900 font-bold">Reportes mensuales claros y logros medibles</div>
+          </Card>
+
+          <Card class="text-center" padding="lg">
+            <div class="text-4xl mb-3">⚙️</div>
+            <div class="text-gray-900 font-bold">Correcciones técnicas que aceleran tu sitio y rankings</div>
+          </Card>
+        </div>
+
+        <!-- 🏢 Industry Icons -->
+        <div class="mt-16 flex flex-wrap justify-center gap-8">
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <HammerIcon class="text-2xl text-gray-900" aria-hidden="true" />
+            </div>
+            <span class="text-gray-700 font-medium">Contratistas</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <CarIcon class="text-2xl text-gray-900" aria-hidden="true" />
+            </div>
+            <span class="text-gray-700 font-medium">Talleres Automotrices</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <BroomIcon class="text-2xl text-gray-900" aria-hidden="true" />
+            </div>
+            <span class="text-gray-700 font-medium">Limpieza</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <LeafIcon class="text-2xl text-gray-900" aria-hidden="true" />
+            </div>
+            <span class="text-gray-700 font-medium">Jardinería</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg mb-3">
+              <PawIcon class="text-2xl text-gray-900" aria-hidden="true" />
+            </div>
+            <span class="text-gray-700 font-medium">Servicios para Mascotas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📋 What's Included Section -->
+  <section class="section-padding relative overflow-hidden bg-gradient-to-br from-gray-50 to-white">
+    <div class="container mx-auto container-padding">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <CheckCircleIcon class="mr-2 text-blue-600" aria-hidden="true" />
+          Qué Está Incluido
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Qué Está Incluido en Tu Paquete de SEO</span>
+        </h2>
+        <p class="text-xl text-gray-700 max-w-3xl mx-auto">Todo lo que necesitas para ser encontrado, ganar confianza y crecer tráfico local predecible.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <SearchIcon class="text-2xl text-blue-600" aria-hidden="true" />
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Investigación y Estrategia de Palabras Clave</h3>
+            <p class="text-gray-700">Dirigidas a frases con intención de compra que generan llamadas y reservas.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <ToolsIcon class="text-2xl text-blue-600" aria-hidden="true" />
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Auditoría y Correcciones de SEO Técnico</h3>
+            <p class="text-gray-700">Problemas de rastreo, indexación, velocidad y móvil resueltos.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <FileIcon class="text-2xl text-blue-600" aria-hidden="true" />
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Optimización y Creación de Contenido</h3>
+            <p class="text-gray-700">Páginas reescritas o creadas para coincidir con la intención de búsqueda y convertir.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <MapMarkerIcon class="text-2xl text-blue-600" aria-hidden="true" />
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">SEO Local y Alineación de GBP</h3>
+            <p class="text-gray-700">Páginas de destino locales, citas y sincronización con Google Business Profile.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <ChartLineIcon class="text-2xl text-blue-600" aria-hidden="true" />
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Reportes Mensuales y Ajustes</h3>
+            <p class="text-gray-700">Métricas claras, logros y hojas de ruta de próximos pasos.</p>
+          </div>
+        </Card>
+
+        <Card class="flex items-start space-x-4" padding="lg">
+          <div class="flex-shrink-0">
+            <LinkIcon class="text-2xl text-blue-600" aria-hidden="true" />
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Trabajo de Enlaces y Autoridad (Ético)</h3>
+            <p class="text-gray-700">Alcance enfocado y promoción de contenido, sin tácticas black-hat.</p>
+          </div>
+        </Card>
+      </div>
+
+      <p class="text-center text-lg text-gray-600 italic mt-12">
+        👉 Mejor para propietarios que desean crecimiento medible y repetible sin trucos.
+      </p>
+    </div>
+  </section>
+
+  <!-- 💎 Benefits Section -->
+  <section class="section-padding relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-teal-600 rounded-full filter blur-3xl"></div>
+    </div>
+
+    <div class="container mx-auto container-padding relative z-10">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <TrophyIcon class="mr-2 text-teal-600" aria-hidden="true" />
+          Los Beneficios
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Por Qué las Pequeñas Empresas Eligen Esta Estrategia</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <Card class="text-center" padding="xl">
+          <div class="text-5xl mb-4">📊</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Más Tráfico Calificado</h3>
+          <p class="text-gray-700">Visitantes que están buscando activamente tus servicios.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="text-5xl mb-4">📞</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Más Llamadas y Leads</h3>
+          <p class="text-gray-700">Páginas diseñadas para fomentar el contacto y las reservas.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="text-5xl mb-4">⚡</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Indexación Más Rápida y Logros</h3>
+          <p class="text-gray-700">Trabajo técnico y de página que conduce a mejoras tempranas.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="text-5xl mb-4">✨</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Crecimiento Sostenible</h3>
+          <p class="text-gray-700">Estrategias construidas para escalar sin atajos riesgosos.</p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- 💡 Why It Works Section -->
+  <section class="section-padding bg-gradient-to-br from-blue-50 to-white">
+    <div class="container mx-auto container-padding">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="heading-lg mb-8">
+          <span class="text-gradient">SEO Construido Alrededor de Resultados Comerciales</span>
+        </h2>
+        <div class="text-xl text-gray-800 leading-relaxed space-y-6">
+          <p>
+            Muchas agencias se enfocan en rankings; nosotros nos enfocamos en clientes. Nuestro proceso vincula objetivos de palabras clave con servicios, mapea visibilidad y puntos de conversión para que tu inversión en SEO entregue leads reales.
+          </p>
+          <p>
+            Combinamos correcciones técnicas, contenido que responde a la intención del comprador y un enfoque local primero para ayudar a tu negocio a crecer de manera predecible.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🛤️ How It Works Section -->
+  <section class="section-padding relative overflow-hidden">
+    <!-- Commented out - floating blobs disabled (can be re-enabled if needed)
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-blue-600 to-teal-600 organic-droplet animate-float"></div>
+    </div>
+    -->
+
+    <div class="container mx-auto container-padding relative z-10">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <RouteIcon class="mr-2 text-blue-600" aria-hidden="true" />
+          Proceso Simple
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Comenzar Es Simple</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <Card class="text-center" padding="xl">
+          <div class="w-20 h-20 rounded-full gradient-ocean-teal flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <span class="text-white text-2xl font-bold">1</span>
+          </div>
+          <div class="text-5xl mb-4">💬</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-4">Llamada de Descubrimiento</h3>
+          <p class="text-gray-700">Mapeamos tus objetivos, geografía y servicios principales.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="w-20 h-20 rounded-full gradient-ocean-teal flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <span class="text-white text-2xl font-bold">2</span>
+          </div>
+          <div class="text-5xl mb-4">🔎</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-4">Auditoría y Construcción de Estrategia</h3>
+          <p class="text-gray-700">Plan técnico, de contenido y de palabras clave con cronogramas.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="w-20 h-20 rounded-full gradient-ocean-teal flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <span class="text-white text-2xl font-bold">3</span>
+          </div>
+          <div class="text-5xl mb-4">🛠️</div>
+          <h3 class="text-xl md:text-2xl font-bold text-blue-900 mb-4 break-words">Implementación y Pruebas</h3>
+          <p class="text-gray-700">Correcciones, actualizaciones de páginas y configuración de seguimiento.</p>
+        </Card>
+
+        <Card class="text-center" padding="xl">
+          <div class="w-20 h-20 rounded-full gradient-ocean-teal flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <span class="text-white text-2xl font-bold">4</span>
+          </div>
+          <div class="text-5xl mb-4">📈</div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-4">Ciclo de Crecimiento Mensual</h3>
+          <p class="text-gray-700">Reportes, pruebas y mejoras priorizadas.</p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📊 Results & Expectations Section -->
+  <section class="section-padding bg-gradient-to-br from-gray-50 to-white">
+    <div class="container mx-auto container-padding">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <ChartBarIcon class="mr-2 text-teal-600" aria-hidden="true" />
+          Qué Esperar
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Qué Puedes Esperar</span>
+        </h2>
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <Card padding="lg">
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0">
+                <ClockIcon class="text-3xl text-blue-600" aria-hidden="true" />
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-blue-900 mb-2">Cronograma</h3>
+                <p class="text-gray-700">Auditoría + estrategia en 7–14 días; mejoras visibles en 4–12 semanas dependiendo de la competencia.</p>
+              </div>
+            </div>
+          </Card>
+
+          <Card padding="lg">
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0">
+                <TrophyIcon class="text-3xl text-blue-600" aria-hidden="true" />
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-blue-900 mb-2">Logros Tempranos</h3>
+                <p class="text-gray-700">Correcciones técnicas, mejoras de metadatos y actualizaciones de contenido priorizadas.</p>
+              </div>
+            </div>
+          </Card>
+
+          <Card padding="lg">
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0">
+                <ChartLineIcon class="text-3xl text-blue-600" aria-hidden="true" />
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-blue-900 mb-2">Resultados Continuos</h3>
+                <p class="text-gray-700">Aumento constante de tráfico, leads de mejor calidad y ROI más claro.</p>
+              </div>
+            </div>
+          </Card>
+
+          <Card padding="lg">
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0">
+                <RocketIcon class="text-3xl text-blue-600" aria-hidden="true" />
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-blue-900 mb-2">Ejemplo de Resultado</h3>
+                <p class="text-gray-700">Local HVAC company — 35% increase in organic calls in 90 days after audit + targeted content.</p>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 💰 Pricing Section -->
+  <section class="section-padding relative overflow-hidden">
+    <div class="container mx-auto container-padding">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <DollarIcon class="mr-2 text-teal-600" aria-hidden="true" />
+          Precios Transparentes
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Paquetes Mensuales Transparentes</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Starter SEO -->
+        <Card variant="pricing" class="text-center transform hover:scale-105 transition-transform duration-300">
+          <div class="p-8">
+            <div class="text-6xl mb-6">🌱</div>
+            <h3 class="text-3xl font-bold text-blue-900 mb-4">SEO Inicial</h3>
+
+            <div class="text-5xl font-black text-blue-900 mb-2">$997</div>
+            <p class="text-gray-600 mb-6">/mes</p>
+
+            <div class="text-left space-y-4 mb-8">
+              <div class="flex items-start">
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
+                <span>Auditoría técnica y correcciones priorizadas (una vez)</span>
+              </div>
+              <div class="flex items-start">
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
+                <span>1 página de destino local optimizada por mes</span>
+              </div>
+              <div class="flex items-start">
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
+                <span>Reportes mensuales y llamada de estrategia</span>
+              </div>
+            </div>
+
+            <Button
+              variant="primary"
+              size="lg"
+              href={`${import.meta.env.BASE_URL}es/contact#contact-options`}
+              fullWidth
+            >
+              Reserva tu Llamada Gratis
+            </Button>
+          </div>
+        </Card>
+
+        <!-- Growth SEO -->
+        <Card variant="pricing" class="text-center transform hover:scale-105 transition-transform duration-300 relative">
+          <div class="absolute top-4 right-4 bg-gradient-to-r from-blue-600 to-teal-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+            MÁS POPULAR
+          </div>
+          <div class="p-8">
+            <div class="text-6xl mb-6">🚀</div>
+            <h3 class="text-3xl font-bold text-blue-900 mb-4">SEO de Crecimiento</h3>
+
+            <div class="text-5xl font-black text-blue-900 mb-2">$1,997</div>
+            <p class="text-gray-600 mb-6">/mes</p>
+
+            <div class="text-left space-y-4 mb-8">
+              <div class="flex items-start">
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
+                <span>Todo en Inicial, más:</span>
+              </div>
+              <div class="flex items-start">
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
+                <span>2–3 optimizaciones de contenido o nuevas páginas por mes</span>
+              </div>
+              <div class="flex items-start">
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
+                <span>Páginas de destino locales y gestión de citas</span>
+              </div>
+              <div class="flex items-start">
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
+                <span>Análisis trimestral de competidores</span>
+              </div>
+            </div>
+
+            <Button
+              variant="primary"
+              size="lg"
+              href={`${import.meta.env.BASE_URL}es/contact#contact-options`}
+              fullWidth
+            >
+              Reserva tu Llamada Gratis
+            </Button>
+          </div>
+        </Card>
+
+        <!-- Pro SEO -->
+        <Card variant="pricing" class="text-center transform hover:scale-105 transition-transform duration-300">
+          <div class="p-8">
+            <div class="text-6xl mb-6">⚡</div>
+            <h3 class="text-3xl font-bold text-blue-900 mb-4">SEO Pro</h3>
+
+            <div class="text-4xl md:text-5xl font-black text-blue-900 mb-2 break-words">Personalizado</div>
+            <p class="text-gray-600 mb-6">precios</p>
+
+            <div class="text-left space-y-4 mb-8">
+              <div class="flex items-start">
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
+                <span>Programa de contenido completo</span>
+              </div>
+              <div class="flex items-start">
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
+                <span>Alcance agresivo</span>
+              </div>
+              <div class="flex items-start">
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
+                <span>Experimentos de conversión</span>
+              </div>
+              <div class="flex items-start">
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
+                <span>Estratega dedicado</span>
+              </div>
+              <div class="flex items-start">
+                <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
+                <span>Hoja de ruta de 90 días y revisiones mensuales</span>
+              </div>
+            </div>
+
+            <Button
+              variant="primary"
+              size="lg"
+              href={`${import.meta.env.BASE_URL}es/contact#contact-options`}
+              fullWidth
+            >
+              Reserva tu Llamada Gratis
+            </Button>
+          </div>
+        </Card>
+      </div>
+
+      <p class="text-center text-gray-600 mt-8">
+        Planes personalizados disponibles para empresas con múltiples ubicaciones.
+      </p>
+    </div>
+  </section>
+
+  <!-- ❓ FAQ Section -->
+  <section class="section-padding bg-gradient-to-br from-gray-50 to-white">
+    <div class="container mx-auto container-padding">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <QuestionCircleIcon class="mr-2 text-teal-600" aria-hidden="true" />
+          Preguntas
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Preguntas Frecuentes</span>
+        </h2>
+        <p class="text-xl text-gray-700 max-w-2xl mx-auto">Respuestas directas — sin jerga, sin letra pequeña oculta.</p>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-4">
+        {faqs.map((faq, index) => (
+          <Card class="overflow-hidden" key={index}>
+            <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <button class="accordion-trigger w-full text-left p-6 hover:bg-blue-50/30 focus:outline-none flex justify-between items-center">
+                <span class="font-bold text-blue-900 flex items-center">
+                  <span class="mr-3 text-2xl">
+                    {index === 0 ? '🌐' : index === 1 ? '⏱️' : index === 2 ? '📋' : index === 3 ? '📊' : '🌍'}
+                  </span>
+                  <span itemprop="name">{faq.question}</span>
+                </span>
+                <ChevronDownIcon class="text-blue-600 transition-transform duration-300" aria-hidden="true" />
+              </button>
+              <div class="accordion-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <div class="p-6 pt-0 text-gray-700" itemprop="text">
+                  {faq.answer}
+                </div>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 🎯 Final CTA Section -->
+  <section class="section-padding bg-gradient-to-br from-blue-900 to-blue-600 text-white">
+    <div class="container mx-auto container-padding text-center">
+      <h2 class="text-4xl md:text-5xl font-black mb-6">
+        ¿Listo para Crecer con SEO Predecible?
+      </h2>
+      <p class="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
+        Agenda una llamada de descubrimiento gratuita y te mostraremos la hoja de ruta de los primeros 90 días.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <Button
+          variant="secondary"
+          size="lg"
+          href={`${import.meta.env.BASE_URL}es/contact#contact-options`}
+        >
+          👉 Reserva tu Llamada Gratis
+        </Button>
+
+        <Button
+          variant="outline"
+          size="lg"
+          href={`${import.meta.env.BASE_URL}es/contact#contact-form`}
+          class="border-white text-white hover:bg-white hover:text-blue-900"
+        >
+          📩 Solicita tu Propuesta
+        </Button>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  /* Define CSS custom properties for colors */
+  :root {
+    --color-ocean-deep: #0A2540;
+    --color-ocean-deeper: #020617;
+    --color-ocean-blue: #3B82F6;
+    --color-ocean-light: #60A5FA;
+    --color-ocean-teal: #198072;
+    --color-ocean-teal-dark: #14B8A6;
+    --color-ocean-sky: #BFDBFE;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  p, a, span, li {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Force maximum boldness for headers */
+  h1, h1 *, h1 span {
+    font-weight: 900 !important;
+    font-family: 'Poppins', sans-serif !important;
+  }
+
+  h2, h2 *, h2 span {
+    font-weight: 900 !important;
+    font-family: 'Poppins', sans-serif !important;
+  }
+
+  /* Layout utilities */
+  .section-padding {
+    padding: 5rem 0;
+  }
+
+  .container-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Typography utilities */
+  .heading-xl {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.1;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .heading-lg {
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1.2;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  @media (min-width: 768px) {
+    .section-padding {
+      padding: 6rem 0;
+    }
+
+    .heading-xl {
+      font-size: 4rem;
+    }
+
+    .heading-lg {
+      font-size: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-padding {
+      padding: 8rem 0;
+    }
+
+    .heading-xl {
+      font-size: 5rem;
+    }
+
+    .heading-lg {
+      font-size: 4rem;
+    }
+  }
+
+  /* Organic shapes */
+  /* Commented out - floating blobs disabled (can be re-enabled if needed)
+  .organic-blob {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+
+  .organic-droplet {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+
+  .organic-leaf {
+    border-radius: 20% 80% 20% 80% / 80% 20% 80% 20%;
+  }
+  */
+
+  /* Gradients */
+  .gradient-ocean-teal {
+    background: linear-gradient(135deg, var(--color-ocean-blue), var(--color-ocean-teal));
+  }
+
+  /* Animations */
+  .animation-delay-200 { animation-delay: 0.2s; }
+  .animation-delay-400 { animation-delay: 0.4s; }
+  .animation-delay-600 { animation-delay: 0.6s; }
+  .animation-delay-800 { animation-delay: 0.8s; }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+  }
+
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  /* 🎯 Service Page Specific Styles */
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .accordion-open .accordion-content {
+    max-height: 200px;
+    transition: max-height 0.5s ease-in;
+  }
+
+  /* 🎨 Enhanced hover effects */
+  .card-glass:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  /* 🎯 Gradient text animation */
+  .text-gradient {
+    background: linear-gradient(135deg, #3b82f6, #14b8a6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-weight: 900 !important;
+  }
+
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+</style>
+
+<!-- 🎯 Service Page Interactions (CSP-compliant, deferred) -->
+<script defer src={`${import.meta.env.BASE_URL}js/service-page.js`}></script>

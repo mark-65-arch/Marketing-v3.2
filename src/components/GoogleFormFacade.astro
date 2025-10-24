@@ -22,12 +22,40 @@ interface Props {
   formUrl: string;
   formHeight?: string;
   formTitle?: string;
+  // i18n props for internationalization
+  headline?: string;
+  description?: string;
+  benefitIcon1?: string;
+  benefitText1?: string;
+  benefitIcon2?: string;
+  benefitText2?: string;
+  benefitIcon3?: string;
+  benefitText3?: string;
+  buttonIcon?: string;
+  buttonText?: string;
+  trustBadge1?: string;
+  trustBadge2?: string;
+  trustBadge3?: string;
 }
 
 const {
   formUrl,
   formHeight = "2349",
-  formTitle = "Contact Form"
+  formTitle = "Contact Form",
+  // Default to English translations
+  headline = "Ready to Connect?",
+  description = "Click below to load our quick contact form.",
+  benefitIcon1 = "⚡",
+  benefitText1 = "Takes only 2 minutes",
+  benefitIcon2 = "📧",
+  benefitText2 = "Reply within 1 business day",
+  benefitIcon3 = "🔒",
+  benefitText3 = "Your info stays private",
+  buttonIcon = "📋",
+  buttonText = "Load Contact Form",
+  trustBadge1 = "🔒 Secure",
+  trustBadge2 = "⚡ Fast Response",
+  trustBadge3 = "✓ No Spam"
 } = Astro.props;
 ---
 
@@ -45,40 +73,40 @@ const {
       <div class="form-icon">📝</div>
 
       <!-- Headline -->
-      <h3 class="form-facade-headline">Ready to Connect?</h3>
+      <h3 class="form-facade-headline">{headline}</h3>
 
       <!-- Description -->
       <p class="form-facade-description">
-        Click below to load our quick contact form.
+        {description}
       </p>
 
       <!-- Benefits List -->
       <div class="form-benefits">
         <div class="benefit-item">
-          <span class="benefit-icon">⚡</span>
-          <span class="benefit-text">Takes only 2 minutes</span>
+          <span class="benefit-icon">{benefitIcon1}</span>
+          <span class="benefit-text">{benefitText1}</span>
         </div>
         <div class="benefit-item">
-          <span class="benefit-icon">📧</span>
-          <span class="benefit-text">Reply within 1 business day</span>
+          <span class="benefit-icon">{benefitIcon2}</span>
+          <span class="benefit-text">{benefitText2}</span>
         </div>
         <div class="benefit-item">
-          <span class="benefit-icon">🔒</span>
-          <span class="benefit-text">Your info stays private</span>
+          <span class="benefit-icon">{benefitIcon3}</span>
+          <span class="benefit-text">{benefitText3}</span>
         </div>
       </div>
 
       <!-- Load Form Button -->
       <button id="load-form-btn" class="load-form-button">
-        <span class="button-icon">📋</span>
-        Load Contact Form
+        <span class="button-icon">{buttonIcon}</span>
+        {buttonText}
       </button>
 
       <!-- Trust indicators -->
       <div class="trust-badges">
-        <span class="trust-badge">🔒 Secure</span>
-        <span class="trust-badge">⚡ Fast Response</span>
-        <span class="trust-badge">✓ No Spam</span>
+        <span class="trust-badge">{trustBadge1}</span>
+        <span class="trust-badge">{trustBadge2}</span>
+        <span class="trust-badge">{trustBadge3}</span>
       </div>
     </div>
   </div>

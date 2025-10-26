@@ -6,6 +6,15 @@
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import ChevronDownIcon from './icons/ChevronDownIcon.astro';
 import BarsIcon from './icons/BarsIcon.astro';
+import HomeIcon from './icons/HomeIcon.astro';
+import ListIcon from './icons/ListIcon.astro';
+import DollarIcon from './icons/DollarIcon.astro';
+import InfoCircleIcon from './icons/InfoCircleIcon.astro';
+import EnvelopeIcon from './icons/EnvelopeIcon.astro';
+import ChartLineIcon from './icons/ChartLineIcon.astro';
+import GlobeIcon from './icons/GlobeIcon.astro';
+import RocketIcon from './icons/RocketIcon.astro';
+import ChartBarIcon from './icons/ChartBarIcon.astro';
 
 interface Props {
   currentPath?: string;
@@ -223,66 +232,88 @@ if (cleanPath === 'seo-growth-strategy') {
     <!-- 📱 Mobile Navigation Menu -->
     <nav
       id="global-nav-mobile-menu"
-      class="global-nav-mobile-menu mt-4 pb-4 border-t border-gray-200 hidden"
+      class="global-nav-mobile-menu mt-4 pb-4 hidden"
       role="navigation"
       aria-label="Mobile navigation"
       aria-hidden="true"
     >
-      <div class="flex flex-col space-y-3 pt-4">
-        {navItems.map(item => (
-          item.dropdown ? (
-            <!-- 📋 Mobile Services Section (Collapsible) -->
+      <div class="flex flex-col space-y-2 pt-2 px-2">
+        {navItems.map((item, index) => {
+          // Map items to their icons
+          const iconMap: { [key: number]: any } = {
+            0: HomeIcon,      // Home
+            1: ListIcon,      // Services
+            2: DollarIcon,    // Pricing
+            3: InfoCircleIcon, // About
+            4: EnvelopeIcon   // Contact
+          };
+          const IconComponent = iconMap[index];
+
+          return item.dropdown ? (
+            <!-- 📋 Mobile Services Section (Collapsible) with Enhanced Styling -->
             <div class="mobile-dropdown">
               <button
-                class="mobile-dropdown-toggle w-full py-2 font-medium text-gray-900 border-b border-gray-200 mb-2 flex items-center justify-between hover:text-blue-600 focus:text-blue-600 transition-colors duration-200"
+                class="mobile-dropdown-toggle w-full py-3 px-4 font-medium text-gray-900 rounded-lg mb-2 flex items-center justify-between hover:bg-blue-50/80 focus:bg-blue-50/80 active:bg-blue-100/60 transition-all duration-200 group"
                 aria-expanded="false"
                 aria-haspopup="true"
                 type="button"
               >
-                {item.label}
-                <svg class="mobile-dropdown-chevron w-4 h-4 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <span class="flex items-center gap-3">
+                  {IconComponent && <IconComponent class="w-5 h-5 text-teal-600 group-hover:text-teal-700 transition-colors" />}
+                  {item.label}
+                </span>
+                <svg class="mobile-dropdown-chevron w-5 h-5 text-teal-600 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
               </button>
-              <div class="mobile-dropdown-menu pl-4 space-y-2 mb-2">
-                {item.dropdown.map(dropdownItem => (
-                  <a
-                    href={dropdownItem.href}
-                    class="block py-2 font-medium text-gray-600 hover:text-blue-600 focus:text-blue-600 transition-colors duration-200"
-                    tabindex="-1"
-                  >
-                    {dropdownItem.label}
-                  </a>
-                ))}
+              <div class="mobile-dropdown-menu pl-2 space-y-2 mb-2 rounded-lg bg-blue-50/30 p-3">
+                {item.dropdown.map((dropdownItem, dropdownIndex) => {
+                  // Icons for service items
+                  const serviceIcons = [ChartLineIcon, GlobeIcon, RocketIcon, ChartBarIcon];
+                  const ServiceIcon = serviceIcons[dropdownIndex] || ChartLineIcon;
+                  return (
+                    <a
+                      href={dropdownItem.href}
+                      class="flex items-center gap-3 py-2 px-3 font-medium text-gray-700 hover:text-teal-600 hover:bg-white/70 focus:text-teal-600 focus:bg-white/70 rounded-lg transition-all duration-200"
+                      tabindex="-1"
+                    >
+                      <ServiceIcon class="w-4 h-4 text-teal-500 flex-shrink-0" />
+                      <span>{dropdownItem.label}</span>
+                    </a>
+                  );
+                })}
               </div>
             </div>
           ) : (
-            <!-- 🔗 Regular Mobile Link -->
+            <!-- 🔗 Regular Mobile Link with Icon -->
             <a
               href={item.href}
-              class={`py-2 font-medium transition-colors duration-200 hover:text-blue-600 focus:text-blue-600 ${
-                item.active ? 'text-blue-600' : 'text-gray-700'
+              class={`flex items-center gap-3 py-3 px-4 font-medium rounded-lg transition-all duration-200 ${
+                item.active
+                  ? 'text-teal-600 bg-teal-50/80 font-semibold'
+                  : 'text-gray-700 hover:bg-teal-50/80 active:bg-teal-100/60'
               }`}
               {...(item.active && { 'aria-current': 'page' })}
               tabindex="-1"
             >
+              {IconComponent && <IconComponent class={`w-5 h-5 flex-shrink-0 ${item.active ? 'text-teal-600' : 'text-teal-600'}`} />}
               {item.label}
             </a>
-          )
-        ))}
+          );
+        })}
 
         <!-- 🌐 Mobile Language Switcher -->
-        <div class="border-t border-gray-200 pt-3 mt-3">
-          <div class="mb-3 font-medium text-gray-900 text-sm">{isSpanish ? 'Idioma' : 'Language'}</div>
-          <div class="flex gap-2">
+        <div class="border-t border-blue-100/50 pt-4 mt-4">
+          <div class="mb-3 font-medium text-gray-900 text-sm px-2">{isSpanish ? 'Idioma' : 'Language'}</div>
+          <div class="flex gap-2 px-2">
             <a
               href={englishUrl}
               lang="en"
               hreflang="en"
-              class={`flex-1 py-2 px-3 rounded-lg text-center text-sm font-medium transition-colors duration-200 ${
+              class={`flex-1 py-2.5 px-3 rounded-lg text-center text-sm font-medium transition-all duration-200 ${
                 !isSpanish
-                  ? 'bg-gradient-to-r from-blue-600 to-teal-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-gradient-to-r from-blue-600 to-teal-600 text-white shadow-md'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 active:bg-gray-300'
               }`}
               tabindex="-1"
             >
@@ -292,10 +323,10 @@ if (cleanPath === 'seo-growth-strategy') {
               href={spanishUrl}
               lang="es"
               hreflang="es"
-              class={`flex-1 py-2 px-3 rounded-lg text-center text-sm font-medium transition-colors duration-200 ${
+              class={`flex-1 py-2.5 px-3 rounded-lg text-center text-sm font-medium transition-all duration-200 ${
                 isSpanish
-                  ? 'bg-gradient-to-r from-blue-600 to-teal-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-gradient-to-r from-blue-600 to-teal-600 text-white shadow-md'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 active:bg-gray-300'
               }`}
               tabindex="-1"
             >
@@ -349,18 +380,23 @@ if (cleanPath === 'seo-growth-strategy') {
     white-space: normal;
   }
 
-  /* 📱 Mobile menu animation */
+  /* 📱 Mobile menu animation with enhanced styling */
   .global-nav-mobile-menu {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out, background-color 0.3s ease-out;
     opacity: 0;
+    background: transparent;
+    border-top: 1px solid transparent;
   }
 
   .global-nav-mobile-menu.active {
     max-height: 700px;
     opacity: 1;
     display: block;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(240, 249, 255, 0.5));
+    border-top: 1px solid rgba(191, 219, 254, 0.3);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
   }
 
   /* 🎯 Smooth header backdrop blur */
@@ -428,17 +464,19 @@ if (cleanPath === 'seo-growth-strategy') {
     z-index: 51;
   }
 
-  /* 📱 Mobile Services Dropdown (Collapsible Accordion) */
+  /* 📱 Mobile Services Dropdown (Collapsible Accordion) with Enhanced Styling */
   .mobile-dropdown-menu {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out, margin-bottom 0.3s ease-out;
+    transition: max-height 0.3s ease-out, margin-bottom 0.3s ease-out, opacity 0.3s ease-out;
     margin-bottom: 0;
+    opacity: 0;
   }
 
   .mobile-dropdown-menu.active {
     max-height: 500px;
     margin-bottom: 0.5rem;
+    opacity: 1;
   }
 
   .mobile-dropdown-chevron {
@@ -448,5 +486,18 @@ if (cleanPath === 'seo-growth-strategy') {
 
   .mobile-dropdown.active .mobile-dropdown-chevron {
     transform: rotate(180deg);
+  }
+
+  /* Enhance mobile dropdown menu items on hover */
+  .mobile-dropdown-menu a {
+    border-left: 3px solid transparent;
+    padding-left: calc(0.75rem - 3px);
+    transition: all 0.2s ease-out;
+  }
+
+  .mobile-dropdown-menu a:hover,
+  .mobile-dropdown-menu a:focus {
+    border-left-color: rgb(59, 130, 246);
+    padding-left: 0.75rem;
   }
 </style>

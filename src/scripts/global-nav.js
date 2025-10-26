@@ -105,32 +105,29 @@
     initMobileDropdowns();
   }
 
-  // Mobile Dropdown Toggle Functionality - Using Event Delegation
+  // Mobile Dropdown Toggle Functionality
   function initMobileDropdowns() {
     const mobileMenu = document.getElementById('global-nav-mobile-menu');
     if (!mobileMenu) return;
 
-    // Use event delegation to handle dropdown toggles
-    mobileMenu.addEventListener('click', function(e) {
-      // Find the closest toggle button
-      const toggle = e.target.closest('.mobile-dropdown-toggle');
-      if (!toggle) return;
+    // Attach click handlers directly to each toggle button
+    const dropdownToggles = mobileMenu.querySelectorAll('.mobile-dropdown-toggle');
 
-      e.preventDefault();
-      e.stopPropagation();
+    dropdownToggles.forEach(function(toggle) {
+      toggle.addEventListener('click', function(e) {
+        const dropdownContainer = toggle.closest('.mobile-dropdown');
+        const dropdownMenu = dropdownContainer.querySelector('.mobile-dropdown-menu');
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
 
-      const dropdownContainer = toggle.closest('.mobile-dropdown');
-      const dropdownMenu = dropdownContainer.querySelector('.mobile-dropdown-menu');
-      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        // Toggle state
+        toggle.setAttribute('aria-expanded', String(!isExpanded));
 
-      // Toggle state
-      toggle.setAttribute('aria-expanded', String(!isExpanded));
-
-      if (!isExpanded) {
-        dropdownMenu.classList.add('active');
-      } else {
-        dropdownMenu.classList.remove('active');
-      }
+        if (!isExpanded) {
+          dropdownMenu.classList.add('active');
+        } else {
+          dropdownMenu.classList.remove('active');
+        }
+      });
     });
   }
 

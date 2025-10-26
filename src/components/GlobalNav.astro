@@ -109,22 +109,11 @@ if (cleanPath === 'seo-growth-strategy') {
 <!-- 🧭 Global Navigation Header -->
 <header class="sticky top-0 z-50 backdrop-blur-lg bg-white/90 border-b border-white/20 shadow-sm" role="banner" data-nav="global">
   <div class="container mx-auto px-3 sm:px-4 py-4">
-    <!-- 📱 Mobile Layout: Hamburger (left) - Logo (center) - CTA (right) -->
-    <!-- 🖥️ Desktop Layout: Logo (left) - Nav (center) - CTA + Language (right) -->
+    <!-- 📱 Mobile Layout: Logo (left) - Hamburger + CTA (right) -->
+    <!-- 🖥️ Desktop Layout: Logo (left) - Nav (center) - Language + CTA (right) -->
     <div class="flex justify-between items-center md:gap-8">
 
-      <!-- 📱 Mobile Menu Toggle (Left - Mobile Only) -->
-      <button
-        id="global-nav-mobile-menu-button"
-        class="md:hidden p-1.5 rounded-lg text-blue-900 hover:bg-blue-50 focus:bg-blue-50 transition-colors duration-200 order-1"
-        aria-expanded="false"
-        aria-controls="global-nav-mobile-menu"
-        aria-label="Toggle main menu"
-      >
-        <BarsIcon class="text-xl" />
-      </button>
-
-      <!-- 🏠 Brand Logo (Center on Mobile, Left on Desktop) -->
+      <!-- 🏠 Brand Logo (Left on Mobile and Desktop) -->
       <!-- Original icon (if you want to revert):
       <div class="w-10 h-10 bg-gradient-to-br from-blue-900 to-blue-600 rounded-full flex items-center justify-center mr-3 shadow-md">
         <RobotIcon class="text-white text-lg" />
@@ -132,7 +121,7 @@ if (cleanPath === 'seo-growth-strategy') {
       -->
       <a
         href={import.meta.env.BASE_URL}
-        class="flex items-center hover:opacity-80 transition-opacity md:order-1 order-2"
+        class="flex items-center hover:opacity-80 transition-opacity md:order-1 order-1"
         aria-label="Marketing AI Houston - Home"
       >
         <img
@@ -200,12 +189,23 @@ if (cleanPath === 'seo-growth-strategy') {
         ))}
       </nav>
 
-      <!-- 🎯 CTA, Language Switcher (Right) -->
+      <!-- 🎯 Hamburger Menu + CTA, Language Switcher (Right on Mobile and Desktop) -->
       <div class="flex items-center gap-2 md:gap-3 md:order-3 order-3">
         <!-- 🌐 Language Switcher (Desktop only) -->
         <div class="hidden md:block">
           <LanguageSwitcher currentPath={currentPath} currentLang={currentLang} />
         </div>
+
+        <!-- 📱 Mobile Menu Toggle (Mobile Only) -->
+        <button
+          id="global-nav-mobile-menu-button"
+          class="md:hidden p-1.5 rounded-lg text-blue-900 hover:bg-blue-50 focus:bg-blue-50 transition-colors duration-200"
+          aria-expanded="false"
+          aria-controls="global-nav-mobile-menu"
+          aria-label="Toggle main menu"
+        >
+          <BarsIcon class="w-6 h-6" />
+        </button>
 
         {showContactCTA && (
           <!-- 📞 Primary CTA Button -->
@@ -303,18 +303,6 @@ if (cleanPath === 'seo-growth-strategy') {
             </a>
           </div>
         </div>
-
-        {showContactCTA && (
-          <!-- 📞 Mobile CTA -->
-          <a
-            href={primaryCtaHref}
-            class="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 text-center mt-4 shadow-md"
-            tabindex="-1"
-            aria-label={ctaLabel}
-          >
-            📞 {ctaLabel}
-          </a>
-        )}
       </div>
     </nav>
   </div>

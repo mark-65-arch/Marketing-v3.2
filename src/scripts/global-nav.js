@@ -115,8 +115,14 @@
 
     dropdownToggles.forEach(function(toggle) {
       toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
         const dropdownContainer = toggle.closest('.mobile-dropdown');
         const dropdownMenu = dropdownContainer.querySelector('.mobile-dropdown-menu');
+
+        if (!dropdownMenu) return;
+
         const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
 
         // Toggle state

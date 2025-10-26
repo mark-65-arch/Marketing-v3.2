@@ -53,6 +53,48 @@ const navItems = [
   { href: `${import.meta.env.BASE_URL}${langPrefix}about`, label: isSpanish ? 'Acerca de' : 'About', active: currentPath.includes('about') },
   { href: `${import.meta.env.BASE_URL}${langPrefix}contact`, label: isSpanish ? 'Contacto' : 'Contact', active: currentPath.includes('contact') }
 ];
+
+// 🌐 Language Switcher URL Generation (same logic as LanguageSwitcher.astro)
+const baseUrl = import.meta.env.BASE_URL || '/';
+let cleanPath = currentPath;
+
+// Remove BASE_URL prefix if it exists
+if (cleanPath.startsWith(baseUrl) && baseUrl !== '/') {
+  cleanPath = cleanPath.slice(baseUrl.length);
+}
+
+// Remove leading slash if present
+if (cleanPath.startsWith('/')) {
+  cleanPath = cleanPath.slice(1);
+}
+
+// Remove /es/ prefix if present
+if (cleanPath.startsWith('es/')) {
+  cleanPath = cleanPath.slice(3);
+}
+
+// Remove trailing slash
+if (cleanPath.endsWith('/') && cleanPath.length > 1) {
+  cleanPath = cleanPath.slice(0, -1);
+}
+
+// Handle special path mappings for pages with different structures
+let englishUrl = '';
+let spanishUrl = '';
+
+if (cleanPath === 'seo-growth-strategy') {
+  // English SEO page -> Spanish version is in services/
+  englishUrl = `${baseUrl}seo-growth-strategy`;
+  spanishUrl = `${baseUrl}es/services/seo-growth-strategy`;
+} else if (cleanPath === 'services/seo-growth-strategy') {
+  // Spanish SEO page -> English version is at root
+  englishUrl = `${baseUrl}seo-growth-strategy`;
+  spanishUrl = `${baseUrl}es/services/seo-growth-strategy`;
+} else {
+  // Standard mapping for all other pages
+  englishUrl = `${baseUrl}${cleanPath}`;
+  spanishUrl = `${baseUrl}es/${cleanPath}`;
+}
 ---
 
 <!-- ♿ Skip to Content Link (Accessibility) -->
@@ -147,8 +189,10 @@ const navItems = [
 
       <!-- 🎯 CTA, Language Switcher, and Mobile Menu -->
       <div class="flex items-center gap-2 md:gap-3">
-        <!-- 🌐 Language Switcher (Always visible) -->
-        <LanguageSwitcher currentPath={currentPath} currentLang={currentLang} />
+        <!-- 🌐 Language Switcher (Desktop only) -->
+        <div class="hidden md:block">
+          <LanguageSwitcher currentPath={currentPath} currentLang={currentLang} />
+        </div>
 
         {showContactCTA && (
           <!-- 📞 Primary CTA Button -->
@@ -217,6 +261,39 @@ const navItems = [
           )
         ))}
 
+        <!-- 🌐 Mobile Language Switcher -->
+        <div class="border-t border-gray-200 pt-3 mt-3">
+          <div class="mb-3 font-medium text-gray-900 text-sm">{isSpanish ? 'Idioma' : 'Language'}</div>
+          <div class="flex gap-2">
+            <a
+              href={englishUrl}
+              lang="en"
+              hreflang="en"
+              class={`flex-1 py-2 px-3 rounded-lg text-center text-sm font-medium transition-colors duration-200 ${
+                !isSpanish
+                  ? 'bg-gradient-to-r from-blue-600 to-teal-600 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+              tabindex="-1"
+            >
+              English
+            </a>
+            <a
+              href={spanishUrl}
+              lang="es"
+              hreflang="es"
+              class={`flex-1 py-2 px-3 rounded-lg text-center text-sm font-medium transition-colors duration-200 ${
+                isSpanish
+                  ? 'bg-gradient-to-r from-blue-600 to-teal-600 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+              tabindex="-1"
+            >
+              Español
+            </a>
+          </div>
+        </div>
+
         {showContactCTA && (
           <!-- 📞 Mobile CTA -->
           <a
@@ -231,6 +308,26 @@ const navItems = [
       </div>
     </nav>
   </div>
+
+  <!-- 🌐 Mobile Language Switcher - localStorage support -->
+  <script>
+    // Handle mobile language switcher localStorage updates
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileMenu = document.getElementById('global-nav-mobile-menu');
+      if (mobileMenu) {
+        // Find all language links with hreflang attribute in the mobile menu
+        const mobileLangLinks = mobileMenu.querySelectorAll('a[hreflang]');
+        mobileLangLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            const selectedLang = link.getAttribute('hreflang');
+            if (selectedLang) {
+              localStorage.setItem('preferredLanguage', selectedLang);
+            }
+          });
+        });
+      }
+    });
+  </script>
 </header>
 
 {stickyMobileCta && (
@@ -283,7 +380,7 @@ const navItems = [
   }
 
   .global-nav-mobile-menu.active {
-    max-height: 500px;
+    max-height: 700px;
     opacity: 1;
     display: block;
   }

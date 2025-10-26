@@ -33,10 +33,17 @@
         mobileMenu.classList.add('hidden');
       }
 
-      // Update tabindex for menu items
+      // Update tabindex for menu items and toggles
       const menuLinks = mobileMenu.querySelectorAll('a');
       menuLinks.forEach(function(link) {
         link.tabIndex = newState ? 0 : -1;
+      });
+
+      // Keep dropdown toggles always accessible (tabindex=0 by default)
+      const dropdownToggles = mobileMenu.querySelectorAll('.mobile-dropdown-toggle');
+      dropdownToggles.forEach(function(toggle) {
+        // Dropdown toggles should always be clickable, not tabindex controlled
+        // They're part of the main menu structure
       });
 
       // Update icon
@@ -91,6 +98,38 @@
     window.addEventListener('resize', function() {
       if (window.innerWidth >= 768 && mobileMenu.classList.contains('active')) {
         toggleMenu();
+      }
+    });
+
+    // Initialize mobile dropdown toggles
+    initMobileDropdowns();
+  }
+
+  // Mobile Dropdown Toggle Functionality - Using Event Delegation
+  function initMobileDropdowns() {
+    const mobileMenu = document.getElementById('global-nav-mobile-menu');
+    if (!mobileMenu) return;
+
+    // Use event delegation to handle dropdown toggles
+    mobileMenu.addEventListener('click', function(e) {
+      // Find the closest toggle button
+      const toggle = e.target.closest('.mobile-dropdown-toggle');
+      if (!toggle) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const dropdownContainer = toggle.closest('.mobile-dropdown');
+      const dropdownMenu = dropdownContainer.querySelector('.mobile-dropdown-menu');
+      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+      // Toggle state
+      toggle.setAttribute('aria-expanded', String(!isExpanded));
+
+      if (!isExpanded) {
+        dropdownMenu.classList.add('active');
+      } else {
+        dropdownMenu.classList.remove('active');
       }
     });
   }

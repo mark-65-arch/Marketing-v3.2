@@ -123,8 +123,10 @@
         toggle.setAttribute('aria-expanded', String(!isExpanded));
 
         if (!isExpanded) {
+          dropdownContainer.classList.add('active');
           dropdownMenu.classList.add('active');
         } else {
+          dropdownContainer.classList.remove('active');
           dropdownMenu.classList.remove('active');
         }
       });

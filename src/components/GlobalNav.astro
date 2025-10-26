@@ -109,9 +109,22 @@ if (cleanPath === 'seo-growth-strategy') {
 <!-- 🧭 Global Navigation Header -->
 <header class="sticky top-0 z-50 backdrop-blur-lg bg-white/90 border-b border-white/20 shadow-sm" role="banner" data-nav="global">
   <div class="container mx-auto px-3 sm:px-4 py-4">
-    <div class="flex justify-between items-center">
+    <!-- 📱 Mobile Layout: Hamburger (left) - Logo (center) - CTA (right) -->
+    <!-- 🖥️ Desktop Layout: Logo (left) - Nav (center) - CTA + Language (right) -->
+    <div class="flex justify-between items-center md:gap-8">
 
-      <!-- 🏠 Brand Logo -->
+      <!-- 📱 Mobile Menu Toggle (Left - Mobile Only) -->
+      <button
+        id="global-nav-mobile-menu-button"
+        class="md:hidden p-1.5 rounded-lg text-blue-900 hover:bg-blue-50 focus:bg-blue-50 transition-colors duration-200 order-1"
+        aria-expanded="false"
+        aria-controls="global-nav-mobile-menu"
+        aria-label="Toggle main menu"
+      >
+        <BarsIcon class="text-xl" />
+      </button>
+
+      <!-- 🏠 Brand Logo (Center on Mobile, Left on Desktop) -->
       <!-- Original icon (if you want to revert):
       <div class="w-10 h-10 bg-gradient-to-br from-blue-900 to-blue-600 rounded-full flex items-center justify-center mr-3 shadow-md">
         <RobotIcon class="text-white text-lg" />
@@ -119,7 +132,7 @@ if (cleanPath === 'seo-growth-strategy') {
       -->
       <a
         href={import.meta.env.BASE_URL}
-        class="flex items-center hover:opacity-80 transition-opacity"
+        class="flex items-center hover:opacity-80 transition-opacity md:order-1 order-2"
         aria-label="Marketing AI Houston - Home"
       >
         <img
@@ -140,8 +153,8 @@ if (cleanPath === 'seo-growth-strategy') {
         </span>
       </a>
 
-      <!-- 🖥️ Desktop Navigation -->
-      <nav class="hidden md:flex md:space-x-4 lg:space-x-6 xl:space-x-8" role="navigation" aria-label="Main navigation">
+      <!-- 🖥️ Desktop Navigation (Hidden on Mobile) -->
+      <nav class="hidden md:flex md:space-x-4 lg:space-x-6 xl:space-x-8 md:order-2 flex-1 justify-center" role="navigation" aria-label="Main navigation">
         {navItems.map(item => (
           item.dropdown ? (
             <!-- 📋 Services Dropdown -->
@@ -187,8 +200,8 @@ if (cleanPath === 'seo-growth-strategy') {
         ))}
       </nav>
 
-      <!-- 🎯 CTA, Language Switcher, and Mobile Menu -->
-      <div class="flex items-center gap-2 md:gap-3">
+      <!-- 🎯 CTA, Language Switcher (Right) -->
+      <div class="flex items-center gap-2 md:gap-3 md:order-3 order-3">
         <!-- 🌐 Language Switcher (Desktop only) -->
         <div class="hidden md:block">
           <LanguageSwitcher currentPath={currentPath} currentLang={currentLang} />
@@ -204,17 +217,6 @@ if (cleanPath === 'seo-growth-strategy') {
             {ctaLabel}
           </a>
         )}
-
-        <!-- 📱 Mobile Menu Toggle -->
-        <button
-          id="global-nav-mobile-menu-button"
-          class="md:hidden p-1.5 rounded-lg text-blue-900 hover:bg-blue-50 focus:bg-blue-50 transition-colors duration-200"
-          aria-expanded="false"
-          aria-controls="global-nav-mobile-menu"
-          aria-label="Toggle main menu"
-        >
-          <BarsIcon class="text-xl" />
-        </button>
       </div>
     </div>
 

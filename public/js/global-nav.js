@@ -264,3 +264,33 @@
     initStickyCta();
   }
 })();
+
+// Mobile Language Switcher - localStorage support
+(function() {
+  if (window.mobileLangSwitcherInitialized) return;
+  window.mobileLangSwitcherInitialized = true;
+
+  function initMobileLangSwitcher() {
+    // Handle mobile language switcher localStorage updates
+    const mobileMenu = document.getElementById('global-nav-mobile-menu');
+    if (mobileMenu) {
+      // Find all language links with hreflang attribute in the mobile menu
+      const mobileLangLinks = mobileMenu.querySelectorAll('a[hreflang]');
+      mobileLangLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          const selectedLang = link.getAttribute('hreflang');
+          if (selectedLang) {
+            localStorage.setItem('preferredLanguage', selectedLang);
+          }
+        });
+      });
+    }
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileLangSwitcher);
+  } else {
+    initMobileLangSwitcher();
+  }
+})();

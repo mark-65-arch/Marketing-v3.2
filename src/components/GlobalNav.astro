@@ -318,26 +318,6 @@ if (cleanPath === 'seo-growth-strategy') {
       </div>
     </nav>
   </div>
-
-  <!-- 🌐 Mobile Language Switcher - localStorage support -->
-  <script>
-    // Handle mobile language switcher localStorage updates
-    document.addEventListener('DOMContentLoaded', () => {
-      const mobileMenu = document.getElementById('global-nav-mobile-menu');
-      if (mobileMenu) {
-        // Find all language links with hreflang attribute in the mobile menu
-        const mobileLangLinks = mobileMenu.querySelectorAll('a[hreflang]');
-        mobileLangLinks.forEach(link => {
-          link.addEventListener('click', () => {
-            const selectedLang = link.getAttribute('hreflang');
-            if (selectedLang) {
-              localStorage.setItem('preferredLanguage', selectedLang);
-            }
-          });
-        });
-      }
-    });
-  </script>
 </header>
 
 {stickyMobileCta && (

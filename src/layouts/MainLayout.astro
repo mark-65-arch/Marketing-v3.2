@@ -28,6 +28,7 @@ interface Props extends SEOConfig {
   lang?: string;
   alternateLanguages?: { lang: string; url: string }[];
   preloadImages?: string[];
+  titleSuffixStrategy?: 'full-brand' | 'short-brand' | 'none';
 }
 
 const {
@@ -48,13 +49,29 @@ const {
   pageType = 'home',
   lang = 'en',
   alternateLanguages = [],
-  preloadImages = []
+  preloadImages = [],
+  titleSuffixStrategy
 } = Astro.props;
 
-// 🔍 SEO: Enhanced title with brand consistency
-const fullTitle = title.includes(BUSINESS_INFO.name)
-  ? title
-  : `${title} | ${BUSINESS_INFO.name}`;
+// 🔍 SEO: Smart title suffix based on page type
+// Determine suffix strategy if not explicitly provided
+const determinedStrategy = titleSuffixStrategy ||
+  (pageType === 'home' || pageType === 'about' || pageType === 'contact' ? 'none' :
+   pageType === 'service' ? 'short-brand' : 'none');
+
+// Apply suffix based on strategy
+let fullTitle = title;
+if (!title.includes(BUSINESS_INFO.name) && !title.includes('Marketing AI Houston')) {
+  if (determinedStrategy === 'short-brand') {
+    fullTitle = `${title} | MAI Houston`;
+  } else if (determinedStrategy === 'full-brand') {
+    fullTitle = `${title} | ${BUSINESS_INFO.name}`;
+  }
+  // 'none' = no suffix added
+} else {
+  // Title already contains brand, use as-is
+  fullTitle = title;
+}
 
 // 📊 Structured Data: Always include local business + additional schemas
 const allStructuredData = [

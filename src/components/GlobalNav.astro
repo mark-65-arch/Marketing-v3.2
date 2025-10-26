@@ -239,7 +239,7 @@ if (cleanPath === 'seo-growth-strategy') {
     >
       <div class="flex flex-col space-y-2 pt-2 px-2">
         {navItems.map((item, index) => {
-          // Map items to their icons
+          // Map items to their icons with blue-to-teal color distribution (Option D)
           const iconMap: { [key: number]: any } = {
             0: HomeIcon,      // Home
             1: ListIcon,      // Services
@@ -247,37 +247,46 @@ if (cleanPath === 'seo-growth-strategy') {
             3: InfoCircleIcon, // About
             4: EnvelopeIcon   // Contact
           };
+          // Color mapping for icons - all teal for unified brand look
+          const iconColorMap: { [key: number]: string } = {
+            0: 'text-teal-700',   // Home - teal
+            1: 'text-teal-700',   // Services - teal
+            2: 'text-teal-700',   // Pricing - teal
+            3: 'text-teal-700',   // About - teal
+            4: 'text-teal-700'    // Contact - teal
+          };
           const IconComponent = iconMap[index];
+          const iconColor = iconColorMap[index];
 
           return item.dropdown ? (
             <!-- 📋 Mobile Services Section (Collapsible) with Enhanced Styling -->
             <div class="mobile-dropdown">
               <button
-                class="mobile-dropdown-toggle w-full py-3 px-4 font-medium text-gray-900 rounded-lg mb-2 flex items-center justify-between hover:bg-blue-50/80 focus:bg-blue-50/80 active:bg-blue-100/60 transition-all duration-200 group"
+                class="mobile-dropdown-toggle w-full py-3 px-4 font-medium text-gray-900 rounded-lg flex items-center justify-between hover:bg-blue-50/80 focus:bg-blue-50/80 active:bg-blue-100/60 transition-all duration-200 group"
                 aria-expanded="false"
                 aria-haspopup="true"
                 type="button"
               >
                 <span class="flex items-center gap-3">
-                  {IconComponent && <IconComponent class="w-5 h-5 text-teal-600 group-hover:text-teal-700 transition-colors" />}
+                  {IconComponent && <IconComponent class={`w-5 h-5 text-teal-700 group-hover:text-teal-800 transition-colors duration-300`} />}
                   {item.label}
                 </span>
-                <svg class="mobile-dropdown-chevron w-5 h-5 text-teal-600 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <svg class="mobile-dropdown-chevron w-5 h-5 text-teal-700 group-hover:text-teal-800 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
               </button>
-              <div class="mobile-dropdown-menu pl-2 space-y-2 mb-2 rounded-lg bg-blue-50/30 p-3">
+              <div class="mobile-dropdown-menu pl-2 space-y-2 rounded-lg bg-blue-50/30 pt-2 pb-2 pr-2">
                 {item.dropdown.map((dropdownItem, dropdownIndex) => {
-                  // Icons for service items
+                  // Icons for service items with gradient matching CTA button
                   const serviceIcons = [ChartLineIcon, GlobeIcon, RocketIcon, ChartBarIcon];
                   const ServiceIcon = serviceIcons[dropdownIndex] || ChartLineIcon;
                   return (
                     <a
                       href={dropdownItem.href}
-                      class="flex items-center gap-3 py-2 px-3 font-medium text-gray-700 hover:text-teal-600 hover:bg-white/70 focus:text-teal-600 focus:bg-white/70 rounded-lg transition-all duration-200"
+                      class="flex items-center gap-3 py-2 px-3 font-medium text-gray-700 hover:text-teal-700 hover:bg-white/70 focus:text-teal-700 focus:bg-white/70 rounded-lg transition-all duration-200"
                       tabindex="-1"
                     >
-                      <ServiceIcon class="w-4 h-4 text-teal-500 flex-shrink-0" />
+                      <ServiceIcon class="w-4 h-4 text-teal-700 flex-shrink-0" />
                       <span>{dropdownItem.label}</span>
                     </a>
                   );
@@ -290,13 +299,13 @@ if (cleanPath === 'seo-growth-strategy') {
               href={item.href}
               class={`flex items-center gap-3 py-3 px-4 font-medium rounded-lg transition-all duration-200 ${
                 item.active
-                  ? 'text-teal-600 bg-teal-50/80 font-semibold'
-                  : 'text-gray-700 hover:bg-teal-50/80 active:bg-teal-100/60'
+                  ? 'text-gray-900 bg-blue-50/80 font-semibold'
+                  : 'text-gray-700 hover:bg-blue-50/80 active:bg-blue-100/60'
               }`}
               {...(item.active && { 'aria-current': 'page' })}
               tabindex="-1"
             >
-              {IconComponent && <IconComponent class={`w-5 h-5 flex-shrink-0 ${item.active ? 'text-teal-600' : 'text-teal-600'}`} />}
+              {IconComponent && <IconComponent class={`w-5 h-5 flex-shrink-0 ${iconColor}`} />}
               {item.label}
             </a>
           );
@@ -475,7 +484,7 @@ if (cleanPath === 'seo-growth-strategy') {
 
   .mobile-dropdown-menu.active {
     max-height: 500px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
     opacity: 1;
   }
 
@@ -500,4 +509,5 @@ if (cleanPath === 'seo-growth-strategy') {
     border-left-color: rgb(59, 130, 246);
     padding-left: 0.75rem;
   }
+
 </style>

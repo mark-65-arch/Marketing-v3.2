@@ -110,8 +110,9 @@
     const mobileMenu = document.getElementById('global-nav-mobile-menu');
     if (!mobileMenu) return;
 
-    // Use event delegation on the mobile menu for better compatibility
-    mobileMenu.addEventListener('click', function(e) {
+    // Use event delegation on the mobile menu for better cross-browser compatibility
+    // Using both 'click' and 'touchend' for Safari/iOS compatibility
+    function handleDropdownToggle(e) {
       // Find the closest toggle button that was clicked
       const toggle = e.target.closest('.mobile-dropdown-toggle');
 
@@ -136,6 +137,15 @@
       } else {
         dropdownContainer.classList.remove('active');
         dropdownMenu.classList.remove('active');
+      }
+    }
+
+    // Attach both click and touchend for maximum compatibility
+    mobileMenu.addEventListener('click', handleDropdownToggle);
+    mobileMenu.addEventListener('touchend', function(e) {
+      // Only handle touchend if it's on a toggle button
+      if (e.target.closest('.mobile-dropdown-toggle')) {
+        handleDropdownToggle(e);
       }
     });
   }

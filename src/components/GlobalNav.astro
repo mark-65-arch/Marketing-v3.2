@@ -474,6 +474,17 @@ if (cleanPath === 'seo-growth-strategy') {
   }
 
   /* 📱 Mobile Services Dropdown (Collapsible Accordion) with Enhanced Styling */
+  .mobile-dropdown-toggle {
+    /* Safari-specific fix: Ensure button is clickable */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+  }
+
+  /* Ensure all children of the toggle button don't interfere with clicks */
+  .mobile-dropdown-toggle * {
+    pointer-events: none;
+  }
+
   .mobile-dropdown-menu {
     max-height: 0;
     overflow: hidden;
@@ -486,6 +497,11 @@ if (cleanPath === 'seo-growth-strategy') {
     max-height: 500px;
     margin-bottom: 0;
     opacity: 1;
+  }
+
+  /* Re-enable pointer events for dropdown menu items */
+  .mobile-dropdown-menu a {
+    pointer-events: auto;
   }
 
   .mobile-dropdown-chevron {

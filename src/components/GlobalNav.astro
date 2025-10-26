@@ -229,12 +229,20 @@ if (cleanPath === 'seo-growth-strategy') {
       <div class="flex flex-col space-y-3 pt-4">
         {navItems.map(item => (
           item.dropdown ? (
-            <!-- 📋 Mobile Services Section -->
-            <div>
-              <div class="py-2 font-medium text-gray-900 border-b border-gray-200 mb-2">
+            <!-- 📋 Mobile Services Section (Collapsible) -->
+            <div class="mobile-dropdown">
+              <button
+                class="mobile-dropdown-toggle w-full py-2 font-medium text-gray-900 border-b border-gray-200 mb-2 flex items-center justify-between hover:text-blue-600 focus:text-blue-600 transition-colors duration-200"
+                aria-expanded="false"
+                aria-haspopup="true"
+                type="button"
+              >
                 {item.label}
-              </div>
-              <div class="pl-4 space-y-2">
+                <svg class="mobile-dropdown-chevron w-4 h-4 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </button>
+              <div class="mobile-dropdown-menu pl-4 space-y-2 mb-2">
                 {item.dropdown.map(dropdownItem => (
                   <a
                     href={dropdownItem.href}
@@ -448,5 +456,27 @@ if (cleanPath === 'seo-growth-strategy') {
   .nav-dropdown:hover,
   .nav-dropdown.active {
     z-index: 51;
+  }
+
+  /* 📱 Mobile Services Dropdown (Collapsible Accordion) */
+  .mobile-dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, margin-bottom 0.3s ease-out;
+    margin-bottom: 0;
+  }
+
+  .mobile-dropdown-menu.active {
+    max-height: 500px;
+    margin-bottom: 0.5rem;
+  }
+
+  .mobile-dropdown-chevron {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease-out;
+  }
+
+  .mobile-dropdown.active .mobile-dropdown-chevron {
+    transform: rotate(180deg);
   }
 </style>

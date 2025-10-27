@@ -308,6 +308,9 @@ const faqSchema = generateFAQSchema(faqs);
           <p>
             Nuestro enfoque se centra en datos precisos, usabilidad móvil y mensajería enfocada en conversión.
           </p>
+          <p>
+            <strong>¿Listo para agregar un sitio web completo?</strong> Nuestro <a href={`${import.meta.env.BASE_URL}es/website-design-that-converts`} class="text-blue-600 hover:text-blue-800 underline font-semibold">servicio de diseño web</a> se combina perfectamente con su perfil optimizado para crear una presencia en línea completa. O explore nuestro <a href={`${import.meta.env.BASE_URL}es/seo-growth-strategy`} class="text-blue-600 hover:text-blue-800 underline font-semibold">servicio de SEO continuo</a> para mantener y mejorar su visibilidad con el tiempo.
+          </p>
         </div>
       </div>
     </div>
@@ -461,6 +464,64 @@ const faqSchema = generateFAQSchema(faqs);
             </div>
           </Card>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔗 Related Services Section -->
+  <section class="section-padding relative overflow-hidden bg-gradient-to-br from-teal-50 to-blue-50">
+    <div class="container mx-auto container-padding">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <span class="mr-2">🔗</span>
+          Servicios Complementarios
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Expanda Su Presencia en Línea</span>
+        </h2>
+        <p class="text-xl text-gray-700 max-w-2xl mx-auto">Su Perfil de Google Business es solo el comienzo. Descubra servicios que funcionan juntos para maximizar su visibilidad.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <!-- Website Design Service Card -->
+        <Card class="flex flex-col" padding="lg">
+          <div class="flex-shrink-0 mb-4">
+            <div class="text-5xl">🌐</div>
+          </div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Diseño Web Que Convierte</h3>
+          <p class="text-gray-700 mb-4 flex-grow">Un sitio web amigable para dispositivos móviles que convierte visitantes en clientes. Funciona perfectamente con su Perfil de Google Business optimizado.</p>
+          <a href={`${import.meta.env.BASE_URL}es/website-design-that-converts`} class="text-blue-600 hover:text-blue-800 font-semibold inline-flex items-center group">
+            Explorar diseño web →
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        </Card>
+
+        <!-- Ongoing SEO Service Card -->
+        <Card class="flex flex-col" padding="lg">
+          <div class="flex-shrink-0 mb-4">
+            <div class="text-5xl">📈</div>
+          </div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">SEO Continuo y Optimización</h3>
+          <p class="text-gray-700 mb-4 flex-grow">Mantenga su presencia en línea optimizada mes tras mes. Soporte mensual para mantener y mejorar su visibilidad.</p>
+          <a href={`${import.meta.env.BASE_URL}es/seo-growth-strategy`} class="text-blue-600 hover:text-blue-800 font-semibold inline-flex items-center group">
+            Ver paquetes SEO →
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        </Card>
+      </div>
+
+      <!-- Upsell to Pro Plan -->
+      <div class="mt-12 max-w-3xl mx-auto">
+        <Card variant="pricing" class="bg-gradient-to-r from-blue-900 to-blue-600 text-white" padding="lg">
+          <div class="text-center">
+            <div class="text-5xl mb-4">🚀</div>
+            <h3 class="text-2xl font-bold mb-3">¿Listo para Todo?</h3>
+            <p class="text-blue-100 mb-6">Obtenga un sitio web completo, SEO completo y soporte continuo, todo en nuestro plan Pro. Domine su mercado con una estrategia en línea integral.</p>
+            <a href={`${import.meta.env.BASE_URL}es/pro-website-growth-plan`} class="inline-block bg-white text-blue-900 font-semibold px-8 py-3 rounded-full hover:shadow-lg transition-all duration-300 font-bold">
+              Explorar nuestro Plan Pro →
+            </a>
+          </div>
+        </Card>
       </div>
     </div>
   </section>

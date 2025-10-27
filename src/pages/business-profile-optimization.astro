@@ -302,6 +302,9 @@ const faqSchema = generateFAQSchema(faqs);
           <p>
             Our approach focuses on accurate data, mobile usability, and conversion-first messaging.
           </p>
+          <p>
+            <strong>Ready to add a full website?</strong> Our <a href={`${import.meta.env.BASE_URL}website-design-that-converts`} class="text-blue-600 hover:text-blue-800 underline font-semibold">website design service</a> pairs perfectly with your optimized profile to create a complete online presence. Or explore our <a href={`${import.meta.env.BASE_URL}seo-growth-strategy`} class="text-blue-600 hover:text-blue-800 underline font-semibold">ongoing SEO service</a> to maintain and improve your visibility over time.
+          </p>
         </div>
       </div>
     </div>
@@ -456,6 +459,64 @@ const faqSchema = generateFAQSchema(faqs);
             </div>
           </Card>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔗 Related Services Section -->
+  <section class="section-padding relative overflow-hidden bg-gradient-to-br from-teal-50 to-blue-50">
+    <div class="container mx-auto container-padding">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <span class="mr-2">🔗</span>
+          Complementary Services
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Grow Your Online Presence Further</span>
+        </h2>
+        <p class="text-xl text-gray-700 max-w-2xl mx-auto">Your Google Business Profile is just the start. Discover services that work together to maximize your visibility.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <!-- Website Design Service Card -->
+        <Card class="flex flex-col" padding="lg">
+          <div class="flex-shrink-0 mb-4">
+            <div class="text-5xl">🌐</div>
+          </div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Website Design That Converts</h3>
+          <p class="text-gray-700 mb-4 flex-grow">A mobile-friendly website that turns visitors into customers. Works perfectly with your optimized Google Business Profile.</p>
+          <a href={`${import.meta.env.BASE_URL}website-design-that-converts`} class="text-blue-600 hover:text-blue-800 font-semibold inline-flex items-center group">
+            Explore website design →
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        </Card>
+
+        <!-- Ongoing SEO Service Card -->
+        <Card class="flex flex-col" padding="lg">
+          <div class="flex-shrink-0 mb-4">
+            <div class="text-5xl">📈</div>
+          </div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Ongoing SEO & Optimization</h3>
+          <p class="text-gray-700 mb-4 flex-grow">Keep your online presence optimized month after month. Monthly support to maintain and improve your rankings.</p>
+          <a href={`${import.meta.env.BASE_URL}seo-growth-strategy`} class="text-blue-600 hover:text-blue-800 font-semibold inline-flex items-center group">
+            View SEO packages →
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        </Card>
+      </div>
+
+      <!-- Upsell to Pro Plan -->
+      <div class="mt-12 max-w-3xl mx-auto">
+        <Card variant="pricing" class="bg-gradient-to-r from-blue-900 to-blue-600 text-white" padding="lg">
+          <div class="text-center">
+            <div class="text-5xl mb-4">🚀</div>
+            <h3 class="text-2xl font-bold mb-3">Ready for Everything?</h3>
+            <p class="text-blue-100 mb-6">Get a full website, complete SEO, and ongoing support all in our Pro package. Dominate your market with a comprehensive online strategy.</p>
+            <a href={`${import.meta.env.BASE_URL}pro-website-growth-plan`} class="inline-block bg-white text-blue-900 font-semibold px-8 py-3 rounded-full hover:shadow-lg transition-all duration-300 font-bold">
+              Explore our Pro Plan →
+            </a>
+          </div>
+        </Card>
       </div>
     </div>
   </section>

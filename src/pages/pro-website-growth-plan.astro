@@ -484,6 +484,64 @@ const faqSchema = generateFAQSchema(faqs);
     </div>
   </section>
 
+  <!-- 🔗 Related Services Section -->
+  <section class="section-padding relative overflow-hidden bg-gradient-to-br from-teal-50 to-blue-50">
+    <div class="container mx-auto container-padding">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
+          <span class="mr-2">🔗</span>
+          Complementary Services
+        </div>
+        <h2 class="heading-lg mb-4">
+          <span class="text-gradient">Maximize Your Market Domination</span>
+        </h2>
+        <p class="text-xl text-gray-700 max-w-2xl mx-auto">The Pro Plan is our most comprehensive package, but you can also add ongoing support and optimization services.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <!-- Business Profile Service Card -->
+        <Card class="flex flex-col" padding="lg">
+          <div class="flex-shrink-0 mb-4">
+            <div class="text-5xl">📍</div>
+          </div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Google Business Profile Optimization</h3>
+          <p class="text-gray-700 mb-4 flex-grow">Already included in your Pro Plan! But if you want optimization-only, check out our <a href={`${import.meta.env.BASE_URL}business-profile-optimization`} class="text-blue-600 hover:text-blue-800 underline font-semibold">Starter service</a>.</p>
+          <a href={`${import.meta.env.BASE_URL}business-profile-optimization`} class="text-blue-600 hover:text-blue-800 font-semibold inline-flex items-center group">
+            Learn about standalone optimization →
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        </Card>
+
+        <!-- Monthly SEO Support Card -->
+        <Card class="flex flex-col" padding="lg">
+          <div class="flex-shrink-0 mb-4">
+            <div class="text-5xl">📈</div>
+          </div>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Ongoing Monthly Optimization</h3>
+          <p class="text-gray-700 mb-4 flex-grow">Add ongoing SEO and optimization to your Pro plan. Keep your rankings strong and stay ahead of competition month after month.</p>
+          <a href={`${import.meta.env.BASE_URL}seo-growth-strategy`} class="text-blue-600 hover:text-blue-800 font-semibold inline-flex items-center group">
+            Explore monthly packages →
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        </Card>
+      </div>
+
+      <!-- Downsell Option -->
+      <div class="mt-12 max-w-3xl mx-auto">
+        <Card class="bg-gradient-to-r from-teal-50 to-blue-50 border-2 border-blue-600" padding="lg">
+          <div class="text-center">
+            <div class="text-5xl mb-4">💭</div>
+            <h3 class="text-2xl font-bold text-blue-900 mb-3">Not Sure About Pro?</h3>
+            <p class="text-gray-700 mb-6">Start smaller with our Growth Plan and upgrade later. Our <a href={`${import.meta.env.BASE_URL}website-design-that-converts`} class="text-blue-600 hover:text-blue-800 underline font-semibold">Growth Plan</a> is an excellent foundation and includes everything to get started strong.</p>
+            <a href={`${import.meta.env.BASE_URL}website-design-that-converts`} class="inline-block bg-gradient-to-r from-blue-600 to-teal-600 text-white font-semibold px-8 py-3 rounded-full hover:shadow-lg transition-all duration-300">
+              View Growth Plan →
+            </a>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
   <!-- 🎯 Final CTA Section -->
   <section class="section-padding bg-gradient-to-br from-blue-900 to-blue-600 text-white">
     <div class="container mx-auto container-padding text-center">

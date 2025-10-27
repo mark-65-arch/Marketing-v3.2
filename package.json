@@ -6,7 +6,11 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "optimize:hero": "node scripts/generate-responsive-images.js",
+    "optimize:og": "node scripts/convert-og-image.js",
+    "optimize:images": "node scripts/optimize-all-images.js",
+    "prebuild": "npm run optimize:images"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",

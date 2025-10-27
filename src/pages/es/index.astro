@@ -80,6 +80,7 @@ const faqItems: FAQItem[] = [
   currentPath="/es/"
   lang="es"
   alternateLanguages={alternateLanguages}
+  preloadImages={[`${import.meta.env.BASE_URL}Plumber-400w.avif`]}
   structuredData={[generateFAQSchema(faqItems)]}
 >
 
@@ -140,15 +141,30 @@ const faqItems: FAQItem[] = [
                         <!-- Glow effect behind the image -->
                         <div class="image-glow"></div>
 
-                        <!-- Plumber Image -->
-                        <img src={`${import.meta.env.BASE_URL}Plumber.webp`}
-                             alt="Plomero de Houston usando teléfono inteligente para gestionar llamadas y citas comerciales - representando negocios locales siendo encontrados en línea"
-                             width="780"
-                             height="780"
-                             fetchpriority="high"
-                             loading="eager"
-                             decoding="sync"
-                             class="plumber-image w-full max-w-[780px] h-auto transform hover:scale-105 transition-all duration-700 relative">
+                        <!-- Plumber Image - Responsive with AVIF/WebP -->
+                        <picture>
+                            <!-- AVIF format (best compression) -->
+                            <source
+                                type="image/avif"
+                                srcset={`${import.meta.env.BASE_URL}Plumber-400w.avif 400w, ${import.meta.env.BASE_URL}Plumber-600w.avif 600w, ${import.meta.env.BASE_URL}Plumber-840w.avif 840w`}
+                                sizes="(max-width: 640px) 400px, (max-width: 1024px) 600px, 840px"
+                            />
+                            <!-- WebP format (fallback) -->
+                            <source
+                                type="image/webp"
+                                srcset={`${import.meta.env.BASE_URL}Plumber-400w.webp 400w, ${import.meta.env.BASE_URL}Plumber-600w.webp 600w, ${import.meta.env.BASE_URL}Plumber-840w.webp 840w`}
+                                sizes="(max-width: 640px) 400px, (max-width: 1024px) 600px, 840px"
+                            />
+                            <!-- Original WebP (final fallback) -->
+                            <img src={`${import.meta.env.BASE_URL}Plumber.webp`}
+                                 alt="Plomero de Houston usando teléfono inteligente para gestionar llamadas y citas comerciales - representando negocios locales siendo encontrados en línea"
+                                 width="840"
+                                 height="1024"
+                                 fetchpriority="high"
+                                 loading="eager"
+                                 decoding="sync"
+                                 class="plumber-image w-full max-w-[840px] h-auto transform hover:scale-105 transition-all duration-700 relative">
+                        </picture>
 
                         <!-- Floating badge -->
                         <div class="floating-badge">

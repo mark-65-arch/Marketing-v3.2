@@ -6,6 +6,13 @@
 import '../styles/global.css';
 import CookieBanner from '../components/CookieBanner.astro';
 
+// 📦 Responsive image preload configuration
+interface ResponsiveImagePreload {
+  srcset: string;
+  sizes: string;
+  type: 'image/avif' | 'image/webp' | 'image/jpeg' | 'image/png';
+}
+
 interface Props {
   title?: string;
   description?: string;
@@ -17,7 +24,7 @@ interface Props {
   alternateLanguages?: { lang: string; url: string }[];
   pageType?: string;
   currentPath?: string;
-  preloadImages?: string[];
+  preloadImages?: (string | ResponsiveImagePreload)[];
 }
 
 const {
@@ -39,21 +46,35 @@ const currentCanonical = canonicalURL || new URL(Astro.url.pathname, Astro.site)
 
 // 🎯 Performance: Preload critical resources
 // IMPORTANT: LCP images MUST be preloaded FIRST with fetchpriority="high"
-// Then fonts are preloaded to break critical request chain
-const imagePreloads = preloadImages.map(imagePath => {
-  // Detect image type from file extension
-  const imageType = imagePath.endsWith('.avif') ? 'image/avif' :
-                    imagePath.endsWith('.webp') ? 'image/webp' :
-                    imagePath.endsWith('.jpg') || imagePath.endsWith('.jpeg') ? 'image/jpeg' :
-                    'image/png';
+// Supports both simple image paths and responsive preloads with imagesrcset/imagesizes
+const imagePreloads = preloadImages.map(imageConfig => {
+  // Support both string paths (legacy) and responsive config objects (new)
+  if (typeof imageConfig === 'string') {
+    // Legacy: Simple image path
+    const imageType = imageConfig.endsWith('.avif') ? 'image/avif' :
+                      imageConfig.endsWith('.webp') ? 'image/webp' :
+                      imageConfig.endsWith('.jpg') || imageConfig.endsWith('.jpeg') ? 'image/jpeg' :
+                      'image/png';
 
-  return {
-    href: imagePath,
-    rel: 'preload' as const,
-    as: 'image' as const,
-    type: imageType,
-    fetchpriority: 'high' as const
-  };
+    return {
+      href: imageConfig,
+      rel: 'preload' as const,
+      as: 'image' as const,
+      type: imageType,
+      fetchpriority: 'high' as const
+    };
+  } else {
+    // New: Responsive preload with imagesrcset and imagesizes
+    // This matches the actual srcset/sizes in the picture element
+    return {
+      rel: 'preload' as const,
+      as: 'image' as const,
+      type: imageConfig.type,
+      imagesrcset: imageConfig.srcset,
+      imagesizes: imageConfig.sizes,
+      fetchpriority: 'high' as const
+    };
+  }
 });
 
 // Only preload fonts used above the fold (Poppins 900 SUBSET for headings, Inter 400 for body)

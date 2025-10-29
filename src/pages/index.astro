@@ -80,7 +80,11 @@ const faqItems: FAQItem[] = [
   currentPath="/"
   lang="en"
   alternateLanguages={alternateLanguages}
-  preloadImages={[`${import.meta.env.BASE_URL}Plumber-400w.avif`]}
+  preloadImages={[{
+    srcset: `${import.meta.env.BASE_URL}Plumber-400w.avif 400w, ${import.meta.env.BASE_URL}Plumber-600w.avif 600w, ${import.meta.env.BASE_URL}Plumber-840w.avif 840w`,
+    sizes: "(max-width: 640px) 400px, (max-width: 1024px) 600px, 840px",
+    type: "image/avif"
+  }]}
   structuredData={[generateFAQSchema(faqItems)]}
 >
 

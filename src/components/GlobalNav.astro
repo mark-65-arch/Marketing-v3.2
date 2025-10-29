@@ -158,7 +158,7 @@ if (cleanPath === 'seo-growth-strategy') {
             <!-- 📋 Services Dropdown -->
             <div class="nav-dropdown">
               <button
-                class={`font-medium transition-colors duration-200 hover:text-blue-600 focus:text-blue-600 focus:outline-none flex items-center cursor-pointer ${
+                class={`py-3 px-4 font-medium transition-colors duration-200 hover:text-blue-600 focus:text-blue-600 focus:outline-none flex items-center cursor-pointer ${
                   item.active ? 'text-blue-600' : 'text-gray-700'
                 }`}
                 aria-expanded="false"
@@ -187,7 +187,7 @@ if (cleanPath === 'seo-growth-strategy') {
             <!-- 🔗 Regular Navigation Link -->
             <a
               href={item.href}
-              class={`font-medium transition-colors duration-200 hover:text-blue-600 focus:text-blue-600 ${
+              class={`py-3 px-4 font-medium transition-colors duration-200 hover:text-blue-600 focus:text-blue-600 ${
                 item.active ? 'text-blue-600' : 'text-gray-700'
               }`}
               {...(item.active && { 'aria-current': 'page' })}
@@ -208,7 +208,7 @@ if (cleanPath === 'seo-growth-strategy') {
         <!-- 📱 Mobile Menu Toggle (Mobile Only) -->
         <button
           id="global-nav-mobile-menu-button"
-          class="md:hidden p-1.5 rounded-lg text-blue-900 hover:bg-blue-50 focus:bg-blue-50 transition-colors duration-200"
+          class="md:hidden p-3 rounded-lg text-blue-900 hover:bg-blue-50 focus:bg-blue-50 transition-colors duration-200"
           aria-expanded="false"
           aria-controls="global-nav-mobile-menu"
           aria-label="Toggle main menu"
@@ -220,7 +220,7 @@ if (cleanPath === 'seo-growth-strategy') {
           <!-- 📞 Primary CTA Button -->
           <a
             href={primaryCtaHref}
-            class="inline-flex bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-2 px-3 md:px-4 lg:px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md focus:ring-4 focus:ring-blue-200 text-sm whitespace-nowrap"
+            class="inline-flex bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-3 px-3 md:px-4 lg:px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md focus:ring-4 focus:ring-blue-200 text-sm whitespace-nowrap"
             aria-label={ctaLabel}
           >
             {ctaLabel}

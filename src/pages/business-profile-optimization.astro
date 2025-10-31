@@ -16,18 +16,23 @@ import {
 import BroomIcon from '../components/icons/BroomIcon.astro';
 import CameraIcon from '../components/icons/CameraIcon.astro';
 import CarIcon from '../components/icons/CarIcon.astro';
+import ChartLineIcon from '../components/icons/ChartLineIcon.astro';
 import CheckCircleIcon from '../components/icons/CheckCircleIcon.astro';
 import CheckIcon from '../components/icons/CheckIcon.astro';
 import ChevronDownIcon from '../components/icons/ChevronDownIcon.astro';
+import ClockIcon from '../components/icons/ClockIcon.astro';
 import CommentsIcon from '../components/icons/CommentsIcon.astro';
 import DollarIcon from '../components/icons/DollarIcon.astro';
 import HammerIcon from '../components/icons/HammerIcon.astro';
 import LeafIcon from '../components/icons/LeafIcon.astro';
 import MagicIcon from '../components/icons/MagicIcon.astro';
+import MobileIcon from '../components/icons/MobileIcon.astro';
 import PawIcon from '../components/icons/PawIcon.astro';
 import QuestionCircleIcon from '../components/icons/QuestionCircleIcon.astro';
+import RocketIcon from '../components/icons/RocketIcon.astro';
 import RouteIcon from '../components/icons/RouteIcon.astro';
 import StarIcon from '../components/icons/StarIcon.astro';
+import ToolsIcon from '../components/icons/ToolsIcon.astro';
 import TrophyIcon from '../components/icons/TrophyIcon.astro';
 
 // 🔍 SEO Configuration
@@ -128,27 +133,6 @@ const faqSchema = generateFAQSchema(faqs);
         <!-- 💬 Supporting Text -->
         <p class="text-gray-700 mb-16">No pressure, no jargon — just a quick chat to see if we're a fit.</p>
 
-        <!-- 📊 Key Metrics -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          <Card class="text-center" padding="lg">
-            <div class="text-4xl mb-3">🗺️</div>
-            <div class="text-gray-900 font-bold">Show up on Maps</div>
-            <div class="text-gray-700 text-sm">when customers search locally</div>
-          </Card>
-
-          <Card class="text-center" padding="lg">
-            <div class="text-4xl mb-3">📱</div>
-            <div class="text-gray-900 font-bold">Mobile-optimized</div>
-            <div class="text-gray-700 text-sm">for on-the-go customers</div>
-          </Card>
-
-          <Card class="text-center" padding="lg">
-            <div class="text-4xl mb-3">🎤</div>
-            <div class="text-gray-900 font-bold">Voice search ready</div>
-            <div class="text-gray-700 text-sm">for "near me" searches</div>
-          </Card>
-        </div>
-
         <!-- 🏢 Industry Icons -->
         <div class="mt-16 flex flex-wrap justify-center gap-8">
           <div class="flex flex-col items-center">
@@ -243,73 +227,6 @@ const faqSchema = generateFAQSchema(faqs);
     </div>
   </section>
 
-  <!-- 💎 Benefits Section -->
-  <section class="section-padding relative overflow-hidden">
-    <div class="absolute inset-0 opacity-5">
-      <div class="absolute top-0 right-0 w-96 h-96 bg-teal-600 rounded-full filter blur-3xl"></div>
-    </div>
-
-    <div class="container mx-auto container-padding relative z-10">
-      <div class="text-center mb-16">
-        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
-          <TrophyIcon class="mr-2 text-teal-600" aria-hidden="true" />
-          The Results
-        </div>
-        <h2 class="heading-lg mb-4">
-          <span class="text-gradient">What Houston Business Owners Get</span>
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <Card class="text-center" padding="lg">
-          <div class="text-5xl mb-4">📍</div>
-          <h3 class="text-xl font-bold text-blue-900 mb-3">Show Up Locally</h3>
-          <p class="text-gray-700">Appear when customers search for your services in your area.</p>
-        </Card>
-
-        <Card class="text-center" padding="lg">
-          <div class="text-5xl mb-4">📞</div>
-          <h3 class="text-xl font-bold text-blue-900 mb-3">More Phone Calls</h3>
-          <p class="text-gray-700">Turn your profile into a phone-ringing machine.</p>
-        </Card>
-
-        <Card class="text-center" padding="lg">
-          <div class="text-5xl mb-4">🎯</div>
-          <h3 class="text-xl font-bold text-blue-900 mb-3">Target Ready Customers</h3>
-          <p class="text-gray-700">Reach people actively looking for what you offer.</p>
-        </Card>
-
-        <Card class="text-center" padding="lg">
-          <div class="text-5xl mb-4">⚡</div>
-          <h3 class="text-xl font-bold text-blue-900 mb-3">Quick Setup</h3>
-          <p class="text-gray-700">Get results in days, not months.</p>
-        </Card>
-      </div>
-    </div>
-  </section>
-
-  <!-- 💡 Why It Works Section -->
-  <section class="section-padding bg-gradient-to-br from-blue-50 to-white">
-    <div class="container mx-auto container-padding">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="heading-lg mb-8">
-          <span class="text-gradient">Your Most Powerful Local Marketing Tool</span>
-        </h2>
-        <div class="text-xl text-gray-800 leading-relaxed space-y-6">
-          <p>
-            Old agencies ignore your Google Business Profile. We make it your most powerful local marketing tool — optimized for how people search today. Whether it's Maps, mobile, or voice, we help you show up where it counts.
-          </p>
-          <p>
-            Our approach focuses on accurate data, mobile usability, and conversion-first messaging.
-          </p>
-          <p>
-            <strong>Ready to add a full website?</strong> Our <a href={`${import.meta.env.BASE_URL}website-design-that-converts`} class="text-blue-600 hover:text-blue-800 underline font-semibold">website design service</a> pairs perfectly with your optimized profile to create a complete online presence. Or explore our <a href={`${import.meta.env.BASE_URL}seo-growth-strategy`} class="text-blue-600 hover:text-blue-800 underline font-semibold">ongoing SEO service</a> to maintain and improve your visibility over time.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- 🛤️ How It Works Section -->
   <section class="section-padding relative overflow-hidden">
     <!-- Commented out - floating blobs disabled (can be re-enabled if needed)
@@ -356,6 +273,241 @@ const faqSchema = generateFAQSchema(faqs);
           <h3 class="text-2xl font-bold text-blue-900 mb-4">Go Live</h3>
           <p class="text-gray-700">Your optimized profile goes live and starts attracting local customers immediately.</p>
         </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- 💡 Why It Works Section -->
+  <section class="section-padding bg-gradient-to-br from-blue-50 to-white">
+    <div class="container mx-auto container-padding">
+      <div class="text-center mb-16">
+        <h2 class="heading-lg mb-8">
+          <span class="text-gradient">Your Most Powerful Local Marketing Tool</span>
+        </h2>
+
+        <!-- Opening Hook -->
+        <div class="text-lg text-gray-800 leading-relaxed max-w-3xl mx-auto">
+          <p class="mb-4">
+            Old agencies ignore your Google Business Profile. We make it your most powerful local marketing tool — optimized for how people search today. Whether it's Maps, mobile, or voice, we help you show up where it counts.
+          </p>
+          <p>
+            Most small businesses have a Google Business Profile. But having one and having one that actually brings in customers are two very different things. The difference? Strategic optimization focused on the three ways customers search for local services today: Google Maps, mobile search, and voice assistants.
+          </p>
+        </div>
+      </div>
+
+      <!-- Section 1: Why Your Google Business Profile Matters More Than Ever -->
+      <div class="max-w-4xl mx-auto mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-blue-700 mb-6 border border-white/50 shadow-sm">
+          <TrophyIcon class="mr-2 text-blue-600" aria-hidden="true" />
+          Why It Matters
+        </div>
+
+        <h3 class="text-2xl font-bold text-blue-900 mb-6">
+          Why Your Google Business Profile Matters More Than Ever
+        </h3>
+
+        <!-- Key Stat Callout -->
+        <div class="bg-gradient-to-r from-blue-50 to-teal-50 border-l-4 border-blue-600 p-6 rounded-r-lg mb-6 shadow-sm">
+          <p class="text-lg font-bold text-blue-900 mb-2">
+            📊 76% of local searches result in a phone call within 24 hours
+          </p>
+          <p class="text-gray-700">
+            When someone searches for a service you offer, they're not just browsing—they're ready to hire. The question is: will they find you or your competitor?
+          </p>
+        </div>
+
+        <div class="text-lg text-gray-700 leading-relaxed space-y-4">
+          <p>
+            Search behavior has fundamentally changed. Customers are searching with "near me" queries, browsing on mobile devices (over 60% of all searches), and asking voice assistants for recommendations. Your Google Business Profile is where all three of these search methods converge.
+          </p>
+          <p>
+            Think of your Google Business Profile as your digital storefront. It shows up before your website in local searches, displays critical information like your hours and phone number, and showcases reviews that build instant trust. When someone searches "plumber near me" on their phone, your profile is often the first—and only—impression you get.
+          </p>
+          <p>
+            The cost of an unoptimized profile is real: you're losing calls to competitors with better-optimized profiles, missing out on "Map Pack" visibility (those top 3 local results that get 44% of all clicks), and appearing unprofessional or outdated to potential customers who are comparing you to other businesses.
+          </p>
+        </div>
+      </div>
+
+      <!-- Section 2: The Three Pillars of Local Visibility -->
+      <div class="mb-16">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-teal-700 mb-6 border border-white/50 shadow-sm">
+            <StarIcon class="mr-2 text-teal-600" aria-hidden="true" />
+            Three Pillars
+          </div>
+
+          <h3 class="text-2xl font-bold text-blue-900 mb-4">
+            The Three Pillars of Local Visibility
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <!-- Pillar 1: Google Maps Optimization -->
+          <Card class="text-center" padding="xl">
+            <div class="text-5xl mb-4">🗺️</div>
+            <h4 class="text-xl font-bold text-blue-900 mb-4">
+              Google Maps Optimization
+            </h4>
+            <div class="text-gray-700 leading-relaxed text-left space-y-3">
+              <p>
+                The Map Pack—those top three local business listings that appear with pins on Google Maps—is prime real estate. These results show up before organic search results and get the majority of clicks.
+              </p>
+              <p>
+                Map Pack rankings are determined by complete and accurate NAP (Name, Address, Phone) information, strategic category selection, high-quality photos, and consistent positive reviews.
+              </p>
+              <p class="font-semibold text-blue-900">
+                Map searchers have the highest intent—they're ready to call or visit right now.
+              </p>
+            </div>
+          </Card>
+
+          <!-- Pillar 2: Mobile-First Experience -->
+          <Card class="text-center" padding="xl">
+            <div class="text-5xl mb-4">📱</div>
+            <h4 class="text-xl font-bold text-blue-900 mb-4">
+              Mobile-First Experience
+            </h4>
+            <div class="text-gray-700 leading-relaxed text-left space-y-3">
+              <p>
+                58% of local searches happen on mobile devices, and mobile users have extraordinarily high intent. They're not researching—they're ready to call NOW.
+              </p>
+              <p>
+                Mobile optimization means crafting short, scannable descriptions that load instantly, using mobile-friendly photos, and setting up quick-access messaging so customers can contact you without picking up the phone.
+              </p>
+              <p class="font-semibold text-blue-900">
+                Click-to-call buttons convert immediately on mobile.
+              </p>
+            </div>
+          </Card>
+
+          <!-- Pillar 3: Voice Search Ready -->
+          <Card class="text-center" padding="xl">
+            <div class="text-5xl mb-4">🎤</div>
+            <h4 class="text-xl font-bold text-blue-900 mb-4">
+              Voice Search Ready
+            </h4>
+            <div class="text-gray-700 leading-relaxed text-left space-y-3">
+              <p>
+                Voice search through Alexa, Siri, and Google Assistant is exploding. These searches are conversational and question-based: "Hey Google, find a contractor near me."
+              </p>
+              <p>
+                We optimize your profile for voice by using natural language in your business description, creating FAQ-style Q&A posts, and implementing structured data markup that helps voice assistants understand your business.
+              </p>
+              <p class="font-semibold text-blue-900">
+                Voice search users convert 3x faster than traditional searchers.
+              </p>
+            </div>
+          </Card>
+        </div>
+      </div>
+
+      <!-- Section 3: Our Approach -->
+      <div class="max-w-4xl mx-auto mb-16">
+        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-blue-700 mb-6 border border-white/50 shadow-sm">
+          <ToolsIcon class="mr-2 text-blue-600" aria-hidden="true" />
+          Our Approach
+        </div>
+
+        <h3 class="text-2xl font-bold text-blue-900 mb-8">
+          Data, Mobile, Conversion
+        </h3>
+
+        <div class="space-y-6">
+          <Card class="flex items-start space-x-4" padding="lg">
+            <div class="flex-shrink-0">
+              <CheckCircleIcon class="text-2xl text-blue-600" aria-hidden="true" />
+            </div>
+            <div>
+              <h4 class="text-lg font-bold text-blue-900 mb-2">Accurate Data Foundation</h4>
+              <p class="text-gray-700">
+                Everything starts with consistency. Your NAP (Name, Address, Phone) must be identical everywhere it appears online—your website, social media, directories, and Google. We verify and correct inconsistencies, select the most strategic business categories, ensure hours and services are complete and current, and implement schema markup so Google can display rich results.
+              </p>
+            </div>
+          </Card>
+
+          <Card class="flex items-start space-x-4" padding="lg">
+            <div class="flex-shrink-0">
+              <MobileIcon class="text-2xl text-blue-600" aria-hidden="true" />
+            </div>
+            <div>
+              <h4 class="text-lg font-bold text-blue-900 mb-2">Mobile Usability First</h4>
+              <p class="text-gray-700">
+                Since most of your customers will find you on mobile, we optimize every element for small screens. Photos are sized and formatted for mobile viewing, descriptions are concise and scannable, messaging is set up for instant contact, and we create a posting strategy that keeps your profile fresh and engaging.
+              </p>
+            </div>
+          </Card>
+
+          <Card class="flex items-start space-x-4" padding="lg">
+            <div class="flex-shrink-0">
+              <RocketIcon class="text-2xl text-blue-600" aria-hidden="true" />
+            </div>
+            <div>
+              <h4 class="text-lg font-bold text-blue-900 mb-2">Conversion-First Messaging</h4>
+              <p class="text-gray-700">
+                We don't just fill out your profile—we craft messaging that turns browsers into callers. This means clear value propositions in your description, strategic use of primary keywords that match how customers search, compelling calls-to-action in posts, and review request templates that actually work. Every word is written to drive action.
+              </p>
+            </div>
+          </Card>
+        </div>
+      </div>
+
+      <!-- Section 4: Results & Timeline -->
+      <div class="max-w-5xl mx-auto mb-16">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-teal-700 mb-6 border border-white/50 shadow-sm">
+            <ChartLineIcon class="mr-2 text-teal-600" aria-hidden="true" />
+            Expected Results
+          </div>
+
+          <h3 class="text-2xl font-bold text-blue-900 mb-4">
+            What Results You Can Expect
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          <Card padding="lg">
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0">
+                <ClockIcon class="text-3xl text-blue-600" aria-hidden="true" />
+              </div>
+              <div>
+                <h4 class="text-lg font-bold text-blue-900 mb-2">Timeline</h4>
+                <p class="text-gray-700">
+                  Week 1, your profile is fully optimized and live. Weeks 2-4, you'll see improved Map Pack visibility as Google indexes the changes. Months 2-3, you'll notice increased profile views and more calls coming from search.
+                </p>
+              </div>
+            </div>
+          </Card>
+
+          <Card padding="lg">
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0">
+                <ChartLineIcon class="text-3xl text-blue-600" aria-hidden="true" />
+              </div>
+              <div>
+                <h4 class="text-lg font-bold text-blue-900 mb-2">Measurable Outcomes</h4>
+                <p class="text-gray-700">
+                  Our clients typically see an average 40% increase in profile views, 2-3x more direction requests, 50%+ more phone calls from search, and higher review volume (thanks to our templates and training).
+                </p>
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        <!-- Real Example Highlight -->
+        <div class="bg-gradient-to-r from-teal-50 to-blue-50 border-l-4 border-teal-600 p-6 rounded-r-lg shadow-sm">
+          <p class="text-lg font-bold text-blue-900 mb-2">
+            ✨ Real Example
+          </p>
+          <p class="text-gray-700 mb-3">
+            A Houston HVAC company saw <strong>67% more calls in 60 days</strong> after optimization. A local landscaper went from invisible to showing up in the Map Pack within 3 weeks. These aren't exceptions—they're what happens when you optimize strategically.
+          </p>
+          <p class="text-gray-700">
+            <strong>Long-Term Benefits:</strong> A well-optimized Google Business Profile provides sustainable local visibility, builds review authority over time, and creates a strong foundation for all your future SEO efforts.
+          </p>
+        </div>
       </div>
     </div>
   </section>

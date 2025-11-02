@@ -3,7 +3,7 @@ import MainLayout from '../../../layouts/MainLayout.astro';
 
 const SITE = import.meta.env.SITE;
 const BASE_URL = import.meta.env.BASE_URL;
-const currentURL = `${SITE}${BASE_URL}es/legal/cookie-policy`;
+const currentURL = `${SITE}${BASE_URL}es/legal/cookie-policy/`;
 
 const breadcrumbs = [
   { name: 'Inicio', url: `${SITE}${BASE_URL}es/` },
@@ -12,8 +12,8 @@ const breadcrumbs = [
 ];
 
 const alternateLanguages = [
-  { lang: 'en', url: `${SITE}${BASE_URL}legal/cookie-policy` },
-  { lang: 'es', url: `${SITE}${BASE_URL}es/legal/cookie-policy` }
+  { lang: 'en', url: `${SITE}${BASE_URL}legal/cookie-policy/` },
+  { lang: 'es', url: `${SITE}${BASE_URL}es/legal/cookie-policy/` }
 ];
 ---
 
@@ -38,7 +38,7 @@ const alternateLanguages = [
         </header>
 
         <div class="prose prose-ocean prose-lg max-w-none">
-          <p class="lead">Esta Política de Cookies explica qué cookies y tecnologías similares utiliza Marketing AI Houston en marketingaihouston.com, por qué las usamos y cómo puede controlarlas. Para obtener más detalles sobre privacidad, consulte nuestra <a href={`${BASE_URL}es/legal/privacy-policy`}>Política de Privacidad</a>.</p>
+          <p class="lead">Esta Política de Cookies explica qué cookies y tecnologías similares utiliza Marketing AI Houston en marketingaihouston.com, por qué las usamos y cómo puede controlarlas. Para obtener más detalles sobre privacidad, consulte nuestra <a href={`${BASE_URL}es/legal/privacy-policy/`}>Política de Privacidad</a>.</p>
 
           <div class="bg-blue-50 border-l-4 border-blue-600 p-4 mb-6">
             <p class="text-sm text-blue-900">
@@ -208,10 +208,10 @@ const alternateLanguages = [
 
         <footer class="mt-12 pt-6 border-t border-ocean-100">
           <nav class="flex flex-wrap gap-4 text-sm text-ocean-600">
-            <a href={`${BASE_URL}es/legal/terms-of-service`} class="hover:text-ocean-800 underline">Términos de Servicio</a>
-            <a href={`${BASE_URL}es/legal/privacy-policy`} class="hover:text-ocean-800 underline">Política de Privacidad</a>
-            <a href={`${BASE_URL}es/legal/accessibility-statement`} class="hover:text-ocean-800 underline">Declaración de Accesibilidad</a>
-            <a href={`${BASE_URL}es/legal/copyright-notice`} class="hover:text-ocean-800 underline">Aviso de Derechos de Autor</a>
+            <a href={`${BASE_URL}es/legal/terms-of-service/`} class="hover:text-ocean-800 underline">Términos de Servicio</a>
+            <a href={`${BASE_URL}es/legal/privacy-policy/`} class="hover:text-ocean-800 underline">Política de Privacidad</a>
+            <a href={`${BASE_URL}es/legal/accessibility-statement/`} class="hover:text-ocean-800 underline">Declaración de Accesibilidad</a>
+            <a href={`${BASE_URL}es/legal/copyright-notice/`} class="hover:text-ocean-800 underline">Aviso de Derechos de Autor</a>
           </nav>
         </footer>
       </div>

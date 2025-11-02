@@ -3,7 +3,7 @@ import MainLayout from '../../layouts/MainLayout.astro';
 
 const SITE = import.meta.env.SITE;
 const BASE_URL = import.meta.env.BASE_URL;
-const currentURL = `${SITE}${BASE_URL}legal/terms-of-service`;
+const currentURL = `${SITE}${BASE_URL}legal/terms-of-service/`;
 
 const breadcrumbs = [
   { name: 'Home', url: `${SITE}${BASE_URL}` },
@@ -12,8 +12,8 @@ const breadcrumbs = [
 ];
 
 const alternateLanguages = [
-  { lang: 'en', url: `${SITE}${BASE_URL}legal/terms-of-service` },
-  { lang: 'es', url: `${SITE}${BASE_URL}es/legal/terms-of-service` }
+  { lang: 'en', url: `${SITE}${BASE_URL}legal/terms-of-service/` },
+  { lang: 'es', url: `${SITE}${BASE_URL}es/legal/terms-of-service/` }
 ];
 ---
 
@@ -148,7 +148,7 @@ const alternateLanguages = [
 
           <section>
             <h2>14. Data, Privacy, and Processing</h2>
-            <p>Personal data processing is described in our <a href={`${BASE_URL}legal/privacy-policy`}>Privacy Policy</a>. We will handle personal data in accordance with applicable privacy laws.</p>
+            <p>Personal data processing is described in our <a href={`${BASE_URL}legal/privacy-policy/`}>Privacy Policy</a>. We will handle personal data in accordance with applicable privacy laws.</p>
             <p>A Data Processing Agreement (DPA) is available to clients upon request where required by law or contract.</p>
             <p>Clients are responsible for collecting required consents for data they supply and for compliance with privacy obligations in their jurisdiction.</p>
           </section>
@@ -161,7 +161,7 @@ const alternateLanguages = [
 
           <section>
             <h2>16. Accessibility</h2>
-            <p>We aim to follow accessibility best practices and maintain an <a href={`${BASE_URL}legal/accessibility-statement`}>Accessibility Statement</a> on the Site. If you encounter accessibility barriers, please contact <a href="mailto:team@marketingaihouston.com">team@marketingaihouston.com</a> and we will make reasonable efforts to address them.</p>
+            <p>We aim to follow accessibility best practices and maintain an <a href={`${BASE_URL}legal/accessibility-statement/`}>Accessibility Statement</a> on the Site. If you encounter accessibility barriers, please contact <a href="mailto:team@marketingaihouston.com">team@marketingaihouston.com</a> and we will make reasonable efforts to address them.</p>
           </section>
 
           <section>
@@ -196,10 +196,10 @@ const alternateLanguages = [
 
         <footer class="mt-12 pt-6 border-t border-ocean-100">
           <nav class="flex flex-wrap gap-4 text-sm text-ocean-600">
-            <a href={`${BASE_URL}legal/privacy-policy`} class="hover:text-ocean-800 underline">Privacy Policy</a>
-            <a href={`${BASE_URL}legal/cookie-policy`} class="hover:text-ocean-800 underline">Cookie Policy</a>
-            <a href={`${BASE_URL}legal/accessibility-statement`} class="hover:text-ocean-800 underline">Accessibility Statement</a>
-            <a href={`${BASE_URL}legal/copyright-notice`} class="hover:text-ocean-800 underline">Copyright Notice</a>
+            <a href={`${BASE_URL}legal/privacy-policy/`} class="hover:text-ocean-800 underline">Privacy Policy</a>
+            <a href={`${BASE_URL}legal/cookie-policy/`} class="hover:text-ocean-800 underline">Cookie Policy</a>
+            <a href={`${BASE_URL}legal/accessibility-statement/`} class="hover:text-ocean-800 underline">Accessibility Statement</a>
+            <a href={`${BASE_URL}legal/copyright-notice/`} class="hover:text-ocean-800 underline">Copyright Notice</a>
           </nav>
         </footer>
       </div>

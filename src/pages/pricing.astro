@@ -16,7 +16,7 @@ import PawIcon from '../components/icons/PawIcon.astro';
 
 const breadcrumbs = [
   { name: 'Home', url: import.meta.env.BASE_URL },
-  { name: 'Pricing', url: `${import.meta.env.BASE_URL}pricing` }
+  { name: 'Pricing', url: `${import.meta.env.BASE_URL}pricing/` }
 ];
 
 // Pricing data structure
@@ -323,7 +323,7 @@ const faqSchema = generateFAQSchema(faqs);
           <InfoCircleIcon class="text-blue-600 mr-3 text-lg" />
           <p class="text-base font-semibold text-gray-800">
             <a
-              href={`${import.meta.env.BASE_URL}contact`}
+              href={`${import.meta.env.BASE_URL}contact/`}
               class="text-blue-600 hover:text-blue-800 transition-colors font-bold"
               aria-label="View custom pricing options"
             >
@@ -331,7 +331,7 @@ const faqSchema = generateFAQSchema(faqs);
             </a>
             <span class="mx-2">and</span>
             <a
-              href={`${import.meta.env.BASE_URL}seo-growth-strategy`}
+              href={`${import.meta.env.BASE_URL}seo-growth-strategy/`}
               class="text-blue-600 hover:text-blue-800 transition-colors font-bold"
               aria-label="Explore monthly SEO packages"
             >

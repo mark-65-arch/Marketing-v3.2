@@ -16,12 +16,12 @@ import PawIcon from '../../components/icons/PawIcon.astro';
 
 const breadcrumbs = [
   { name: 'Inicio', url: `${import.meta.env.BASE_URL}es/` },
-  { name: 'Precios', url: `${import.meta.env.BASE_URL}es/pricing` }
+  { name: 'Precios', url: `${import.meta.env.BASE_URL}es/pricing/` }
 ];
 
 const alternateLanguages = [
-  { lang: 'en', url: `${import.meta.env.SITE}${import.meta.env.BASE_URL}pricing` },
-  { lang: 'es', url: `${import.meta.env.SITE}${import.meta.env.BASE_URL}es/pricing` }
+  { lang: 'en', url: `${import.meta.env.SITE}${import.meta.env.BASE_URL}pricing/` },
+  { lang: 'es', url: `${import.meta.env.SITE}${import.meta.env.BASE_URL}es/pricing/` }
 ];
 
 // Pricing data structure
@@ -330,7 +330,7 @@ const faqSchema = generateFAQSchema(faqs);
           <InfoCircleIcon class="text-blue-600 mr-3 text-lg" />
           <p class="text-base font-semibold text-gray-800">
             <a
-              href={`${import.meta.env.BASE_URL}es/contact`}
+              href={`${import.meta.env.BASE_URL}es/contact/`}
               class="text-blue-600 hover:text-blue-800 transition-colors font-bold"
               aria-label="Ver opciones de precios personalizados"
             >
@@ -338,7 +338,7 @@ const faqSchema = generateFAQSchema(faqs);
             </a>
             <span class="mx-2">y</span>
             <a
-              href={`${import.meta.env.BASE_URL}es/seo-growth-strategy`}
+              href={`${import.meta.env.BASE_URL}es/seo-growth-strategy/`}
               class="text-blue-600 hover:text-blue-800 transition-colors font-bold"
               aria-label="Explorar paquetes mensuales de SEO"
             >

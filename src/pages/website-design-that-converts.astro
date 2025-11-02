@@ -36,13 +36,13 @@ import TrophyIcon from '../components/icons/TrophyIcon.astro';
 // 🔍 SEO Configuration
 const pageTitle = 'Mobile-First Web Design That Converts';
 const pageDescription = 'We build mobile-first, SEO-ready websites designed to earn trust, drive calls, and grow your business. Launch in weeks, not months.';
-const canonicalURL = `${import.meta.env.SITE}/website-design-that-converts/`;
+const canonicalURL = `${import.meta.env.SITE}${import.meta.env.BASE_URL}website-design-that-converts/`;
 
 // 🍞 Breadcrumb Navigation
 const breadcrumbs: BreadcrumbItem[] = [
   { name: 'Home', url: import.meta.env.BASE_URL },
   { name: 'Services', url: `${import.meta.env.BASE_URL}#services` },
-  { name: 'Build Your Website Foundation (Growth Plan)', url: `${import.meta.env.BASE_URL}website-design-that-converts` }
+  { name: 'Build Your Website Foundation (Growth Plan)', url: `${import.meta.env.BASE_URL}website-design-that-converts/` }
 ];
 
 // 📊 Service Schema Data
@@ -337,7 +337,7 @@ const faqSchema = generateFAQSchema(faqs);
             Our websites are built to earn trust, drive calls, and show up when customers search. From layout to messaging to Google visibility, every detail is designed to help your business grow.
           </p>
           <p>
-            <strong>Already optimizing your Google Business Profile?</strong> Your website works together with your optimized <a href={`${import.meta.env.BASE_URL}business-profile-optimization`} class="text-blue-600 hover:text-blue-800 underline font-semibold">Google Business Profile</a> to create a complete local search strategy. Want ongoing optimization? Our <a href={`${import.meta.env.BASE_URL}seo-growth-strategy`} class="text-blue-600 hover:text-blue-800 underline font-semibold">monthly SEO packages</a> keep your visibility strong month after month.
+            <strong>Already optimizing your Google Business Profile?</strong> Your website works together with your optimized <a href={`${import.meta.env.BASE_URL}business-profile-optimization/`} class="text-blue-600 hover:text-blue-800 underline font-semibold">Google Business Profile</a> to create a complete local search strategy. Want ongoing optimization? Our <a href={`${import.meta.env.BASE_URL}seo-growth-strategy/`} class="text-blue-600 hover:text-blue-800 underline font-semibold">monthly SEO packages</a> keep your visibility strong month after month.
           </p>
         </div>
       </div>
@@ -581,7 +581,7 @@ const faqSchema = generateFAQSchema(faqs);
           </div>
           <h3 class="text-2xl font-bold text-blue-900 mb-3">Google Business Profile Optimization</h3>
           <p class="text-gray-700 mb-4 flex-grow">Get found on Google Maps and mobile search. Perfect complement to your website for complete local visibility.</p>
-          <a href={`${import.meta.env.BASE_URL}business-profile-optimization`} class="text-blue-600 hover:text-blue-800 font-semibold inline-flex items-center group">
+          <a href={`${import.meta.env.BASE_URL}business-profile-optimization/`} class="text-blue-600 hover:text-blue-800 font-semibold inline-flex items-center group">
             Optimize your profile →
             <span class="group-hover:translate-x-1 transition-transform">→</span>
           </a>
@@ -594,7 +594,7 @@ const faqSchema = generateFAQSchema(faqs);
           </div>
           <h3 class="text-2xl font-bold text-blue-900 mb-3">Ongoing SEO & Optimization</h3>
           <p class="text-gray-700 mb-4 flex-grow">Keep your rankings strong with monthly support. Continuous updates and optimization to maintain your competitive edge.</p>
-          <a href={`${import.meta.env.BASE_URL}seo-growth-strategy`} class="text-blue-600 hover:text-blue-800 font-semibold inline-flex items-center group">
+          <a href={`${import.meta.env.BASE_URL}seo-growth-strategy/`} class="text-blue-600 hover:text-blue-800 font-semibold inline-flex items-center group">
             View monthly packages →
             <span class="group-hover:translate-x-1 transition-transform">→</span>
           </a>
@@ -608,7 +608,7 @@ const faqSchema = generateFAQSchema(faqs);
             <div class="text-5xl mb-4">🚀</div>
             <h3 class="text-2xl font-bold mb-3">Want the Complete Package?</h3>
             <p class="text-blue-100 mb-6">Get everything included in our Pro plan: a comprehensive website, full SEO strategy, local area pages, and ongoing optimization to dominate your market.</p>
-            <a href={`${import.meta.env.BASE_URL}pro-website-growth-plan`} class="inline-block bg-white text-blue-900 font-semibold px-8 py-3 rounded-full hover:shadow-lg transition-all duration-300 font-bold">
+            <a href={`${import.meta.env.BASE_URL}pro-website-growth-plan/`} class="inline-block bg-white text-blue-900 font-semibold px-8 py-3 rounded-full hover:shadow-lg transition-all duration-300 font-bold">
               Explore our Pro Plan →
             </a>
           </div>

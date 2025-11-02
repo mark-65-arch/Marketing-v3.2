@@ -28,7 +28,7 @@ interface Props {
 const {
   currentPath = '',
   primaryCtaLabel,
-  primaryCtaHref = `${import.meta.env.BASE_URL}contact#contact-options`,
+  primaryCtaHref = `${import.meta.env.BASE_URL}contact/#contact-options`,
   showContactCTA = true,
   stickyMobileCta = true,
   currentLang = 'en'
@@ -52,15 +52,15 @@ const navItems = [
             currentPath.includes('pro-website-growth') ||
             currentPath.includes('seo-growth'),
     dropdown: [
-      { href: `${import.meta.env.BASE_URL}${langPrefix}business-profile-optimization`, label: isSpanish ? 'Ser Encontrado en Google (Plan Inicial)' : 'Get Found on Google (Starter Plan)' },
-      { href: `${import.meta.env.BASE_URL}${langPrefix}website-design-that-converts`, label: isSpanish ? 'Construye la Base de tu Sitio Web (Plan de Crecimiento)' : 'Build Your Website Foundation (Growth Plan)' },
-      { href: `${import.meta.env.BASE_URL}${langPrefix}pro-website-growth-plan`, label: isSpanish ? 'Expande tu Presencia en Línea (Plan Pro)' : 'Expand Your Online Presence (Pro Plan)' },
-      { href: `${import.meta.env.BASE_URL}${langPrefix}${isSpanish ? 'services/' : ''}seo-growth-strategy`, label: isSpanish ? 'SEO y Optimización Continua (Plan de Soporte)' : 'Ongoing SEO & Optimization (Support Plan)' }
+      { href: `${import.meta.env.BASE_URL}${langPrefix}business-profile-optimization/`, label: isSpanish ? 'Ser Encontrado en Google (Plan Inicial)' : 'Get Found on Google (Starter Plan)' },
+      { href: `${import.meta.env.BASE_URL}${langPrefix}website-design-that-converts/`, label: isSpanish ? 'Construye la Base de tu Sitio Web (Plan de Crecimiento)' : 'Build Your Website Foundation (Growth Plan)' },
+      { href: `${import.meta.env.BASE_URL}${langPrefix}pro-website-growth-plan/`, label: isSpanish ? 'Expande tu Presencia en Línea (Plan Pro)' : 'Expand Your Online Presence (Pro Plan)' },
+      { href: `${import.meta.env.BASE_URL}${langPrefix}seo-growth-strategy/`, label: isSpanish ? 'SEO y Optimización Continua (Plan de Soporte)' : 'Ongoing SEO & Optimization (Support Plan)' }
     ]
   },
-  { href: `${import.meta.env.BASE_URL}${langPrefix}pricing`, label: isSpanish ? 'Precios' : 'Pricing', active: currentPath.includes('pricing') },
-  { href: `${import.meta.env.BASE_URL}${langPrefix}about`, label: isSpanish ? 'Acerca de' : 'About', active: currentPath.includes('about') },
-  { href: `${import.meta.env.BASE_URL}${langPrefix}contact`, label: isSpanish ? 'Contacto' : 'Contact', active: currentPath.includes('contact') }
+  { href: `${import.meta.env.BASE_URL}${langPrefix}pricing/`, label: isSpanish ? 'Precios' : 'Pricing', active: currentPath.includes('pricing') },
+  { href: `${import.meta.env.BASE_URL}${langPrefix}about/`, label: isSpanish ? 'Acerca de' : 'About', active: currentPath.includes('about') },
+  { href: `${import.meta.env.BASE_URL}${langPrefix}contact/`, label: isSpanish ? 'Contacto' : 'Contact', active: currentPath.includes('contact') }
 ];
 
 // 🌐 Language Switcher URL Generation (same logic as LanguageSwitcher.astro)
@@ -92,17 +92,13 @@ let englishUrl = '';
 let spanishUrl = '';
 
 if (cleanPath === 'seo-growth-strategy') {
-  // English SEO page -> Spanish version is in services/
-  englishUrl = `${baseUrl}seo-growth-strategy`;
-  spanishUrl = `${baseUrl}es/services/seo-growth-strategy`;
-} else if (cleanPath === 'services/seo-growth-strategy') {
-  // Spanish SEO page -> English version is at root
-  englishUrl = `${baseUrl}seo-growth-strategy`;
-  spanishUrl = `${baseUrl}es/services/seo-growth-strategy`;
+  // SEO page -> both English and Spanish are at root level
+  englishUrl = `${baseUrl}seo-growth-strategy/`;
+  spanishUrl = `${baseUrl}es/seo-growth-strategy/`;
 } else {
   // Standard mapping for all other pages
-  englishUrl = `${baseUrl}${cleanPath}`;
-  spanishUrl = `${baseUrl}es/${cleanPath}`;
+  englishUrl = `${baseUrl}${cleanPath}/`;
+  spanishUrl = `${baseUrl}es/${cleanPath}/`;
 }
 ---
 

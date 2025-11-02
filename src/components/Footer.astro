@@ -42,30 +42,30 @@ const footerLinks = {
     { href: '#services', label: isSpanish ? 'Servicios' : 'Services' },
     { href: '#pricing', label: isSpanish ? 'Precios' : 'Pricing' },
     { href: '#faq', label: 'FAQ' },
-    { href: `${import.meta.env.BASE_URL}${langPrefix}contact`, label: isSpanish ? 'Contacto' : 'Contact' }
+    { href: `${import.meta.env.BASE_URL}${langPrefix}contact/`, label: isSpanish ? 'Contacto' : 'Contact' }
   ],
   legal: [
-    { href: `${import.meta.env.BASE_URL}${langPrefix}legal/terms-of-service`, label: isSpanish ? 'Términos de Servicio' : 'Terms of Service' },
-    { href: `${import.meta.env.BASE_URL}${langPrefix}legal/privacy-policy`, label: isSpanish ? 'Política de Privacidad' : 'Privacy Policy' },
-    { href: `${import.meta.env.BASE_URL}${langPrefix}legal/cookie-policy`, label: isSpanish ? 'Política de Cookies' : 'Cookie Policy' },
-    { href: `${import.meta.env.BASE_URL}${langPrefix}legal/accessibility-statement`, label: isSpanish ? 'Declaración de Accesibilidad' : 'Accessibility Statement' },
-    { href: `${import.meta.env.BASE_URL}${langPrefix}legal/copyright-notice`, label: isSpanish ? 'Aviso de Derechos de Autor' : 'Copyright Notice' }
+    { href: `${import.meta.env.BASE_URL}${langPrefix}legal/terms-of-service/`, label: isSpanish ? 'Términos de Servicio' : 'Terms of Service' },
+    { href: `${import.meta.env.BASE_URL}${langPrefix}legal/privacy-policy/`, label: isSpanish ? 'Política de Privacidad' : 'Privacy Policy' },
+    { href: `${import.meta.env.BASE_URL}${langPrefix}legal/cookie-policy/`, label: isSpanish ? 'Política de Cookies' : 'Cookie Policy' },
+    { href: `${import.meta.env.BASE_URL}${langPrefix}legal/accessibility-statement/`, label: isSpanish ? 'Declaración de Accesibilidad' : 'Accessibility Statement' },
+    { href: `${import.meta.env.BASE_URL}${langPrefix}legal/copyright-notice/`, label: isSpanish ? 'Aviso de Derechos de Autor' : 'Copyright Notice' }
   ],
   services: [
     {
-      href: `${import.meta.env.BASE_URL}${langPrefix}website-design-that-converts`,
+      href: `${import.meta.env.BASE_URL}${langPrefix}website-design-that-converts/`,
       label: isSpanish ? 'Diseño Web' : 'Website Design'
     },
     {
-      href: `${import.meta.env.BASE_URL}${langPrefix}seo-growth-strategy`,
+      href: `${import.meta.env.BASE_URL}${langPrefix}seo-growth-strategy/`,
       label: isSpanish ? 'SEO Local' : 'Local SEO'
     },
     {
-      href: `${import.meta.env.BASE_URL}${langPrefix}business-profile-optimization`,
+      href: `${import.meta.env.BASE_URL}${langPrefix}business-profile-optimization/`,
       label: isSpanish ? 'Perfil de Google Business' : 'Google Business Profile'
     },
     {
-      href: `${import.meta.env.BASE_URL}${langPrefix}seo-growth-strategy`,
+      href: `${import.meta.env.BASE_URL}${langPrefix}seo-growth-strategy/`,
       label: isSpanish ? 'Optimización de Búsqueda por Voz' : 'Voice Search Optimization'
     }
   ]
@@ -145,7 +145,7 @@ const trustSignals = [
 
           <!-- Primary CTA -->
           <a
-            href={`${import.meta.env.BASE_URL}${langPrefix}contact#contact-options`}
+            href={`${import.meta.env.BASE_URL}${langPrefix}contact/#contact-options`}
             class="inline-flex items-center justify-center gap-1 bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg focus:ring-4 focus:ring-blue-200 whitespace-nowrap"
             aria-label={isSpanish ? 'Reserva una llamada de descubrimiento gratuita' : 'Book a free discovery call'}
           >

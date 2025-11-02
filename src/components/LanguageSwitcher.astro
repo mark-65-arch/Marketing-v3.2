@@ -49,19 +49,15 @@ let alternateUrl = '';
 let englishUrl = '';
 
 if (cleanPath === 'seo-growth-strategy') {
-  // English SEO page -> Spanish version is in services/
-  englishUrl = `${baseUrl}seo-growth-strategy`;
-  alternateUrl = `${baseUrl}es/services/seo-growth-strategy`;
-} else if (cleanPath === 'services/seo-growth-strategy') {
-  // Spanish SEO page -> English version is at root
-  englishUrl = `${baseUrl}seo-growth-strategy`;
-  alternateUrl = `${baseUrl}seo-growth-strategy`;
+  // SEO page -> both English and Spanish are at root level
+  englishUrl = `${baseUrl}seo-growth-strategy/`;
+  alternateUrl = `${baseUrl}es/seo-growth-strategy/`;
 } else {
   // Standard mapping for all other pages
-  englishUrl = `${baseUrl}${cleanPath}`;
+  englishUrl = `${baseUrl}${cleanPath}/`;
   alternateUrl = isCurrentlySpanish
-    ? `${baseUrl}${cleanPath}`  // Switch to English
-    : `${baseUrl}es/${cleanPath}`; // Switch to Spanish
+    ? `${baseUrl}${cleanPath}/`  // Switch to English
+    : `${baseUrl}es/${cleanPath}/`; // Switch to Spanish
 }
 
 const alternateLang = isCurrentlySpanish ? 'en' : 'es';

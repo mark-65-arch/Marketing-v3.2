@@ -147,8 +147,8 @@ if (cleanPath === 'seo-growth-strategy') {
         </span>
       </a>
 
-      <!-- 🖥️ Desktop Navigation (Hidden on Mobile) -->
-      <nav class="hidden md:flex md:space-x-4 lg:space-x-6 xl:space-x-8 md:order-2 flex-1 justify-center" role="navigation" aria-label="Main navigation">
+      <!-- 🖥️ Desktop Navigation (Hidden on Mobile and Tablet) -->
+      <nav class="hidden lg:flex md:space-x-4 lg:space-x-6 xl:space-x-8 md:order-2 flex-1 justify-center" role="navigation" aria-label="Main navigation">
         {navItems.map(item => (
           item.dropdown ? (
             <!-- 📋 Services Dropdown -->
@@ -196,15 +196,15 @@ if (cleanPath === 'seo-growth-strategy') {
 
       <!-- 🎯 Hamburger Menu + CTA, Language Switcher (Right on Mobile and Desktop) -->
       <div class="flex items-center gap-2 md:gap-3 md:order-3 order-3">
-        <!-- 🌐 Language Switcher (Desktop only) -->
-        <div class="hidden md:block">
+        <!-- 🌐 Language Switcher (Desktop only, visible at lg breakpoint) -->
+        <div class="hidden lg:block">
           <LanguageSwitcher currentPath={currentPath} currentLang={currentLang} />
         </div>
 
-        <!-- 📱 Mobile Menu Toggle (Mobile Only) -->
+        <!-- 📱 Mobile Menu Toggle (Mobile and Tablet only, hidden at lg) -->
         <button
           id="global-nav-mobile-menu-button"
-          class="md:hidden p-3 rounded-lg text-blue-900 hover:bg-blue-50 focus:bg-blue-50 transition-colors duration-200"
+          class="lg:hidden p-3 rounded-lg text-blue-900 hover:bg-blue-50 focus:bg-blue-50 transition-colors duration-200"
           aria-expanded="false"
           aria-controls="global-nav-mobile-menu"
           aria-label="Toggle main menu"

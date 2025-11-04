@@ -37,7 +37,7 @@ import TrophyIcon from '../components/icons/TrophyIcon.astro';
 
 // 🔍 SEO Configuration
 const pageTitle = 'Google Business Profile Optimization';
-const pageDescription = 'We optimize your profile so you show up when customers search — on Maps, mobile, and voice. Get found by local customers actively looking for your services.';
+const pageDescription = 'We optimize your profile so you show up when customers search — on Maps, mobile search, and voice. Get found by local customers actively looking for your services.';
 const canonicalURL = `${import.meta.env.SITE}${import.meta.env.BASE_URL}business-profile-optimization/`;
 
 // 🍞 Breadcrumb Navigation
@@ -50,7 +50,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 // 📊 Service Schema Data
 const serviceSchema = generateServiceSchema({
   name: 'Google Business Profile Optimization',
-  description: 'Professional Google Business Profile optimization to help local businesses get found on Google Maps, mobile search, and voice search.',
+  description: 'Professional Google Business Profile (Google My Business) optimization to help local businesses get found on Google Maps, mobile search, and voice search.',
   provider: 'Marketing AI Houston',
   serviceType: 'Local SEO',
   areaServed: 'United States',
@@ -81,11 +81,11 @@ const faqs: FAQItem[] = [
   },
   {
     question: 'How much does Google Business Profile optimization cost?',
-    answer: 'Our one-time Business Profile Optimization service is $597. This includes full profile audit, optimization, photo/video guidance, review strategy setup, and training. No monthly fees unless you want ongoing support ($97/month optional).'
+    answer: 'Our one-time Google Business Profile (Google My Business) optimization service is $597. This includes full profile audit, optimization, photo/video guidance, review strategy setup, and training. No monthly fees unless you want ongoing support ($97/month optional).'
   },
   {
     question: 'How is this different from just filling out my Google Business Profile myself?',
-    answer: 'DIY profiles miss critical optimization opportunities: incomplete categories, weak descriptions, missing attributes, poor photo optimization, and no review strategy. We use data-driven tactics that can significantly increase visibility compared to basic profiles. Most business owners spend hours guessing; we deliver optimized profiles in days with results typically building over weeks.'
+    answer: 'DIY profiles miss critical optimization opportunities: incomplete categories, weak descriptions, missing attributes, poor photo optimization, and no review strategy. Whether you run an HVAC company, landscaping business, auto repair shop, or cleaning service, we use data-driven tactics tailored to your industry that can significantly increase your local search visibility compared to basic profiles. Most business owners spend hours guessing; we deliver optimized profiles in days with results typically building over weeks.'
   },
   {
     question: 'How long does it take to see results?',
@@ -105,11 +105,11 @@ const faqs: FAQItem[] = [
   },
   {
     question: 'Will this help me outrank my competitors on Google Maps?',
-    answer: 'Our optimization is designed to improve your competitive position by focusing on the key ranking factors Google uses for local pack results: relevance (keywords, categories), distance (service areas), and prominence (reviews, engagement, citations). Many clients see improved local pack visibility within 30-90 days, though results vary based on competition and market factors. We can\'t guarantee specific rankings, but we optimize all controllable factors to maximize your visibility.'
+    answer: 'Our optimization is designed to improve your competitive position by focusing on the key ranking factors Google uses for local pack results (also called the "3-pack" or "Map Pack"): relevance (keywords, categories), distance (service areas), and prominence (reviews, engagement, citations). Many clients see improved local pack visibility within 30-90 days, though results vary based on competition and market factors. We can\'t guarantee specific rankings, but we optimize all controllable factors to maximize your visibility.'
   },
   {
     question: 'Do I need to give you access to my Google account?',
-    answer: 'You can add us as a manager to your Google Business Profile without sharing full account access. We only need profile-level permissions to make optimizations. You retain full ownership and control, and can remove our access anytime.'
+    answer: 'You can add us as a manager to your Google Business Profile (formerly Google My Business) without sharing full account access. We only need profile-level permissions to make optimizations. You retain full ownership and control, and can remove our access anytime.'
   },
   {
     question: 'What happens after the initial optimization is complete?',
@@ -156,7 +156,7 @@ const faqSchema = generateFAQSchema(faqs);
 
         <!-- 📝 Subheadline -->
         <p class="text-xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
-          We optimize your profile so you show up when customers search — on Maps, mobile, and voice.
+          We optimize your profile to improve visibility when customers search — in local search results, on Maps, mobile search, and voice.
         </p>
 
         <!-- 🎯 Primary CTA -->
@@ -268,7 +268,7 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- 🛤️ How It Works Section -->
-  <section class="section-padding relative overflow-hidden bg-white">
+  <section class="section-padding relative overflow-hidden bg-gradient-to-br from-gray-50 to-blue-50">
     <!-- Commented out - floating blobs disabled (can be re-enabled if needed)
     <div class="absolute inset-0 opacity-10">
       <div class="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-blue-600 to-teal-600 organic-droplet animate-float"></div>
@@ -287,7 +287,7 @@ const faqSchema = generateFAQSchema(faqs);
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <Card class="text-center" padding="xl">
+        <Card class="text-center border-2 border-blue-200 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300" padding="xl">
           <div class="w-20 h-20 rounded-full gradient-ocean-teal flex items-center justify-center mx-auto mb-6 shadow-lg">
             <span class="text-white text-2xl font-bold">1</span>
           </div>
@@ -296,7 +296,7 @@ const faqSchema = generateFAQSchema(faqs);
           <p class="text-gray-700">We discuss your business, location, and goals. Takes about 15 minutes.</p>
         </Card>
 
-        <Card class="text-center" padding="xl">
+        <Card class="text-center border-2 border-blue-200 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300" padding="xl">
           <div class="w-20 h-20 rounded-full gradient-ocean-teal flex items-center justify-center mx-auto mb-6 shadow-lg">
             <span class="text-white text-2xl font-bold">2</span>
           </div>
@@ -305,7 +305,7 @@ const faqSchema = generateFAQSchema(faqs);
           <p class="text-gray-700">We optimize every element for maximum local visibility and customer engagement.</p>
         </Card>
 
-        <Card class="text-center" padding="xl">
+        <Card class="text-center border-2 border-blue-200 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300" padding="xl">
           <div class="w-20 h-20 rounded-full gradient-ocean-teal flex items-center justify-center mx-auto mb-6 shadow-lg">
             <span class="text-white text-2xl font-bold">3</span>
           </div>
@@ -331,7 +331,7 @@ const faqSchema = generateFAQSchema(faqs);
             Old agencies ignore your Google Business Profile. We make it your most powerful local marketing tool — optimized for how people search today. Whether it's Maps, mobile, or voice, we help you show up where it counts.
           </p>
           <p>
-            Most small businesses have a Google Business Profile. But having one and having one that actually brings in customers are two very different things. The difference? Strategic optimization focused on the three ways customers search for local services today: Google Maps, mobile search, and voice assistants.
+            Most small businesses have a Google Business Profile. But having one and having one that actually brings in customers are two very different things. For small businesses competing in local markets, strategic optimization is the difference between being invisible and being the first call a customer makes. The difference? Strategic optimization focused on the three ways customers search for local services today: Google Maps, mobile search, and voice assistants.
           </p>
         </div>
       </div>
@@ -359,10 +359,10 @@ const faqSchema = generateFAQSchema(faqs);
 
         <div class="text-lg text-gray-700 leading-relaxed space-y-4">
           <p>
-            Search behavior has fundamentally changed. Customers are searching with "near me" queries, browsing on mobile devices (over 60% of all searches), and asking voice assistants for recommendations. Your Google Business Profile is where all three of these search methods converge.
+            Local search behavior has fundamentally changed. Customers are searching with "near me" queries, browsing on mobile devices (over 60% of all searches), and asking voice assistants for recommendations. Your Google Business Profile is where all three of these search methods converge.
           </p>
           <p>
-            Think of your Google Business Profile as your digital storefront. It shows up before your website in local searches, displays critical information like your hours and phone number, and showcases reviews that build instant trust. When someone searches "plumber near me" on their phone, your profile is often the first—and only—impression you get.
+            Think of your Google Business Profile as your digital storefront. It shows up before your website in local searches, displays critical information like your hours and phone number, and showcases reviews that build instant trust. When someone searches "plumber near me," "HVAC repair," or "emergency electrician" on their phone, your profile is often the first—and only—impression you get.
           </p>
           <p>
             The cost of an unoptimized profile is real: you're losing calls to competitors with better-optimized profiles, missing out on "Map Pack" visibility (those top 3 local results that get 44% of all clicks), and appearing unprofessional or outdated to potential customers who are comparing you to other businesses.
@@ -392,7 +392,7 @@ const faqSchema = generateFAQSchema(faqs);
             </h4>
             <div class="text-gray-700 leading-relaxed text-left space-y-3">
               <p>
-                The Map Pack—those top three local business listings that appear with pins on Google Maps—is prime real estate. These results show up before organic search results and get the majority of clicks.
+                The Map Pack (also called the "local 3-pack")—those top three local business listings that appear with pins on Google Maps—is prime real estate. These results show up before organic search results and get the majority of clicks.
               </p>
               <p>
                 Map Pack rankings are determined by complete and accurate NAP (Name, Address, Phone) information, strategic category selection, high-quality photos, and consistent positive reviews.
@@ -411,7 +411,7 @@ const faqSchema = generateFAQSchema(faqs);
             </h4>
             <div class="text-gray-700 leading-relaxed text-left space-y-3">
               <p>
-                58% of local searches happen on mobile devices, and mobile users have extraordinarily high intent. They're not researching—they're ready to call NOW.
+                58% of mobile searches for local businesses happen on smartphones, and mobile search users have extraordinarily high intent. Whether they need an emergency plumber, auto repair, or cleaning services, they're not researching—they're ready to call NOW.
               </p>
               <p>
                 Mobile optimization means crafting short, scannable descriptions that load instantly, using mobile-friendly photos, and setting up quick-access messaging so customers can contact you without picking up the phone.
@@ -430,7 +430,7 @@ const faqSchema = generateFAQSchema(faqs);
             </h4>
             <div class="text-gray-700 leading-relaxed text-left space-y-3">
               <p>
-                Voice search through Alexa, Siri, and Google Assistant is exploding. These searches are conversational and question-based: "Hey Google, find a contractor near me."
+                Voice search through Alexa, Siri, and Google Assistant is exploding. These searches are conversational and question-based: "Hey Google, find a contractor near me," "Siri, where's the nearest auto repair shop," or "Alexa, find pet groomers in my area."
               </p>
               <p>
                 We optimize your profile for voice by using natural language in your business description, creating FAQ-style Q&A posts, and implementing structured data markup that helps voice assistants understand your business.
@@ -474,7 +474,7 @@ const faqSchema = generateFAQSchema(faqs);
             <div>
               <h4 class="text-lg font-bold text-blue-900 mb-2">Mobile Usability First</h4>
               <p class="text-gray-700">
-                Since most of your customers will find you on mobile, we optimize every element for small screens. Photos are sized and formatted for mobile viewing, descriptions are concise and scannable, messaging is set up for instant contact, and we create a posting strategy that keeps your profile fresh and engaging.
+                Since most of your customers will find you through mobile search, we optimize every element for small screens and mobile search results. Photos are sized and formatted for mobile viewing, descriptions are concise and scannable, messaging is set up for instant contact, and we create a posting strategy that keeps your profile fresh and engaging.
               </p>
             </div>
           </Card>
@@ -515,7 +515,7 @@ const faqSchema = generateFAQSchema(faqs);
               <div>
                 <h4 class="text-lg font-bold text-blue-900 mb-2">Timeline</h4>
                 <p class="text-gray-700">
-                  Week 1, your profile is fully optimized and live. Weeks 2-4, you'll see improved Map Pack visibility as Google indexes the changes. Months 2-3, you'll notice increased profile views and more calls coming from search.
+                  Week 1, your profile is fully optimized and live. Weeks 2-4, you'll see improved local pack visibility (the top 3 map results) as Google indexes the changes. Months 2-3, you'll notice increased profile views and more calls coming from search.
                 </p>
               </div>
             </div>
@@ -529,7 +529,7 @@ const faqSchema = generateFAQSchema(faqs);
               <div>
                 <h4 class="text-lg font-bold text-blue-900 mb-2">Measurable Outcomes</h4>
                 <p class="text-gray-700">
-                  You'll be able to track real metrics: profile views, direction requests, phone calls from search, and review volume. Google Business Profile provides detailed insights so you can see exactly how customers are finding and engaging with your business. Most businesses see meaningful improvements in these metrics when their profile is properly optimized and maintained.
+                  You'll be able to track real metrics: profile views, direction requests, phone calls from search, and review volume. Whether you're a contractor getting emergency calls, a pet groomer booking appointments, or an auto shop receiving repair requests, Google Business Profile provides detailed insights so you can see exactly how customers are finding and engaging with your business. Most businesses see meaningful improvements in these metrics when their profile is properly optimized and maintained.
                 </p>
               </div>
             </div>
@@ -570,7 +570,7 @@ const faqSchema = generateFAQSchema(faqs);
           <div class="p-8">
             <div class="text-6xl mb-6">🎯</div>
             <h3 class="text-3xl font-bold text-blue-900 mb-4">Get Found on Google</h3>
-            <p class="text-gray-600 mb-6">Perfect for businesses who need to show up on Google and start getting calls.</p>
+            <p class="text-gray-600 mb-6">Perfect for small businesses who need to show up on Google and start getting calls.</p>
 
             <div class="text-5xl font-black text-blue-900 mb-8">$497</div>
 

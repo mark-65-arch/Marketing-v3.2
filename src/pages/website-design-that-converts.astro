@@ -35,7 +35,7 @@ import TrophyIcon from '../components/icons/TrophyIcon.astro';
 
 // 🔍 SEO Configuration
 const pageTitle = 'Mobile-First Web Design That Converts';
-const pageDescription = 'We build mobile-first, SEO-ready websites designed to earn trust, drive calls, and grow your business. Launch in weeks, not months.';
+const pageDescription = 'Conversion-focused, mobile-first website design that turns visitors into customers. Trust-building design, fast-loading, responsive, with built-in technical SEO.';
 const canonicalURL = `${import.meta.env.SITE}${import.meta.env.BASE_URL}website-design-that-converts/`;
 
 // 🍞 Breadcrumb Navigation
@@ -67,7 +67,7 @@ const faqs: FAQItem[] = [
   },
   {
     question: 'Will my site show up on Google?',
-    answer: 'Yes — every site includes SEO and schema markup to help you rank in local searches.'
+    answer: 'Yes — every site includes technical SEO and schema markup to help you rank in search results. Combined with our Google Business Profile service, you\'ll have complete local visibility.'
   },
   {
     question: 'What if I need changes later?',
@@ -79,7 +79,7 @@ const faqs: FAQItem[] = [
   },
   {
     question: 'What\'s included in the $1,497 Growth Plan website?',
-    answer: 'Custom 4-page site with Google Business Profile optimization, professional copywriting, mobile-first design, SEO optimization, contact forms, fast hosting, and SSL security. Everything you need to start converting visitors into customers.'
+    answer: 'Custom 4-page site with Google Business Profile optimization, conversion-focused copywriting, mobile-first design, technical SEO optimization, contact forms, fast hosting, and SSL security. Everything you need to start converting visitors into customers.'
   },
   {
     question: 'How is this different from a $99 template site or DIY builder?',
@@ -162,7 +162,7 @@ const faqSchema = generateFAQSchema(faqs);
 
         <!-- 📝 Subheadline -->
         <p class="text-xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
-          We build mobile-first, SEO-ready websites designed to earn trust, drive calls, and grow your business.
+          We build conversion-focused, mobile-first websites with trust-building design that turns visitors into customers. Fast-loading, responsive, and built with your growth in mind.
         </p>
 
         <!-- 🎯 Primary CTA -->
@@ -234,7 +234,7 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- 📋 What's Included Section -->
-  <section class="section-padding relative overflow-hidden bg-gradient-to-br from-gray-50 to-white">
+  <section class="section-padding relative overflow-hidden bg-gradient-to-br from-blue-50 to-teal-50">
     <div class="container mx-auto container-padding">
       <div class="text-center mb-16">
         <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold text-gray-700 mb-6 border border-white/50 shadow-sm">
@@ -248,7 +248,7 @@ const faqSchema = generateFAQSchema(faqs);
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <Card class="flex items-start space-x-4" padding="lg">
+        <Card class="flex items-start space-x-4 border-2 border-blue-200 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300" padding="lg">
           <div class="flex-shrink-0">
             <MobileIcon class="text-2xl text-blue-600" aria-hidden="true" />
           </div>
@@ -258,7 +258,7 @@ const faqSchema = generateFAQSchema(faqs);
           </div>
         </Card>
 
-        <Card class="flex items-start space-x-4" padding="lg">
+        <Card class="flex items-start space-x-4 border-2 border-blue-200 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300" padding="lg">
           <div class="flex-shrink-0">
             <PaletteIcon class="text-2xl text-blue-600" aria-hidden="true" />
           </div>
@@ -268,27 +268,27 @@ const faqSchema = generateFAQSchema(faqs);
           </div>
         </Card>
 
-        <Card class="flex items-start space-x-4" padding="lg">
+        <Card class="flex items-start space-x-4 border-2 border-blue-200 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300" padding="lg">
           <div class="flex-shrink-0">
             <SearchIcon class="text-2xl text-blue-600" aria-hidden="true" />
           </div>
           <div>
-            <h3 class="text-xl font-bold text-blue-900 mb-2">Local SEO + Schema Markup</h3>
-            <p class="text-gray-700">Helps your site show up on Google when customers search nearby.</p>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">SEO-Ready Foundation + Schema Markup</h3>
+            <p class="text-gray-700">Technical SEO and structured data built in from day one to support search visibility.</p>
           </div>
         </Card>
 
-        <Card class="flex items-start space-x-4" padding="lg">
+        <Card class="flex items-start space-x-4 border-2 border-blue-200 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300" padding="lg">
           <div class="flex-shrink-0">
-            <MicrophoneIcon class="text-2xl text-blue-600" aria-hidden="true" />
+            <ChartLineIcon class="text-2xl text-blue-600" aria-hidden="true" />
           </div>
           <div>
-            <h3 class="text-xl font-bold text-blue-900 mb-2">Voice Search Optimization</h3>
-            <p class="text-gray-700">Future-ready formatting so your business is found by voice assistants.</p>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Performance Optimization</h3>
+            <p class="text-gray-700">Sub-2-second load times that keep visitors engaged and improve conversion rates.</p>
           </div>
         </Card>
 
-        <Card class="flex items-start space-x-4" padding="lg">
+        <Card class="flex items-start space-x-4 border-2 border-blue-200 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300" padding="lg">
           <div class="flex-shrink-0">
             <PhoneIcon class="text-2xl text-blue-600" aria-hidden="true" />
           </div>
@@ -298,7 +298,7 @@ const faqSchema = generateFAQSchema(faqs);
           </div>
         </Card>
 
-        <Card class="flex items-start space-x-4" padding="lg">
+        <Card class="flex items-start space-x-4 border-2 border-blue-200 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300" padding="lg">
           <div class="flex-shrink-0">
             <ChartLineIcon class="text-2xl text-blue-600" aria-hidden="true" />
           </div>
@@ -308,7 +308,7 @@ const faqSchema = generateFAQSchema(faqs);
           </div>
         </Card>
 
-        <Card class="flex items-start space-x-4 md:col-span-2" padding="lg">
+        <Card class="flex items-start space-x-4 md:col-span-2 border-2 border-blue-200 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300" padding="lg">
           <div class="flex-shrink-0">
             <GiftIcon class="text-2xl text-blue-600" aria-hidden="true" />
           </div>
@@ -357,8 +357,8 @@ const faqSchema = generateFAQSchema(faqs);
 
         <Card class="text-center" padding="xl">
           <div class="text-5xl mb-4">🔍</div>
-          <h3 class="text-2xl font-bold text-blue-900 mb-3">Search-Ready from Day One</h3>
-          <p class="text-gray-700">Local SEO and schema markup help you show up when people search nearby.</p>
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">Built for Organic Search Growth</h3>
+          <p class="text-gray-700">Technical SEO and schema markup create a strong foundation for long-term search visibility.</p>
         </Card>
 
         <Card class="text-center" padding="xl">
@@ -415,7 +415,7 @@ const faqSchema = generateFAQSchema(faqs);
             Template sites and DIY builders give you something that exists online, but they're not optimized for what actually converts: mobile performance, clear calls-to-action, trust signals, and search visibility. You end up with a digital brochure that doesn't drive business.
           </p>
           <p>
-            Conversion-focused design means every element serves a purpose. Your homepage immediately communicates what you do and who you serve. Service pages answer buyer questions and include clear next steps. Contact forms are simple and mobile-friendly. Page speed is optimized so visitors don't bounce before they even see your content.
+            Conversion-focused design means every element serves a purpose for user experience. Your homepage immediately communicates what you do and who you serve. Service pages answer buyer questions and include clear next steps. Contact forms are simple and mobile-friendly. Page speed is optimized so visitors don't bounce before they even see your content.
           </p>
           <p class="font-semibold text-blue-900">
             The difference is a website that looks professional AND drives measurable results—more calls, more bookings, more customers. One is an expense. The other is an investment that pays for itself.
@@ -470,7 +470,7 @@ const faqSchema = generateFAQSchema(faqs);
                 We design with hierarchy and psychology in mind: prominent CTAs, trust signals (reviews, credentials, years in business), simple forms, and click-to-call buttons that work on mobile.
               </p>
               <p class="font-semibold text-blue-900">
-                Result: Visitors know exactly what to do next, and they do it—leading to 2-3x more conversions than typical sites.
+                Result: Visitors know exactly what to do next, and they do it—leading to significantly more conversions than poorly designed sites.
               </p>
             </div>
           </Card>
@@ -486,7 +486,7 @@ const faqSchema = generateFAQSchema(faqs);
                 A beautiful site that nobody finds is a waste. We build with SEO fundamentals baked in: clean code, fast performance, mobile optimization, proper heading structure, meta tags, and local business schema markup.
               </p>
               <p>
-                Your site launches ready to rank. Service pages target buyer-intent keywords. Local landing pages capture geo-specific searches. Technical SEO is handled from day one—no retrofitting required.
+                Your site launches ready to rank. Service pages target buyer-intent keywords. Technical SEO is handled from day one—no retrofitting required. Built to support your long-term growth strategy.
               </p>
               <p class="font-semibold text-blue-900">
                 Result: Organic visibility from launch, with a foundation that supports ongoing SEO growth.
@@ -608,9 +608,9 @@ const faqSchema = generateFAQSchema(faqs);
                 <SearchIcon class="text-3xl text-blue-600" aria-hidden="true" />
               </div>
               <div>
-                <h4 class="text-lg font-bold text-blue-900 mb-2">Local SEO Integration</h4>
+                <h4 class="text-lg font-bold text-blue-900 mb-2">Search Visibility Integration</h4>
                 <p class="text-gray-700">
-                  Service area pages, local business schema, NAP consistency, and Google Business Profile integration ensure you show up for "near me" searches and Map Pack results—where most local customers start their search.
+                  Service pages, structured data, and technical SEO optimization ensure your site ranks for buyer-intent searches. Every page is built to attract visitors actively looking for your services.
                 </p>
               </div>
             </div>
@@ -721,7 +721,7 @@ const faqSchema = generateFAQSchema(faqs);
               </div>
               <div class="flex items-start">
                 <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />
-                <span>Voice search optimization</span>
+                <span>Performance optimization (sub-2-second load times)</span>
               </div>
               <div class="flex items-start">
                 <CheckIcon class="text-blue-600 mt-1 mr-3" aria-hidden="true" />

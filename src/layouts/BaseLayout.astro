@@ -176,6 +176,27 @@ const preloadResources = [...fontPreloads, ...imagePreloads];
     ]
   })} />
 
+  <!-- 🌐 WebSite Schema - Controls site name display in Google search results -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Marketing AI Houston",
+    "url": `${import.meta.env.SITE}${import.meta.env.BASE_URL}`,
+    "description": "AI-powered web design & SEO for Houston small businesses",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Marketing AI Houston"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": `${import.meta.env.SITE}${import.meta.env.BASE_URL}?s={search_term_string}`
+      },
+      "query-input": "required name=search_term_string"
+    }
+  })} />
+
   <!-- 📊 Additional structured data from page -->
   {structuredData && (
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

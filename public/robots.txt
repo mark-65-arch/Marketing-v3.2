@@ -4,6 +4,9 @@
 User-agent: *
 Allow: /
 
+# Block search parameter URLs from indexing
+Disallow: /*?s=*
+
 # Sitemap
 Sitemap: https://marketingaihouston.com/sitemap-index.xml
 

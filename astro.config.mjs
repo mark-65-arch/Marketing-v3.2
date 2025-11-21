@@ -9,7 +9,7 @@ export default defineConfig({
   site: process.env.SITE || 'https://marketingaihouston.com',
   base: '/', // Root path for Hostinger deployment
   output: 'static',
-  trailingSlash: 'ignore', // Allow both with/without trailing slashes to avoid redirects
+  trailingSlash: 'always', // Enforce trailing slashes for consistent URLs and SEO
   integrations: [
     sitemap({
       filter: (page) => !page.includes('/404'),

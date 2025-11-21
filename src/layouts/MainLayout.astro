@@ -124,22 +124,14 @@ if (cleanPath.endsWith('/') && cleanPath.length > 1) {
 // Determine if current page is Spanish
 const isSpanishPage = lang === 'es' || currentPath.includes('/es/');
 
-// Generate hreflang URLs
-const enUrl = `${siteUrl}${baseUrl}${cleanPath}`;
-const esUrl = `${siteUrl}${baseUrl}es/${cleanPath}`;
-
-// Normalize URLs (remove trailing slashes except for root)
-const normalizeUrl = (url: string) => {
-  if (url.endsWith('/') && !url.endsWith('//')) {
-    return url;
-  }
-  return url.endsWith('/') ? url.slice(0, -1) : url;
-};
+// Generate hreflang URLs with trailing slashes for consistency
+const enUrl = cleanPath ? `${siteUrl}${baseUrl}${cleanPath}/` : `${siteUrl}${baseUrl}`;
+const esUrl = cleanPath ? `${siteUrl}${baseUrl}es/${cleanPath}/` : `${siteUrl}${baseUrl}es/`;
 
 const hreflangLinks = [
-  { lang: 'en', url: normalizeUrl(enUrl) },
-  { lang: 'es', url: normalizeUrl(esUrl) },
-  { lang: 'x-default', url: normalizeUrl(enUrl) } // Default to English
+  { lang: 'en', url: enUrl },
+  { lang: 'es', url: esUrl },
+  { lang: 'x-default', url: enUrl } // Default to English
 ];
 ---
 
